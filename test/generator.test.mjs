@@ -44,7 +44,8 @@ test('Zusatzwürfel sind optional und D% setzt D10 voraus', () => {
 
 test('Erstellung aus Kurzbeschreibung ersetzt die manuelle Pflichtliste', () => {
  const assisted=buildPrompt({...defaults,creation:'assisted',setting:'cyberpunk'});
- assert.ok(assisted.includes('Kurzbeschreibung genügt'));
+ assert.ok(assisted.includes('Kurzbeschreibung ist fest gewählt'));
+ assert.ok(assisted.includes('Frage nur nach der Figurenidee; keine Moduswahl/manuelle Option anbieten'));
  assert.ok(assisted.includes('Vorgaben bewahren'));
  assert.ok(!assisted.includes('Ich lege Name/Herkunft'));
  assert.ok(assisted.includes('Vorhandene Figuren nicht neu generieren'));
