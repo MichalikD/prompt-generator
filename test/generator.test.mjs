@@ -14,7 +14,7 @@ test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen
     assert.ok(!/undefined|null/.test(prompt));
     count++;
   }
-  assert.equal(count, groups.reduce((n,g)=>n*g.options.length,1));
+  assert.equal(count, 48 * groups.reduce((n,g)=>n*g.options.length,1));
 });
 test('Hardcore, Horror und Cyberpunk ersetzen widersprüchliche Regeln', () => {
   const prompt = buildPrompt({...defaults, death:'hardcore',tone:'horror',setting:'cyberpunk'});
@@ -31,4 +31,12 @@ test('Benutzerwürfe werden angefordert, automatische Proben nicht', () => {
 test('Ungültige oder unvollständige Auswahl wird abgewiesen', () => {
   assert.throws(()=>buildPrompt({}), /Ungültige/);
   assert.throws(()=>buildPrompt({...defaults,setting:'<script>'}), /Ungültige/);
+});
+
+test('Zusatzwürfel sind optional und D% setzt D10 voraus', () => {
+ assert.ok(!buildPrompt(defaults).includes('Zusatzwürfe:'));
+ assert.throws(()=>buildPrompt({...defaults,extras:['dpercent']}), /benötigt D10/);
+ const p=buildPrompt({...defaults,extras:['d10','dpercent']});
+ assert.ok(p.includes('00+0=100'));
+ assert.ok(!p.includes('Schaden nur mit'));
 });

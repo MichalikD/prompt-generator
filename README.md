@@ -37,7 +37,7 @@ npm test
 npm run check
 ```
 
-Die aktuelle Fassung enthält 768 Kombinationen. Alle bleiben strikt unter 8.000 Zeichen,
+Die aktuelle Fassung enthält 36.864 Kombinationen. Alle bleiben strikt unter 8.000 Zeichen,
 einschließlich Überschriften und LF-Zeilenumbrüchen (konservative JavaScript-UTF-16-Zählung).
 Es wird nie abgeschnitten. Bei einer zu langen oder ungültigen Konfiguration bleibt Kopieren gesperrt.
 Die Garantie gilt für die geprüften Module; manuelles Ergänzen nach dem Kopieren fällt nicht darunter.
@@ -59,3 +59,7 @@ Alle App-Berechnungen laufen im Browser. Keine Cookies, localStorage, Telemetrie
 APIs oder automatischen Übertragungen der Auswahl. GitHub verarbeitet als Hoster normale Seitenaufrufe.
 Der erzeugte Prompt wird erst durch eigenes Einfügen an den gewählten Chatdienst übergeben.
 Repository und ausgelieferte Textmodule sind öffentlich. Keine persönlichen Daten oder Schlüssel einchecken.
+
+## Zusatzwürfel und Hilfen
+
+Zusatzwürfel einzeln kombinieren. D% setzt D10 voraus. D4/D6/D8 variieren Schaden symmetrisch um ±1; der Mittelwert bleibt 2/3/4. D10 für Fundtabellen, D12 für Weltereignisse, D% für Prozentchancen. Attributproben bleiben W20. Hilfen per Info-Symbol öffnen (auch Touch/Tastatur), Escape schließt sie. Keine Regel entfernt wegen eines deaktivierten Schadenswürfels: dann gilt der Grundschaden.

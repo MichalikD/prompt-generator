@@ -1,30 +1,35 @@
-import { groups, defaults, buildPrompt, LIMIT } from './generator.mjs';
+import { groups, dice, defaults, buildPrompt, LIMIT } from './generator.mjs';
 const form = document.querySelector('#options');
 const output = document.querySelector('#prompt');
 const copy = document.querySelector('#copy');
 const status = document.querySelector('#status');
 const reset = document.querySelector('#reset');
 let revision = 0;
-for (const group of groups) {
-  const field = document.createElement('fieldset');
-  const legend = document.createElement('legend');
-  legend.textContent = group.label;
-  field.append(legend);
-  const row = document.createElement('div'); row.className = 'choices';
-  for (const option of group.options) {
-    const label = document.createElement('label'); label.className = 'choice';
-    const input = document.createElement('input');
-    input.type = 'radio'; input.name = group.id; input.value = option.id;
-    input.checked = defaults[group.id] === option.id;
-    const span = document.createElement('span'); span.textContent = option.label;
-    label.append(input, span); row.append(label);
-  }
-  field.append(row); form.append(field);
+function addChoices(group, multi=false) {
+ const field=document.createElement('fieldset');
+ const legend=document.createElement('legend');legend.textContent=group.label;field.append(legend);
+ const row=document.createElement('div');row.className='choices';
+ for(const option of group.options) {
+  const wrap=document.createElement('div');wrap.className='option-wrap';
+  const label=document.createElement('label');label.className='choice';
+  const input=document.createElement('input');input.type=multi?'checkbox':'radio';input.name=group.id;input.value=option.id;
+  input.checked=!multi && defaults[group.id]===option.id;
+  const span=document.createElement('span');span.textContent=option.label;
+  label.append(input,span);
+  const help=document.createElement('details');help.className='help';
+  const summary=document.createElement('summary');summary.textContent='i';summary.setAttribute('aria-label','Info: '+option.label);
+  const tip=document.createElement('p');tip.textContent=option.tooltip;help.append(summary,tip);
+  wrap.append(label,help);row.append(wrap);
+ }
+ field.append(row);form.append(field);
 }
+for(const group of groups)addChoices(group);
+addChoices({id:'extras',label:'Zusatzwürfel · D20 bleibt gesetzt',options:dice},true);
+form.addEventListener('keydown',event=>{if(event.key==='Escape')for(const d of form.querySelectorAll('details[open]'))d.open=false;});
 function update() {
   revision++;
   try {
-    const prompt = buildPrompt(Object.fromEntries(new FormData(form)));
+    const prompt = buildPrompt({...Object.fromEntries(new FormData(form)), extras:new FormData(form).getAll('extras')});
     output.value = prompt;
     document.querySelector('#count').textContent = prompt.length.toLocaleString('de-DE');
     document.querySelector('#remaining').textContent = `${LIMIT - prompt.length} Zeichen frei`;
@@ -39,7 +44,13 @@ function update() {
     status.textContent = error.message;
   }
 }
-form.addEventListener('change', update);
+form.addEventListener('change', event => {
+ const percent=form.querySelector('input[value="dpercent"]');
+ const ten=form.querySelector('input[value="d10"]');
+ if(event.target===percent && percent.checked)ten.checked=true;
+ if(event.target===ten && !ten.checked)percent.checked=false;
+ update();
+});
 reset.disabled = false;
 reset.addEventListener('click', () => {
   for (const input of form.querySelectorAll('input')) input.checked = defaults[input.name] === input.value;
