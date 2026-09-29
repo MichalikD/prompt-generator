@@ -1,3 +1,4 @@
+import { infoButton } from './tooltips.mjs';
 import { groups, dice, defaults, buildPrompt, LIMIT } from './generator.mjs';
 const form = document.querySelector('#options');
 const output = document.querySelector('#prompt');
@@ -16,16 +17,13 @@ function addChoices(group, multi=false) {
   input.checked=!multi && defaults[group.id]===option.id;
   const span=document.createElement('span');span.textContent=option.label;
   label.append(input,span);
-  const help=document.createElement('details');help.className='help';
-  const summary=document.createElement('summary');summary.textContent='i';summary.setAttribute('aria-label','Info: '+option.label);
-  const tip=document.createElement('p');tip.textContent=option.tooltip;help.append(summary,tip);
+  const help=infoButton(option);
   wrap.append(label,help);row.append(wrap);
  }
  field.append(row);form.append(field);
 }
 for(const group of groups)addChoices(group);
 addChoices({id:'extras',label:'Zusatzwürfel · D20 bleibt gesetzt',options:dice},true);
-form.addEventListener('keydown',event=>{if(event.key==='Escape')for(const d of form.querySelectorAll('details[open]'))d.open=false;});
 function update() {
   revision++;
   try {

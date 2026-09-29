@@ -62,4 +62,4 @@ Repository und ausgelieferte Textmodule sind öffentlich. Keine persönlichen Da
 
 ## Zusatzwürfel und Hilfen
 
-Zusatzwürfel einzeln kombinieren. D% setzt D10 voraus. D4/D6/D8 variieren Schaden symmetrisch um ±1; der Mittelwert bleibt 2/3/4. D10 für Fundtabellen, D12 für Weltereignisse, D% für Prozentchancen. Attributproben bleiben W20. Hilfen per Info-Symbol öffnen (auch Touch/Tastatur), Escape schließt sie. Keine Regel entfernt wegen eines deaktivierten Schadenswürfels: dann gilt der Grundschaden.
+Zusatzwürfel einzeln kombinieren. D% setzt D10 voraus. D4/D6/D8 variieren Schaden symmetrisch um ±1; der Mittelwert bleibt 2/3/4. D10 für Fundtabellen, D12 für Weltereignisse, D% für Prozentchancen. Attributproben bleiben W20. Hilfen beim Hover oder per Info-Symbol öffnen (auch Touch/Tastatur). Ein gemeinsames Overlay verhindert Layoutverschiebungen; Escape, Klick außerhalb oder Scrollen schließt es. Standardmäßig würfelt der Spieler für seine Figur. Keine Regel entfernt wegen eines deaktivierten Schadenswürfels: dann gilt der Grundschaden.

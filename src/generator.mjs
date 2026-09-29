@@ -2,7 +2,7 @@ import { groups, core, powers, dice } from './modules.mjs';
 export { groups, dice };
 // UTF-16 length is conservative for supplementary Unicode characters.
 export const LIMIT = 8000;
-export const defaults = Object.fromEntries(groups.map(g => [g.id, g.options[0].id]));
+export const defaults = { ...Object.fromEntries(groups.map(g => [g.id, g.options[0].id])), roller: 'player' };
 export function buildPrompt(config = defaults) {
   const selected = {};
   for (const g of groups) {

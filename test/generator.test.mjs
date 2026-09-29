@@ -26,7 +26,8 @@ test('Hardcore, Horror und Cyberpunk ersetzen widersprüchliche Regeln', () => {
 });
 test('Benutzerwürfe werden angefordert, automatische Proben nicht', () => {
   assert.ok(buildPrompt({...defaults,roller:'player'}).includes('Rohwürfe abwarten'));
-  assert.ok(!buildPrompt(defaults).includes('Rohwürfe abwarten'));
+  assert.ok(!buildPrompt({...defaults,roller:'gm'}).includes('Rohwürfe abwarten'));
+  assert.equal(defaults.roller, 'player');
 });
 test('Ungültige oder unvollständige Auswahl wird abgewiesen', () => {
   assert.throws(()=>buildPrompt({}), /Ungültige/);
