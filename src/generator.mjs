@@ -12,16 +12,16 @@ export function buildPrompt(config = defaults) {
   }
   const sections = [
     ['AUFTRAG', core.intro],
-    ['PROJEKT UND START', selected.setting, selected.tone, selected.scope, core.start],
-    ['FIGUR', core.character, powers[config.setting]],
-    ['WELT UND ABSCHLUSS', core.world],
-    ['SPIELWEISE UND IMMERSION', core.play],
+    ['START', selected.setting, selected.tone, selected.scope, core.start],
+    ['FIGUR', selected.creation, core.character, powers[config.setting]],
+    ['ABENTEUER', core.world],
+    ['SPIELWEISE', core.play],
     ['W20-PROBEN', core.checks, selected.roller, selected.visibility, diceText(config)],
-    ['RÄTSEL UND LOGIK', core.puzzles],
-    ['KAMPF UND GEFAHR', core.combat],
+    ['LOGIK', core.puzzles],
+    ['KAMPF', core.combat],
     ['INVENTAR', core.inventory],
-    ['ENTWICKLUNG UND KONTINUITÄT', core.progress, selected.companions],
-    ['TOD UND SPEICHERN', selected.death, core.save]
+    ['ENTWICKLUNG', core.progress, selected.companions],
+    ['SPIELSTAND', selected.death, core.save]
   ];
   const prompt = sections.map(([heading, ...texts]) => `${heading}\n${texts.filter(Boolean).join('\n')}`).join('\n\n');
   if (prompt.length >= LIMIT) throw new Error(`Prompt zu lang: ${prompt.length} Zeichen. Bitte Textmodule kürzen; es wurde nichts abgeschnitten.`);

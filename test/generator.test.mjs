@@ -41,3 +41,12 @@ test('Zusatzwürfel sind optional und D% setzt D10 voraus', () => {
  assert.ok(p.includes('00+0=100'));
  assert.ok(!p.includes('Schaden nur mit'));
 });
+
+test('Erstellung aus Kurzbeschreibung ersetzt die manuelle Pflichtliste', () => {
+ const assisted=buildPrompt({...defaults,creation:'assisted',setting:'cyberpunk'});
+ assert.ok(assisted.includes('Kurzbeschreibung genügt'));
+ assert.ok(assisted.includes('Vorgaben bewahren'));
+ assert.ok(!assisted.includes('Ich lege Name/Herkunft'));
+ assert.ok(assisted.includes('Vorhandene Figuren nicht neu generieren'));
+ assert.ok(buildPrompt({...defaults,creation:'manual'}).includes('Ich lege Name/Herkunft'));
+});

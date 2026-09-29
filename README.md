@@ -37,7 +37,7 @@ npm test
 npm run check
 ```
 
-Die aktuelle Fassung enthält 36.864 Kombinationen. Alle bleiben strikt unter 8.000 Zeichen,
+Die aktuelle Fassung enthält 73.728 Kombinationen. Alle bleiben strikt unter 8.000 Zeichen,
 einschließlich Überschriften und LF-Zeilenumbrüchen (konservative JavaScript-UTF-16-Zählung).
 Es wird nie abgeschnitten. Bei einer zu langen oder ungültigen Konfiguration bleibt Kopieren gesperrt.
 Die Garantie gilt für die geprüften Module; manuelles Ergänzen nach dem Kopieren fällt nicht darunter.
@@ -63,3 +63,7 @@ Repository und ausgelieferte Textmodule sind öffentlich. Keine persönlichen Da
 ## Zusatzwürfel und Hilfen
 
 Zusatzwürfel einzeln kombinieren. D% setzt D10 voraus. D4/D6/D8 variieren Schaden symmetrisch um ±1; der Mittelwert bleibt 2/3/4. D10 für Fundtabellen, D12 für Weltereignisse, D% für Prozentchancen. Attributproben bleiben W20. Hilfen beim Hover oder per Info-Symbol öffnen (auch Touch/Tastatur). Ein gemeinsames Overlay verhindert Layoutverschiebungen; Escape, Klick außerhalb oder Scrollen schließt es. Standardmäßig würfelt der Spieler für seine Figur. Keine Regel entfernt wegen eines deaktivierten Schadenswürfels: dann gilt der Grundschaden.
+
+## Charaktererstellung
+
+„Selbst festlegen“ ist der Standard. „Aus Kurzbeschreibung“ leitet bei neuen Figuren fehlende Angaben aus dem Konzept ab, unter denselben Attribut-, Talent- und Ressourcenregeln. Der Entwurf wird mit dem Spieler abgestimmt. Gilt für alle Settings; vorhandene Figuren und Spielstände werden nicht neu erzeugt. Die Beschreibung wird beim Spielstart im Chat eingegeben, nicht im Generator.
