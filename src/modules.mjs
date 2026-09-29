@@ -96,7 +96,7 @@ export const groups = [
       {
         "id": "assisted",
         "label": "Aus Kurzbeschreibung",
-        "tooltip": "Zum Beispiel: „Bo, ehemaliger Söldner.“ Die Spielleitung ergänzt passende Werte, Talente, Schwäche und Startausrüstung – im Cyberpunk auch mögliche Cyberware. Sie begründet den Entwurf kurz; du kannst ihn bestätigen oder ändern. Deine Vorgaben und bestehende Spielstände werden beibehalten.",
+        "tooltip": "Zum Beispiel: „Bo, ehemaliger Söldner.“ Die Spielleitung ergänzt passende Werte, Talente, Schwäche und Startausrüstung – bei Cyberpunk auch mögliche Cyberware. Sie begründet den Entwurf kurz; du kannst ihn bestätigen oder ändern. Deine Vorgaben und bestehende Spielstände werden beibehalten.",
         "text": "Neue Figur: Kurzbeschreibung genügt. Leite fehlende Angaben/Werte/Talente/Schwäche/Ausrüstung, ggf. Cyberware, plausibel ab; keine Berufsklischees. Vorgaben bewahren, Entwurf begründen/abstimmen; keine Pflichtliste abfragen."
       }
     ]
