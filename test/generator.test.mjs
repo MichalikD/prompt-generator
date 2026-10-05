@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { groups, allConfigs, buildPrompt, defaults, LIMIT } from '../src/generator.mjs';
+import { coopCore, coopOptions, cooperation } from '../src/coop.mjs';
 import { core } from '../src/modules.mjs';
 
 test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen Kern', () => {
@@ -8,9 +9,11 @@ test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen
   for (const config of allConfigs()) {
     const prompt = buildPrompt(config);
     assert.ok(prompt.length < LIMIT, JSON.stringify(config));
-    for (const block of Object.values(core)) assert.ok(prompt.includes(block));
-    for (const group of groups) for (const option of group.options)
-      assert.equal(prompt.includes(option.text), config[group.id] === option.id);
+    for (const block of Object.values(config.players === 'solo' ? core : coopCore)) assert.ok(prompt.includes(block));
+    for (const group of groups) for (const option of group.options) {
+      const text = config.players === 'solo' ? option.text : (coopOptions[group.id]?.[option.id] ?? option.text);
+      if (text) assert.equal(prompt.includes(text), config[group.id] === option.id);
+    }
     assert.ok(!/undefined|null/.test(prompt));
     count++;
   }
@@ -50,4 +53,23 @@ test('Erstellung aus Kurzbeschreibung ersetzt die manuelle Pflichtliste', () => 
  assert.ok(!assisted.includes('Ich lege Name/Herkunft'));
  assert.ok(assisted.includes('Vorhandene Figuren nicht neu generieren'));
  assert.ok(buildPrompt({...defaults,creation:'manual'}).includes('Ich lege Name/Herkunft'));
+});
+
+test('Koop trennt Personen, NSC, Würfe und Todesfolgen vom Solo-Kern', () => {
+ for (const players of ['2','3','4']) {
+  const p=buildPrompt({...defaults,players,creation:'assisted',death:'hardcore'});
+  assert.ok(p.includes(`Koop mit ${players} Personen insgesamt`));
+  assert.ok(p.includes(cooperation));
+  assert.ok(p.includes('jede Person bestätigt ihren Entwurf'));
+  assert.ok(p.includes('Jede Person würfelt für ihre eigene Figur'));
+  assert.ok(p.includes('Überlebende spielen weiter'));
+  assert.ok(!p.includes(core.intro));
+  assert.ok(!p.includes('Tod beendet den Lauf endgültig'));
+  assert.ok(!p.includes('Ich würfle für meine Figur'));
+ }
+ assert.ok(buildPrompt({...defaults,players:'2',death:'standard'}).includes('Rückspulen nur mit Zustimmung aller'));
+ const gm=buildPrompt({...defaults,players:'4',roller:'gm'});
+ assert.ok(!gm.includes('Rohwürfe abwarten'));
+ assert.ok(!buildPrompt(defaults).includes(cooperation));
+ assert.throws(()=>buildPrompt({...defaults,players:'5'}), /Ungültige/);
 });

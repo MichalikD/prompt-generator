@@ -28,6 +28,7 @@ wird keine neue Version veröffentlicht. Ein erfolgreiches Deployment ersetzt di
 ## Textmodule und Längengarantie
 
 - `src/modules.mjs`: Kernregeln und auswählbare Textvarianten.
+- `src/coop.mjs`: Eigenständiger Koop-Regelkern und gruppenspezifische Optionen.
 - `src/generator.mjs`: Zusammenstellung, Reihenfolge, harte Längengrenze.
 - `src/app.mjs`: Formular und Kopieren.
 - `test/`: Vollständige Kombinationsprüfung plus Konfliktprüfungen.
@@ -37,7 +38,7 @@ npm test
 npm run check
 ```
 
-Die aktuelle Fassung enthält 73.728 Kombinationen. Alle bleiben strikt unter 8.000 Zeichen,
+Die aktuelle Fassung enthält 294.912 Kombinationen. Alle bleiben strikt unter 8.000 Zeichen,
 einschließlich Überschriften und LF-Zeilenumbrüchen (konservative JavaScript-UTF-16-Zählung).
 Es wird nie abgeschnitten. Bei einer zu langen oder ungültigen Konfiguration bleibt Kopieren gesperrt.
 Die Garantie gilt für die geprüften Module; manuelles Ergänzen nach dem Kopieren fällt nicht darunter.
@@ -67,3 +68,9 @@ Zusatzwürfel einzeln kombinieren. D% setzt D10 voraus. D4/D6/D8 variieren Schad
 ## Charaktererstellung
 
 „Selbst festlegen“ ist der Standard. „Aus Kurzbeschreibung“ leitet bei neuen Figuren fehlende Angaben aus dem Konzept ab, unter denselben Attribut-, Talent- und Ressourcenregeln. Der Entwurf wird mit dem Spieler abgestimmt. Gilt für alle Settings; vorhandene Figuren und Spielstände werden nicht neu erzeugt. Die Beschreibung wird beim Spielstart im Chat eingegeben, nicht im Generator.
+
+## Koop
+
+Spielergruppe: Solo oder 2–4 Personen insgesamt (inklusive dir). Koop verwendet einen eigenen Regelkern statt eines Zusatzabsatzes am Solo-Prompt; gemeinsame Zahlenregeln und Settingoptionen werden wiederverwendet. Ein gemeinsamer Chat, Beiträge und Würfe mit Figurennamen. Jede Person kontrolliert und bestätigt ihre Figur. Keine separaten Zugänge oder privaten Kanäle.
+
+Charaktererstellung gilt pro Person, mit gleichen Budgets und freien Rollen statt Pflichtklassen. Gemeinsame Meilensteine, individuelle Verbesserungen. Gefährten sind stets NSC. Gruppenproben verhindern wiederholtes Durchwürfeln; Gegner und Aufgaben berücksichtigen Gruppengröße. Standard-Rückspulen setzt Zustimmung aller voraus und setzt die gesamte Welt zurück. Hardcore-Tod betrifft die Figur; Überlebende können weiterspielen, Gruppentod beendet den Lauf.

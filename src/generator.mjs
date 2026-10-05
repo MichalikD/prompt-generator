@@ -1,3 +1,4 @@
+import { coopCore, coopOptions, cooperation } from './coop.mjs';
 import { groups, core, powers, dice } from './modules.mjs';
 export { groups, dice };
 // UTF-16 length is conservative for supplementary Unicode characters.
@@ -10,18 +11,23 @@ export function buildPrompt(config = defaults) {
     if (!option) throw new Error(`Ungültige Einstellung: ${g.id}`);
     selected[g.id] = option.text;
   }
+  const isCoop = config.players !== 'solo';
+  const rules = isCoop ? coopCore : core;
+  if (isCoop) for (const [group, options] of Object.entries(coopOptions)) {
+    selected[group] = options[config[group]] ?? selected[group];
+  }
   const sections = [
-    ['AUFTRAG', core.intro],
-    ['START', selected.setting, selected.tone, selected.scope, core.start],
-    ['FIGUR', selected.creation, core.character, powers[config.setting]],
-    ['ABENTEUER', core.world],
-    ['SPIELWEISE', core.play],
-    ['W20-PROBEN', core.checks, selected.roller, selected.visibility, diceText(config)],
-    ['LOGIK', core.puzzles],
-    ['KAMPF', core.combat],
-    ['INVENTAR', core.inventory],
-    ['ENTWICKLUNG', core.progress, selected.companions],
-    ['SPIELSTAND', selected.death, core.save]
+    ['AUFTRAG', selected.players, rules.intro],
+    ['START', selected.setting, selected.tone, selected.scope, rules.start],
+    ['FIGUR', selected.creation, rules.character, powers[config.setting]],
+    ['ABENTEUER', rules.world],
+    ['SPIELWEISE', rules.play],
+    ['W20-PROBEN', rules.checks, isCoop ? cooperation : '', selected.roller, selected.visibility, diceText(config)],
+    ['LOGIK', rules.puzzles],
+    ['KAMPF', rules.combat],
+    ['INVENTAR', rules.inventory],
+    ['ENTWICKLUNG', rules.progress, selected.companions],
+    ['SPIELSTAND', selected.death, rules.save]
   ];
   const prompt = sections.map(([heading, ...texts]) => `${heading}\n${texts.filter(Boolean).join('\n')}`).join('\n\n');
   if (prompt.length >= LIMIT) throw new Error(`Prompt zu lang: ${prompt.length} Zeichen. Bitte Textmodule kürzen; es wurde nichts abgeschnitten.`);
