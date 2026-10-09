@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { groups, allConfigs, buildPrompt, defaults, LIMIT } from '../src/generator.mjs';
 import { coopCore, coopOptions, cooperation } from '../src/coop.mjs';
-import { core } from '../src/modules.mjs';
+import { core, pacing, probePolicy, savePolicy } from '../src/modules.mjs';
 
 test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen Kern', () => {
   let count = 0;
@@ -14,6 +14,8 @@ test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen
       const text = config.players === 'solo' ? option.text : (coopOptions[group.id]?.[option.id] ?? option.text);
       if (text) assert.equal(prompt.includes(text), config[group.id] === option.id);
     }
+    for (const policy of [pacing, probePolicy, savePolicy]) assert.ok(prompt.includes(policy));
+    assert.ok(!prompt.includes('250'));
     assert.ok(!/undefined|null/.test(prompt));
     count++;
   }
@@ -51,7 +53,7 @@ test('Erstellung aus Kurzbeschreibung ersetzt die manuelle Pflichtliste', () => 
  assert.ok(assisted.includes('Frage nur nach der Figurenidee; keine Moduswahl/manuelle Option anbieten'));
  assert.ok(assisted.includes('Vorgaben bewahren'));
  assert.ok(!assisted.includes('Ich lege Name/Herkunft'));
- assert.ok(assisted.includes('Vorhandene Figuren nicht neu generieren'));
+ assert.ok(assisted.includes('Bestehende Figuren bewahren'));
  assert.ok(buildPrompt({...defaults,creation:'manual'}).includes('Ich lege Name/Herkunft'));
 });
 
@@ -72,4 +74,25 @@ test('Koop trennt Personen, NSC, Würfe und Todesfolgen vom Solo-Kern', () => {
  assert.ok(!gm.includes('Rohwürfe abwarten'));
  assert.ok(!buildPrompt(defaults).includes(cooperation));
  assert.throws(()=>buildPrompt({...defaults,players:'5'}), /Ungültige/);
+});
+
+
+test('Probenhäufigkeit bleibt unabhängig von Atmosphäre, Würfelbedienung und Zahlenregeln', () => {
+ assert.equal(defaults.frequency, 'balanced');
+ for (const players of ['solo', '2', '3', '4']) {
+  const rules = players === 'solo' ? core : coopCore;
+  for (const frequency of ['story', 'balanced', 'play']) {
+   const p = buildPrompt({...defaults, players, frequency, tone:'cozy'});
+   assert.ok(p.includes('Cozy:'));
+   assert.ok(p.includes(rules.checks));
+   assert.ok(p.includes(rules.combat));
+   assert.ok(p.includes(rules.progress));
+   assert.ok(p.includes('Rohwürfe abwarten'));
+   assert.ok(p.includes('keine Würfelquote/Routinewürfe/künstlichen Teilschritte'));
+   assert.ok(p.includes('Export ohne Wortlimit: vollständig ohne Chatverweise'));
+   assert.ok(p.includes('nummerierte Teile'));
+   assert.ok(p.includes('Fehlendes/Unsicheres kennzeichnen, nie erfinden'));
+  }
+ }
+ assert.throws(()=>buildPrompt({...defaults,frequency:'action'}), /Ungültige/);
 });

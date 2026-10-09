@@ -38,7 +38,7 @@ npm test
 npm run check
 ```
 
-Die aktuelle Fassung enthält 294.912 Kombinationen. Alle bleiben strikt unter 8.000 Zeichen,
+Die aktuelle Fassung enthält 884.736 Kombinationen. Alle bleiben strikt unter 8.000 Zeichen,
 einschließlich Überschriften und LF-Zeilenumbrüchen (konservative JavaScript-UTF-16-Zählung).
 Es wird nie abgeschnitten. Bei einer zu langen oder ungültigen Konfiguration bleibt Kopieren gesperrt.
 Die Garantie gilt für die geprüften Module; manuelles Ergänzen nach dem Kopieren fällt nicht darunter.
@@ -74,3 +74,18 @@ Zusatzwürfel einzeln kombinieren. D% setzt D10 voraus. D4/D6/D8 variieren Schad
 Spielergruppe: Solo oder 2–4 Personen insgesamt (inklusive dir). Koop verwendet einen eigenen Regelkern statt eines Zusatzabsatzes am Solo-Prompt; gemeinsame Zahlenregeln und Settingoptionen werden wiederverwendet. Ein gemeinsamer Chat, Beiträge und Würfe mit Figurennamen. Jede Person kontrolliert und bestätigt ihre Figur. Keine separaten Zugänge oder privaten Kanäle.
 
 Charaktererstellung gilt pro Person, mit gleichen Budgets und freien Rollen statt Pflichtklassen. Gemeinsame Meilensteine, individuelle Verbesserungen. Gefährten sind stets NSC. Gruppenproben verhindern wiederholtes Durchwürfeln; Gegner und Aufgaben berücksichtigen Gruppengröße. Standard-Rückspulen setzt Zustimmung aller voraus und setzt die gesamte Welt zurück. Hardcore-Tod betrifft die Figur; Überlebende können weiterspielen, Gruppentod beendet den Lauf.
+
+
+## Probenhäufigkeit, Erzähltempo und Spielstandexport
+
+Probenhäufigkeit ist unabhängig von Atmosphäre, Schwierigkeit und Würfelbedienung:
+- **Ausgewogen** (Standard): regelmäßige sinnvolle Proben auch außerhalb von Kämpfen.
+- **Erzählorientiert**: nur bedeutende Unsicherheiten mit spürbaren Folgen auswürfeln.
+- **Spielorientiert**: mehr Gelegenheiten für Risiken und Chancen, ohne Würfelquote, Routinewürfe oder künstliche Teilschritte.
+
+Erzähltexte passen sich der Szene an, ohne starre Wortzahl. Schnelle Wechsel bleiben knapp;
+wichtige Schauplätze und Wendepunkte dürfen ausführlicher werden. Spielerentscheidungen bleiben offen.
+Spielstandexporte sind von der Erzähltextlänge ausgenommen: eigenständig, vollständig und bei Bedarf
+in nummerierten Teilen. Fehlende oder unsichere Angaben werden markiert. Das erweitert weder das
+Kontextfenster noch garantiert es die Wiederherstellung bereits vergessener Details.
+Die Grenze von 8.000 Zeichen betrifft allein den erzeugten Projekt-Prompt.
