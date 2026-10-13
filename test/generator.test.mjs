@@ -16,6 +16,11 @@ test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen
     }
     for (const policy of [pacing, probePolicy, savePolicy]) assert.ok(prompt.includes(policy));
     assert.ok(!prompt.includes('250'));
+    assert.ok(prompt.includes('Außer Cozy: Ziel/nächsten Schritt präsent halten, nach Ruhe aktiv aufgreifen'));
+    assert.ok(prompt.includes('kein Entscheidungszwang'));
+    assert.ok(prompt.includes('Würfe/Fokuspunkte/LP/Boni'));
+    assert.ok(prompt.includes('nie Figurenwissen/Dialog/Gedanken/Dokumente'));
+    assert.ok(prompt.includes('Figuren kennen nur wahrnehmbare Folgen, keine Ressourcenstände'));
     assert.ok(!/undefined|null/.test(prompt));
     count++;
   }

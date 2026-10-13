@@ -89,3 +89,14 @@ Spielstandexporte sind von der Erzähltextlänge ausgenommen: eigenständig, vol
 in nummerierten Teilen. Fehlende oder unsichere Angaben werden markiert. Das erweitert weder das
 Kontextfenster noch garantiert es die Wiederherstellung bereits vergessener Details.
 Die Grenze von 8.000 Zeichen betrifft allein den erzeugten Projekt-Prompt.
+
+
+## Abenteuerfokus und Figurenwissen
+
+Alltag und Beziehungen bleiben möglich. Außerhalb von Cozy hält die Spielleitung das Ziel
+und den nächsten möglichen Schritt präsent und greift sie nach Ruhephasen aktiv wieder auf.
+Das erzwingt keine Spielerentscheidung und erzeugt keine künstliche Dringlichkeit.
+
+Regelbegriffe und Zahlen wie Würfe, Fokuspunkte, LP und Boni bleiben in der Metaebene.
+Figurendialoge, Gedanken und innerweltliche Dokumente verwenden keine Ressourcenstände.
+Figuren dürfen nur wahrnehmbare Folgen wie Erschöpfung oder Verletzungen einschätzen.
