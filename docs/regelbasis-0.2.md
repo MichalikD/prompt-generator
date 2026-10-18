@@ -3,7 +3,9 @@
 Diese eigenständige Plugin-Testfassung entwickelt das Vesper-Regelwerk weiter.
 Sie enthält Anweisungen und vier Referenzen, keinen Spielserver und keine eigene
 Modellanbindung. Der vorhandene Generator mit seiner 8.000-Zeichen-Grenze wird
-in diesem Schritt nicht geändert. Seine Texte sind noch die bisherige Fassung.
+durch diese Regelbasis nicht geändert. Seine Texte sind weiterhin die bisherige
+kompakte Fassung. Inzwischen steht daneben ein Plugin-Ausgabemodus zur Verfügung;
+beide Ausgaben verwenden dieselben gewählten Einstellungen.
 
 ## Verwendung
 
@@ -46,7 +48,8 @@ Bestätige deren tatsächlichen Zugriff kurz auf der Metaebene.
 Beginne anschließend das Abenteuer.
 ```
 
-Dies sind Eingaben und Textvorlagen, noch kein automatischer Generator-Modus.
+Diese Vorlagen lassen sich auch manuell nutzen. Der Plugin-Modus des Generators
+erzeugt entsprechende Projektanweisungen und eine Startnachricht aus der Auswahl.
 Fehlende Angaben werden bei Bedarf geklärt. Die neue Spielleitung ist nicht auf
 Fantasy, einen bestimmten Charakter oder eine vorgefertigte Welt festgelegt.
 Der bisherige kompakte Projektprompt sollte nicht zusätzlich vollständig in
@@ -134,7 +137,8 @@ keine technische Sperre gegen geänderte Pluginanweisungen. Änderungen an einer
 laufenden Kampagne werden daher nicht durch ein stilles Ersetzen dieses Plugins
 eingespielt. Eine spätere gemeinsame Veröffentlichung ist ein separater Schritt.
 
-Anschließend geplant: ein abgestimmtes Abenteuerprofil, ein besserer Startbogen
-und ein zweiter Generator-Ausgabemodus. Eine frei nutzbare Charakteranfrage zum
+Der zweite Generator-Ausgabemodus ist inzwischen vorhanden. Noch geplant sind
+ein abgestimmtes Abenteuerprofil, ein besserer Startbogen und sein Editor.
+Eine frei nutzbare Charakteranfrage zum
 Kopieren in beliebige KI-Chats ist dabei der erste Weg; eine optionale eigene
 API-Anbindung kann später separat hinzukommen. Beides ist hier noch nicht gebaut.
