@@ -1,12 +1,5 @@
 export const groups = [
   {
-    id: 'players', label: 'Spielergruppe',
-    options: [
-      {id:'solo', label:'Solo', text:'', tooltip:'Eine Person steuert ihre Figur. Gefährten werden von der Spielleitung geführt.'},
-      ...[2,3,4].map(n => ({id:String(n), label:`Koop · ${n} Personen`, text:`Koop mit ${n} Personen insgesamt, je eine Spielerfigur.`, tooltip:`${n} menschliche Spieler insgesamt, dich eingeschlossen. Ein gemeinsamer Chat; Beiträge und Würfe mit Figurennamen. Eigene Figuren, gemeinsame Meilensteine. Gefährten bleiben zusätzliche NSC.`}))
-    ]
-  },
-  {
     "id": "setting",
     "label": "Welt",
     "options": [
@@ -116,13 +109,13 @@ export const groups = [
         "id": "standard",
         "label": "Standard",
         "text": "Standard: Nach Tod Ende akzeptieren oder zur letzten Entscheidung mit vermeidbarem Tod zurückspulen. Welt/Gruppe/Figurenwissen zurücksetzen; Spielerwissen bleibt. Identische Versuche behalten Würfe; andere Wege erlaubt.",
-        "tooltip": "Nach dem Tod ist Rückspulen möglich. Im Koop müssen alle zustimmen; die gesamte Gruppe und Welt werden zurückgesetzt. Ohne Rücksprung kann eine Ersatzfigur abgestimmt werden."
+        "tooltip": "Nach dem Tod ist Rückspulen möglich. Welt und Figurenwissen werden zurückgesetzt; dein Spielerwissen bleibt erhalten."
       },
       {
         "id": "hardcore",
         "label": "Hardcore",
         "text": "Hardcore: Tod beendet den Lauf endgültig, kein Zurückspulen. Speichern dient der Fortsetzung, nicht dem Umgehen eines regelkonformen Todes.",
-        "tooltip": "Tod ist endgültig. Solo endet der Lauf; im Koop können Überlebende weiterspielen und Ersatzfiguren abgestimmt werden. Stirbt die ganze Spielergruppe, endet der Lauf. Fehler der Spielleitung werden korrigiert."
+        "tooltip": "Tod ist endgültig und beendet den Lauf. Fehler der Spielleitung werden korrigiert."
       }
     ]
   },
@@ -140,7 +133,7 @@ export const groups = [
         "id": "player",
         "label": "Spieler für eigene Figuren",
         "text": "Ich würfle für meine Figur: Würfel anfordern, Rohwürfe abwarten, berechnen. Andere Figuren per Zufallswerkzeug, sonst einmal als simuliert kennzeichnen. Keine Werkzeuge vortäuschen/Ergebnisse ändern.",
-        "tooltip": "Jede Person liefert die Würfe ihrer eigenen Figur, einschließlich Zusatzwürfeln. Die Spielleitung übernimmt NSC und Gegner."
+        "tooltip": "Du lieferst die Würfe deiner Figur, einschließlich Zusatzwürfeln. Die Spielleitung übernimmt NSC und Gegner."
       }
     ]
   },

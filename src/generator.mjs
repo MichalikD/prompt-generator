@@ -1,28 +1,29 @@
-import { coopCore, coopOptions, cooperation } from './coop.mjs';
 import { groups, core, powers, dice, pacing, probePolicy, savePolicy } from './modules.mjs';
 export { groups, dice };
 // UTF-16 length is conservative for supplementary Unicode characters.
 export const LIMIT = 8000;
 export const defaults = { ...Object.fromEntries(groups.map(g => [g.id, g.options[0].id])), roller: 'player' };
-export function buildPrompt(config = defaults) {
+export function selectOptions(config) {
+  if (config.players !== undefined && config.players !== 'solo') throw new Error('Der Generator unterstützt derzeit nur eine Spielerfigur. Koop wurde entfernt.');
   const selected = {};
   for (const g of groups) {
     const option = g.options.find(o => o.id === config[g.id]);
     if (!option) throw new Error(`Ungültige Einstellung: ${g.id}`);
-    selected[g.id] = option.text;
+    selected[g.id] = option;
   }
-  const isCoop = config.players !== 'solo';
-  const rules = isCoop ? coopCore : core;
-  if (isCoop) for (const [group, options] of Object.entries(coopOptions)) {
-    selected[group] = options[config[group]] ?? selected[group];
-  }
+  diceText(config); // Gleiche Validierung für beide Ausgaben.
+  return selected;
+}
+export function buildPrompt(config = defaults) {
+  const selected = Object.fromEntries(Object.entries(selectOptions(config)).map(([key, option]) => [key, option.text]));
+  const rules = core;
   const sections = [
-    ['AUFTRAG', selected.players, rules.intro],
+    ['AUFTRAG', rules.intro],
     ['START', selected.setting, selected.tone, selected.scope, rules.start],
     ['FIGUR', selected.creation, rules.character, powers[config.setting]],
     ['ABENTEUER', rules.world],
     ['SPIELWEISE', rules.play, pacing],
-    ['W20-PROBEN', rules.checks, selected.frequency, probePolicy, isCoop ? cooperation : '', selected.roller, selected.visibility, diceText(config)],
+    ['W20-PROBEN', rules.checks, selected.frequency, probePolicy, selected.roller, selected.visibility, diceText(config)],
     ['LOGIK', rules.puzzles],
     ['KAMPF', rules.combat],
     ['INVENTAR', rules.inventory],
@@ -41,7 +42,7 @@ export function* allConfigs(index = 0, config = {}) {
 
 export function diceText(config) {
  const extras = config.extras ?? [];
- if (!Array.isArray(extras) || extras.some(x=>!dice.some(d=>d.id===x))) throw new Error('Ungültige Zusatzwürfel');
+ if (!Array.isArray(extras) || new Set(extras).size !== extras.length || extras.some(x=>!dice.some(d=>d.id===x))) throw new Error('Ungültige Zusatzwürfel');
  if(extras.includes('dpercent')&&!extras.includes('d10')) throw new Error('D% benötigt D10');
  if(!extras.length)return '';
  const parts=['Zusatzwürfe: Zweck/Tabelle vorab; Bedienung/Anzeige wie Proben, ohne Boni. Sonst Festwerte; Proben W20.'];
