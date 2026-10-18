@@ -1,3 +1,4 @@
+import { focuses } from './profile.mjs';
 import { infoButton } from './tooltips.mjs';
 import { groups, dice, defaults, LIMIT } from './generator.mjs';
 import { buildOutput, outputModes, PLUGIN } from './outputs.mjs';
@@ -38,22 +39,46 @@ function addChoices(group, multi=false) {
  }
  field.append(row);form.append(field);
 }
-for(const group of groups)addChoices(group);
+for(const group of groups) {
+ addChoices(group);
+ if(group.id==='setting') {
+  const field=document.createElement('div'); field.className='text-option';
+  field.innerHTML='<label id="world-label" for="world-description">Welt ergänzen (optional)</label><p id="world-help">Besondere Orte, Magie, Technik oder Kulturen. Ein kurzer Satz genügt.</p><textarea id="world-description" name="worldDescription" aria-describedby="world-help" rows="3"></textarea>';
+  form.append(field);
+ }
+ if(group.id==='continuation') {
+  addChoices({id:'focus',label:'Spielschwerpunkte · optional, höchstens zwei',options:focuses.map(f=>({...f,tooltip:f.text}))},true);
+  const field=document.createElement('div'); field.className='text-option';
+  field.innerHTML='<label for="wishes">Eigene Vorgaben und Ausschlüsse (optional)</label><p id="wishes-help">Zum Beispiel: keine verlorene Erinnerung als Aufhänger. Weltangaben gehören in die Weltbeschreibung.</p><textarea id="wishes" name="wishes" aria-describedby="wishes-help" rows="3"></textarea>';
+  form.append(field);
+ }
+}
 addChoices({id:'extras',label:'Zusatzwürfel · D20 bleibt gesetzt',options:dice},true);
 function update() {
   revision++;
   const plugin = selectedMode() === 'plugin';
+  const custom=form.querySelector('input[name=setting]:checked').value==='custom';
+  document.querySelector('#world-label').textContent=custom?'Eigene Welt beschreiben (erforderlich)':'Welt ergänzen (optional)';
+  document.querySelector('#world-description').required=custom;
+  const focusCount=form.querySelectorAll('input[name=focus]:checked').length;
+  for(const input of form.querySelectorAll('input[name=focus]')) input.disabled=focusCount>=2 && !input.checked;
   document.querySelector('.output').classList.toggle('is-plugin', plugin);
-  for (const id of ['plugin-guide', 'plugin-starter']) document.getElementById(id).hidden = !plugin;
+  for (const id of ['plugin-guide']) document.getElementById(id).hidden = !plugin;
   document.querySelector('#output-name').textContent = plugin ? 'Dein Plugin-Startpaket' : 'Dein Projektprompt';
   document.querySelector('#project-label').textContent = plugin ? 'Projektanweisungen' : 'Projektprompt';
   document.querySelector('#mode-help').textContent = plugin
     ? 'Die ausführlichen Regeln liefert das Plugin. Deine Auswahl steht in der separaten Startnachricht.'
-    : 'Der kompakte Prompt enthält das vollständige bisherige Regelwerk. Du benötigst kein Plugin.';
+    : 'Der kompakte Prompt enthält das eigenständige Regelwerk. Bei Platzmangel folgt das vollständige Profil als erste Chatnachricht.';
   copy.textContent = plugin ? 'Projektanweisungen kopieren' : 'Prompt kopieren ↗';
   try {
     const data = new FormData(form);
-    currentOutput = buildOutput({...Object.fromEntries(data), extras:data.getAll('extras')}, selectedMode());
+    currentOutput = buildOutput({...Object.fromEntries(data), extras:data.getAll('extras'), focus:data.getAll('focus')}, selectedMode());
+    const hasStart=!!currentOutput.startMessage;
+    document.querySelector('.output').classList.toggle('is-plugin', plugin || hasStart);
+    document.querySelector('#plugin-starter').hidden=!hasStart;
+    document.querySelector('#start-label').textContent=plugin?'Erste Chatnachricht':'Erste Chatnachricht · Abenteuerprofil';
+    document.querySelector('#starter-help').textContent=plugin?'Diese Nachricht kommt in den Spielchat. Einen bestätigten Charakterbogen kannst du separat anhängen.':'Das vollständige Abenteuerprofil passt nicht zusätzlich in die Projektanweisungen. Sende es vor dem Spielstart als erste Chatnachricht. Es wurde nichts weggelassen.';
+    document.querySelector('#download-row').hidden=false;
     const prompt = currentOutput.projectInstructions;
     output.value = prompt;
     startMessage.value = currentOutput.startMessage;
@@ -61,22 +86,28 @@ function update() {
     document.querySelector('#remaining').textContent = `${LIMIT - prompt.length} Zeichen frei`;
     document.querySelector('#meter').value = prompt.length;
     copy.disabled = false;
-    copyStart.disabled = download.disabled = !plugin;
-    status.textContent = plugin ? 'Diese Anweisungen gehören in dein neues Projekt.' : 'Bereit für deine Projektanweisungen.';
+    copyStart.disabled = !hasStart; download.disabled = false;
+    status.textContent = plugin ? 'Diese Anweisungen gehören in dein neues Projekt.' : hasStart ? 'Zwei Teile erforderlich: Projektanweisungen und erste Chatnachricht.' : 'Bereit für deine Projektanweisungen.';
     startStatus.textContent = 'Die Startnachricht hat kein Projektanweisungs-Limit.';
   } catch (error) {
+    document.querySelector('#plugin-starter').hidden=true;
     currentOutput = null;
     output.value = startMessage.value = ''; copy.disabled = copyStart.disabled = download.disabled = true;
     document.querySelector('#count').textContent = '–';
-    document.querySelector('#remaining').textContent = 'Bitte Module prüfen';
+    document.querySelector('#remaining').textContent = 'Bitte Eingaben prüfen';
     document.querySelector('#meter').value = 0;
     status.textContent = error.message;
   }
 }
 modes.addEventListener('change', update);
+form.addEventListener('input', event => { if(event.target.matches('textarea')) update(); });
 form.addEventListener('change', event => {
  const percent=form.querySelector('input[value="dpercent"]');
  const ten=form.querySelector('input[value="d10"]');
+ if(event.target.name==='focus') {
+  const chosen=form.querySelectorAll('input[name=focus]:checked');
+  if(chosen.length>2) event.target.checked=false;
+ }
  if(event.target===percent && percent.checked)ten.checked=true;
  if(event.target===ten && !ten.checked)percent.checked=false;
  update();
@@ -84,6 +115,7 @@ form.addEventListener('change', event => {
 reset.disabled = false;
 reset.addEventListener('click', () => {
   for (const input of form.querySelectorAll('input')) input.checked = defaults[input.name] === input.value;
+  for(const field of form.querySelectorAll('textarea')) field.value='';
   update();
 });
 function enableCopy(button, field, feedback, success) {
@@ -102,9 +134,9 @@ function enableCopy(button, field, feedback, success) {
  });
 }
 enableCopy(copy, output, status, 'Kopiert. Jetzt in die Projektanweisungen einfügen.');
-enableCopy(copyStart, startMessage, startStatus, 'Kopiert. Plugin im ersten Spielchat auswählen und die Startnachricht dort senden.');
+enableCopy(copyStart, startMessage, startStatus, 'Kopiert. Als erste Nachricht im Spielchat senden.');
 download.addEventListener('click', () => {
- if (!currentOutput?.downloadText || selectedMode() !== 'plugin') return;
+ if (!currentOutput?.downloadText) return;
  const url = URL.createObjectURL(new Blob([currentOutput.downloadText], {type:'text/markdown;charset=utf-8'}));
  const link = document.createElement('a'); link.href = url; link.download = currentOutput.downloadName;
  document.body.append(link); link.click(); link.remove();

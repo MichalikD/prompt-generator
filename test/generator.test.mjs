@@ -1,13 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { groups, allConfigs, buildPrompt, defaults, LIMIT } from '../src/generator.mjs';
+import { groups, allConfigs, buildPrompt, defaults, LIMIT, buildCompactPackage } from '../src/generator.mjs';
 import { core, pacing, probePolicy, savePolicy } from '../src/modules.mjs';
 
 test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen Kern', () => {
   let count = 0;
   for (const config of allConfigs()) {
-    const prompt = buildPrompt(config);
-    assert.ok(prompt.length < LIMIT, JSON.stringify(config));
+    const result = buildCompactPackage(config);
+    const prompt = result.projectInstructions+'\n'+result.startMessage;
+    assert.ok(result.projectInstructions.length < LIMIT, JSON.stringify(config));
     for (const block of Object.values(core)) assert.ok(prompt.includes(block));
     for (const group of groups) for (const option of group.options) {
       const text = option.text;
@@ -26,7 +27,8 @@ test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen
   assert.equal(count, 48 * groups.reduce((n,g)=>n*g.options.length,1));
 });
 test('Hardcore, Horror und Cyberpunk ersetzen widersprüchliche Regeln', () => {
-  const prompt = buildPrompt({...defaults, death:'hardcore',tone:'horror',setting:'cyberpunk'});
+  const result = buildCompactPackage({...defaults, death:'hardcore',tone:'horror',setting:'cyberpunk'});
+  const prompt = result.projectInstructions+'\n'+result.startMessage;
   assert.ok(prompt.includes('kein Zurückspulen'));
   assert.ok(!prompt.includes('Standard:'));
   assert.ok(!prompt.includes('kein Horrorfokus'));
@@ -66,7 +68,8 @@ test('Probenhäufigkeit bleibt unabhängig von Atmosphäre, Würfelbedienung und
  {
   const rules = core;
   for (const frequency of ['story', 'balanced', 'play']) {
-   const p = buildPrompt({...defaults, frequency, tone:'cozy'});
+   const r = buildCompactPackage({...defaults, frequency, tone:'cozy'});
+   const p = r.projectInstructions+'\n'+r.startMessage;
    assert.ok(p.includes('Cozy:'));
    assert.ok(p.includes(rules.checks));
    assert.ok(p.includes(rules.combat));

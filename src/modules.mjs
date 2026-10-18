@@ -4,10 +4,10 @@ export const groups = [
     "label": "Welt",
     "options": [
       {
-        "id": "open",
-        "label": "Beim Start festlegen",
-        "text": "Fehlende Welt/Magie-/Technikangaben klären. Settinggerechte Spezies/Kulturen; Fantasy nicht nur Menschen.",
-        "tooltip": "Welt und Technik- oder Magiegrad werden erst beim Spielstart geklärt."
+        "id": "custom",
+        "label": "Eigene Welt",
+        "text": "Eigene Welt nach meiner Weltbeschreibung; ergänze nur passende Details.",
+        "tooltip": "Beschreibe deine Welt vor dem Spielstart. Ein kurzer Satz genügt."
       },
       {
         "id": "fantasy",
@@ -36,7 +36,7 @@ export const groups = [
       {
         "id": "adventure",
         "label": "Abenteuerlich",
-        "text": "Cozy bis abenteuerlich, echte Gefahren, kein Horrorfokus.",
+        "text": "Abenteuerlich: Entdeckung, Initiative und echte Gefahren; Raum für Humor und Ruhe, kein Horrorfokus.",
         "tooltip": "Echte Gefahren mit Platz für Humor und Ruhe; kein Horrorfokus."
       },
       {
@@ -61,25 +61,49 @@ export const groups = [
   },
   {
     "id": "scope",
-    "label": "Spielform",
+    "label": "Abenteuerumfang",
     "options": [
       {
-        "id": "campaign",
-        "label": "Offene Kampagne",
-        "text": "Offene Kampagne: Kapitel beantworten ihre Kernfrage; Abschlüsse nicht durch neue Konflikte entwerten.",
-        "tooltip": "Neue Abenteuer bleiben möglich, aber jedes Kapitel bekommt einen Abschluss."
-      },
-      {
-        "id": "chapters",
-        "label": "Mehrteiliges Abenteuer",
-        "text": "Mehrteiliges Abenteuer mit wenigen Kapiteln, konkretem Fortschritt und erreichbarem Gesamtfinale.",
-        "tooltip": "Wenige Kapitel arbeiten auf ein gemeinsames Gesamtfinale hin."
-      },
-      {
         "id": "short",
-        "label": "Kurzabenteuer",
-        "text": "Kurzabenteuer: ein Konflikt, wenige Orte/Schlüsselszenen, zügiges Finale ohne Pflichtnebenhandlungen.",
-        "tooltip": "Ein Konflikt mit wenigen Orten und Szenen soll zügig enden."
+        "label": "Kurz",
+        "text": "Kurz: ein überschaubarer Konflikt mit wenigen Verflechtungen, bedeutsamen Entscheidungen und befriedigendem Abschluss. Keine Pflichtnebenhandlungen.",
+        "tooltip": "Überschaubarer Konflikt; keine Vorgabe für Minuten, Textlänge oder Szenenzahl."
+      },
+      {
+        "id": "medium",
+        "label": "Mittel",
+        "text": "Mittel: ein entwickelter Konflikt mit mehreren zusammenhängenden Wendepunkten und spürbaren Folgen; erreichbarer Abschluss.",
+        "tooltip": "Mehr Raum für Entwicklungen und Beziehungen, ohne künstliche Verlängerung."
+      },
+      {
+        "id": "long",
+        "label": "Ausführlich",
+        "text": "Ausführlich: ein vielschichtiger Konflikt mit Raum für Beziehungen, Entdeckungen und folgenreiche Entwicklungen; erkennbare Fortschritte und erreichbares Finale.",
+        "tooltip": "Größere Verflechtung, keine Pflichtumwege oder endlose Eskalation."
+      }
+    ]
+  },
+  {
+    "id": "continuation",
+    "label": "Verlauf",
+    "options": [
+      {
+        "id": "open",
+        "label": "Offene Kampagne",
+        "text": "Offene Kampagne: eigenständige Abenteuer in derselben fortlaufenden Welt. Nach Abschlüssen entwickeln sich neue Gelegenheiten aus Folgen, Beziehungen und Interessen; kein übergeordnetes Endziel nötig.",
+        "tooltip": "Einzelne Abenteuer schließen ab; Welt und Figur bestehen fort."
+      },
+      {
+        "id": "linked",
+        "label": "Zusammenhängende Kampagne",
+        "text": "Zusammenhängende Kampagne: abgeschlossene Kapitel entwickeln einen größeren Konflikt mit erreichbarem Gesamtfinale. Kapitelabschlüsse bleiben gültig.",
+        "tooltip": "Kapitel tragen zu einem größeren Handlungsbogen bei."
+      },
+      {
+        "id": "single",
+        "label": "Einzelabenteuer",
+        "text": "Einzelabenteuer: den Konflikt abschließen, Folgen und Epilog ausspielen. Ein weiteres Abenteuer erst auf meinen Wunsch beginnen.",
+        "tooltip": "Ein abgeschlossener Durchgang mit Epilog."
       }
     ]
   },
@@ -137,30 +161,30 @@ export const groups = [
       }
     ]
   },
-{
-  "id": "frequency",
-  "label": "Probenhäufigkeit",
-  "options": [
-    {
-      "id": "balanced",
-      "label": "Ausgewogen",
-      "text": "Probenhäufigkeit ausgewogen: regelmäßig Proben auch bei Erkundung/Gesprächen/Technik/Reisen.",
-      "tooltip": "Standard: Regelmäßige Proben auch außerhalb von Kämpfen. Sichere Routine bleibt würfelfrei; Atmosphäre und Schwierigkeit ändern sich nicht."
-    },
-    {
-      "id": "story",
-      "label": "Erzählorientiert",
-      "text": "Probenhäufigkeit erzählorientiert: nur bedeutende Unsicherheiten mit spürbaren Folgen auswürfeln.",
-      "tooltip": "Wenige, bedeutsame Würfe. Vieles wird aus Fähigkeiten und Situation erzählt; wichtige Risiken bleiben echte Proben."
-    },
-    {
-      "id": "play",
-      "label": "Spielorientiert",
-      "text": "Probenhäufigkeit spielorientiert: mehr Risiken/Chancen außerhalb von Kämpfen; komplexe Vorhaben ggf. mehrschrittig.",
-      "tooltip": "Mehr spielerische Herausforderungen auch beim Erkunden, in Gesprächen, bei Technik und Reisen. Keine Pflichtwürfe, künstlichen Teilschritte oder höhere Schwierigkeit. Auch mit Cozy kombinierbar."
-    }
-  ]
-},
+  {
+    "id": "frequency",
+    "label": "Probenhäufigkeit",
+    "options": [
+      {
+        "id": "balanced",
+        "label": "Ausgewogen",
+        "text": "Probenhäufigkeit ausgewogen: regelmäßig Proben auch bei Erkundung/Gesprächen/Technik/Reisen.",
+        "tooltip": "Standard: Regelmäßige Proben auch außerhalb von Kämpfen. Sichere Routine bleibt würfelfrei; Atmosphäre und Schwierigkeit ändern sich nicht."
+      },
+      {
+        "id": "story",
+        "label": "Erzählorientiert",
+        "text": "Probenhäufigkeit erzählorientiert: nur bedeutende Unsicherheiten mit spürbaren Folgen auswürfeln.",
+        "tooltip": "Wenige, bedeutsame Würfe. Vieles wird aus Fähigkeiten und Situation erzählt; wichtige Risiken bleiben echte Proben."
+      },
+      {
+        "id": "play",
+        "label": "Spielorientiert",
+        "text": "Probenhäufigkeit spielorientiert: mehr Risiken/Chancen außerhalb von Kämpfen; komplexe Vorhaben ggf. mehrschrittig.",
+        "tooltip": "Mehr spielerische Herausforderungen auch beim Erkunden, in Gesprächen, bei Technik und Reisen. Keine Pflichtwürfe, künstlichen Teilschritte oder höhere Schwierigkeit. Auch mit Cozy kombinierbar."
+      }
+    ]
+  },
   {
     "id": "visibility",
     "label": "Würfelanzeige",
@@ -200,7 +224,7 @@ export const groups = [
 ];
 export const core = {
   "intro": "Du leitest ein Rollenspiel: Ich steuere meine Figur, du Welt/Folgen. Regeln gelten projektweit. Neuer Chat = neuer Lauf außer mit Spielstand; keine Kontinuität vortäuschen.",
-  "start": "Fehlende Weltangaben, neue Figur/Spielstand klären. Bestehende Figuren bewahren, Werteänderungen abstimmen. Dann Figur/Auftakt.",
+  "start": "Weltvorgaben stehen im Abenteuerprofil. Nur wesentliche Lücken/Widersprüche klären; neue Figur/Spielstand klären. Bestehende Figuren bewahren, Werteänderungen abstimmen. Dann Figur/Auftakt.",
   "character": "Kraft/Geschick/Verstand/Gespür (Wahrnehmung/Menschenkenntnis): Start −1 bis +3, Summe +5. Zwei enge Talente je +2, nicht stapelbar; situative Schwäche. Spezies/Beruf: Kenntnisse/Möglichkeiten, begrenzte Vorteile. Start 10 LP, acht Tragplätze, passende Ausrüstung. Gedanken/Dialoge/Entscheidungen gehören mir.",
   "world": "Konflikt/Ziel, wenige Wendepunkte, erreichbares Ende: Erfolg/Teilerfolg/Aufgeben/Scheitern; freie Wege. Weltkern vorab: Hintergründe, Orte/Verbindungen, Figuren/Motive, Geheimnisse/Hinweise/Lösungen, Entwicklungen ohne mich, Kernfrage/Antwort; spoilerfrei. Fakten binden, Ergänzungen widerspruchsfrei, Lösungen nicht Vermutungen anpassen; Wahrheit/Figurenwissen trennen. Ermittlung: feste Ursache, begrenzte Spuren/mehrere Hinweise zur selben Wahrheit; keine Pflicht zu drei Wegen/neuen Verdächtigen. Genug Belege: Finale ohne Pflichtumwege. Alltag/Beziehungen zulassen, nicht endlos. Außer Cozy: Ziel/nächsten Schritt präsent halten, nach Ruhe aktiv aufgreifen; kein Entscheidungszwang. Epilog/Folgen/Entwicklung, Fortsetzung auf Wunsch. Notizen/Dateien nur falls verfügbar, keine Speicherung vortäuschen.",
   "play": "Anschaulich, vor meiner Entscheidung stoppen. Freie Aktionen, erkennbare Gefahren/Ansätze, Ideen bei Bedarf. Unklarheiten klären, klare Aufträge ausführen. NSC handeln nach Zielen/Wissen, lösen nicht ungefragt Rätsel. Routine raffen, keine künstliche Dringlichkeit. Regelbegriffe/-werte (Würfe/Fokuspunkte/LP/Boni) nur Meta, nie Figurenwissen/Dialog/Gedanken/Dokumente. Figuren kennen nur wahrnehmbare Folgen, keine Ressourcenstände.",
@@ -212,7 +236,7 @@ export const core = {
   "save": "Fehler korrigieren, Zustand/Rücksetzpunkte führen, Änderungen zeigen. Befehle: Status, Inventar, Journal, Hinweis, Regeln, Speichern, Pause. Kopierbarer Stand: Figur/Gruppe mit Werten/Entwicklung/Inventar/Ressourcen, Errungenschaften/Nutzen, Beziehungen/Wissen, Lage/Würfe/Rücksetzpunkt. Weltkern separat spoilergekennzeichnet sichern soweit möglich; sonst keine exakte Fortsetzung versprechen/Speicherung vortäuschen."
 };
 export const powers = {
-  "open": "Besondere Kräfte bei Bedarf: drei Ressourcenpunkte; Wirkung, Kosten/Regeneration vorher festlegen.",
+  "custom": "Besondere Kräfte bei Bedarf: drei Ressourcenpunkte; Wirkung, Kosten/Regeneration vorher festlegen.",
   "fantasy": "Magiebegabte starten mit drei Ressourcenpunkten; Wirkung, Kosten/Regeneration vorher festlegen. Keine universellen Problemlösezauber.",
   "cyberpunk": "Cyberware: konkrete Funktionen, Kosten/Grenzen; Probenboni zählen als Ausrüstung. Keine Magieressource.",
   "modern": ""
