@@ -1,8 +1,9 @@
+import { createProfile, profileText } from './profile.mjs';
 import { groups, core, powers, dice, pacing, probePolicy, savePolicy } from './modules.mjs';
 export { groups, dice };
 // UTF-16 length is conservative for supplementary Unicode characters.
 export const LIMIT = 8000;
-export const defaults = { ...Object.fromEntries(groups.map(g => [g.id, g.options[0].id])), roller: 'player' };
+export const defaults = { ...Object.fromEntries(groups.map(g => [g.id, g.options[0].id])), roller: 'player', setting: 'fantasy' };
 export function selectOptions(config) {
   if (config.players !== undefined && config.players !== 'solo') throw new Error('Der Generator unterstützt derzeit nur eine Spielerfigur. Koop wurde entfernt.');
   const selected = {};
@@ -11,15 +12,19 @@ export function selectOptions(config) {
     if (!option) throw new Error(`Ungültige Einstellung: ${g.id}`);
     selected[g.id] = option;
   }
+  createProfile(config);
   diceText(config); // Gleiche Validierung für beide Ausgaben.
   return selected;
 }
-export function buildPrompt(config = defaults) {
-  const selected = Object.fromEntries(Object.entries(selectOptions(config)).map(([key, option]) => [key, option.text]));
+export function buildCompactPackage(config = defaults) {
+  const options = selectOptions(config);
+  const profile = createProfile(config);
+  const narrative = profileText(profile, options, groups);
+  const selected = Object.fromEntries(Object.entries(options).map(([key, option]) => [key, option.text]));
   const rules = core;
   const sections = [
     ['AUFTRAG', rules.intro],
-    ['START', selected.setting, selected.tone, selected.scope, rules.start],
+    ['START', rules.start],
     ['FIGUR', selected.creation, rules.character, powers[config.setting]],
     ['ABENTEUER', rules.world],
     ['SPIELWEISE', rules.play, pacing],
@@ -30,12 +35,17 @@ export function buildPrompt(config = defaults) {
     ['ENTWICKLUNG', rules.progress, selected.companions],
     ['SPIELSTAND', selected.death, rules.save, savePolicy]
   ];
-  const prompt = sections.map(([heading, ...texts]) => `${heading}\n${texts.filter(Boolean).join('\n')}`).join('\n\n');
-  if (prompt.length >= LIMIT) throw new Error(`Prompt zu lang: ${prompt.length} Zeichen. Bitte Textmodule kürzen; es wurde nichts abgeschnitten.`);
-  return prompt;
+  const base = sections.map(([heading, ...texts]) => `${heading}\n${texts.filter(Boolean).join('\n')}`).join('\n\n');
+  const full = base + '\n\n' + narrative;
+  const external = full.length >= LIMIT;
+  const projectInstructions = external ? base + '\n\nABENTEUERPROFIL\nDas verbindliche Abenteuerprofil folgt in meiner ersten Chatnachricht. Warte mit dem Spielstart darauf; es ersetzt abweichende Standardvorgaben.' : full;
+  if (projectInstructions.length >= LIMIT) throw new Error('Der Regelkern überschreitet das Projektlimit. Es wurde nichts abgeschnitten.');
+  return {mode:'compact', profile, projectInstructions, startMessage:external ? narrative : '', profileExternal:external};
 }
+export function buildPrompt(config = defaults) { return buildCompactPackage(config).projectInstructions; }
+
 export function* allConfigs(index = 0, config = {}) {
-  if (index === groups.length) { for (let mask=0; mask<64; mask++) { const extras=dice.filter((d,i)=>mask & (1<<i)).map(d=>d.id); if(extras.includes('dpercent')&&!extras.includes('d10')) continue; yield {...config, extras}; } return; }
+  if (index === groups.length) { for (let mask=0; mask<64; mask++) { const extras=dice.filter((d,i)=>mask & (1<<i)).map(d=>d.id); if(extras.includes('dpercent')&&!extras.includes('d10')) continue; yield {...config, extras, ...(config.setting==='custom' ? {worldDescription:'Eigene Welt mit begrenzter Magie und vorindustrieller Technik.'} : {})}; } return; }
   const g = groups[index];
   for (const o of g.options) yield* allConfigs(index + 1, { ...config, [g.id]: o.id });
 }

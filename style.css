@@ -11,3 +11,7 @@
 .output.is-plugin{position:static}.is-plugin #prompt{height:240px;min-height:160px}
 .download-row{padding:0 24px 20px}.download-row .quiet{text-align:left;color:var(--gold);text-decoration:underline;text-underline-offset:3px}
 @media(max-width:540px){.mode-picker{padding:16px}.output-help{margin:16px}.output-label{margin:18px 16px 0}.plugin-guide{margin:0 16px}.download-row{padding:0 16px 20px}}
+
+.text-option{margin:0 0 24px}.text-option label{display:block;font-weight:600}.text-option p{font-size:.85rem;color:var(--muted);line-height:1.5}.text-option textarea{width:100%;margin:0;min-height:110px;box-sizing:border-box;padding:12px;resize:vertical;font:inherit} #options textarea{height:auto} #options:has(textarea:focus){scroll-margin-top:20px}
+
+.choice input:disabled+span{opacity:.45;cursor:not-allowed}

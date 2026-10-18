@@ -17,13 +17,15 @@ Pluginfassung. Eine eigene Modell-API ist nicht enthalten.
 
 Die Moduswahl ändert die Ausgabe, nicht die gewählten Einstellungen. Die alte
 private Vesper-Spielleitung bleibt für begonnene Durchgänge unverändert.
-Charaktereditor und exportierbares Abenteuerprofil folgen separat.
+Das gemeinsame Abenteuerprofil ist im Generator enthalten; der Charaktereditor folgt separat.
 
 ## Zwei Ausgaben aus einer Auswahl
 
 - **Projektprompt · unter 8.000 Zeichen:** enthält die bisherigen kompakten
   Regeln vollständig und benötigt kein Plugin. Den Text in die Projektanweisungen
-  kopieren; die Figurenidee oder den bestätigten Bogen beim Start separat senden.
+  kopieren. Passt das vollständige Abenteuerprofil nicht mehr hinein, zeigt die App
+  einen klar gekennzeichneten zweiten Text für die erste Chatnachricht an. Beide
+  Teile vor dem Auftakt verwenden; die Figurenidee oder den bestätigten Bogen separat senden.
 - **Plugin-Startpaket:** liefert kurze Projektanweisungen und eine separate erste
   Chatnachricht mit allen gewählten Vorgaben. Die ausführlichen Regeln kommen aus
   der Freien Spielleitung 0.2. Im neuen Spielchat das Plugin ausdrücklich wählen.
@@ -63,6 +65,7 @@ wird keine neue Version veröffentlicht. Ein erfolgreiches Deployment ersetzt di
 ## Textmodule und Längengarantie
 
 - `src/modules.mjs`: Kernregeln und auswählbare Textvarianten.
+- `src/profile.mjs`: gemeinsames Abenteuerprofil, Weltbeschreibung, Schwerpunkte und Erzählvorgaben.
 - `src/outputs.mjs`: Moduswahl, Pluginverweis und getrennte Startpaket-Texte.
 - `src/generator.mjs`: Zusammenstellung, Reihenfolge, harte Längengrenze.
 - `src/app.mjs`: Formular und Kopieren.
@@ -73,22 +76,25 @@ npm test
 npm run check
 ```
 
-Die aktuelle Solo-Fassung enthält 221.184 Kombinationen. Die kompakten Prompts bleiben strikt unter 8.000 Zeichen,
-einschließlich Überschriften und LF-Zeilenumbrüchen (konservative JavaScript-UTF-16-Zählung).
-Es wird nie abgeschnitten. Bei einer zu langen oder ungültigen Konfiguration bleibt Kopieren gesperrt.
-Die Garantie gilt für die geprüften Module; manuelles Ergänzen nach dem Kopieren fällt nicht darunter.
-
-Keine Freitextfelder in dieser ersten Fassung: damit ist die maximale Länge vollständig prüfbar.
-Spätere Freitexte brauchen ein festes, in allen Kombinationen reserviertes Budget.
+Die aktuelle Solo-Fassung enthält 663.552 Kombinationen der festen Auswahlschalter
+und Zusatzwürfel. Freitexte und die elf zulässigen Schwerpunktkombinationen kommen
+hinzu. Die Projektanweisungen bleiben strikt unter 8.000 Zeichen, einschließlich
+Überschriften und LF-Zeilenumbrüchen (konservative JavaScript-UTF-16-Zählung).
+Es wird nie abgeschnitten. Bei Platzmangel wird das gesamte Abenteuerprofil in die
+erste Chatnachricht ausgelagert. Der Regelkern bleibt unverändert vollständig;
+aktuell benötigen alle festen Kombinationen diesen zweiten Teil. Die Oberfläche
+kennzeichnet beide Teile und der Markdown-Download enthält sie vollständig.
+Ungültige Eingaben sperren Kopieren und Download. Manuelles Ergänzen nach dem
+Kopieren wird nicht durch die Längenprüfung erfasst.
 
 Jede Gruppe liefert genau eine Variante. Standard/Hardcore, Ton und Würfelbedienung werden ersetzt,
 nicht zusammen angehängt. Weltabhängige Ressourcen werden separat gewählt. Die Tests prüfen Länge,
 Kernvollständigkeit und bekannte Konflikte; sie beweisen keine allgemeine erzählerische Widerspruchsfreiheit.
 Neue Module brauchen zusätzlich redaktionelle Prüfung. Die Qualität der KI-Spielleitung ist nicht garantiert.
 
-Bewusst noch nicht umgesetzt: regelfreies Spiel, freie Weltbeschreibung,
-Charaktereditor, strukturiertes Abenteuerprofil, Konfigurationsimport und Spielstände.
-Der Download im Plugin-Modus speichert ausschließlich die erzeugten Starttexte.
+Bewusst noch nicht umgesetzt: regelfreies Spiel, Charaktereditor,
+Konfigurationsimport und Spielstände.
+Der Download in beiden Modi speichert die erzeugten Starttexte; er ist kein Spielstand.
 „Spielleitung würfelt“ behält das W20-System bei; es bedeutet nicht „ohne Proben“.
 
 ## Datenschutz
@@ -139,3 +145,35 @@ Das erzwingt keine Spielerentscheidung und erzeugt keine künstliche Dringlichke
 Regelbegriffe und Zahlen wie Würfe, Fokuspunkte, LP und Boni bleiben in der Metaebene.
 Figurendialoge, Gedanken und innerweltliche Dokumente verwenden keine Ressourcenstände.
 Figuren dürfen nur wahrnehmbare Folgen wie Erschöpfung oder Verletzungen einschätzen.
+
+## Gemeinsames Abenteuerprofil
+
+Beide Ausgabemodi verwenden dieselben Daten aus `src/profile.mjs` (Profilversion 1).
+Die Welt wird vor dem Chatstart festgelegt. „Eigene Welt“ erfordert eine kurze
+Weltbeschreibung; bei Fantasy, Cyberpunk und Gegenwart ist sie eine optionale
+Ergänzung. Die Spielleitung ergänzt passende Details und klärt nur wesentliche
+Lücken oder Widersprüche, statt die Einrichtung im Chat zu wiederholen.
+
+- **Atmosphäre:** Abenteuerlich, Cozy, Düster oder Horror. Abenteuerlich beginnt
+  nicht mehr mit der missverständlichen Vorgabe „Cozy bis abenteuerlich“.
+- **Abenteuerumfang:** Kurz, mittel oder ausführlich; betrifft die Verflechtung
+  des Konflikts, keine Minuten-, Wort- oder Szenenquote.
+- **Verlauf:** Einzelabenteuer, zusammenhängende Kampagne mit Gesamtfinale oder
+  offene Kampagne mit eigenständigen Abenteuern in derselben Welt.
+- **Spielschwerpunkte:** optional bis zu zwei aus Entdeckung, Ermittlung und
+  Rätsel, Beziehungen und Verhandlung sowie Action und Gefahr. Ohne Auswahl
+  bleibt das Spiel situativ vielfältig.
+- **Eigene Vorgaben und Ausschlüsse:** optionaler Freitext, getrennt von der Welt.
+
+Beteiligung der Figur, Abwechslung, gültige Abschlüsse und organische Fortsetzungen
+sind gemeinsame Erzählvorgaben. Das Profil legt keine Handlung oder Lösung vorab
+fest. „Kurz + offene Kampagne“ ist ausdrücklich möglich. Nach einem Einzelabenteuer
+beginnt eine Fortsetzung nur auf Wunsch. NSC handeln weiterhin eigenständig;
+der Spieler muss die nächste Handlung nicht durch eine Auftragssuche erzwingen.
+
+Weltbeschreibung, Schwerpunkte und eigene Vorgaben bleiben beim Moduswechsel
+vollständig erhalten. „Zurücksetzen“ löscht auch diese Eingaben, erhält aber den
+Ausgabemodus. Es gibt weiterhin keine Speicherung nach dem Neuladen; dafür die
+Starttexte herunterladen. Der Charakterbogen bleibt separat. Alte Spielformen
+(`campaign`, `chapters`, `short`) werden nicht automatisch in zwei neue Achsen
+umgedeutet; es gibt bisher keinen Konfigurationsimport.

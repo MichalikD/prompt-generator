@@ -1,4 +1,5 @@
-import { buildPrompt, defaults, groups, selectOptions, diceText } from './generator.mjs';
+import { createProfile, profileText, profileIds } from './profile.mjs';
+import { buildCompactPackage, defaults, groups, selectOptions, diceText } from './generator.mjs';
 import { powers } from './modules.mjs';
 
 export const PLUGIN = Object.freeze({
@@ -14,6 +15,7 @@ export const outputModes = [
 
 export function buildPluginPackage(config = defaults) {
   const selected = selectOptions(config);
+  const profile = createProfile(config);
   const projectInstructions = [
     `Dieses Projekt enthält einen Solo-Textrollenspiel-Durchgang mit dem ausdrücklich ausgewählten Plugin „${PLUGIN.name}“, Regelsatz ${PLUGIN.version}.`,
     'Verwende dessen Spielleitungsanweisung und Regelreferenzen zusammen mit meinen bestätigten Setting- und Spielvorgaben aus der Startnachricht.',
@@ -26,7 +28,8 @@ export function buildPluginPackage(config = defaults) {
     `Neuer Solo-Durchgang mit „${PLUGIN.name}“, Regelsatz ${PLUGIN.version}.`,
     'Lade zuerst die Spielleitungsanweisung und „Abenteuer und Welt“. Bestätige deren tatsächlichen Zugriff kurz auf der Metaebene.',
     'Für diesen Durchgang gelten die folgenden gewählten Vorgaben; sie ersetzen abweichende Standardvorgaben des Plugins. Bewahre sie über Kapitelwechsel hinweg.',
-    ...groups.map(group => `${group.label}: ${selected[group.id].text}`),
+    profileText(profile, selected, groups),
+    ...groups.filter(group=>!profileIds.includes(group.id)).map(group => `${group.label}: ${selected[group.id].text}`),
     powers[config.setting],
     diceText(config) || 'Zusatzwürfel: keine. Verwende die festen Grundschäden; Attributproben bleiben W20.',
     'Wenn ich einen bestätigten Charakterbogen mitgebe, übernimm ihn unverändert und erstelle die Figur nicht neu. Andernfalls führe die gewählte Charaktererstellung aus und stimme den Bogen vor dem Auftakt ab.',
@@ -34,7 +37,7 @@ export function buildPluginPackage(config = defaults) {
   ].filter(Boolean).join('\n\n');
 
   return {
-    mode: 'plugin', projectInstructions, startMessage,
+    mode: 'plugin', profile, projectInstructions, startMessage,
     downloadName: 'plugin-startpaket.md',
     downloadText: [
       `# Startpaket · ${PLUGIN.name}`, `Regelwerksfassung: ${PLUGIN.version}`,
@@ -51,5 +54,6 @@ export function buildPluginPackage(config = defaults) {
 export function buildOutput(config = defaults, mode = 'compact') {
   if (!outputModes.some(option => option.id === mode)) throw new Error('Ungültiger Ausgabemodus');
   if (mode === 'plugin') return buildPluginPackage(config);
-  return { mode: 'compact', projectInstructions: buildPrompt(config), startMessage: '' };
+  const output = buildCompactPackage(config);
+  return {...output, downloadName:'projekt-startpaket.md', downloadText:['# Projekt-Startpaket', '## 1. Projektanweisungen', output.projectInstructions, ...(output.startMessage ? ['## 2. Erste Chatnachricht · verbindliches Abenteuerprofil', output.startMessage] : [])].join('\n\n')};
 }
