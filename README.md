@@ -17,7 +17,7 @@ Pluginfassung. Eine eigene Modell-API ist nicht enthalten.
 
 Die Moduswahl ändert die Ausgabe, nicht die gewählten Einstellungen. Die alte
 private Vesper-Spielleitung bleibt für begonnene Durchgänge unverändert.
-Das gemeinsame Abenteuerprofil ist im Generator enthalten; der Charaktereditor folgt separat.
+Das gemeinsame Abenteuerprofil ist im Generator enthalten; der Charaktereditor ist auf einer separaten Seite verfügbar.
 
 ## Zwei Ausgaben aus einer Auswahl
 
@@ -32,8 +32,8 @@ Das gemeinsame Abenteuerprofil ist im Generator enthalten; der Charaktereditor f
   Beide Texte lassen sich einzeln kopieren oder zusammen als Markdown speichern.
 
 Die 8.000-Zeichen-Grenze gilt für Projektanweisungen, nicht für die separate
-Startnachricht. Die Ausgabe installiert kein Plugin und erzeugt noch keinen
-Charakterbogen. Die verlinkte Pluginfassung ist eine private Testinstallation;
+Startnachricht. Die Ausgabe installiert kein Plugin. Einen Charakterbogen kannst
+du auf der verlinkten Editor-Seite separat erstellen, importieren und exportieren. Die verlinkte Pluginfassung ist eine private Testinstallation;
 der Link gewährt anderen Konten keinen Zugriff. Der öffentlich lesbare Quellcode
 und die Paketierung liegen im Repository.
 
@@ -69,6 +69,8 @@ wird keine neue Version veröffentlicht. Ein erfolgreiches Deployment ersetzt di
 - `src/outputs.mjs`: Moduswahl, Pluginverweis und getrennte Startpaket-Texte.
 - `src/generator.mjs`: Zusammenstellung, Reihenfolge, harte Längengrenze.
 - `src/app.mjs`: Formular und Kopieren.
+- `src/character.mjs`: Figurenformat, Werteprüfung, Import, Export und KI-Template.
+- `src/character-editor.mjs` und `character.html`: separater Charaktereditor.
 - `test/`: Vollständige Kombinationsprüfung plus Konfliktprüfungen.
 
 ```sh
@@ -92,8 +94,8 @@ nicht zusammen angehängt. Weltabhängige Ressourcen werden separat gewählt. Di
 Kernvollständigkeit und bekannte Konflikte; sie beweisen keine allgemeine erzählerische Widerspruchsfreiheit.
 Neue Module brauchen zusätzlich redaktionelle Prüfung. Die Qualität der KI-Spielleitung ist nicht garantiert.
 
-Bewusst noch nicht umgesetzt: regelfreies Spiel, Charaktereditor,
-Konfigurationsimport und Spielstände.
+Bewusst noch nicht umgesetzt: regelfreies Spiel, Konfigurationsimport und
+vollständige Kampagnenspielstände.
 Der Download in beiden Modi speichert die erzeugten Starttexte; er ist kein Spielstand.
 „Spielleitung würfelt“ behält das W20-System bei; es bedeutet nicht „ohne Proben“.
 
@@ -110,7 +112,7 @@ Zusatzwürfel einzeln kombinieren. D% setzt D10 voraus. D4/D6/D8 variieren Schad
 
 ## Charaktererstellung
 
-„Selbst festlegen“ ist der Standard. „Aus Kurzbeschreibung“ leitet bei neuen Figuren fehlende Angaben aus dem Konzept ab, unter denselben Attribut-, Talent- und Ressourcenregeln. Der Entwurf wird mit dem Spieler abgestimmt. Gilt für alle Settings; vorhandene Figuren und Spielstände werden nicht neu erzeugt. Die Beschreibung wird beim Spielstart im Chat eingegeben, nicht im Generator.
+„Selbst festlegen“ ist der Standard. „Aus Kurzbeschreibung“ leitet bei neuen Figuren fehlende Angaben aus dem Konzept ab, unter denselben Attribut-, Talent- und Ressourcenregeln. Der Entwurf wird mit dem Spieler abgestimmt. Gilt für alle Settings; vorhandene Figuren und Spielstände werden nicht neu erzeugt. Ohne vorbereiteten Bogen wird die Beschreibung beim Spielstart im Chat eingegeben. Alternativ kann der separate Editor einen Bogen beziehungsweise ein KI-Erstellungstemplate vorbereiten.
 
 ## Eine Spielerfigur
 
@@ -174,6 +176,23 @@ der Spieler muss die nächste Handlung nicht durch eine Auftragssuche erzwingen.
 Weltbeschreibung, Schwerpunkte und eigene Vorgaben bleiben beim Moduswechsel
 vollständig erhalten. „Zurücksetzen“ löscht auch diese Eingaben, erhält aber den
 Ausgabemodus. Es gibt weiterhin keine Speicherung nach dem Neuladen; dafür die
-Starttexte herunterladen. Der Charakterbogen bleibt separat. Alte Spielformen
+Starttexte herunterladen. Der Charakterbogen bleibt separat und wird im verlinkten Editor bearbeitet. Alte Spielformen
 (`campaign`, `chapters`, `short`) werden nicht automatisch in zwei neue Achsen
 umgedeutet; es gibt bisher keinen Konfigurationsimport.
+
+## Charakterbogen-Editor
+
+Die verlinkte Seite öffnet in einem separaten Tab und funktioniert für beide
+Ausgabemodi. Vier Attribute bleiben bestehen. Der Editor umfasst Identität,
+Talente, konkrete Fähigkeiten, situative Schwächen, LP/Ressourcen, Ausrüstung,
+Bedürfnisse, bestätigten/offenen/ausgeschlossenen Hintergrund und Entwicklung.
+Nach Prüfung lässt sich der Bogen ausdrücklich bestätigen; Änderungen heben die
+Bestätigung auf. JSON dient der späteren Bearbeitung, Text dem Spielstart. Beim
+Weiterführen eines bestätigten Startbogens bleibt das Original separat erhalten.
+
+Das kostenlose Prompt-Template kann in beliebigen KI-Chats aus einer
+Kurzbeschreibung einen importierbaren Entwurf erzeugen. Es ruft keine KI auf.
+Der bisherige Vesper-API-Bogen wird unterstützt. Der Editor speichert nicht
+automatisch: Vor Neuladen oder Schließen JSON herunterladen.
+
+[Bedienung, Format und Grenzen](docs/charakterbogen.md)

@@ -137,9 +137,8 @@ keine technische Sperre gegen geänderte Pluginanweisungen. Änderungen an einer
 laufenden Kampagne werden daher nicht durch ein stilles Ersetzen dieses Plugins
 eingespielt. Eine spätere gemeinsame Veröffentlichung ist ein separater Schritt.
 
-Der zweite Generator-Ausgabemodus ist inzwischen vorhanden. Noch geplant sind
-ein besserer Startbogen und sein Editor. Das gemeinsame Abenteuerprofil ist
-inzwischen in beiden Ausgabemodi enthalten (siehe README).
-Eine frei nutzbare Charakteranfrage zum
-Kopieren in beliebige KI-Chats ist dabei der erste Weg; eine optionale eigene
-API-Anbindung kann später separat hinzukommen. Beides ist hier noch nicht gebaut.
+Beide Generator-Ausgabemodi, das gemeinsame Abenteuerprofil und der separate
+Charaktereditor sind vorhanden. Der Editor bietet ein abgestimmtes Figurenformat,
+JSON-Import/-Export und eine frei nutzbare Charakteranfrage zum Kopieren in
+beliebige KI-Chats. Eine optionale eigene API-Anbindung ist weiterhin nicht gebaut.
+[Charakterbogen verwenden](charakterbogen.md).
