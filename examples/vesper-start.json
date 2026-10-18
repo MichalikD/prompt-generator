@@ -1,0 +1,73 @@
+{
+  "format": "freie-spielleitung-character",
+  "version": 1,
+  "kind": "start",
+  "confirmed": true,
+  "character": {
+    "identity": {
+      "name": "Vesper",
+      "pronouns": "",
+      "ancestry": "Vampir",
+      "origin": "",
+      "role": "Nahkämpfer",
+      "description": "Ein Vampir und Nahkämpfer, der bevorzugt mit zwei Schwertern kämpft, aber auch einen Dolch oder seine Zähne einsetzt. Herkunft und persönliche Ziele bleiben offen."
+    },
+    "attributes": {
+      "geschick": 3,
+      "gespuer": 0,
+      "kraft": 0,
+      "verstand": 2
+    },
+    "talents": [
+      {
+        "name": "Doppelschwertkampf",
+        "description": "Geübter Kampf mit zwei Schwertern im Nahkampf.",
+        "bonus": 2
+      },
+      {
+        "name": "Lautloser Hinterhalt",
+        "description": "Nähert sich unbemerkt und eröffnet aus dem Hinterhalt den Kampf.",
+        "bonus": 2
+      }
+    ],
+    "abilities": [],
+    "weaknesses": [
+      {
+        "name": "Situative Schwäche",
+        "trigger": "Grelles Sonnenlicht blendet Vesper und macht es ihm schwer, ungesehen zu bleiben.",
+        "effect": "Grelles Sonnenlicht blendet Vesper und macht es ihm schwer, ungesehen zu bleiben.",
+        "mitigation": ""
+      }
+    ],
+    "vitals": {
+      "hp": 10,
+      "maxHp": 10,
+      "resources": [],
+      "injuries": ""
+    },
+    "inventory": [
+      {
+        "name": "Zwei Kurzschwerter",
+        "description": "Ein handliches Schwert für jede Hand; gemeinsam oder einzeln im Nahkampf verwendbar.",
+        "bonus": 0,
+        "slots": 2,
+        "quantity": 1
+      },
+      {
+        "name": "Dolch",
+        "description": "Leichte Klinge für den Nahkampf oder einen lautlosen Angriff aus nächster Nähe.",
+        "bonus": 0,
+        "slots": 1,
+        "quantity": 1
+      }
+    ],
+    "nourishment": "Vampirische Natur; gewöhnliche Nahrung stillt seinen Hunger nicht.",
+    "background": {
+      "confirmed": "Vampirische Natur; gewöhnliche Nahrung stillt seinen Hunger nicht.",
+      "open": "Herkunft und persönliche Ziele.",
+      "excluded": ""
+    },
+    "development": []
+  },
+  "startCharacter": null
+}
