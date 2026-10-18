@@ -19,6 +19,14 @@ jobs:
           node-version: '22'
       - run: npm test
       - run: npm run check
+      - run: npm run plugin:check
+      - run: npm run plugin:build
+      - name: Pluginpaket für die Prüfung bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: freie-spielleitung-02
+          path: dist/freie-spielleitung-02-0.2.0.zip
+          if-no-files-found: error
       - name: Statische Dateien vorbereiten
         run: |
           mkdir -p _site/src

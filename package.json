@@ -3,5 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "scripts": { "test": "node --test test/*.test.mjs", "check": "node test/report.mjs" }
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node test/report.mjs",
+    "plugin:check": "python3 scripts/package_plugin.py --check",
+    "plugin:build": "python3 scripts/package_plugin.py"
+  }
 }

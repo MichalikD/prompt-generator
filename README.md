@@ -4,6 +4,21 @@ Eine statische deutschsprachige Web-App: Einstellungen wählen, Prompt kopieren,
 in die Projektanweisungen einfügen. Keine API, Anmeldung, Speicherung oder Synchronisierung.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
 
+## Neue Plugin-Regelbasis 0.2
+
+Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
+Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
+Rätsellogik, Kampftransparenz, Entwicklung und Zustandsführung. Mitgebrachte
+Setting- und Figurenangaben erlauben unterschiedliche Durchgänge mit derselben
+Pluginfassung. Eine eigene Modell-API ist nicht enthalten.
+
+[Verwendung, Regeländerungen und Paketierung](docs/regelbasis-0.2.md)
+
+Dieser Schritt ändert die Texte und Oberfläche des bestehenden
+8.000-Zeichen-Generators noch nicht. Der zweite Ausgabemodus und ein
+Charaktereditor folgen separat. Die alte private Vesper-Spielleitung bleibt
+für begonnene Durchgänge unverändert.
+
 ## Lokal verwenden
 
 Im Projektordner einen statischen Webserver starten, zum Beispiel mit installiertem Python:

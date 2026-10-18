@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "freie-spielleitung-02",
+  "version": "0.2.0",
+  "description": "Freie Textrollenspiele mit klaren W20-Regeln, nachvollziehbaren Rätseln und unterschiedlichen mitgebrachten Settings.",
+  "author": {
+    "name": "David"
+  },
+  "repository": "https://github.com/MichalikD/prompt-generator",
+  "keywords": [
+    "rollenspiel",
+    "w20",
+    "spielleitung"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Freie Spielleitung 0.2",
+        "shortDescription": "Abenteuer nach deinen Vorgaben",
+        "longDescription": "Eine allgemeine Spielleitung auf Grundlage des Vesper-Regelwerks. Nutzt mitgebrachte Setting- und Spielvorgaben, wahrt Spielerentscheidungen und führt Proben, Kampf und Entwicklung transparent. Vier Regelreferenzen erläutern Figuren, Abenteuer, Zahlenregeln und Spielstände. Ohne eigene Modell-API oder automatische Kampagnenspeicherung. Eigenständige Testfassung; ersetzt das bestehende Vesper-Plugin nicht.",
+        "developerName": "David",
+        "category": "Entertainment",
+        "capabilities": [],
+        "defaultPrompt": "Leite einen neuen Durchgang nach meinen mitgebrachten Setting- und Spielvorgaben. Lade zuerst die Spielleitungsanweisung und Abenteuer und Welt. Bewahre einen bestätigten Charakterbogen; frage andernfalls nach meiner Figurenidee."
+      }
+    }
+  }
+}
