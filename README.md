@@ -1,6 +1,6 @@
 # Abenteuer · Prompt-Generator
 
-Eine statische deutschsprachige Web-App: Einstellungen wählen und entweder einen
+Eine statische deutschsprachige Web-App: schrittweise Einstellungen wählen und entweder einen
 kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API, Anmeldung,
 Speicherung oder Synchronisierung.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
@@ -253,10 +253,37 @@ sichtbare Regelbegriffe und Kommandos. Eigene Texte/Namen werden nicht übersetz
 Die deutsche Oberfläche und ihre Hilfen sind davon getrennt. Eine Sprachauswahl
 in der Oberfläche ist noch nicht vorhanden.
 
-Das experimentelle Figurenformat ist nun Version **2**, mit englischen
+Die damalige Umstellung führte Figurenformat Version **2** ein, mit englischen
 Attributschlüsseln `strength`, `dexterity`, `intellect`, `insight` und Format-ID
 `open-game-master-character`. Alte Testbögen werden nicht importiert; bei einem
 neuen Test einen neuen Bogen erzeugen. Numerische Regeln bleiben unverändert.
 Das vorhandene Vesper-Beispiel ist eine aktualisierte Testdatei, kein Altimport.
 
 [Rückkehr zum Stand vor 0.3.0](docs/rollback-0.3.md).
+
+
+## Geführter Generator und Bogenformat 3
+
+Beide Ausgabemodi führen jetzt durch vier Vorbereitungsschritte:
+**Welt → Spielvorgaben → Figur → Prüfung und Ausgabe**. „Weiter“ prüft den
+aktuellen Schritt; „Zurück“ erhält die Eingaben. Starttexte und Kopieraktionen
+werden erst am Ende freigegeben. Fehlende Angaben erscheinen als konkrete
+Hinweise, nicht als scheinbar laufender Ladevorgang. Ein bestätigter Bogen ist
+genau einmal in der Startnachricht enthalten. Die abschließende Übersicht
+zeigt auch Startgeld und macht nicht festgelegte Mittel sichtbar.
+
+Format **3** trennt Geld (`finances`), Fähigkeitsressourcen (`vitals.resources`)
+und optionale besondere Bedürfnisse (`needs`). Geld hat Währung/Betrag sowie
+optionale Kaufkraft- und Vermögensangaben; keinen künstlichen Maximalwert oder
+Regeneration. Bedürfnisse bleiben auf Wunsch rein beschreibend. Das kostenlose
+KI-Template fordert passende Startmittel und konkretisiert die bestehenden
+Ausrüstungs- und Schwächeregeln.
+
+**Unverändert bleiben Plugin-Regelsatz 0.3.1, Erzählvorgaben, Probenhäufigkeit und
+Antwortlänge.** Es wird kein Pluginupdate benötigt. Für den nächsten Vergleich
+neuen Bogen mit dem aktuellen Template erstellen; der Prototyp übernimmt keine
+alten Bogenformate. Nara kann unabhängig davon im bestehenden Chat weiterlaufen.
+
+Prüfungen des geführten Ablaufs liegen in `test/setup.test.mjs`, des neuen
+Bogens in `test/finances-and-needs.test.mjs`. Die Website bleibt ohne
+Laufzeitabhängigkeiten, API, Anmeldung oder automatische Speicherung.

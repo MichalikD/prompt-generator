@@ -38,7 +38,7 @@ test('Ungültige Werte, unvollständige Fähigkeiten, Überladung und fehlende S
   d=>{d.character.abilities=[{name:'Magie',effect:'Alles',cost:'',limits:''}];},
   d=>{d.character.vitals.resources=[{name:'Fokus',current:4,max:3,effect:'Magie',cost:'1',regeneration:'Rast'}];},
   d=>{d.character.development=[{milestone:'Vor Start',change:'Bonus',benefit:'Bonus',limits:''}];},
-  d=>{d.character.identity.description='';},d=>{d.version=3;},d=>{d.character.secret='Nicht verlieren';},
+  d=>{d.character.identity.description='';},d=>{d.version=4;},d=>{d.character.secret='Nicht verlieren';},
  ];
  for(const mutate of mutations){const d=valid();mutate(d);assert.ok(validateCharacterDocument(d).length);assert.throws(()=>serializeCharacter(d));}
 });

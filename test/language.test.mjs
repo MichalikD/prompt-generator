@@ -33,7 +33,7 @@ test('Template und Figurenformat verwenden englische Struktur, Nutzerdaten bleib
  const doc=JSON.parse(template.slice(template.indexOf('{\n')));
  assert.deepEqual(validateCharacterDocument(doc),[]);
  assert.deepEqual(Object.keys(doc.character.attributes),Object.keys(ruleAttributes));
- assert.equal(doc.version,2);
+ assert.equal(doc.version,3);
  assert.ok(characterText(example).includes('Dexterity: +3'));
  const old=structuredClone(example);old.version=1;
  assert.ok(validateCharacterDocument(old).length);
