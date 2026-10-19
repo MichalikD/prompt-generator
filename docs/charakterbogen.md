@@ -1,4 +1,4 @@
-# Charaktereditor und Figurenformat 1
+# Charaktereditor und Figurenformat 3
 
 Im Generator kann der Spieler zwischen Erstellung im Spielchat und einem
 vorbereiteten Bogen wählen. Der Editor erscheint direkt auf derselben Seite und
@@ -33,7 +33,7 @@ der Figur. Ein Textimport aus frei formulierter Prosa ist nicht enthalten.
 ## Felder
 
 Das Dokument ist ein JSON-Objekt mit `format: "open-game-master-character"`,
-`version: 2`, `kind: "start" | "current"`, `confirmed: boolean`, `character`
+`version: 3`, `kind: "start" | "current"`, `confirmed: boolean`, `character`
 und `startCharacter`. Vollständiges Beispiel: [Vesper](../examples/vesper-start.json).
 
 | Bereich in `character` | Inhalt |
@@ -46,7 +46,9 @@ und `startCharacter`. Vollständiges Beispiel: [Vesper](../examples/vesper-start
 | `vitals` | `hp`, `maxHp`, `resources`, `injuries` |
 | `vitals.resources` | Liste: `name`, `current`, `max`, `effect`, `cost`, `regeneration` |
 | `inventory` | Liste: `name`, `quantity`, `slots`, `bonus`, `description` |
-| `nourishment` | Freitext für Nahrung und besondere Bedürfnisse |
+| `finances` | `funds`, `purchasingPower`, `assets` |
+| `finances.funds` | Liste: `currency`, `amount` |
+| `needs` | Liste: `name`, `description`, `mechanical`, `trigger`, `effect`, `care` |
 | `background` | Texte: `confirmed`, `open`, `excluded` |
 | `development` | Liste: `milestone`, `change`, `benefit`, `limits` |
 
@@ -59,7 +61,7 @@ abgewiesen, damit der Import keine zusätzlichen Angaben still verliert.
 - Start: genau zwei Talente, jeweils +2, nicht stapelbar; mindestens eine situative
   Schwäche mit Auslöser und Wirkung; 10/10 LP. Entwicklungsliste zunächst leer.
 - Fähigkeiten brauchen konkrete Wirkung, Kosten (ggf. „keine“) und Grenzen.
-  Ressourcen brauchen Wirkung, Kosten und Regeneration; aktueller Wert darf ihr
+  Fähigkeitsressourcen brauchen Wirkung, Kosten und Regeneration; aktueller Wert darf ihr
   Maximum nicht überschreiten. Magieressourcen von drei Punkten sind eine Vorgabe
   im Erstellungstemplate; der Editor erkennt Magiebegabung nicht automatisch.
 - Ausrüstung: `quantity × slots` zählt zur Belastung. `slots` sind Plätze **pro
@@ -102,8 +104,7 @@ Beschreibungen. Zwei Talente erhalten nachvollziehbare, brauchbare Bereiche,
 die zum Namen passen; keine Beschränkung auf einen einzelnen Handgriff oder
 Untergrund und keine pauschalen Boni auf alles. Das verwendete Attribut folgt
 dem Ansatz. Spätere Erweiterung oder vereinbarte Umschulung wird im aktuellen
-Bogen dokumentiert; das Startoriginal bleibt erhalten. Es gibt kein neues
-Datenformat und kein zusätzliches Levelsystem.
+Bogen dokumentiert; das Startoriginal bleibt erhalten. Es gibt kein zusätzliches Levelsystem.
 
 
 ## Formatänderung 0.3.1
@@ -114,3 +115,49 @@ Die erzeugte Bogenstruktur und ihre Überschriften sind Englisch, eigene
 Beschreibungen bleiben erhalten. Alte Prototypbögen werden nicht übernommen;
 einen neuen Bogen mit dem aktuellen Template erzeugen. Eine erneute ausdrückliche
 Bestätigung ist weiterhin nötig.
+
+
+## Geführte Vorbereitung und Format 3
+
+Der Generator führt in beiden Modi über **Welt → Spielvorgaben → Figur → Prüfung
+und Ausgabe**. „Weiter“ prüft den aktuellen Schritt. Zurückgehen erhält alle
+Eingaben; fertige Starttexte erscheinen erst am Ende. Änderungen am Bogen
+verlangen erneut eine Bestätigung, Änderungen an Weltvorgaben ebenfalls.
+Ein Moduswechsel erhält die Auswahl. Die selbstständige Editor-Seite bleibt
+nutzbar. Vor dem Schließen weiterhin JSON herunterladen; keine automatische
+Speicherung.
+
+### Geld und Vermögen
+
+`finances.funds` enthält je Währung einen nichtnegativen Betrag, auch mit
+Nachkommastellen. Kein Spiel-Maximalwert und keine Regeneration. Die technische
+Grenze ist JavaScripts sicher darstellbarer Zahlenbereich. Eine Währung wird
+nur einmal geführt. `[]` bedeutet **nicht festgelegt**, ein Eintrag mit Betrag
+`0` bewusst kein Guthaben in dieser Währung. Kaufkraft/Preisanker und weiteres
+Vermögen sind optionale Freitexte.
+
+Das Template schlägt bescheidene, zur Welt passende Startmittel und einfache
+Preisanker vor, sofern die Figurenidee nichts anderes festlegt. Der Spieler
+prüft den Vorschlag; keine Konto- oder Zahlungsanbindung.
+
+### Fähigkeitsressourcen und Bedürfnisse
+
+`vitals.resources` dient begrenzten Fähigkeitspunkten, etwa Fokus oder Magie:
+aktueller Wert, Maximum, Wirkung, Verbrauch und Erholung. Unbenötigt bleibt die
+Liste leer. Geld und Munition gehören nicht in diese Liste; Munition und
+Vorräte werden als Ausrüstung geführt.
+
+`needs` ist optional. Normales menschliches Essen, Wasser und Schlaf brauchen
+keinen eigenen Eintrag. Ein besonderes Bedürfnis kann mit `mechanical:false`
+beschreibend bleiben. Mit `mechanical:true` müssen ein beobachtbarer Auslöser,
+eine konkrete Wirkung und Versorgung/Erholung angegeben werden. Diese Mechanik
+wird mit dem Bogen ausdrücklich bestätigt. Eine bereits geführte Ressource
+nicht durch einen zweiten Zähler doppelt verwalten. Beim Abschalten bleiben
+etwaige Mechaniktexte im JSON erhalten, werden aber nicht als aktive Regel
+in die Spielnachricht übernommen.
+
+Das Template konkretisiert die bestehenden Regeln für Schwächen, Rüstung und
+Waffenschaden. Es führt keine weiteren Bonusarten oder Spielregeln ein.
+Die Plugin-Regelbasis bleibt **0.3.1**; Figurenformat und Pluginversion sind
+unabhängig. Alte Testformate werden nicht konvertiert. Ein neues Template
+verwenden, nicht nur die Versionsnummer eines alten Bogens ändern.

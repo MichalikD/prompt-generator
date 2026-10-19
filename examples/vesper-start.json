@@ -1,6 +1,6 @@
 {
   "format": "open-game-master-character",
-  "version": 2,
+  "version": 3,
   "kind": "start",
   "confirmed": true,
   "character": {
@@ -61,13 +61,27 @@
         "quantity": 1
       }
     ],
-    "nourishment": "Vampirische Natur; gewöhnliche Nahrung stillt seinen Hunger nicht.",
     "background": {
       "confirmed": "Vampirische Natur; gewöhnliche Nahrung stillt seinen Hunger nicht.",
       "open": "Herkunft und persönliche Ziele.",
       "excluded": ""
     },
-    "development": []
+    "development": [],
+    "finances": {
+      "funds": [],
+      "purchasingPower": "",
+      "assets": ""
+    },
+    "needs": [
+      {
+        "name": "Vampirische Ernährung",
+        "description": "Vampirische Natur; gewöhnliche Nahrung stillt seinen Hunger nicht.",
+        "mechanical": false,
+        "trigger": "",
+        "effect": "",
+        "care": ""
+      }
+    ]
   },
   "startCharacter": null
 }

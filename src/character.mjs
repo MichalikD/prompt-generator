@@ -1,5 +1,5 @@
 import { languageDirective, localizationPolicy, ruleAttributes } from './language.mjs';
-export const CHARACTER_VERSION = 2;
+export const CHARACTER_VERSION = 3;
 export const attributeLabels = {strength:'Kraft', dexterity:'Geschick', intellect:'Verstand', insight:'Gespür'};
 export function emptyCharacter() {
  return {
@@ -8,7 +8,7 @@ export function emptyCharacter() {
   talents:[{name:'',description:'',bonus:2},{name:'',description:'',bonus:2}],
   abilities:[], weaknesses:[],
   vitals:{hp:10,maxHp:10,resources:[],injuries:''},
-  inventory:[], nourishment:'',
+  inventory:[], finances:{funds:[],purchasingPower:'',assets:''}, needs:[],
   background:{confirmed:'',open:'',excluded:''}, development:[],
  };
 }
@@ -33,7 +33,7 @@ function rows(v,fields,path,errors,check) {
  v.forEach((r,i)=>{if(keys(r,fields,`${path} ${i+1}`,errors)) check(r,`${path} ${i+1}`);});
 }
 function checkCharacter(c,kind,path,errors) {
- if(!keys(c,['identity','attributes','talents','abilities','weaknesses','vitals','inventory','nourishment','background','development'],path,errors)) return;
+ if(!keys(c,['identity','attributes','talents','abilities','weaknesses','vitals','inventory','finances','needs','background','development'],path,errors)) return;
  if(keys(c.identity,['name','pronouns','ancestry','origin','role','description'],`${path} · Identität`,errors)) {
   for(const field of ['name','pronouns','ancestry','origin','role','description']) string(c.identity[field],`${path} · ${field}`,errors,['name','description'].includes(field));
  }
@@ -61,7 +61,23 @@ function checkCharacter(c,kind,path,errors) {
   const used=c.inventory.reduce((sum,r)=>sum+(isObject(r)?r.quantity*r.slots:0),0);
   if(used>8) errors.push(`${path}: ${used} Tragplätze belegt; maximal acht. Extern gelagerte Gegenstände nicht als getragen eintragen.`);
  }
- string(c.nourishment,path+' · Nahrung und Bedürfnisse',errors);
+ if(keys(c.finances,['funds','purchasingPower','assets'],`${path} · Geld und Vermögen`,errors)) {
+  rows(c.finances.funds,['currency','amount'],`${path} · Guthaben`,errors,(r,p)=>{
+   string(r.currency,p+' · Währung',errors,true);
+   if(typeof r.amount!=='number'||!Number.isFinite(r.amount)||r.amount<0||r.amount>Number.MAX_SAFE_INTEGER) errors.push(p+' · Betrag: Nichtnegative, sicher darstellbare Zahl erwartet.');
+  });
+  if(Array.isArray(c.finances.funds)) {
+   const names=c.finances.funds.filter(isObject).map(r=>typeof r.currency==='string'?r.currency.trim().toLowerCase():'');
+   if(new Set(names).size!==names.length) errors.push(path+' · Guthaben: Jede Währung nur einmal eintragen.');
+  }
+  string(c.finances.purchasingPower,path+' · Kaufkraft',errors);
+  string(c.finances.assets,path+' · Weiteres Vermögen',errors);
+ }
+ rows(c.needs,['name','description','mechanical','trigger','effect','care'],`${path} · Besonderes Bedürfnis`,errors,(r,p)=>{
+  string(r.name,p+' · Name',errors,true);string(r.description,p+' · Beschreibung',errors,true);
+  if(typeof r.mechanical!=='boolean') errors.push(p+' · Mechanik muss true oder false sein.');
+  for(const key of ['trigger','effect','care']) string(r[key],p+' · '+key,errors,r.mechanical===true);
+ });
  if(keys(c.background,['confirmed','open','excluded'],`${path} · Hintergrund`,errors)) for(const f of ['confirmed','open','excluded']) string(c.background[f],path+' · Hintergrund '+f,errors);
  rows(c.development,['milestone','change','benefit','limits'],`${path} · Entwicklung`,errors,(r,p)=>{for(const f of ['milestone','change','benefit','limits']) string(r[f],p+' · '+f,errors,['milestone','change','benefit'].includes(f));});
  if(kind==='start' && Array.isArray(c.development) && c.development.length) errors.push(`${path}: Entwicklung gehört in den aktuellen Bogen; der Startbogen bleibt der Ausgangspunkt.`);
@@ -102,17 +118,21 @@ export function characterText(doc) {
  const list=(items,fn)=>items.length?items.map(fn).join('\n'):'None recorded.';
  return [
   `${doc.confirmed?'Confirmed':'Unconfirmed draft'} ${doc.kind==='start'?'starting sheet':'current character sheet'}: ${c.identity.name}`,
-  'Use these confirmed values as the starting state; change them only through agreed rules and recorded development. Open history and goals may emerge in play consistently with confirmed facts and explicit exclusions. Do not assign my decisions or feelings.',
+  'Use this sheet as the starting state once confirmed; change it only through agreed rules and recorded development. Open history and goals may emerge in play consistently with confirmed facts and explicit exclusions. Do not assign my decisions or feelings.',
   'IDENTITY',...Object.entries(c.identity).filter(([,v])=>v).map(([k,v])=>`${({name:'Name',pronouns:'Pronouns',ancestry:'Ancestry',origin:'Origin',role:'Role',description:'Description'})[k]}: ${v}`),
   'ATTRIBUTES',Object.entries(ruleAttributes).map(([k,v])=>`${v}: ${c.attributes[k]>=0?'+':''}${c.attributes[k]}`).join(' · '),
   'TALENTS',list(c.talents,r=>`${r.name} (+${r.bonus}, not stackable): ${r.description}`),
   'ABILITIES',list(c.abilities,r=>`${r.name}: ${r.effect}\nCost: ${r.cost} · Limits: ${r.limits}`),
   'WEAKNESSES',list(c.weaknesses,r=>`${r.name}\nTrigger: ${r.trigger}\nEffect: ${r.effect}\nMitigation: ${r.mitigation||'unspecified'}`),
   'CONDITION',`${c.vitals.hp}/${c.vitals.maxHp} HP`, `Injuries: ${c.vitals.injuries||'none recorded'}`,
-  list(c.vitals.resources,r=>`${r.name}: ${r.current}/${r.max}\nEffect: ${r.effect}\nCost: ${r.cost}\nRegeneration: ${r.regeneration}`),
+  'ABILITY RESOURCES',list(c.vitals.resources,r=>`${r.name}: ${r.current}/${r.max}\nEffect: ${r.effect}\nCost: ${r.cost}\nRegeneration: ${r.regeneration}`),
   'CARRIED EQUIPMENT',list(c.inventory,r=>`${r.name} ×${r.quantity}: ${r.description} · ${r.slots} slots per unit · Bonus +${r.bonus}`),
   `Used: ${c.inventory.reduce((n,r)=>n+r.quantity*r.slots,0)}/8 carrying slots.`,
-  'NOURISHMENT AND NEEDS',c.nourishment||'No special needs recorded.',
+  'MONEY AND ASSETS',
+  c.finances.funds.length?c.finances.funds.map(r=>`${r.currency}: ${r.amount}`).join('\n'):'Starting funds unspecified; do not assume zero.',
+  ...(c.finances.purchasingPower?[`Purchasing power / price anchors: ${c.finances.purchasingPower}`]:[]),
+  ...(c.finances.assets?[`Other assets: ${c.finances.assets}`]:[]),
+  ...(c.needs.length?['SPECIAL NEEDS',list(c.needs,r=>`${r.name}: ${r.description}\n${r.mechanical?`Agreed mechanic — Trigger: ${r.trigger}\nEffect: ${r.effect}\nCare / recovery: ${r.care}`:'Descriptive only; no additional counters or mechanical penalties agreed.'}`)]:[]),
   'BACKGROUND',`Confirmed: ${c.background.confirmed||'unspecified'}\nOpen: ${c.background.open||'unspecified'}\nExcluded: ${c.background.excluded||'unspecified'}`,
   'DEVELOPMENT',list(c.development,r=>`${r.milestone}: ${r.change}\nBenefit: ${r.benefit}\nLimits: ${r.limits||'not recorded'}`),
   ...(doc.kind==='current'?[doc.startCharacter?'ORIGINAL STARTING SHEET\n'+characterText({...newCharacterDocument(),confirmed:true,character:doc.startCharacter}):'Original starting sheet unavailable; do not invent starting values.']:[]),
@@ -131,7 +151,10 @@ export function characterTemplate(idea='',world='') {
   'Preserve my specifications. Ancestry, origin, personal goals and relationships may remain unknown or open. Do not invent confirmed history during creation. Open history may emerge in play; it is not a prohibition. background.excluded contains only exclusions I explicitly requested; otherwise empty. Do not invent bans on future revelations, relationships or missions. Fill missing values and equipment without job stereotypes. Ask about essential contradictions instead of silently changing them.',
   'Strength = strength, endurance and forceful weapons; Dexterity = precision, movement and stealth; Intellect = knowledge, analysis, planning and technology; Insight = perception, insight and intuition. Integer starting values −1 to +3, sum +5. Exactly two distinct useful talents with bonus:2; never stack. Define recognizable domains matching their names across plausible uses, not one task, surface or tool. Do not lock a talent to one attribute when another fits the approach. No universal bonuses. Choose a situational weakness with an observable trigger and clear effect, not constant impairment or an invented feeling. Ordinary resource scarcity is not an extra personal weakness. Add further weaknesses only if my idea explicitly requires them. 10/10 HP; at most eight carried slots. quantity multiplies slots per unit; clothing/trifles may use 0. Equipment bonus 0 to 2, justified and situational.',
   'abilities: {name,effect,cost,limits}, concrete effects, costs and limits. weaknesses: {name,trigger,effect,mitigation}. vitals.resources: {name,current,max,effect,cost,regeneration}. Magic users normally start with three resource points; define effects, costs and regeneration first. No universal problem-solving powers or supernatural abilities without a suitable world and idea. Leave unused lists empty. Explain any new mechanic before it affects play.',
-  'inventory: {name,quantity,slots,bonus,description}. nourishment: special food/needs. background.confirmed: established facts; background.open: open areas; background.excluded: explicit exclusions. Keep development empty for a starting character. Talents can later expand, change or be replaced through agreed development; retain the original sheet. confirmed:false: the player reviews and confirms the draft.',
+  'inventory: {name,quantity,slots,bonus,description}. background.confirmed: established facts; background.open: open areas; background.excluded: explicit exclusions. Keep development empty for a starting character. Talents can later expand, change or be replaced through agreed development; retain the original sheet. confirmed:false: the player reviews and confirms the draft.',
+  'Money belongs in finances, never vitals.resources. finances.funds contains {currency,amount} with no artificial maximum, costs or regeneration. Preserve an explicit amount; otherwise propose modest, plausible starting funds for the world and idea, or explicit zero if the idea requires poverty. Do not silently omit money or assume unspecified funds mean zero. Add optional purchasingPower with one or two ordinary price anchors, and assets only if appropriate. These are a draft for player review, not invented confirmed history.',
+  'vitals.resources contains ability pools only: current/max, effect, spending cost and regeneration. Leave it empty if unnecessary; ammunition and supplies remain inventory. needs is optional: {name,description,mechanical,trigger,effect,care}. Omit ordinary human food, water and sleep. Describe special needs without new penalties by default (mechanical:false). Set mechanical:true only when the player explicitly requests a mechanic; then specify observable trigger, exact effect and care/recovery. Avoid duplicating a tracked ability resource; refer to it instead. Do not invent an unannounced hunger system.',
+  'Stay within the existing rules: use disadvantage or a concrete situational limitation for weaknesses, not invented flat penalty types. Equipment bonus applies only to checks, not armor. Appropriate light armor provides +1 defense, recorded clearly in its description with bonus:0. State weapon base damage using light 2, ordinary 3 or heavy 4 where relevant; no extra attacks or new damage systems. Define powers and costs before play, not after their first use.',
   'JSON TEMPLATE (replace examples; add entries only to the described lists):',JSON.stringify(example,null,2),
  ].join('\n\n');
 }

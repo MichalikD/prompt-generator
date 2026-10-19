@@ -1,4 +1,4 @@
-# Prioritäten nach den Rika-Durchläufen
+# Prioritäten nach dem Nara-Durchlauf
 
 Maßstab ist das Spielerlebnis. Ein schlechter Run darf beendet werden;
 dekorative Fehler werden nicht automatisch Entwicklungsaufträge.
@@ -37,6 +37,22 @@ Anweisungen das Spielerlebnis verbessern, bleibt im nächsten Run zu prüfen.
 Beide geplanten Schritte sind umgesetzt. Nach Merge und Deployment ist ein
 gebündelter neuer Spieltest mit neuem Bogen möglich.
 
+## Generator und Bogen nach Nara umgesetzt
+
+- Vier geführte Schritte in beiden Modi, Prüfung vor dem Weitergehen und
+  vollständige Ausgabe erst am Ende. Rücknavigation erhält Werte.
+- Konkrete Hinweise statt Lade-Platzhalter bei unvollständiger Vorbereitung.
+- Figurenformat 3: Geld/Vermögen getrennt von Fähigkeitspunkten; Kaufkraft optional.
+- Optionale beschreibende Bedürfnisse oder ausdrücklich vereinbarte Mechanik mit
+  Auslöser, Wirkung und Versorgung. Kein Pflichtzähler für normalen Alltag.
+- Erstellungstemplate mit Startmitteln und regelkonkreter Ausrüstung/Schwäche.
+
+Naras Transport trifft den gewünschten mittleren Umfang. Die wenigen Proben
+haben die Verfolgung nicht beeinträchtigt. Daher **keine Änderung an Umfang,
+Probenfrequenz, Erzählunterbau oder Antwortlänge**. Das Plugin bleibt 0.3.1.
+Nach Merge/Deployment einen anderen Durchlauf mit neuem Bogen vergleichen;
+kein weiterer Test pro einzelner UI-Änderung erforderlich.
+
 ## Danach gezielt prüfen (Priorität 2)
 
 - Figurenwissen: plausible Kontakt- und Wissensübertragungen; private Überlegungen
@@ -58,7 +74,9 @@ gebündelter neuer Spieltest mit neuem Bogen möglich.
 
 - Häufig SG 14; keine Würfelquote oder künstlichen zusätzlichen Proben einführen.
 - Kampf, gegnerische Würfe und Ressourcenverbrauch sind noch nicht ausreichend getestet.
-- Häufige Eigennamen für unwichtige NSC und wiederkehrende Erzählerfloskeln.
+- Wiederkehrende Namen und Erzählerfloskeln; noch keine zusätzliche Regel.
+- Lange Antworten: kürzere Orientierung später erneut bewerten, für den nächsten Vergleich unverändert.
+- Cyberware und besondere Ausrüstung als vielfältige Belohnungen; bisher kein nachgewiesenes Kaufproblem.
 - Widersprüchliche dekorative Symbole bei ansonsten korrekter Rechnung.
 
 Nächster Spieltest mit dieser gebündelten Fassung nach Merge/Deployment.

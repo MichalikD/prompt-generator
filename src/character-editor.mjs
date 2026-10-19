@@ -16,7 +16,7 @@ let textRevision=0;
 const $=selector=>root.querySelector(selector);
 const form=$('#character-fields');
 form.addEventListener('submit',event=>event.preventDefault());
-const labels={name:'Name',description:'Beschreibung / Funktion',bonus:'Bonus',effect:'Wirkung',cost:'Kosten (ggf. „keine“)',limits:'Grenzen',trigger:'Auslöser',mitigation:'Abmilderung',quantity:'Anzahl',slots:'Tragplätze pro Einheit',current:'Aktuell',max:'Maximum',regeneration:'Regeneration',milestone:'Meilenstein',change:'Änderung',benefit:'Konkreter Nutzen'};
+const labels={currency:'Währung',amount:'Verfügbarer Betrag',mechanical:'Eine Mechanik für dieses Bedürfnis vereinbaren',care:'Versorgung / Erholung',name:'Name',description:'Beschreibung / Funktion',bonus:'Bonus',effect:'Wirkung',cost:'Kosten (ggf. „keine“)',limits:'Grenzen',trigger:'Auslöser',mitigation:'Abmilderung',quantity:'Anzahl',slots:'Tragplätze pro Einheit',current:'Aktuell',max:'Maximum',regeneration:'Regeneration',milestone:'Meilenstein',change:'Änderung',benefit:'Konkreter Nutzen'};
 function field(parent,path,label,type='text') {
  const wrap=document.createElement('div');wrap.className='character-field';
  const caption=document.createElement('label');caption.textContent=label;caption.htmlFor='cf-'+path.join('-');
@@ -24,12 +24,14 @@ function field(parent,path,label,type='text') {
  input.id=caption.htmlFor;input.name=path.join('.');
  if(type==='textarea') input.rows=3;
  else input.type=type;
- if(type==='number') input.step='1';
- input.value=path.reduce((object,key)=>object[key],doc.character);
+ if(type==='number') input.step=path.at(-1)==='amount'?'any':'1';
+ const value=path.reduce((object,key)=>object[key],doc.character);
+ if(type==='checkbox')input.checked=value;else input.value=value;
+ if(path[0]==='needs'&&['trigger','effect','care'].includes(path.at(-1)))wrap.hidden=!doc.character.needs[path[1]].mechanical;
  input.addEventListener('input',()=>{
   const object=path.slice(0,-1).reduce((object,key)=>object[key],doc.character);
-  object[path.at(-1)]=type==='number'?(input.value===''?NaN:Number(input.value)):input.value;
-  doc.confirmed=false;$('#character-confirmed').checked=false;update();
+  object[path.at(-1)]=type==='checkbox'?input.checked:type==='number'?(input.value===''?NaN:Number(input.value)):input.value;
+  doc.confirmed=false;$('#character-confirmed').checked=false;if(type==='checkbox')render();else update();
  });
  wrap.append(caption,input);parent.append(wrap);
 }
@@ -41,7 +43,7 @@ function list(title,path,defaults,numbers=[]) {
  rows.forEach((row,index)=>{
   const box=document.createElement('div');box.className='character-row';
   const heading=document.createElement('h3');heading.textContent=`${title} ${index+1}`;box.append(heading);
-  for(const key of Object.keys(defaults)) field(box,[...path,index,key],labels[key],numbers.includes(key)?'number':['description','effect','limits','trigger','mitigation','benefit','regeneration'].includes(key)?'textarea':'text');
+  for(const key of Object.keys(defaults)) field(box,[...path,index,key],labels[key],typeof defaults[key]==='boolean'?'checkbox':numbers.includes(key)?'number':['description','effect','limits','trigger','mitigation','benefit','regeneration','care'].includes(key)?'textarea':'text');
   const remove=document.createElement('button');remove.type='button';remove.className='quiet';remove.textContent=`${title} ${index+1} entfernen`;
   remove.addEventListener('click',()=>{rows.splice(index,1);doc.confirmed=false;render();});box.append(remove);parent.append(box);
  });
@@ -58,9 +60,19 @@ function render() {
  list('Fähigkeit',['abilities'],{name:'',effect:'',cost:'',limits:''});
  list('Schwäche',['weaknesses'],{name:'',trigger:'',effect:'',mitigation:''});
  const vitals=section('LP und Verletzungen');field(vitals,['vitals','hp'],'Aktuelle LP','number');field(vitals,['vitals','maxHp'],'Maximale LP','number');field(vitals,['vitals','injuries'],'Verletzungen (optional)','textarea');
- list('Ressource',['vitals','resources'],{name:'',current:3,max:3,effect:'',cost:'',regeneration:''},['current','max']);
+ list('Fähigkeitsressource (optional)',['vitals','resources'],{name:'',current:3,max:3,effect:'',cost:'',regeneration:''},['current','max']);
+ const resourceHelp=document.createElement('p');resourceHelp.className='field-help';resourceHelp.textContent='Nur Punkte für Fähigkeiten, etwa Magie oder Fokus. Geld gehört unter Geld und Vermögen, Munition zur Ausrüstung. Ohne solche Fähigkeiten bleibt die Liste leer.';form.lastElementChild.insertBefore(resourceHelp,form.lastElementChild.children[1]??null);
  list('Ausrüstung',['inventory'],{name:'',quantity:1,slots:1,bonus:0,description:''},['quantity','slots','bonus']);
- field(section('Besondere Bedürfnisse'),['nourishment'],'Nahrung und andere Bedürfnisse','textarea');
+ const money=section('Geld und Vermögen');
+ const moneyHelp=document.createElement('p');moneyHelp.className='field-help';moneyHelp.textContent='Geld hat keinen Maximalwert und regeneriert nicht. Kein Eintrag bedeutet unbekannt, nicht mittellos. Für einen bewussten Start ohne Geld 0 eintragen.';money.append(moneyHelp);
+ list('Guthaben',['finances','funds'],{currency:'',amount:0},['amount']);
+ money.append(form.lastElementChild);
+ field(money,['finances','purchasingPower'],'Kaufkraft / Preisanker (optional)','textarea');
+ field(money,['finances','assets'],'Weiteres Vermögen (optional)','textarea');
+ const needHelp=section('Besondere Bedürfnisse (optional)');
+ const hint=document.createElement('p');hint.className='field-help';hint.textContent='Normales Essen, Trinken und Schlafen muss hier nicht stehen. Besondere Bedürfnisse können rein beschreibend bleiben. Eine zusätzliche Mechanik braucht vor dem Spiel einen Auslöser, eine konkrete Wirkung und Versorgung / Erholung.';needHelp.append(hint);
+ list('Besonderes Bedürfnis',['needs'],{name:'',description:'',mechanical:false,trigger:'',effect:'',care:''});
+ needHelp.append(form.lastElementChild);
  const background=section('Hintergrund');for(const [key,label] of Object.entries({confirmed:'Bestätigte Fakten',open:'Bewusst offen',excluded:'Ausgeschlossene Zuschreibungen'})) field(background,['background',key],label,'textarea');
  if(doc.kind==='current') list('Entwicklung',['development'],{milestone:'',change:'',benefit:'',limits:''});
  $('#character-confirmed').checked=doc.confirmed;
@@ -77,7 +89,7 @@ function update() {
  for(const id of ['copy-character','download-character-text','download-character-json']) $('#'+id).disabled=errors.length>0;
  $('#character-continue').disabled=errors.length>0||doc.kind!=='start'||!doc.confirmed;
  $('#character-confirmed').disabled=errors.length>0;
- $('#character-status').textContent=errors.length?`${errors.length} Angaben bitte prüfen. Ausgabe erst nach gültigem Bogen.`:doc.confirmed?(worldLocked?'Bogen bestätigt und in Schritt 2 enthalten.':'Bogen bestätigt. Für den Spielchat kopieren oder im Generator importieren.'):'Bogen formal gültig. Entwurf prüfen und vor dem Spielstart bestätigen.';
+ $('#character-status').textContent=errors.length?`${errors.length} Angaben bitte prüfen. Ausgabe erst nach gültigem Bogen.`:doc.confirmed?(worldLocked?'Bogen bestätigt. Er wird am Ende automatisch in die erste Chatnachricht übernommen.':'Bogen bestätigt. Für den Spielchat kopieren oder im Generator importieren.'):'Bogen formal gültig. Entwurf prüfen und vor dem Spielstart bestätigen.';
  $('#character-preview').value=errors.length?'':characterText(doc);
  $('#character-json').value=errors.length?'':serializeCharacter(doc);
  onChange(structuredClone(doc));
