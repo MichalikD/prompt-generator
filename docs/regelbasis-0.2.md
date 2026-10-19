@@ -27,7 +27,7 @@ Kurze Projektanweisungen:
 
 ```text
 Dieses Projekt enthält einen Textrollenspiel-Durchgang mit dem ausdrücklich
-ausgewählten Plugin „Freie Spielleitung 0.2“, Regelsatz 0.2.0.
+ausgewählten Plugin „Freie Spielleitung 0.2“, Regelsatz 0.2.1.
 Verwende dessen Anweisungen und Regelreferenzen sowie meine bestätigten
 Setting- und Spielvorgaben. Ich steuere meine Figur, du die Welt und Folgen.
 Bewahre den bestätigten Bogen und etablierte Fakten. Übernimm keine andere
@@ -116,7 +116,7 @@ npm run plugin:check
 npm run plugin:build
 ```
 
-Das ZIP entsteht unter `dist/freie-spielleitung-02-0.2.0.zip`. Es enthält nur
+Das ZIP entsteht unter `dist/freie-spielleitung-02-0.2.1.zip`. Es enthält nur
 Manifest, Skill und Referenzen. Es kann über Plugin Creator als privates Plugin
 gespeichert werden. Ein Git-Commit oder Pages-Deployment aktualisiert ein
 ChatGPT-Plugin nicht automatisch. Die Paketprüfung kontrolliert Struktur und
@@ -131,14 +131,31 @@ Durchgänge. Die **Freie Spielleitung 0.2** ist eine eigene private Installation
 Ein anderes Setting benötigt keine weitere Plugininstanz. Verwendete Fassung
 und individuelle Abweichungen gehören in jeden Spielstand.
 
-Für weitere veröffentlichte Testfassungen die bestehende Quelle erhalten und
-eine neue Paketidentität verwenden. Ein Versionsfeld im Projekt allein ist
-keine technische Sperre gegen geänderte Pluginanweisungen. Änderungen an einer
-laufenden Kampagne werden daher nicht durch ein stilles Ersetzen dieses Plugins
-eingespielt. Eine spätere gemeinsame Veröffentlichung ist ein separater Schritt.
+Die private Freie Spielleitung wird während des Prototyps unter derselben
+Paketidentität aktualisiert. Aktuell ist Regelsatz 0.2.1. Ein Versionsfeld im
+Projekt ist keine technische Sperre gegen geänderte Pluginanweisungen. Für einen
+neuen Test einen neuen Chat und frisch erzeugte Starttexte verwenden. Alte
+Spielstände oder Eingabeformate müssen im Prototyp nicht kompatibel bleiben.
+Die alte Vesper-Spielleitung wird durch diese Aktualisierung nicht geändert.
 
-Beide Generator-Ausgabemodi, das gemeinsame Abenteuerprofil und der separate
+Beide Generator-Ausgabemodi, das gemeinsame Abenteuerprofil und der eingebundene
 Charaktereditor sind vorhanden. Der Editor bietet ein abgestimmtes Figurenformat,
 JSON-Import/-Export und eine frei nutzbare Charakteranfrage zum Kopieren in
 beliebige KI-Chats. Eine optionale eigene API-Anbindung ist weiterhin nicht gebaut.
 [Charakterbogen verwenden](charakterbogen.md).
+
+## 0.2.1: Erzählführung nach dem Mason-Test
+
+- Spielbare Beteiligung aus bekannten Fähigkeiten und der aktuellen Lage ableiten;
+  unbekannte Vergangenheit ist kein Hindernis für den Auftakt.
+- Spielerfreiheit durch echte Angebote und Entscheidungen wahren, statt die
+  Figur wiederholt nur zu informieren, untersuchen oder nach Hause zu schicken.
+- Vereinbarte gefahrlose Routinen bis zu Befund oder echter Entscheidung raffen.
+- Eigenständige Abenteuer vom Kampagnenhintergrund unterscheiden; mittlerer Umfang
+  braucht Konfliktentwicklung, keine künstlichen Zusatzschritte.
+- Keine Bilder oder Bildwerkzeuge ohne ausdrücklichen Wunsch.
+- Bei neuen Figuren offene Biografie nicht in erfundene Verbote verwandeln;
+  Schwächen mit beobachtbaren Auslösern und verständlichen Folgen formulieren.
+
+Die Wirkung auf die Erzählqualität muss in einem neuen Durchlauf geprüft werden;
+Paket- und Quellprüfungen ersetzen diesen Test nicht.

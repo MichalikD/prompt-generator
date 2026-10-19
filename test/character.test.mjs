@@ -62,22 +62,10 @@ test('KI-Template enthält das importierbare Format und verlangt Prüfung statt 
  assert.deepEqual(validateCharacterDocument(template),[]);
  assert.equal(template.confirmed,false);
  assert.ok(prompt.includes('Summe +5'));
- assert.ok(prompt.includes('Herkunft, persönliche Ziele und Beziehungen dürfen offen bleiben'));
+ assert.ok(prompt.includes('Spezies/Abstammung, Herkunft, persönliche Ziele und Beziehungen dürfen unbekannt oder offen bleiben'));
  assert.ok(validateCharacterDocument(newCharacterDocument()).length>0);
 });
 
-test('Alter Vesper-API-Bogen wird ohne veränderte Werte oder erfundene Fähigkeiten importiert',()=>{
- const c=example.character;
- const legacy={name:c.identity.name,ancestry:c.identity.ancestry,role:c.identity.role,description:c.identity.description,attributes:c.attributes,hp:10,max_hp:10,resource:null,features:[c.nourishment],weakness:c.weaknesses[0].trigger,talents:c.talents.map((t,i)=>({...t,id:`talent-${i}`})),inventory:c.inventory.map(({quantity,...item},i)=>({...item,id:`gear-${i}`}))};
- const converted=parseCharacter(JSON.stringify(legacy));
- assert.equal(converted.confirmed,false);
- assert.deepEqual(converted.character.attributes,c.attributes);
- assert.deepEqual(converted.character.inventory,c.inventory);
- assert.deepEqual(converted.character.talents,c.talents);
- assert.equal(converted.character.weaknesses[0].effect,legacy.weakness);
- assert.deepEqual(converted.character.abilities,[]);
- assert.equal(converted.character.nourishment,c.nourishment);
- assert.ok(converted.character.background.confirmed.includes(c.nourishment));
- assert.throws(()=>parseCharacter(JSON.stringify({...legacy,unexpected:'nicht verlieren'})),/Unbekanntes Feld/);
- assert.throws(()=>parseCharacter(JSON.stringify({...legacy,resource:{points:3}})),/Ressourcenstruktur/);
+test('Nicht unterstützte Altformate werden abgewiesen',()=>{
+ assert.throws(()=>parseCharacter(JSON.stringify({name:'Alt',attributes:{},max_hp:10,hp:10})),/Format|Feld|format/);
 });

@@ -16,7 +16,7 @@ export function selectOptions(config) {
   diceText(config); // Gleiche Validierung für beide Ausgaben.
   return selected;
 }
-export function buildCompactPackage(config = defaults) {
+export function buildCompactPackage(config = defaults, {prepared=false}={}) {
   const options = selectOptions(config);
   const profile = createProfile(config);
   const narrative = profileText(profile, options, groups);
@@ -25,7 +25,7 @@ export function buildCompactPackage(config = defaults) {
   const sections = [
     ['AUFTRAG', rules.intro],
     ['START', rules.start],
-    ['FIGUR', selected.creation, rules.character, powers[config.setting]],
+    ['FIGUR', prepared ? 'Übernimm den bestätigten Bogen aus der ersten Spielnachricht unverändert; keine erneute Charaktererstellung.' : selected.creation, rules.character, powers[config.setting]],
     ['ABENTEUER', rules.world],
     ['SPIELWEISE', rules.play, pacing],
     ['W20-PROBEN', rules.checks, selected.frequency, probePolicy, selected.roller, selected.visibility, diceText(config)],

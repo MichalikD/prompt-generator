@@ -1,10 +1,14 @@
 # Charaktereditor und Figurenformat 1
 
-Im Generator öffnet **Charakterbogen erstellen oder importieren** eine separate
-Seite in einem neuen Tab. Die gewählte Abenteuerkonfiguration bleibt im bisherigen
-Tab. Bogen und Abenteuerprofil werden getrennt verwendet: Projektanweisungen
-hinterlegen, erste Spielnachricht mit Profil senden und den bestätigten Bogen
-separat hinzufügen. Das funktioniert mit beiden Ausgabemodi.
+Im Generator kann der Spieler zwischen Erstellung im Spielchat und einem
+vorbereiteten Bogen wählen. Der Editor erscheint direkt auf derselben Seite und
+erhält Weltbeschreibung und eigene Vorgaben automatisch aus dem Abenteuerprofil.
+Der Template-Abschnitt zeigt diese Angaben schreibgeschützt. Nach Prüfung und
+Bestätigung enthält die erste Chatnachricht Profil und Bogen gemeinsam, in beiden
+Ausgabemodi. Eine Änderung der Weltvorgaben hebt die Bestätigung auf, verändert
+aber keine Bogenwerte. Unpassende Chat-Erstellungsoptionen werden ausgeblendet.
+Die separate Seite `character.html` kann weiterhin ohne Abenteuerprofil verwendet
+werden; dort werden die Weltangaben manuell eingegeben.
 
 ## Ablauf
 
@@ -17,7 +21,7 @@ separat hinzufügen. Das funktioniert mit beiden Ausgabemodi.
 3. Angaben und Fehlermeldungen prüfen. Der Editor prüft Zahlen und Struktur;
    erzählerische Plausibilität, passende Grenzen und gleichwertige Talente muss
    der Spieler selbst beurteilen. Bogen ausdrücklich bestätigen.
-4. Lesbaren Text für den Chat kopieren oder als Markdown herunterladen. JSON für
+4. Gemeinsame erste Chatnachricht im Generator kopieren oder das Startpaket herunterladen. Alternativ den lesbaren Einzelbogen als Markdown herunterladen. JSON für
    spätere Bearbeitung sichern. Ein formal gültiger, unbestätigter Entwurf lässt
    sich ebenfalls exportieren; die Textausgabe kennzeichnet ihn als Entwurf.
 
@@ -78,12 +82,14 @@ Ist bei einem importierten aktuellen Dokument der ursprüngliche Bogen unbekannt
 steht `startCharacter: null`. Der Export benennt diese Lücke und erfindet keinen
 Start. Bei `kind: "start"` ist `startCharacter` immer `null`.
 
-Der bisherige Vesper-API-Startbogen (mit `hp`, `max_hp`, `resource: null`,
-`features`, `weakness` und Ausrüstungs-/Talentlisten) wird konvertiert. Werte und
-Beschreibungen bleiben erhalten; technische alte `id`-Felder werden nicht benötigt.
-Merkmale bleiben als bestätigte Hintergrundangaben erhalten; Angaben zu
-Nahrung/Hunger/Durst zusätzlich unter Bedürfnissen. Die unstrukturierte Schwäche
-bleibt im Wortlaut als Auslöser und Wirkung stehen und kann genauer aufgeteilt
-werden. Der Import erfindet keine Fähigkeiten, Kosten oder Gegenstände und
-verlangt erneute Bestätigung. Andere alte Ressourcenstrukturen werden ausdrücklich
-zur manuellen Übertragung zurückgewiesen.
+Alte API-Startbögen werden nicht konvertiert. Die bisherige Sonderbehandlung für
+Vesper wurde entfernt: Der Prototyp unterstützt nur das aktuelle versionierte
+Figurenformat und benötigt keine Altformat-Kompatibilität. Das Beispiel im
+Repository verwendet dieses aktuelle Format.
+
+Das Erstellungstemplate lässt unbekannte Spezies und Herkunft zu. Es erfindet
+keine zusätzliche Liste verbotener biografischer Enthüllungen; Ausschlüsse stammen
+vom Spieler. Die erste situative Schwäche braucht einen beobachtbaren Auslöser
+und eine klare Wirkung. Sie setzt keine vom Spielleiter erfundene Angst oder Wut
+voraus. Ressourcenknappheit ist keine zusätzliche individuelle Schwäche. Eine
+formale JSON-Prüfung kann die Qualität solcher Freitexte weiterhin nicht beweisen.

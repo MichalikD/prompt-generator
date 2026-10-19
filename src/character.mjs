@@ -91,31 +91,8 @@ export function continueCharacter(doc) {
 export function parseCharacter(text) {
  if(typeof text!=='string'||new TextEncoder().encode(text).byteLength>1000000) throw new Error('Bitte eine JSON-Datei bis 1 MB verwenden.');
  let doc;try{doc=JSON.parse(text);}catch{throw new Error('Ungültiges JSON. Der bisherige Bogen bleibt erhalten.');}
- if(isObject(doc) && !('format' in doc) && 'attributes' in doc && 'max_hp' in doc) doc=convertLegacy(doc);
  const errors=validateCharacterDocument(doc);
  if(errors.length) throw new Error(errors.join('\n'));
- return doc;
-}
-// Import des bereits bestätigten API-Startbogens, insbesondere Vesper.
-function convertLegacy(old) {
- const errors=[];
- const fields=['ancestry','attributes','description','features','hp','inventory','max_hp','name','resource','role','talents','weakness'];
- if(!keys(old,fields,'Alter Startbogen',errors)||errors.length) throw new Error(errors.join('\n'));
- if(old.resource!==null) throw new Error('Alte Ressourcenstruktur ist nicht eindeutig. Bitte in das neue Figurenformat übertragen.');
- if(!Array.isArray(old.features)||old.features.some(f=>typeof f!=='string')) throw new Error('Alte Besonderheiten müssen eine Textliste sein.');
- if(typeof old.weakness!=='string'||!old.weakness.trim()) throw new Error('Die alte Schwäche fehlt.');
- rows(old.talents,['bonus','description','id','name'],'Altes Talent',errors,()=>{});
- rows(old.inventory,['bonus','description','id','name','slots'],'Alte Ausrüstung',errors,()=>{});
- if(errors.length) throw new Error(errors.join('\n'));
- const doc=newCharacterDocument(), c=doc.character;
- c.identity={...c.identity,name:old.name,ancestry:old.ancestry,role:old.role,description:old.description};
- c.attributes=old.attributes;c.vitals.hp=old.hp;c.vitals.maxHp=old.max_hp;
- c.talents=old.talents.map(({name,description,bonus})=>({name,description,bonus}));
- c.inventory=old.inventory.map(({name,description,bonus,slots})=>({name,description,bonus,slots,quantity:1}));
- c.weaknesses=[{name:'Situative Schwäche',trigger:old.weakness,effect:old.weakness,mitigation:''}];
- c.background.confirmed=old.features.join('\n');
- c.nourishment=old.features.filter(text=>/Nahrung|Hunger|Durst/i.test(text)).join('\n');
- // Keine Kosten oder Wirkungen erfinden; alte Angaben bleiben im Wortlaut erhalten.
  return doc;
 }
 export function characterText(doc) {
@@ -149,8 +126,8 @@ export function characterTemplate(idea='',world='') {
   'Erstelle einen Startbogen für ein freies W20-Textrollenspiel aus meiner Figurenidee. Keine Geschichte beginnen. Antworte mit einem einzigen JSON-Objekt ohne Markdown-Codeblock, passend zu dem Schema unten. Keine zusätzlichen Felder. format, version, kind und confirmed unverändert lassen. Keine API oder Werkzeuge benötigt.',
   `FIGURENIDEE\n${idea.trim()||'[Hier die eigene Kurzbeschreibung einsetzen]'}`,
   `WELTVORGABEN\n${world.trim()||'[Hier die Weltvorgaben aus dem Abenteuerprofil einsetzen]'}`,
-  'Bewahre meine Vorgaben. Herkunft, persönliche Ziele und Beziehungen dürfen offen bleiben; erfinde keine bestätigte Vergangenheit. Ergänze fehlende Werte und Ausrüstung ohne Berufsklischees. Frage bei wesentlichen Widersprüchen, statt sie still zu ändern.',
-  'Kraft = Stärke, Ausdauer und kraftvoller Waffeneinsatz. Geschick = Präzision, Bewegung und Heimlichkeit. Verstand = Wissen, Analyse, Planung und Technik. Gespür = Wahrnehmung, Menschenkenntnis und Intuition. Ganze Startwerte −1 bis +3, Summe +5. Genau zwei enge Talente mit bonus:2; nicht stapelbar. Mindestens eine situative Schwäche mit erkennbarem Auslöser und Wirkung. 10/10 LP, maximal acht getragene Plätze. quantity multipliziert slots (pro Einheit); kleine Kleidung darf 0 Plätze belegen. Ausrüstungsbonus 0 bis 2, nur begründet und situationsbezogen.',
+  'Bewahre meine Vorgaben. Spezies/Abstammung, Herkunft, persönliche Ziele und Beziehungen dürfen unbekannt oder offen bleiben. Erfinde bei der Erstellung keine bestätigte Vergangenheit. Offene Angaben dürfen im späteren Spiel entdeckt und ausgestaltet werden; sie sind keine Verbote. Trage in background.excluded ausschließlich ausdrücklich von mir genannte Ausschlüsse ein und lasse das Feld andernfalls leer. Erfinde keine Verbote bestimmter Herkunft, früherer Beziehungen, Missionen oder späterer Enthüllungen. Ergänze fehlende Werte und Ausrüstung ohne Berufsklischees. Frage bei wesentlichen Widersprüchen, statt sie still zu ändern.',
+  'Kraft = Stärke, Ausdauer und kraftvoller Waffeneinsatz. Geschick = Präzision, Bewegung und Heimlichkeit. Verstand = Wissen, Analyse, Planung und Technik. Gespür = Wahrnehmung, Menschenkenntnis und Intuition. Ganze Startwerte −1 bis +3, Summe +5. Genau zwei enge Talente mit bonus:2; nicht stapelbar. Eine situative Schwäche mit beobachtbarem, konkretem Auslöser und klarer Wirkung; keine dauernde Einschränkung in praktisch jeder Abenteuerszene. Ihre Anwendung darf nicht voraussetzen, dass die Spielleitung meine Gefühle erfindet. Normale Ressourcenknappheit ist keine zusätzliche individuelle Schwäche. Weitere Schwächen nur, wenn meine Idee sie ausdrücklich verlangt. 10/10 LP, maximal acht getragene Plätze. quantity multipliziert slots (pro Einheit); kleine Kleidung darf 0 Plätze belegen. Ausrüstungsbonus 0 bis 2, nur begründet und situationsbezogen.',
   'abilities: je {name,effect,cost,limits}; Wirkung/Kosten/Grenzen konkret. weaknesses: je {name,trigger,effect,mitigation}. vitals.resources: je {name,current,max,effect,cost,regeneration}. Magiebegabte beginnen normalerweise mit drei Ressourcenpunkten; Wirkung, Kosten und Regeneration konkret festlegen. Keine universellen Problemlösefähigkeiten. Keine übernatürlichen Kräfte ohne passende Welt- und Figurenidee. Keine Fähigkeiten oder Ressourcen erzwingen: unbenötigte Listen leer lassen.',
   'inventory: je {name,quantity,slots,bonus,description}. nourishment: besondere Nahrung/Bedürfnisse. background.confirmed: gesicherte Angaben; background.open: bewusst offene Bereiche; background.excluded: ausgeschlossene Zuschreibungen. development bleibt bei einer Startfigur leer. confirmed:false: Der Spieler prüft und bestätigt den Entwurf später selbst.',
   'JSON-VORLAGE (Beispiele ersetzen; zusätzliche Einträge nur in den beschriebenen Listen):',JSON.stringify(example,null,2),
