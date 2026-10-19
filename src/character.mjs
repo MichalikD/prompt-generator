@@ -1,9 +1,10 @@
-export const CHARACTER_VERSION = 1;
-export const attributeLabels = {kraft:'Kraft', geschick:'Geschick', verstand:'Verstand', gespuer:'Gespür'};
+import { languageDirective, localizationPolicy, ruleAttributes } from './language.mjs';
+export const CHARACTER_VERSION = 2;
+export const attributeLabels = {strength:'Kraft', dexterity:'Geschick', intellect:'Verstand', insight:'Gespür'};
 export function emptyCharacter() {
  return {
   identity:{name:'',pronouns:'',ancestry:'',origin:'',role:'',description:''},
-  attributes:{kraft:0,geschick:3,verstand:2,gespuer:0},
+  attributes:{strength:0,dexterity:3,intellect:2,insight:0},
   talents:[{name:'',description:'',bonus:2},{name:'',description:'',bonus:2}],
   abilities:[], weaknesses:[],
   vitals:{hp:10,maxHp:10,resources:[],injuries:''},
@@ -12,7 +13,7 @@ export function emptyCharacter() {
  };
 }
 export function newCharacterDocument() {
- return {format:'freie-spielleitung-character',version:CHARACTER_VERSION,kind:'start',confirmed:false,character:emptyCharacter(),startCharacter:null};
+ return {format:'open-game-master-character',version:CHARACTER_VERSION,kind:'start',confirmed:false,character:emptyCharacter(),startCharacter:null};
 }
 function isObject(v) { return v!==null && typeof v==='object' && !Array.isArray(v); }
 function keys(value, allowed, path, errors) {
@@ -68,7 +69,7 @@ function checkCharacter(c,kind,path,errors) {
 export function validateCharacterDocument(doc) {
  const errors=[];
  if(!keys(doc,['format','version','kind','confirmed','character','startCharacter'],'Figurenbogen',errors)) return errors;
- if(doc.format!=='freie-spielleitung-character'||doc.version!==CHARACTER_VERSION) errors.push('Unbekanntes Figurenformat oder nicht unterstützte Version.');
+ if(doc.format!=='open-game-master-character'||doc.version!==CHARACTER_VERSION) errors.push('Unbekanntes Figurenformat oder nicht unterstützte Version.');
  if(!['start','current'].includes(doc.kind)) errors.push('Bogenart muss start oder current sein.');
  if(typeof doc.confirmed!=='boolean') errors.push('Bestätigung muss true oder false sein.');
  checkCharacter(doc.character,doc.kind,'Figur',errors);
@@ -98,38 +99,39 @@ export function parseCharacter(text) {
 export function characterText(doc) {
  const errors=validateCharacterDocument(doc);if(errors.length) throw new Error(errors.join('\n'));
  const c=doc.character;
- const list=(items,fn)=>items.length?items.map(fn).join('\n'):'Keine eingetragen.';
+ const list=(items,fn)=>items.length?items.map(fn).join('\n'):'None recorded.';
  return [
-  `${doc.confirmed?'Bestätigter':'Entwurf · noch nicht bestätigter'} ${doc.kind==='start'?'Startbogen':'aktueller Figurenbogen'}: ${c.identity.name}`,
+  `${doc.confirmed?'Confirmed':'Unconfirmed draft'} ${doc.kind==='start'?'starting sheet':'current character sheet'}: ${c.identity.name}`,
   'Use these confirmed values as the starting state; change them only through agreed rules and recorded development. Open history and goals may emerge in play consistently with confirmed facts and explicit exclusions. Do not assign my decisions or feelings.',
-  'IDENTITÄT',...Object.entries(c.identity).filter(([,v])=>v).map(([k,v])=>`${({name:'Name',pronouns:'Pronomen',ancestry:'Spezies/Abstammung',origin:'Herkunft',role:'Rolle',description:'Beschreibung'})[k]}: ${v}`),
-  'ATTRIBUTE',Object.entries(attributeLabels).map(([k,v])=>`${v}: ${c.attributes[k]>=0?'+':''}${c.attributes[k]}`).join(' · '),
-  'TALENTE',list(c.talents,r=>`${r.name} (+${r.bonus}, nicht stapelbar): ${r.description}`),
-  'FÄHIGKEITEN',list(c.abilities,r=>`${r.name}: ${r.effect}\nKosten: ${r.cost} · Grenzen: ${r.limits}`),
-  'SCHWÄCHEN',list(c.weaknesses,r=>`${r.name}\nAuslöser: ${r.trigger}\nAuswirkung: ${r.effect}\nAbmilderung: ${r.mitigation||'nicht festgelegt'}`),
-  'ZUSTAND',`${c.vitals.hp}/${c.vitals.maxHp} LP`, `Verletzungen: ${c.vitals.injuries||'keine eingetragen'}`,
-  list(c.vitals.resources,r=>`${r.name}: ${r.current}/${r.max}\nWirkung: ${r.effect}\nKosten: ${r.cost}\nRegeneration: ${r.regeneration}`),
-  'GETRAGENE AUSRÜSTUNG',list(c.inventory,r=>`${r.name} ×${r.quantity}: ${r.description} · ${r.slots} Plätze pro Einheit · Bonus +${r.bonus}`),
-  `Belegt: ${c.inventory.reduce((n,r)=>n+r.quantity*r.slots,0)}/8 Tragplätze.`,
-  'NAHRUNG UND BEDÜRFNISSE',c.nourishment||'Keine Besonderheiten eingetragen.',
-  'HINTERGRUND',`Bestätigt: ${c.background.confirmed||'nicht festgelegt'}\nOffen: ${c.background.open||'nicht festgelegt'}\nAusgeschlossen: ${c.background.excluded||'nicht festgelegt'}`,
-  'ENTWICKLUNG',list(c.development,r=>`${r.milestone}: ${r.change}\nNutzen: ${r.benefit}\nGrenzen: ${r.limits||'nicht eingetragen'}`),
-  ...(doc.kind==='current'?[doc.startCharacter?'URSPRÜNGLICHER STARTBOGEN\n'+characterText({...newCharacterDocument(),confirmed:true,character:doc.startCharacter}):'Ursprünglicher Startbogen nicht verfügbar; keine Ausgangswerte erfinden.']:[]),
+  'IDENTITY',...Object.entries(c.identity).filter(([,v])=>v).map(([k,v])=>`${({name:'Name',pronouns:'Pronouns',ancestry:'Ancestry',origin:'Origin',role:'Role',description:'Description'})[k]}: ${v}`),
+  'ATTRIBUTES',Object.entries(ruleAttributes).map(([k,v])=>`${v}: ${c.attributes[k]>=0?'+':''}${c.attributes[k]}`).join(' · '),
+  'TALENTS',list(c.talents,r=>`${r.name} (+${r.bonus}, not stackable): ${r.description}`),
+  'ABILITIES',list(c.abilities,r=>`${r.name}: ${r.effect}\nCost: ${r.cost} · Limits: ${r.limits}`),
+  'WEAKNESSES',list(c.weaknesses,r=>`${r.name}\nTrigger: ${r.trigger}\nEffect: ${r.effect}\nMitigation: ${r.mitigation||'unspecified'}`),
+  'CONDITION',`${c.vitals.hp}/${c.vitals.maxHp} HP`, `Injuries: ${c.vitals.injuries||'none recorded'}`,
+  list(c.vitals.resources,r=>`${r.name}: ${r.current}/${r.max}\nEffect: ${r.effect}\nCost: ${r.cost}\nRegeneration: ${r.regeneration}`),
+  'CARRIED EQUIPMENT',list(c.inventory,r=>`${r.name} ×${r.quantity}: ${r.description} · ${r.slots} slots per unit · Bonus +${r.bonus}`),
+  `Used: ${c.inventory.reduce((n,r)=>n+r.quantity*r.slots,0)}/8 carrying slots.`,
+  'NOURISHMENT AND NEEDS',c.nourishment||'No special needs recorded.',
+  'BACKGROUND',`Confirmed: ${c.background.confirmed||'unspecified'}\nOpen: ${c.background.open||'unspecified'}\nExcluded: ${c.background.excluded||'unspecified'}`,
+  'DEVELOPMENT',list(c.development,r=>`${r.milestone}: ${r.change}\nBenefit: ${r.benefit}\nLimits: ${r.limits||'not recorded'}`),
+  ...(doc.kind==='current'?[doc.startCharacter?'ORIGINAL STARTING SHEET\n'+characterText({...newCharacterDocument(),confirmed:true,character:doc.startCharacter}):'Original starting sheet unavailable; do not invent starting values.']:[]),
  ].join('\n\n');
 }
 export function characterTemplate(idea='',world='') {
  const example=newCharacterDocument();
- example.character.identity.name='Name';example.character.identity.description='Figurenbeschreibung';
+ example.character.identity.name='Name';example.character.identity.description='Character description';
  example.character.talents=[{name:'Talent 1',description:'Useful domain matching the talent name',bonus:2},{name:'Talent 2',description:'Different useful domain',bonus:2}];
- example.character.weaknesses=[{name:'Situative Schwäche',trigger:'Konkreter Auslöser',effect:'Konkrete Einschränkung',mitigation:'Möglicher Umgang'}];
+ example.character.weaknesses=[{name:'Situational weakness',trigger:'Observable trigger',effect:'Concrete effect',mitigation:'Possible mitigation'}];
  return [
-  'Create a starting sheet for a free W20 roleplaying game from my idea. Write descriptions in German. Do not start the story. Return one JSON object, no Markdown or extra fields, matching the template. Keep format, version, kind and confirmed unchanged. No API or tools required.',
-  `FIGURENIDEE\n${idea.trim()||'[Hier die eigene Kurzbeschreibung einsetzen]'}`,
-  `WELTVORGABEN\n${world.trim()||'[Hier die Weltvorgaben aus dem Abenteuerprofil einsetzen]'}`,
+  languageDirective, localizationPolicy,
+  'Create a starting sheet for a free D20 roleplaying game from my idea. Do not start the story. Return one JSON object, no Markdown or extra fields, matching the template. Keep format, version, kind and confirmed unchanged. No API or tools required.',
+  `CHARACTER IDEA\n${idea.trim()||'[Insert your character idea]'}`,
+  `WORLD SPECIFICATIONS\n${world.trim()||'[Insert the world specifications from the adventure profile]'}`,
   'Preserve my specifications. Ancestry, origin, personal goals and relationships may remain unknown or open. Do not invent confirmed history during creation. Open history may emerge in play; it is not a prohibition. background.excluded contains only exclusions I explicitly requested; otherwise empty. Do not invent bans on future revelations, relationships or missions. Fill missing values and equipment without job stereotypes. Ask about essential contradictions instead of silently changing them.',
-  'Kraft = strength, endurance and forceful weapons; Geschick = precision, movement and stealth; Verstand = knowledge, analysis, planning and technology; Gespür = perception, insight and intuition. Integer starting values −1 to +3, sum +5. Exactly two distinct useful talents with bonus:2; never stack. Define recognizable domains matching their names across plausible uses, not one task, surface or tool. Do not lock a talent to one attribute when another fits the approach. No universal bonuses. Choose a situational weakness with an observable trigger and clear effect, not constant impairment or an invented feeling. Ordinary resource scarcity is not an extra personal weakness. Add further weaknesses only if my idea explicitly requires them. 10/10 LP; at most eight carried slots. quantity multiplies slots per unit; clothing/trifles may use 0. Equipment bonus 0 to 2, justified and situational.',
+  'Strength = strength, endurance and forceful weapons; Dexterity = precision, movement and stealth; Intellect = knowledge, analysis, planning and technology; Insight = perception, insight and intuition. Integer starting values −1 to +3, sum +5. Exactly two distinct useful talents with bonus:2; never stack. Define recognizable domains matching their names across plausible uses, not one task, surface or tool. Do not lock a talent to one attribute when another fits the approach. No universal bonuses. Choose a situational weakness with an observable trigger and clear effect, not constant impairment or an invented feeling. Ordinary resource scarcity is not an extra personal weakness. Add further weaknesses only if my idea explicitly requires them. 10/10 HP; at most eight carried slots. quantity multiplies slots per unit; clothing/trifles may use 0. Equipment bonus 0 to 2, justified and situational.',
   'abilities: {name,effect,cost,limits}, concrete effects, costs and limits. weaknesses: {name,trigger,effect,mitigation}. vitals.resources: {name,current,max,effect,cost,regeneration}. Magic users normally start with three resource points; define effects, costs and regeneration first. No universal problem-solving powers or supernatural abilities without a suitable world and idea. Leave unused lists empty. Explain any new mechanic before it affects play.',
   'inventory: {name,quantity,slots,bonus,description}. nourishment: special food/needs. background.confirmed: established facts; background.open: open areas; background.excluded: explicit exclusions. Keep development empty for a starting character. Talents can later expand, change or be replaced through agreed development; retain the original sheet. confirmed:false: the player reviews and confirms the draft.',
-  'JSON-VORLAGE (Beispiele ersetzen; zusätzliche Einträge nur in den beschriebenen Listen):',JSON.stringify(example,null,2),
+  'JSON TEMPLATE (replace examples; add entries only to the described lists):',JSON.stringify(example,null,2),
  ].join('\n\n');
 }

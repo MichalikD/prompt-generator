@@ -11,7 +11,7 @@ test('Bestätigter Bogen und Profil stehen in beiden Modi vollständig in einer 
  for(const mode of ['compact','plugin']) {
   const output=buildOutput(config,mode,figure);
   assert.ok(output.projectInstructions.length<LIMIT);
-  for(const text of ['ABENTEUERPROFIL','Nur Inseln.','Keine Bilder.','Bestätigter Startbogen: Vesper','Doppelschwertkampf','begin the adventure']) assert.ok(output.startMessage.includes(text),text);
+  for(const text of ['ADVENTURE PROFILE','Nur Inseln.','Keine Bilder.','Confirmed starting sheet: Vesper','Doppelschwertkampf','begin the adventure']) assert.ok(output.startMessage.includes(text),text);
   assert.ok(!output.startMessage.includes('I choose name, origin'));
   assert.ok(!output.projectInstructions.includes('I choose name, origin'));
   assert.ok(output.downloadText.includes(output.startMessage));
@@ -23,18 +23,18 @@ test('Vorbereitete Quelle wartet auf einen gültigen bestätigten Bogen; Moduswe
  for(const mode of ['compact','plugin']) {
   assert.throws(()=>buildOutput(config,mode),/Bogen/);
   assert.throws(()=>buildOutput(config,mode,{...figure,confirmed:false}),/bestätigen/);
-  assert.throws(()=>buildOutput(config,mode,{...figure,character:{...figure.character,attributes:{kraft:5}}}),/unvollständig/);
+  assert.throws(()=>buildOutput(config,mode,{...figure,character:{...figure.character,attributes:{strength:5}}}),/unvollständig/);
   buildOutput(config,mode,figure);
  }
  assert.equal(JSON.stringify(figure),snapshot);
- assert.ok(!buildOutput(defaults,'plugin').startMessage.includes('Bestätigter Startbogen:'));
+ assert.ok(!buildOutput(defaults,'plugin').startMessage.includes('Confirmed starting sheet:'));
 });
 
 test('Charaktertemplate erhält Weltbeschreibung und eigene Grenzen ohne Abenteuerumfang oder Würfelanzeige',()=>{
  const config={...defaults,setting:'custom',worldDescription:'Superhelden auf einer Raumstation.',wishes:'Keine Gedankenkontrolle.',scope:'long'};
  const world=worldForCharacter(config), prompt=characterTemplate('Ein Mechaniker.',world);
  assert.ok(prompt.includes(config.worldDescription));assert.ok(prompt.includes(config.wishes));
- assert.ok(!world.includes('Ausführlich:'));assert.ok(!world.includes('SG14'));
+ assert.ok(!world.includes('Ausführlich:'));assert.ok(!world.includes('DC14'));
  assert.ok(prompt.includes('only exclusions I explicitly requested'));
  assert.ok(prompt.includes('observable trigger'));
  assert.ok(prompt.includes('Ordinary resource scarcity is not an extra personal weakness'));

@@ -10,7 +10,7 @@
   <script type="module" src="./src/app.mjs"></script>
 </head>
 <body>
-  <header class="masthead"><a class="brand" href="./"><span class="mark" aria-hidden="true">20</span> ABENTEUER<span class="brand-detail"> / PROMPT-GENERATOR</span></a><span class="version">Entwurf 0.6</span></header>
+  <header class="masthead"><a class="brand" href="./"><span class="mark" aria-hidden="true">20</span> ABENTEUER<span class="brand-detail"> / PROMPT-GENERATOR</span></a><span class="version">Entwurf 0.7</span></header>
   <main>
     <div class="intro"><p class="eyebrow">DEIN PROJEKT. DEINE SPIELREGELN.</p><h1>Ein Rahmen für<br>dein nächstes Abenteuer.</h1><p>Wähle deine Einstellungen einmal.<br>Erhalte einen Projektprompt oder ein Plugin-Startpaket.</p></div>
     <fieldset class="mode-picker" id="output-modes">
@@ -24,34 +24,35 @@
         <label class="choice"><input type="radio" name="character-source" value="chat" checked><span>Figur im Spielchat erstellen</span></label>
         <label class="choice"><input type="radio" name="character-source" value="prepared"><span>Bogen hier vorbereiten oder importieren</span></label>
       </div>
-      <p id="character-source-help">Bei vorbereitetem Bogen werden Profil und bestätigte Figur gemeinsam als erste Chatnachricht ausgegeben.</p>
+      <p id="character-source-help">Deine Welt- und Spielvorgaben legst du unten fest. Ein hier vorbereiteter, bestätigter Bogen wird automatisch in die gemeinsame Startnachricht übernommen.</p>
     </fieldset>
-    <section id="prepared-character" hidden aria-label="Charakter vorbereiten">
-      <p>Die Weltvorgaben werden aus deiner Auswahl übernommen. Änderungen daran heben die Bogenbestätigung auf. Der Editor speichert nicht automatisch; JSON vor dem Schließen sichern.</p>
-      <div id="character-editor"></div>
-    </section>
     <div class="workspace">
       <section class="configuration" aria-labelledby="config-title">
         <div class="section-heading"><h2 id="config-title"><span>01</span> Zusammenstellen</h2><button id="reset" class="quiet" type="button" disabled>Profil zurücksetzen</button></div>
         <form id="options"></form>
+    <section id="prepared-character" hidden aria-label="Charakter vorbereiten">
+      <p>Welt und eigene Vorgaben sind oben bereits festgelegt. Erstelle den Bogen per KI-Template oder fülle ihn aus, prüfe ihn und bestätige ihn. Danach steht er automatisch in Schritt 2. JSON vor dem Schließen sichern.</p>
+      <div id="character-editor"></div>
+    </section>
+
         <aside class="note"><strong>Ein fester Kern bleibt.</strong><p>Weltlogik, freie Entscheidungen, klare Kapitelabschlüsse und ehrliche Speicherung gelten in jeder Kombination.</p></aside>
       </section>
       <section class="output" aria-labelledby="output-title">
         <div class="section-heading"><h2 id="output-title"><span>02</span> <span id="output-name">Dein Projektprompt</span></h2></div>
+        <p class="output-help">Spielsprache: Deutsch · Anweisungen: Englisch</p>
         <p id="mode-help" class="output-help">Der kompakte Prompt enthält das eigenständige Regelwerk. Bei Platzmangel folgt das vollständige Profil als erste Chatnachricht.</p>
-        <div id="plugin-guide" class="plugin-guide" hidden>
-          <p><strong>Mit Freier Spielleitung 0.2</strong> · überarbeiteter Regelsatz 0.2.1</p>
-          <ol><li>Ein neues ChatGPT-Projekt erstellen und die Projektanweisungen unten einfügen.</li><li>Im ersten Spielchat das Plugin ausdrücklich auswählen und die separate Startnachricht senden.</li></ol>
-          <p><a id="plugin-link" target="_blank" rel="noopener noreferrer">Private Plugin-Testfassung öffnen ↗</a><br>Der Link gewährt anderen Konten keinen Zugriff. Ein Plugin wird hier nicht automatisch installiert.</p>
+        <div class="plugin-guide">
+          <ol><li>Den Text aus <strong>Schritt 1</strong> in die Anweisungen eines neuen ChatGPT-Projekts einfügen.</li><li>Einen Chat darin öffnen<span id="plugin-step" hidden>, das Plugin auswählen</span> und die vollständige Nachricht aus <strong>Schritt 2</strong> senden.</li></ol>
+          <p id="plugin-guide" hidden><strong id="plugin-name"></strong> · Regelsatz <span id="plugin-version"></span><br><a id="plugin-link" target="_blank" rel="noopener noreferrer">Private Plugin-Testfassung öffnen ↗</a><br>Der Link gewährt anderen Konten keinen Zugriff.</p>
         </div>
-        <label id="project-label" class="output-label" for="prompt">Projektprompt</label>
+        <label id="project-label" class="output-label" for="prompt">1 · Projektanweisungen</label>
         <div class="budget"><div><strong id="count">–</strong><span> / 8.000 Zeichen</span></div><span id="remaining">Wird geladen</span></div>
         <progress id="meter" value="0" max="8000" aria-label="Zeichenbudget"></progress>
         <textarea id="prompt" readonly spellcheck="false" placeholder="Der Prompt wird geladen …"></textarea>
         <div class="copy-row"><p id="status" role="status" aria-live="polite">Keine Anmeldung. Keine API-Kosten.</p><button id="copy" class="primary" type="button" disabled>Prompt kopieren <span aria-hidden="true">↗</span></button></div>
         <div id="plugin-starter" hidden>
-          <label id="start-label" class="output-label" for="start-message">Erste Chatnachricht</label>
-          <p id="starter-help" class="output-help">Diese Nachricht kommt in den Spielchat, nicht in die Projektanweisungen. Ein hier bestätigter Bogen wird automatisch ergänzt.</p>
+          <label id="start-label" class="output-label" for="start-message">2 · Erste Chatnachricht</label>
+          <p id="starter-help" class="output-help">Diese Nachricht kommt in den Spielchat, nicht in die Projektanweisungen. Profil und bestätigter Bogen sind bereits vollständig enthalten.</p>
           <textarea id="start-message" readonly spellcheck="false"></textarea>
           <div class="copy-row"><p id="start-status" role="status" aria-live="polite">Die Startnachricht hat kein Projektanweisungs-Limit.</p><button id="copy-start" class="primary" type="button" disabled>Startnachricht kopieren</button></div>
         </div>

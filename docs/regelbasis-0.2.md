@@ -1,113 +1,70 @@
-# Freie Spielleitung 0.2
+# Open Game Master · Regelsatz 0.3.1
 
-Diese eigenständige Plugin-Testfassung entwickelt das Vesper-Regelwerk weiter.
-Sie enthält Anweisungen und vier Referenzen, keinen Spielserver und keine eigene
-Modellanbindung. Der vorhandene Generator mit seiner 8.000-Zeichen-Grenze wird
-durch diese Regelbasis nicht geändert. Seine Texte sind weiterhin die bisherige
-kompakte Fassung. Inzwischen steht daneben ein Plugin-Ausgabemodus zur Verfügung;
-beide Ausgaben verwenden dieselben gewählten Einstellungen.
+Die [private Testinstallation](https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37)
+behält ihre Pluginidentität. Ihr Anzeigename enthält keine Versionsnummer mehr.
+Die alte Vesper-Spielleitung und die eingefrorene API-App bleiben unberührt.
 
 ## Verwendung
 
-Die private ChatGPT-Testinstallation ist [Freie Spielleitung 0.2](https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37).
-Dieser Link gewährt anderen Konten keinen Zugriff; eine öffentliche
-Pluginveröffentlichung ist noch nicht erfolgt. Die bearbeitbare Quelle
-liegt in `plugins/freie-spielleitung-02/`. Der Paketname ist
-`freie-spielleitung-02`, der enthaltene Skill heißt `freie-spielleitung`.
+1. Welt, Spielvorgaben und Charakterquelle im Generator wählen.
+2. Schritt 1 in die Anweisungen eines neuen ChatGPT-Projekts kopieren.
+3. Einen Chat darin öffnen, bei Plugin-Ausgabe **Open Game Master** auswählen und
+   die vollständige Nachricht aus Schritt 2 senden.
 
-1. Ein neues ChatGPT-Projekt für den Durchgang erstellen.
-2. Das Plugin **Freie Spielleitung 0.2** installieren und im ersten Spielchat
-   ausdrücklich auswählen. Nicht gleichzeitig die alte Vesper-Spielleitung wählen.
-3. Setting, Ton und Umfang nennen. Einen bestätigten Bogen mitgeben oder die
-   gewünschte Figur kurz beschreiben und den daraus erstellten Entwurf bestätigen.
-4. Im selben Chat normal weiterspielen. Bei einem neuen Chat einen Spielstand
-   mitgeben, wenn es derselbe Durchgang sein soll.
+Ein bestätigter Bogen ist in Schritt 2 bereits enthalten. Nicht separat noch
+mal senden. Ohne vorbereiteten Bogen folgt die gewählte Erstellung im Chat.
+Die kompakte Ausgabe funktioniert ohne Plugin. Nicht beide Regelpakete
+zusätzlich in dasselbe Projekt einfügen.
 
-Kurze Projektanweisungen:
+Alle Anweisungen sind Englisch. Die Spielsprache steht zentral in
+`src/language.mjs` und wird beispielsweise so übergeben:
 
 ```text
-Dieses Projekt enthält einen Textrollenspiel-Durchgang mit dem ausdrücklich
-ausgewählten Plugin „Freie Spielleitung 0.2“, Regelsatz 0.3.0.
-Verwende dessen Anweisungen und Regelreferenzen sowie meine bestätigten
-Setting- und Spielvorgaben. Ich steuere meine Figur, du die Welt und Folgen.
-Bewahre den bestätigten Bogen und etablierte Fakten. Übernimm keine andere
-Regelfassung ohne meine ausdrückliche Anweisung. Behaupte keine nicht
-verfügbare Erinnerung, gelesene Datei oder Speicherung.
+language = German
 ```
 
-Eine passende erste Nachricht ist etwa:
+Sie gilt für Erzählung, Dialoge, angezeigte Regelbegriffe und Kommandos.
+Schema-Schlüssel bleiben Englisch. Nutzertexte und Namen bleiben erhalten.
+Die Oberfläche bleibt Deutsch. Referenztexte legen keine eigene deutsche
+Terminologie mehr fest. Bei direktem Pluginaufruf ohne Profil wird eine fehlende
+Sprachangabe einmal geklärt; der Standard-Startvorschlag enthält sie bereits.
 
-```text
-Neuer Durchgang. Setting: [gewünschte Welt und ihre Grenzen].
-Ton: [gewünschte Atmosphäre]. Umfang: [Kurzabenteuer oder Kampagne].
-Ich würfle für meine Figur; zeige die Rechnungen offen. Schaden bleibt fest.
-Meine Figurenidee beziehungsweise mein bestätigter Bogen: [hier einsetzen].
-Lade zuerst die Spielleitungsanweisung und „Abenteuer und Welt“.
-Bestätige deren tatsächlichen Zugriff kurz auf der Metaebene.
-Übernimm einen bestätigten Bogen unverändert; stimme einen neuen Entwurf ab.
-Beginne anschließend das Abenteuer.
-```
+## Regeln
 
-Diese Vorlagen lassen sich auch manuell nutzen. Der Plugin-Modus des Generators
-erzeugt entsprechende Projektanweisungen und eine Startnachricht aus der Auswahl.
-Fehlende Angaben werden bei Bedarf geklärt. Die neue Spielleitung ist nicht auf
-Fantasy, einen bestimmten Charakter oder eine vorgefertigte Welt festgelegt.
-Der bisherige kompakte Projektprompt sollte nicht zusätzlich vollständig in
-dasselbe Projekt kopiert werden: Er ist eine eigenständige kompakte Ausgabe derselben Grundsätze; doppeltes Einfügen erzeugt unnötige Wiederholungen.
+Die Überarbeitung 0.3.0 bleibt inhaltlich erhalten: konkrete Fehlschlagfolgen,
+plausible Wiederholungen derselben Methode mit fortlaufenden Kosten/Gefahren,
+wirksame Vorbereitung, brauchbare Talente, neue Entwicklungsrichtungen sowie
+abwechslungsreiche Konflikte mit eigenständigen NSC-Interessen. Die Sprach- und
+Bedienungsüberarbeitung führt kein neues Spielsystem ein.
 
-## Überarbeitete Verhaltensregeln
-
-- **Erzählung:** Dialoge konzentrieren sich auf neue Reaktionen und Erkenntnisse.
-  Untersuchungen grenzen Fragen ein; ein Finale bekommt keine weiteren
-  Bedingungen allein zur Verlängerung. Interessante Reiseabschnitte dürfen Raum
-  erhalten. Es gibt weder Wortquoten noch vorgeschriebene Szenenzahlen.
-- **Rätsel:** Ursachen, Eingaben, Reaktionen und Abschlussbedingungen werden
-  vor ihrer Verwendung festgelegt. Zugängliche Hinweise ermöglichen begründete
-  Versuche. Alternative Lösungen werden gegen diese Funktion geprüft.
-- **Vergangenheit:** Ausdrücklich offene Biografie darf persönlich ausgestaltet
-  werden. Bestätigte Angaben und heutige Spielerentscheidungen bleiben gewahrt.
-  Eine Enthüllung erzeugt keine erzwungene emotionale Bindung.
-- **Figuren:** Eigenständige NSC benötigen für gewöhnliche Hilfe nicht ständig
-  eine Erlaubnis. Wissenszugänge und erklärte Grenzen bleiben nachvollziehbar.
-  Eine Verständnisfrage wird nicht automatisch als Fehlerkorrektur ausgelegt.
-- **Kontinuität:** Relevante Verluste, Verletzungen, Ortsverbindungen, Zähler
-  und Erkenntnisse werden weiter berücksichtigt. Das sind Arbeitsanweisungen
-  für den zugänglichen Chat, kein automatisch gespeichertes Kampagnengedächtnis.
-- **Entwicklung:** Belohnungen werden vor dem nächsten Kapitel geprüft und vor
-  der Auswahl konkret beschrieben. Geschenke und Kapitelbelohnungen werden
-  eindeutig zugeordnet, damit ein Abschluss nicht doppelt oder gar nicht zählt.
-
-## Zahlenregeln und bewusste Klärungen
-
-Attribute, Startbudget, LP, Tragplätze, Talentboni, SG-Stufen und die Formel der
-Schadensvariation bleiben erhalten. Die folgende Tabelle kennzeichnet die
-inhaltlichen Ergänzungen gegenüber der Vesper-Testfassung 0.1.0:
-
-| Bereich | Festlegung in 0.2.0 |
+| Regel | Interne Bezeichnung und unveränderter Wert |
 | --- | --- |
-| Initiative | Lage entscheidet; andernfalls W20 + Geschick, höher zuerst, Gleichstände unter Betroffenen neu würfeln. Dies schließt eine offene Regelstelle. |
-| Schaden ohne Auswahl | Feste Grundwerte. Optionale Schadenswürfel gelten nur nach Auswahl, für beide Seiten. |
-| Unterstützung | Konkrete Hilfe kann Vorteil mit 2W20 geben. Kein zusätzlicher pauschaler Situationsbonus. Festgelegte Ausrüstungseffekte bleiben möglich. |
-| Kampf | Gegnerwerte werden vor ihrer Verwendung festgelegt und auf der Metaebene gezeigt. Angriffe, Schaden und verbleibende LP werden abgewickelt. Ein Fehlschlag erzeugt keinen kostenlosen Gegenangriff. |
-| Zwei Waffen | Keine automatische zusätzliche Aktion; Nutzen durch Talent, Ausrüstung und ausdrücklich definierte Manöver. |
-| Tod | Lageabhängig möglich, auch bei wichtigen NSC. Keine automatische Todesfolge einer natürlichen 1, keine Rettung allein wegen Sympathie. |
-| Versorgung | Standardmäßig abstrakt und plausibel. Exakte Verwaltung nur nach vereinbarter Dauer, Einheit und Folgen; keine rückwirkenden Mangelstrafen. |
-| Setting | Keine fest eingebaute Fantasywelt. Mitgebrachte Vorgaben gelten für Technik, Magie und besondere Fähigkeiten. |
+| Attribute | Strength / Dexterity / Intellect / Insight, Start −1 bis +3, Summe +5 |
+| Talente | Zwei Starttalente, jeweils +2; nicht stapelbar |
+| Probe | D20 + Attribut + ein Talent + ein Ausrüstungsbonus (max. +2) ≥ DC |
+| Schwierigkeit | DC 8 / 11 / 14 / 17 / 20 |
+| Start | 10 HP, acht Tragplätze |
+| Initiative | D20 + Dexterity, wenn die Lage keine Reihenfolge vorgibt |
+| Verteidigung | 10 + Dexterity, gegebenenfalls +1 Rüstung |
+| Schaden | 2 / 3 / 4, optional gewählte D4/D6/D8-Variation um ±1 |
+| Entwicklung | Attributmaximum +5; keine neue Levelmechanik |
+
+Neue Regeln und Verletzungsfolgen werden vor Anwendung erklärt. Fehlende
+Dateien, Speicherung und Werkzeuge werden nicht vorgetäuscht. Es gibt keine
+Datenbank und keine Garantie für Erzählqualität oder exakte Kontinuität.
 
 ## Quellen und Paketierung
 
-Das Repository ist die bearbeitbare Quelle dieser Pluginfassung:
+Quelle: `plugins/freie-spielleitung-02/` (technische Identität bleibt stabil).
 
-- `skills/freie-spielleitung/SKILL.md`: Kern, Start und Referenznavigation.
-- `references/abenteuer-und-welt.md`: Welt, Verlauf, Rätsel und Figurenwissen.
-- `references/figur-und-inventar.md`: Figuren, Kräfte und Gegenstände.
-- `references/proben-und-kampf.md`: Proben, Würfel und Kampf.
-- `references/entwicklung-und-spielstand.md`: Meilensteine, Zustand und Export.
+- `skills/freie-spielleitung/SKILL.md`
+- `references/adventure-and-world.md`
+- `references/character-and-inventory.md`
+- `references/checks-and-combat.md`
+- `references/development-and-saves.md`
 
-Die Pfade der Referenzen sind relativ zum Skillordner. Die Dateien lassen sich
-in einem gewöhnlichen Texteditor ändern. Für die Paketierung werden Python 3.9+
-und für die Repositorytests Node.js 22 verwendet, keine API-Schlüssel oder
-zusätzlichen Python-Pakete.
+Die Referenzpfade liegen relativ zum Skillordner. Die alten deutschen
+Referenzdateien werden beim Backend-Update ausdrücklich entfernt.
 
 ```sh
 npm test
@@ -116,64 +73,14 @@ npm run plugin:check
 npm run plugin:build
 ```
 
-Das ZIP entsteht unter `dist/freie-spielleitung-02-0.3.0.zip`. Es enthält nur
-Manifest, Skill und Referenzen. Es kann über Plugin Creator als privates Plugin
-gespeichert werden. Ein Git-Commit oder Pages-Deployment aktualisiert ein
-ChatGPT-Plugin nicht automatisch. Die Paketprüfung kontrolliert Struktur und
-Verweise; sie beweist keine Erzählqualität oder zuverlässige Modellbefolgung.
-Auf Pull Requests stellt GitHub Actions das geprüfte ZIP als Workflow-Artefakt
-bereit. Die statische Website bleibt ein separates Deployment.
+Das reproduzierbare öffentliche ZIP liegt anschließend unter
+`dist/freie-spielleitung-02-0.3.1.zip`. Private Backend-Autormetadaten werden nicht
+in das öffentliche Repository übernommen. Regelversion, Paketmanifest,
+Generatorverweis und Workflow müssen zusammenpassen.
 
-## Versionen und nächste Schritte
+Ein Merge veröffentlicht den Generator über GitHub Pages. Das Plugin wird
+separat unter bestehender Identität aktualisiert. Die Versionsangabe ist keine
+technische Sperre für bereits laufende Chats. Neue Tests mit frisch erzeugten
+Starttexten beginnen; alte Testbögen haben keine Kompatibilitätsgarantie.
 
-Die bestehende **Vesper Spielleitung 0.1.0** bleibt unverändert für laufende
-Durchgänge. Die **Freie Spielleitung 0.2** ist eine eigene private Installation.
-Ein anderes Setting benötigt keine weitere Plugininstanz. Verwendete Fassung
-und individuelle Abweichungen gehören in jeden Spielstand.
-
-Die private Freie Spielleitung wird während des Prototyps unter derselben
-Paketidentität aktualisiert. Aktuell ist Regelsatz 0.3.0. Ein Versionsfeld im
-Projekt ist keine technische Sperre gegen geänderte Pluginanweisungen. Für einen
-neuen Test einen neuen Chat und frisch erzeugte Starttexte verwenden. Alte
-Spielstände oder Eingabeformate müssen im Prototyp nicht kompatibel bleiben.
-Die alte Vesper-Spielleitung wird durch diese Aktualisierung nicht geändert.
-
-Beide Generator-Ausgabemodi, das gemeinsame Abenteuerprofil und der eingebundene
-Charaktereditor sind vorhanden. Der Editor bietet ein abgestimmtes Figurenformat,
-JSON-Import/-Export und eine frei nutzbare Charakteranfrage zum Kopieren in
-beliebige KI-Chats. Eine optionale eigene API-Anbindung ist weiterhin nicht gebaut.
-[Charakterbogen verwenden](charakterbogen.md).
-
-## 0.2.1: Erzählführung nach dem Mason-Test
-
-- Spielbare Beteiligung aus bekannten Fähigkeiten und der aktuellen Lage ableiten;
-  unbekannte Vergangenheit ist kein Hindernis für den Auftakt.
-- Spielerfreiheit durch echte Angebote und Entscheidungen wahren, statt die
-  Figur wiederholt nur zu informieren, untersuchen oder nach Hause zu schicken.
-- Vereinbarte gefahrlose Routinen bis zu Befund oder echter Entscheidung raffen.
-- Eigenständige Abenteuer vom Kampagnenhintergrund unterscheiden; mittlerer Umfang
-  braucht Konfliktentwicklung, keine künstlichen Zusatzschritte.
-- Keine Bilder oder Bildwerkzeuge ohne ausdrücklichen Wunsch.
-- Bei neuen Figuren offene Biografie nicht in erfundene Verbote verwandeln;
-  Schwächen mit beobachtbaren Auslösern und verständlichen Folgen formulieren.
-
-Die Wirkung auf die Erzählqualität muss in einem neuen Durchlauf geprüft werden;
-Paket- und Quellprüfungen ersetzen diesen Test nicht.
-
-
-## 0.3.0: Vereinfachte Regelbasis
-
-Die ausführlichen Referenzen wurden als englische interne Anleitung neu
-formuliert und gekürzt. Die Spielausgabe bleibt ausdrücklich Deutsch. Beide
-Generatorausgaben und das Charaktertemplate wurden gleichzeitig angeglichen.
-Die Erweiterungen betreffen Folgen, Wiederholungsversuche, Vorbereitung,
-brauchbare Talente und Entwicklung sowie abwechslungsreichere Konflikte.
-Es wurde kein neues Würfel-, Level- oder Verletzungssystem eingeführt.
-
-Gleiche Methode ist bei laufendem Spiel erlaubt, solange Zeit, Lage und
-Konsequenzen weitere Versuche zulassen. Die Beibehaltung identischer Würfe gilt
-weiterhin beim Zurückspulen nach Tod; sie verbietet keine neuen Live-Versuche.
-Eine getragene Sicherheitsmaßnahme wird nicht nachträglich unwirksam, nur um
-einen Fehlschlag zu erklären. Eine endende Gelegenheit kann endgültig scheitern.
-
-[Quellstand, Pluginfassung und Rückkehr](rollback-0.3.md).
+[Rückkehrpunkt und getrenntes Zurücknehmen von Website/Plugin](rollback-0.3.md).

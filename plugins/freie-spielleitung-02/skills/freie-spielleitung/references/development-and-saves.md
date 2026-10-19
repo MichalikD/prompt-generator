@@ -4,24 +4,26 @@
 
 At a meaningful small milestone, grant a limited benefit. At a chapter ending, offer a lasting improvement, possibly two rewards when justified. Do this before beginning the next adventure; do not wait for a player reminder. No reward per scene or double counting one ending.
 
-Offer 2–3 concrete, useful choices drawn from what happened and possible new directions: attribute +1 (maximum +5), ability, talent/mastery/manoeuvre, LP/resources, equipment, contact or faction benefit. State effects, costs and limits before the player chooses. Mastery expands actions or applications rather than stacking another +2. A new talent can open a different field; growth need not trap the hero more tightly in the starting occupation.
+Offer 2–3 concrete, useful choices drawn from what happened and possible new directions: attribute +1 (maximum +5), ability, talent/mastery/manoeuvre, HP/resources, equipment, contact or faction benefit. State effects, costs and limits before the player chooses. Mastery expands actions or applications rather than stacking another +2. A new talent can open a different field; growth need not trap the hero more tightly in the starting occupation.
 
 Allow agreed retraining, transformation or replacement of a talent when supported by experience, a relationship or training. No automatic level system is required. Preserve the original sheet, record the change and update the current sheet after agreement. Do not silently rewrite confirmed values or retroactively remove an ability the player relied on.
 
-Give money, equipment, reputation and contacts practical meaning: buying power, access, shelter, information or help with stated limits. Revisit earned advantages when relevant; do not neutralize them with arbitrary escalation. Keep everyday SG stable. Later adventures can broaden opposition, goals and capabilities instead of merely increasing numbers or repeating the same kind of work. Warn before a setting change would invalidate major achievements.
+Give money, equipment, reputation and contacts practical meaning: buying power, access, shelter, information or help with stated limits. Revisit earned advantages when relevant; do not neutralize them with arbitrary escalation. Keep everyday DC stable. Later adventures can broaden opposition, goals and capabilities instead of merely increasing numbers or repeating the same kind of work. Warn before a setting change would invalidate major achievements.
 
 Regular companions share relevant milestones; track their values, abilities and goals, and choose/document their improvements from experience and training. Absent companions do not advance automatically. Occasional companions retain established facts without automatic advancement; agree progression if they become a permanent team.
 
 ## Commands and state
 
+Translate these command names for the selected play language and accept their localized equivalents.
+
 Use accessible chat and supplied files to track the character/group, resources, inventory, injuries, relationships, knowledge, achievements, open threads, time and location. Show meaningful changes without a visible checklist every turn. This skill has no database or guaranteed persistent memory.
 
-- **Status**: current values, LP/resources, injuries, relevant effects, location and immediate situation.
-- **Inventar**: carried items/slots, equipment functions, stored property if known.
+- **Status**: current values, HP/resources, injuries, relevant effects, location and immediate situation.
+- **Inventory**: carried items/slots, equipment functions, stored property if known.
 - **Journal**: established knowledge, decisions/consequences, people, open/resolved threads; no undiscovered spoilers.
-- **Hinweis**: a proportionate useful nudge without changing truth or invalidating achievements.
-- **Regeln**: explain the relevant agreed rule separately from fiction.
-- **Speichern**: provide the standalone export below; do not claim external storage.
+- **Hint**: a proportionate useful nudge without changing truth or invalidating achievements.
+- **Rules**: explain the relevant agreed rule separately from fiction.
+- **Save**: provide the standalone export below; do not claim external storage.
 - **Pause**: stop advancing play and preserve the current decision point in accessible context.
 
 ## Save and export
@@ -29,10 +31,10 @@ Use accessible chat and supplied files to track the character/group, resources, 
 A complete export must stand alone without “as above” or references to an unavailable chat. No word limit; use numbered parts when needed and claim completeness only at the end. Include:
 
 - Actual rule version, adventure profile, chosen dice/roller/death options and agreed deviations.
-- Current character/group: identity, attributes, talents and scope, abilities/costs/limits, weaknesses, LP/resources/injuries, carried inventory/slots, stored items, special needs and development. Include the original sheet separately if available.
+- Current character/group: identity, attributes, talents and scope, abilities/costs/limits, weaknesses, HP/resources/injuries, carried inventory/slots, stored items, special needs and development. Include the original sheet separately if available.
 - Achievements and concrete benefits, money and known buying power, contacts/factions/relationships, promises, relevant knowledge and its holders.
 - Decisions, consequences, completed/open threads, important world facts, places/connections, exact time/location/situation and next unmade decision.
-- Outstanding rolls with announced objective, SG, modifiers/stakes and raw results, plus any valid rewind point.
+- Outstanding rolls with announced objective, DC, modifiers/stakes and raw results, plus any valid rewind point.
 
 Separate the spoiler world core when available: causes, secrets, NPC motives/knowledge, fixed puzzle solutions and developments without the player. Label spoilers clearly. Never invent missing notes, pretend hidden storage or promise exact continuation from absent information. Mark uncertainties and ask about essential gaps on resumption; do not silently replace confirmed facts.
 

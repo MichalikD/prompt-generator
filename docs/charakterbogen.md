@@ -32,14 +32,14 @@ der Figur. Ein Textimport aus frei formulierter Prosa ist nicht enthalten.
 
 ## Felder
 
-Das Dokument ist ein JSON-Objekt mit `format: "freie-spielleitung-character"`,
-`version: 1`, `kind: "start" | "current"`, `confirmed: boolean`, `character`
+Das Dokument ist ein JSON-Objekt mit `format: "open-game-master-character"`,
+`version: 2`, `kind: "start" | "current"`, `confirmed: boolean`, `character`
 und `startCharacter`. Vollständiges Beispiel: [Vesper](../examples/vesper-start.json).
 
 | Bereich in `character` | Inhalt |
 |---|---|
 | `identity` | `name`, `pronouns`, `ancestry`, `origin`, `role`, `description` |
-| `attributes` | `kraft`, `geschick`, `verstand`, `gespuer` |
+| `attributes` | `strength`, `dexterity`, `intellect`, `insight` |
 | `talents` | Liste: `name`, `description`, `bonus` |
 | `abilities` | Liste: `name`, `effect`, `cost`, `limits` |
 | `weaknesses` | Liste: `name`, `trigger`, `effect`, `mitigation` |
@@ -104,3 +104,13 @@ Untergrund und keine pauschalen Boni auf alles. Das verwendete Attribut folgt
 dem Ansatz. Spätere Erweiterung oder vereinbarte Umschulung wird im aktuellen
 Bogen dokumentiert; das Startoriginal bleibt erhalten. Es gibt kein neues
 Datenformat und kein zusätzliches Levelsystem.
+
+
+## Formatänderung 0.3.1
+
+Figurenformat Version 2 verwendet die Format-ID `open-game-master-character`
+und englische Attributschlüssel. Die UI-Beschriftungen bleiben Deutsch.
+Die erzeugte Bogenstruktur und ihre Überschriften sind Englisch, eigene
+Beschreibungen bleiben erhalten. Alte Prototypbögen werden nicht übernommen;
+einen neuen Bogen mit dem aktuellen Template erzeugen. Eine erneute ausdrückliche
+Bestätigung ist weiterhin nötig.

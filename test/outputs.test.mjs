@@ -1,3 +1,4 @@
+import {optionNames} from '../src/language.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { allConfigs, buildPrompt, defaults, groups, LIMIT, diceText } from '../src/generator.mjs';
@@ -12,13 +13,13 @@ test('Beide Ausgaben verwenden in jeder Kombination dieselbe gültige Auswahl', 
     assert.ok(result.startMessage.includes(PLUGIN.version));
     for (const group of groups) {
       const chosen = group.options.find(option => option.id === config[group.id]);
-      assert.ok(result.startMessage.includes(`${group.label}: ${chosen.text}`));
+      assert.ok(result.startMessage.includes(`${optionNames[group.id]}: ${chosen.text}`));
       for (const option of group.options) {
-        if (option !== chosen) assert.ok(!result.startMessage.includes(`${group.label}: ${option.text}`));
+        if (option !== chosen) assert.ok(!result.startMessage.includes(`${optionNames[group.id]}: ${option.text}`));
       }
     }
     if (powers[config.setting]) assert.ok(result.startMessage.includes(powers[config.setting]));
-    assert.ok(!result.projectInstructions.includes('W20+Attribut'));
+    assert.ok(!result.projectInstructions.includes('D20+attribute'));
     const extras = diceText(config);
     assert.ok(result.startMessage.includes(extras || 'Extra dice: none.'));
     count++;
@@ -32,7 +33,7 @@ test('Moduswechsel verändert keine Einstellungen und erhält den kompakten Prom
   const compact = buildOutput(config, 'compact');
   const plugin = buildOutput(config, 'plugin');
   assert.equal(compact.projectInstructions, buildPrompt(config));
-  assert.ok(compact.startMessage || compact.projectInstructions.includes('ABENTEUERPROFIL'));
+  assert.ok(compact.startMessage || compact.projectInstructions.includes('ADVENTURE PROFILE'));
   assert.ok(plugin.startMessage.includes('Cyberpunk:'));
   assert.ok(plugin.startMessage.includes('Hardcore:'));
   assert.ok(!plugin.startMessage.includes('Standard:'));
@@ -45,9 +46,9 @@ test('Plugin-Paket trennt Projektanweisungen und Startnachricht im Download', ()
   const output = buildPluginPackage({...defaults, setting:'modern', creation:'assisted'});
   assert.ok(output.downloadText.includes(output.projectInstructions));
   assert.ok(output.downloadText.includes(output.startMessage));
-  assert.ok(output.downloadText.indexOf('## 1. Projektanweisungen') < output.downloadText.indexOf('## 2. Erste Chatnachricht'));
+  assert.ok(output.downloadText.indexOf('## 1. Project instructions') < output.downloadText.indexOf('## 2. First chat message'));
   assert.ok(output.downloadText.includes(PLUGIN.url));
-  assert.ok(output.startMessage.includes('confirmed character sheet'));
+  assert.ok(output.startMessage.includes('confirm the draft, then begin the adventure'));
   assert.ok(!output.projectInstructions.includes('Contemporary world without'));
   assert.match(output.downloadName, /^[a-z-]+\.md$/);
 });

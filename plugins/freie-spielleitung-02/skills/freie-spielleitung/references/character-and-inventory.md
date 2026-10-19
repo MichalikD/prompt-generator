@@ -6,12 +6,12 @@ Preserve a confirmed sheet. If creating one, use the chosen method: player-enter
 
 Attributes are integers from −1 to +3 at creation, totaling +5:
 
-- Kraft: strength, endurance and forceful weapon use.
-- Geschick: precision, movement and stealth.
-- Verstand: knowledge, analysis, planning and technology.
-- Gespür: perception, insight and intuition.
+- Strength: strength, endurance and forceful weapon use.
+- Dexterity: precision, movement and stealth.
+- Intellect: knowledge, analysis, planning and technology.
+- Insight: perception, insight and intuition.
 
-Start with 10/10 LP, two distinct talents each granting +2, a situational weakness, and fitting equipment within eight carrying slots. Attribute advancement caps at +5. Preserve the original starting sheet separately from current values when possible.
+Start with 10/10 HP, two distinct talents each granting +2, a situational weakness, and fitting equipment within eight carrying slots. Attribute advancement caps at +5. Preserve the original starting sheet separately from current values when possible.
 
 ## Useful talents, powers and weaknesses
 
@@ -21,18 +21,18 @@ Species and occupation provide ordinary knowledge, access and capabilities; they
 
 A weakness needs an observable trigger and clear effect, with mitigation if relevant. It should be situational, not near-constant impairment or a feeling invented by the GM. Ordinary supply scarcity is not an extra personal weakness. Add further weaknesses only when the player’s idea explicitly requires them. Special food needs remain real but are abstract until consequences matter; explain a hunger/resource mechanic before introducing it.
 
-Keep LP, injuries and visible symptoms distinct. Explain mechanical effects, treatment and recovery before enforcing a new injury rule. Do not silently add penalties or invent complications to neutralize good preparation.
+Keep HP, injuries and visible symptoms distinct. Explain mechanical effects, treatment and recovery before enforcing a new injury rule. Do not silently add penalties or invent complications to neutralize good preparation.
 
 ## Inventory and equipment
 
 Eight carried slots. Ordinary equipment uses one; bulky objects may use more; small things can be bundled. Clothing/trifles may use zero; weapons count. Record quantity and slots per unit. Respect weight, size and physique; a carried container or vehicle is not infinite storage. External storage is separate. Quest objects may occupy slots; when full, exchange, store or leave something behind.
 
-Prefer useful versatile gear and compact supplies to piles of scrap. Equipment may permit an action without granting a numerical bonus. A justified situational equipment bonus is at most +2, only one per check. Preparation/help uses enabling, lower SG or advantage, not an invented extra +2. Do not count the same cause twice.
+Prefer useful versatile gear and compact supplies to piles of scrap. Equipment may permit an action without granting a numerical bonus. A justified situational equipment bonus is at most +2, only one per check. Preparation/help uses enabling, lower DC or advantage, not an invented extra +2. Do not count the same cause twice.
 
 When awarding money, unusual equipment, contacts or faction standing, explain practical buying power, uses and limits when relevant. Do not force a price catalogue into every scene. Purchases and preparation can offer real progress.
 
 ## Sheet and JSON template
 
-Use the generator’s format when supplied: identity; attributes; talents; abilities with effect/cost/limits; weaknesses with trigger/effect/mitigation; vitals with LP, resources and injuries; carried inventory; nourishment; confirmed/open/excluded background; development. Do not treat empty fields as prohibitions. Confirmed values define the starting state, not a ban on later development.
+Use the generator’s format when supplied: identity; attributes; talents; abilities with effect/cost/limits; weaknesses with trigger/effect/mitigation; vitals with HP, resources and injuries; carried inventory; nourishment; confirmed/open/excluded background; development. Do not treat empty fields as prohibitions. Confirmed values define the starting state, not a ban on later development.
 
 For a requested JSON export, preserve the supplied schema/field names, distinguish start and current sheets, retain the original when available, and mark the draft unconfirmed until the player reviews it. A readable sheet remains valid for ordinary play; do not require JSON just to start.

@@ -1,4 +1,4 @@
 interface:
-  display_name: "Freie Spielleitung 0.2"
-  short_description: "Freie Abenteuer mit klaren W20-Regeln und Folgen"
-  default_prompt: "Leite mit $freie-spielleitung ein neues Abenteuer nach meinem Setting und meinem bestätigten Charakterbogen."
+  display_name: "Open Game Master"
+  short_description: "Free adventures with clear D20 rules and consequences"
+  default_prompt: "Use $freie-spielleitung to run an adventure with my world, language and confirmed character sheet."
