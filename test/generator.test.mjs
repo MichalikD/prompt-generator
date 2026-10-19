@@ -18,7 +18,7 @@ test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen
     assert.ok(!prompt.includes('250'));
     assert.ok(prompt.includes('resume meaningful events after rest without forcing decisions'));
     assert.ok(prompt.includes('without forcing decisions'));
-    assert.ok(prompt.includes('Rules/dice/LP/bonuses'));
+    assert.ok(prompt.includes('Rules/dice/HP/bonuses'));
     assert.ok(prompt.includes('never NPC knowledge/dialogue'));
     assert.ok(prompt.includes('Explain new mechanics before use'));
     assert.ok(!/undefined|null/.test(prompt));

@@ -1,6 +1,6 @@
 {
-  "format": "freie-spielleitung-character",
-  "version": 1,
+  "format": "open-game-master-character",
+  "version": 2,
   "kind": "start",
   "confirmed": true,
   "character": {
@@ -13,10 +13,10 @@
       "description": "Ein Vampir und Nahkämpfer, der bevorzugt mit zwei Schwertern kämpft, aber auch einen Dolch oder seine Zähne einsetzt. Herkunft und persönliche Ziele bleiben offen."
     },
     "attributes": {
-      "geschick": 3,
-      "gespuer": 0,
-      "kraft": 0,
-      "verstand": 2
+      "dexterity": 3,
+      "insight": 0,
+      "strength": 0,
+      "intellect": 2
     },
     "talents": [
       {

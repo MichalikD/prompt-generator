@@ -22,14 +22,20 @@ dekorative Fehler werden nicht automatisch Entwicklungsaufträge.
 Die Prüfungen sichern Ausgabe, Regelverträge und Paketierung. Ob die gebündelten
 Anweisungen das Spielerlebnis verbessern, bleibt im nächsten Run zu prüfen.
 
-## Schritt 2 als Nächstes: Einstieg und Bedienung
+## Schritt 2 umgesetzt: Einstieg und Bedienung 0.3.1
 
 - Missverständliche Bezeichnungen und doppelte Ausgaben reduzieren.
 - Generischen Plugin-Anzeigenamen und Regelversion getrennt darstellen.
 - Einstieg, gemeinsame Startnachricht und Bogenübergabe verständlicher machen.
 
-Dieser Schritt ist noch nicht umgesetzt. Vor seinem Abschluss kein neuer
-Spieltest erforderlich.
+- Vollständig englische Anweisungen, zentrale Spielsprache und englische
+  Attributschlüssel im experimentellen Figurenformat Version 2.
+- Zusätzliche Bogenvorschau im eingebundenen Editor eingeklappt; bestätigte Figur
+  wird genau einmal in der gemeinsamen Startnachricht übergeben.
+- Anzeigename **Open Game Master**, Regelsatz separat; deutsche UI bleibt erhalten.
+
+Beide geplanten Schritte sind umgesetzt. Nach Merge und Deployment ist ein
+gebündelter neuer Spieltest mit neuem Bogen möglich.
 
 ## Danach gezielt prüfen (Priorität 2)
 
@@ -55,7 +61,7 @@ Spieltest erforderlich.
 - Häufige Eigennamen für unwichtige NSC und wiederkehrende Erzählerfloskeln.
 - Widersprüchliche dekorative Symbole bei ansonsten korrekter Rechnung.
 
-Nächster Spieltest erst nach der anschließenden Bedienungsüberarbeitung.
+Nächster Spieltest mit dieser gebündelten Fassung nach Merge/Deployment.
 Ein neuer Chat mit neu erzeugtem Profil und bestätigtem Bogen genügt; keine
 separaten vollständigen Durchläufe pro kleiner Regeländerung. Erzählqualität,
 Entscheidungen, Konsequenzen und Umfang gemeinsam bewerten. Die API-Spiel-App

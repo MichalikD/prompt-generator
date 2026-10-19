@@ -1,3 +1,4 @@
+import { languageDirective, localizationPolicy } from './language.mjs';
 import { createProfile, profileText } from './profile.mjs';
 import { groups, core, powers, dice, pacing, probePolicy, savePolicy } from './modules.mjs';
 export { groups, dice };
@@ -23,22 +24,22 @@ export function buildCompactPackage(config = defaults, {prepared=false}={}) {
   const selected = Object.fromEntries(Object.entries(options).map(([key, option]) => [key, option.text]));
   const rules = core;
   const sections = [
-    ['AUFTRAG', rules.intro],
+    ['ROLE', languageDirective, localizationPolicy, rules.intro],
     ['START', rules.start],
-    ['FIGUR', prepared ? 'Use the confirmed sheet in my first message as the starting state; do not recreate the character.' : selected.creation, rules.character, powers[config.setting]],
-    ['ABENTEUER', rules.world],
-    ['SPIELWEISE', rules.play, pacing],
-    ['W20-PROBEN', rules.checks, selected.frequency, probePolicy, selected.roller, selected.visibility, diceText(config)],
-    ['LOGIK', rules.puzzles],
-    ['KAMPF', rules.combat],
-    ['INVENTAR', rules.inventory],
-    ['ENTWICKLUNG', rules.progress, selected.companions],
-    ['SPIELSTAND', selected.death, rules.save, savePolicy]
+    ['CHARACTER', prepared ? 'Use the confirmed sheet in my first message as the starting state; do not recreate the character.' : selected.creation, rules.character, powers[config.setting]],
+    ['ADVENTURE', rules.world],
+    ['PLAY STYLE', rules.play, pacing],
+    ['D20 CHECKS', rules.checks, selected.frequency, probePolicy, selected.roller, selected.visibility, diceText(config)],
+    ['LOGIC', rules.puzzles],
+    ['COMBAT', rules.combat],
+    ['INVENTORY', rules.inventory],
+    ['DEVELOPMENT', rules.progress, selected.companions],
+    ['SAVE', selected.death, rules.save, savePolicy]
   ];
   const base = sections.map(([heading, ...texts]) => `${heading}\n${texts.filter(Boolean).join('\n')}`).join('\n\n');
   const full = base + '\n\n' + narrative;
   const external = full.length >= LIMIT;
-  const projectInstructions = external ? base + '\n\nABENTEUERPROFIL\nThe binding adventure profile follows in my first chat message. Wait for it before starting; it overrides conflicting defaults.' : full;
+  const projectInstructions = external ? base + '\n\nADVENTURE PROFILE\nThe binding adventure profile follows in my first chat message. Wait for it before starting; it overrides conflicting defaults.' : full;
   if (projectInstructions.length >= LIMIT) throw new Error('Der Regelkern überschreitet das Projektlimit. Es wurde nichts abgeschnitten.');
   return {mode:'compact', profile, projectInstructions, startMessage:external ? narrative : '', profileExternal:external};
 }
@@ -55,10 +56,10 @@ export function diceText(config) {
  if (!Array.isArray(extras) || new Set(extras).size !== extras.length || extras.some(x=>!dice.some(d=>d.id===x))) throw new Error('Ungültige Zusatzwürfel');
  if(extras.includes('dpercent')&&!extras.includes('d10')) throw new Error('D% benötigt D10');
  if(!extras.length)return '';
- const parts=['Extra dice: announce purpose/table first; use selected roller/display rules, no modifiers. Otherwise fixed values; attribute checks use W20.'];
- if(extras.some(x=>['d4','d6','d8'].includes(x))) parts.push('Damage on both sides uses only selected W4/light, W6/ordinary, W8/heavy: roll ≤ ⌊W/4⌋: base−1; > W−⌊W/4⌋: base+1; otherwise base.');
- if(extras.includes('d10'))parts.push('W10: ten equally valuable finds; 0=10.');
- if(extras.includes('d12'))parts.push('W12: twelve world events; no mandatory detours.');
+ const parts=['Extra dice: announce purpose/table first; use selected roller/display rules, no modifiers. Otherwise fixed values; attribute checks use D20.'];
+ if(extras.some(x=>['d4','d6','d8'].includes(x))) parts.push('Damage on both sides uses only selected D4/light, D6/ordinary, D8/heavy: roll ≤ ⌊W/4⌋: base−1; > W−⌊W/4⌋: base+1; otherwise base.');
+ if(extras.includes('d10'))parts.push('D10: ten equally valuable finds; 0=10.');
+ if(extras.includes('d12'))parts.push('D12: twelve world events; no mandatory detours.');
  if(extras.includes('dpercent'))parts.push('D%: tens 00–90 + D10 units 0–9, 00+0=100. Announce chance first; result ≤ chance triggers event.');
  return 'Available: '+extras.map(x=>dice.find(d=>d.id===x).label).join(', ')+'. '+parts.join(' ');
 }

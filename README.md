@@ -5,7 +5,7 @@ kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API, Anmeldun
 Speicherung oder Synchronisierung.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
 
-## Plugin-Regelbasis 0.3.0
+## Plugin-Regelbasis 0.3.1
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -28,7 +28,7 @@ Das gemeinsame Abenteuerprofil ist im Generator enthalten; der Charaktereditor i
   Teile vor dem Auftakt verwenden; bei vorbereitetem Bogen enthält die Startnachricht die bestätigte Figur automatisch.
 - **Plugin-Startpaket:** liefert kurze Projektanweisungen und eine separate erste
   Chatnachricht mit allen gewählten Vorgaben. Die ausführlichen Regeln kommen aus
-  der Freien Spielleitung 0.2. Im neuen Spielchat das Plugin ausdrücklich wählen.
+  dem Open Game Master. Im neuen Spielchat das Plugin ausdrücklich wählen.
   Beide Texte lassen sich einzeln kopieren oder zusammen als Markdown speichern.
 
 Die 8.000-Zeichen-Grenze gilt für Projektanweisungen, nicht für die separate
@@ -237,10 +237,26 @@ Umschulung eröffnen. Abenteuer sollen Interessen, Beziehungen, Entscheidungen u
 passende unterschiedliche Herausforderungen entwickeln, einschließlich Kämpfen.
 Die bisherigen Zahlenregeln, Kommandos und Exporte bleiben erhalten.
 
-Das Plugin heißt vorerst weiterhin **Freie Spielleitung 0.2**, verwendet aber
-Regelsatz **0.3.0**. Die Trennung von Anzeigename und Version sowie weitere
-Bedienungsänderungen gehören zum nächsten Schritt. Kein neuer Testlauf nötig,
-bevor dieser Schritt abgeschlossen ist. Die Änderungen sind Modellanweisungen,
-keine technische Garantie für Kontinuität oder Erzählqualität.
+## Einstieg und Sprachtrennung 0.3.1
+
+Das Plugin heißt **Open Game Master**; Regelsatz **0.3.1** wird separat angezeigt.
+Die Oberfläche erklärt zwei Schritte: Projektanweisungen und eine gemeinsame
+erste Chatnachricht. Der bestätigte Bogen steht genau einmal in dieser Nachricht.
+Der eingebundene Editor klappt seine zusätzliche Vorschau ein und bietet dort
+keine zweite Kopieraktion für denselben Spielstart an. Der separate Editor
+behält Kopieren und Exportieren.
+
+Alle vorgegebenen Anweisungen, Überschriften, Regelbegriffe und Referenztexte
+sind Englisch. `src/language.mjs` legt zentral `language = German` für erzeugte
+Spielstarts und Charaktertemplates fest. Die Sprache steuert Erzählung, Dialoge,
+sichtbare Regelbegriffe und Kommandos. Eigene Texte/Namen werden nicht übersetzt.
+Die deutsche Oberfläche und ihre Hilfen sind davon getrennt. Eine Sprachauswahl
+in der Oberfläche ist noch nicht vorhanden.
+
+Das experimentelle Figurenformat ist nun Version **2**, mit englischen
+Attributschlüsseln `strength`, `dexterity`, `intellect`, `insight` und Format-ID
+`open-game-master-character`. Alte Testbögen werden nicht importiert; bei einem
+neuen Test einen neuen Bogen erzeugen. Numerische Regeln bleiben unverändert.
+Das vorhandene Vesper-Beispiel ist eine aktualisierte Testdatei, kein Altimport.
 
 [Rückkehr zum Stand vor 0.3.0](docs/rollback-0.3.md).

@@ -2,6 +2,15 @@ import {newCharacterDocument, validateCharacterDocument, parseCharacter, seriali
 import {characterMarkup} from './character-view.mjs';
 export function mountCharacterEditor(root, {onChange=()=>{}, world='', worldLocked=false}={}) {
 root.innerHTML=characterMarkup;
+root.classList.toggle('embedded-editor',worldLocked);
+if(worldLocked) {
+ for(const id of ['copy-character','download-character-text'])root.querySelector('#'+id).hidden=true;
+ const preview=root.querySelector('[aria-labelledby=character-preview-title]');
+ const details=document.createElement('details'), summary=document.createElement('summary');
+ summary.textContent='Bogenvorschau und JSON prüfen'; details.append(summary);
+ for(const child of [...preview.children])if(!['character-status','character-errors'].includes(child.id))details.append(child);
+ preview.append(details);
+}
 let doc=newCharacterDocument();
 let textRevision=0;
 const $=selector=>root.querySelector(selector);
@@ -68,7 +77,7 @@ function update() {
  for(const id of ['copy-character','download-character-text','download-character-json']) $('#'+id).disabled=errors.length>0;
  $('#character-continue').disabled=errors.length>0||doc.kind!=='start'||!doc.confirmed;
  $('#character-confirmed').disabled=errors.length>0;
- $('#character-status').textContent=errors.length?`${errors.length} Angaben bitte prüfen. Ausgabe erst nach gültigem Bogen.`:doc.confirmed?'Bogen bestätigt. Separat zur Spielnachricht hinzufügen.':'Bogen formal gültig. Entwurf prüfen und vor dem Spielstart bestätigen.';
+ $('#character-status').textContent=errors.length?`${errors.length} Angaben bitte prüfen. Ausgabe erst nach gültigem Bogen.`:doc.confirmed?(worldLocked?'Bogen bestätigt und in Schritt 2 enthalten.':'Bogen bestätigt. Für den Spielchat kopieren oder im Generator importieren.'):'Bogen formal gültig. Entwurf prüfen und vor dem Spielstart bestätigen.';
  $('#character-preview').value=errors.length?'':characterText(doc);
  $('#character-json').value=errors.length?'':serializeCharacter(doc);
  onChange(structuredClone(doc));

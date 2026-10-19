@@ -25,6 +25,8 @@ for (const [index, mode] of outputModes.entries()) {
  label.append(input, span); document.querySelector('#mode-choices').append(label);
 }
 document.querySelector('#plugin-link').href = PLUGIN.url;
+document.querySelector('#plugin-name').textContent = PLUGIN.name;
+document.querySelector('#plugin-version').textContent = PLUGIN.version;
 const selectedMode = () => modes.querySelector('input:checked').value;
 function addChoices(group, multi=false) {
  const field=document.createElement('fieldset');field.dataset.group=group.id;
@@ -50,7 +52,7 @@ for(const group of groups) {
   form.append(field);
  }
  if(group.id==='continuation') {
-  addChoices({id:'focus',label:'Spielschwerpunkte · optional, höchstens zwei',options:focuses.map(f=>({...f,tooltip:f.text}))},true);
+  addChoices({id:'focus',label:'Spielschwerpunkte · optional, höchstens zwei',options:focuses.map(f=>({...f,tooltip:f.tooltip}))},true);
   const field=document.createElement('div'); field.className='text-option';
   field.innerHTML='<label for="wishes">Eigene Vorgaben und Ausschlüsse (optional)</label><p id="wishes-help">Zum Beispiel: keine verlorene Erinnerung als Aufhänger. Weltangaben gehören in die Weltbeschreibung.</p><textarea id="wishes" name="wishes" aria-describedby="wishes-help" rows="3"></textarea>';
   form.append(field);
@@ -69,13 +71,13 @@ function update() {
   const focusCount=form.querySelectorAll('input[name=focus]:checked').length;
   for(const input of form.querySelectorAll('input[name=focus]')) input.disabled=focusCount>=2 && !input.checked;
   document.querySelector('.output').classList.toggle('is-plugin', plugin);
-  for (const id of ['plugin-guide']) document.getElementById(id).hidden = !plugin;
+  for (const id of ['plugin-guide','plugin-step']) document.getElementById(id).hidden = !plugin;
   document.querySelector('#output-name').textContent = plugin ? 'Dein Plugin-Startpaket' : 'Dein Projektprompt';
-  document.querySelector('#project-label').textContent = plugin ? 'Projektanweisungen' : 'Projektprompt';
+  document.querySelector('#project-label').textContent = '1 · Projektanweisungen';
   document.querySelector('#mode-help').textContent = plugin
     ? 'Die ausführlichen Regeln liefert das Plugin. Deine Auswahl steht in der separaten Startnachricht.'
     : 'Der kompakte Prompt enthält das eigenständige Regelwerk. Bei Platzmangel folgt das vollständige Profil als erste Chatnachricht.';
-  copy.textContent = plugin ? 'Projektanweisungen kopieren' : 'Prompt kopieren ↗';
+  copy.textContent = 'Schritt 1 kopieren';
   try {
     const data = new FormData(form);
     const config={...Object.fromEntries(data), extras:data.getAll('extras'), focus:data.getAll('focus'), characterSource:prepared?'prepared':'chat'};
@@ -90,8 +92,8 @@ function update() {
     const hasStart=!!currentOutput.startMessage;
     document.querySelector('.output').classList.toggle('is-plugin', plugin || hasStart);
     document.querySelector('#plugin-starter').hidden=!hasStart;
-    document.querySelector('#start-label').textContent=plugin?'Erste Chatnachricht':'Erste Chatnachricht · Abenteuerprofil';
-    document.querySelector('#starter-help').textContent=plugin?'Diese Nachricht kommt in den Spielchat. Ein hier bestätigter Bogen ist in dieser Nachricht enthalten.':'Sende diese vollständige Nachricht vor dem Spielstart. Sie enthält das Abenteuerprofil und gegebenenfalls deinen bestätigten Bogen. Es wurde nichts weggelassen.';
+    document.querySelector('#start-label').textContent='2 · Erste Chatnachricht';
+    document.querySelector('#starter-help').textContent=prepared?'Profil und bestätigter Charakterbogen sind vollständig enthalten. Sende nur diese gemeinsame Nachricht im Spielchat.':'Diese Nachricht enthält dein vollständiges Abenteuerprofil. Die Figur wird anschließend im Spielchat erstellt.';
     document.querySelector('#download-row').hidden=false;
     const prompt = currentOutput.projectInstructions;
     output.value = prompt;
@@ -101,8 +103,8 @@ function update() {
     document.querySelector('#meter').value = prompt.length;
     copy.disabled = false;
     copyStart.disabled = !hasStart; download.disabled = false;
-    status.textContent = plugin ? 'Diese Anweisungen gehören in dein neues Projekt.' : hasStart ? 'Zwei Teile erforderlich: Projektanweisungen und erste Chatnachricht.' : 'Bereit für deine Projektanweisungen.';
-    startStatus.textContent = 'Die Startnachricht hat kein Projektanweisungs-Limit.';
+    status.textContent = 'Schritt 1 gehört in die Projektanweisungen, nicht in den Spielchat.';
+    startStatus.textContent = prepared?'Der bestätigte Bogen ist enthalten; nicht zusätzlich senden.':'Schritt 2 gehört in den Spielchat. Kein 8.000-Zeichen-Limit.';
   } catch (error) {
     document.querySelector('#plugin-starter').hidden=true;
     currentOutput = null;

@@ -29,7 +29,7 @@ test('Fehlende und aus dem Paket führende Regelreferenzen werden abgewiesen', (
   const skill = join(copy, 'skills/freie-spielleitung/SKILL.md');
   const original = readFileSync(skill, 'utf8');
   for (const target of ['references/fehlt.md', '../fremde-regeln.md']) {
-    writeFileSync(skill, original.replace('references/abenteuer-und-welt.md', target));
+    writeFileSync(skill, original.replace('references/adventure-and-world.md', target));
     const result = run('--source', copy, '--check');
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /Referenz/);
