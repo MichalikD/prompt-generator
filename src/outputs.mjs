@@ -5,7 +5,7 @@ import { powers } from './modules.mjs';
 
 export const PLUGIN = Object.freeze({
   name: 'Freie Spielleitung 0.2',
-  version: '0.2.1',
+  version: '0.3.0',
   url: 'https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37',
 });
 
@@ -19,23 +19,23 @@ export function buildPluginPackage(config = defaults, character=null) {
   const selected = selectOptions(config);
   const profile = createProfile(config);
   const projectInstructions = [
-    `Dieses Projekt enthält einen Solo-Textrollenspiel-Durchgang mit dem ausdrücklich ausgewählten Plugin „${PLUGIN.name}“, Regelsatz ${PLUGIN.version}.`,
-    'Verwende dessen Spielleitungsanweisung und Regelreferenzen zusammen mit meinen bestätigten Setting- und Spielvorgaben aus der Startnachricht.',
-    'Ich steuere meine Figur, du Welt und Folgen. Bewahre den bestätigten Charakterbogen, etablierte Fakten und vereinbarte Abweichungen. Übernimm keine andere Regelfassung ohne meine ausdrückliche Anweisung.',
-    'Neuer Chat = neuer Lauf, sofern ich keinen Spielstand mitbringe. Behaupte keine nicht verfügbare Erinnerung, Speicherung oder gelesene Datei.',
-    'Ist das Plugin oder eine benötigte Referenz nicht zugänglich, teile mir das mit, bevor du davon abhängige Regeln anwendest.',
+    `This project contains one solo RPG run with the explicitly selected plugin „${PLUGIN.name}“, Regelsatz ${PLUGIN.version}.`,
+    'Use its GM instructions and references together with my confirmed setting and play options from the first message. Play in German.',
+    'I control my character; you control the world and consequences. Preserve confirmed facts, the starting sheet and agreed deviations. Adopt another rules version only at my explicit request.',
+    'New chat = new run unless I provide a save. Never claim unavailable memory, storage or file access.',
+    'If the plugin or a required reference is inaccessible, say so before applying dependent rules.',
   ].join('\n');
 
   const startMessage = [
     `Neuer Solo-Durchgang mit „${PLUGIN.name}“, Regelsatz ${PLUGIN.version}.`,
-    'Lade zuerst die Spielleitungsanweisung und „Abenteuer und Welt“. Bestätige deren tatsächlichen Zugriff kurz auf der Metaebene.',
-    'Für diesen Durchgang gelten die folgenden gewählten Vorgaben; sie ersetzen abweichende Standardvorgaben des Plugins. Bewahre sie über Kapitelwechsel hinweg.',
+    'Read the GM skill and “Abenteuer und Welt” first. Briefly confirm actual access in German meta text.',
+    'The following choices override conflicting plugin defaults for this run; retain them across chapters.',
     profileText(profile, selected, groups),
     ...groups.filter(group=>!profileIds.includes(group.id) && !(character && group.id==='creation')).map(group => `${group.label}: ${selected[group.id].text}`),
     powers[config.setting],
-    diceText(config) || 'Zusatzwürfel: keine. Verwende die festen Grundschäden; Attributproben bleiben W20.',
-    'Wenn ich einen bestätigten Charakterbogen mitgebe, übernimm ihn unverändert und erstelle die Figur nicht neu. Andernfalls führe die gewählte Charaktererstellung aus und stimme den Bogen vor dem Auftakt ab.',
-    ...(character ? [characterText(character), 'Übernimm diesen bestätigten Bogen unverändert und beginne das Abenteuer gemäß dem Profil. Stelle die Figur nicht erneut zusammen.'] : ['Beginne danach das Abenteuer. Frage nur nach Angaben, die für den Start tatsächlich fehlen.']),
+    diceText(config) || 'Extra dice: none. Use fixed base damage; attribute checks remain W20.',
+    'Use a confirmed character sheet as the starting state without recreating it. Otherwise follow the selected creation method and confirm the draft before the opening.',
+    ...(character ? [characterText(character), 'Use this confirmed sheet as the starting state and begin the adventure according to the profile. Do not recreate the character.'] : ['Then begin the adventure. Ask only for information essential to starting.']),
   ].filter(Boolean).join('\n\n');
 
   return {
@@ -71,6 +71,6 @@ export function buildOutput(config = defaults, mode = 'compact', character=null)
   checkPrepared(config,character);
   if (mode === 'plugin') return buildPluginPackage(config,character);
   const output = buildCompactPackage(config,{prepared:!!character});
-  const startMessage=[output.startMessage, ...(character ? [characterText(character),'Übernimm diesen bestätigten Bogen unverändert und beginne das Abenteuer gemäß dem Profil.'] : [])].filter(Boolean).join('\n\n');
+  const startMessage=[output.startMessage, ...(character ? [characterText(character),'Use this confirmed sheet as the starting state and begin the adventure according to the profile.'] : [])].filter(Boolean).join('\n\n');
   return {...output, startMessage, downloadName:'projekt-startpaket.md', downloadText:['# Projekt-Startpaket', '## 1. Projektanweisungen', output.projectInstructions, ...(startMessage ? ['## 2. Erste Chatnachricht', startMessage] : [])].join('\n\n')};
 }

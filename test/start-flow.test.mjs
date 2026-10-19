@@ -11,9 +11,9 @@ test('Bestätigter Bogen und Profil stehen in beiden Modi vollständig in einer 
  for(const mode of ['compact','plugin']) {
   const output=buildOutput(config,mode,figure);
   assert.ok(output.projectInstructions.length<LIMIT);
-  for(const text of ['ABENTEUERPROFIL','Nur Inseln.','Keine Bilder.','Bestätigter Startbogen: Vesper','Doppelschwertkampf','beginne das Abenteuer']) assert.ok(output.startMessage.includes(text),text);
-  assert.ok(!output.startMessage.includes('Ich lege Name/Herkunft'));
-  assert.ok(!output.projectInstructions.includes('Ich lege Name/Herkunft'));
+  for(const text of ['ABENTEUERPROFIL','Nur Inseln.','Keine Bilder.','Bestätigter Startbogen: Vesper','Doppelschwertkampf','begin the adventure']) assert.ok(output.startMessage.includes(text),text);
+  assert.ok(!output.startMessage.includes('I choose name, origin'));
+  assert.ok(!output.projectInstructions.includes('I choose name, origin'));
   assert.ok(output.downloadText.includes(output.startMessage));
  }
 });
@@ -35,9 +35,9 @@ test('Charaktertemplate erhält Weltbeschreibung und eigene Grenzen ohne Abenteu
  const world=worldForCharacter(config), prompt=characterTemplate('Ein Mechaniker.',world);
  assert.ok(prompt.includes(config.worldDescription));assert.ok(prompt.includes(config.wishes));
  assert.ok(!world.includes('Ausführlich:'));assert.ok(!world.includes('SG14'));
- assert.ok(prompt.includes('ausschließlich ausdrücklich von mir genannte Ausschlüsse'));
- assert.ok(prompt.includes('beobachtbarem, konkretem Auslöser'));
- assert.ok(prompt.includes('Normale Ressourcenknappheit ist keine zusätzliche individuelle Schwäche'));
+ assert.ok(prompt.includes('only exclusions I explicitly requested'));
+ assert.ok(prompt.includes('observable trigger'));
+ assert.ok(prompt.includes('Ordinary resource scarcity is not an extra personal weakness'));
 });
 
 test('Ausgabefassung und Pluginmanifest sind synchron',()=>{

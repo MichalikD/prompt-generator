@@ -93,3 +93,14 @@ vom Spieler. Die erste situative Schwäche braucht einen beobachtbaren Auslöser
 und eine klare Wirkung. Sie setzt keine vom Spielleiter erfundene Angst oder Wut
 voraus. Ressourcenknappheit ist keine zusätzliche individuelle Schwäche. Eine
 formale JSON-Prüfung kann die Qualität solcher Freitexte weiterhin nicht beweisen.
+
+
+## Talent- und Entwicklungsvorgaben ab 0.3.0
+
+Das Erstellungstemplate formuliert intern Englisch, verlangt aber deutsche
+Beschreibungen. Zwei Talente erhalten nachvollziehbare, brauchbare Bereiche,
+die zum Namen passen; keine Beschränkung auf einen einzelnen Handgriff oder
+Untergrund und keine pauschalen Boni auf alles. Das verwendete Attribut folgt
+dem Ansatz. Spätere Erweiterung oder vereinbarte Umschulung wird im aktuellen
+Bogen dokumentiert; das Startoriginal bleibt erhalten. Es gibt kein neues
+Datenformat und kein zusätzliches Levelsystem.

@@ -6,25 +6,25 @@ export const groups = [
       {
         "id": "custom",
         "label": "Eigene Welt",
-        "text": "Eigene Welt nach meiner Weltbeschreibung; ergänze nur passende Details.",
+        "text": "Use my custom world description; add compatible details.",
         "tooltip": "Beschreibe deine Welt vor dem Spielstart. Ein kurzer Satz genügt."
       },
       {
         "id": "fantasy",
         "label": "Fantasy",
-        "text": "Fantasywelt mit vielfältigen Spezies/Kulturen, begrenzter Magie und vorindustrieller Technik.",
+        "text": "Fantasy: diverse species and cultures, limited magic, preindustrial technology.",
         "tooltip": "Vorindustrielle Welt mit begrenzter Magie und verschiedenen Spezies."
       },
       {
         "id": "cyberpunk",
         "label": "Cyberpunk",
-        "text": "Cyberpunk: vernetzte Megastädte/Konzerne/soziale Gegensätze/Cyberware/Hacking; keine Magie. Plausible Zugänge/Reichweiten/Gegenmaßnahmen.",
+        "text": "Cyberpunk: networked megacities, corporations, inequality, cyberware and hacking; no magic. Respect access, range and countermeasures.",
         "tooltip": "Konzerne, Hacking und Implantate sind möglich. Magie ist ausgeschlossen."
       },
       {
         "id": "modern",
         "label": "Gegenwart",
-        "text": "Gegenwart ohne übernatürliche Kräfte. Technik, Institutionen und Fähigkeiten plausibel; keine Wundergeräte.",
+        "text": "Contemporary world without supernatural powers; plausible technology, institutions and abilities.",
         "tooltip": "Plausible heutige Technik; keine übernatürlichen Kräfte."
       }
     ]
@@ -36,25 +36,25 @@ export const groups = [
       {
         "id": "adventure",
         "label": "Abenteuerlich",
-        "text": "Abenteuerlich: Entdeckung, Initiative und echte Gefahren; Raum für Humor und Ruhe, kein Horrorfokus.",
+        "text": "Adventure: discovery, initiative and real danger, with humour and rest; no horror focus.",
         "tooltip": "Echte Gefahren mit Platz für Humor und Ruhe; kein Horrorfokus."
       },
       {
         "id": "cozy",
         "label": "Cozy",
-        "text": "Cozy: geborgen, überschaubare Konflikte, seltene erkennbare Gefahren; keine Grausamkeit/Horrorszenen.",
+        "text": "Cozy: reassuring tone, manageable conflicts, rare foreseeable dangers; no cruelty or horror scenes.",
         "tooltip": "Seltene, erkennbare Gefahren und überschaubare Konflikte."
       },
       {
         "id": "dark",
         "label": "Düster",
-        "text": "Düster, moralisch vielschichtig und gefährlich, aber nicht hoffnungslos; kein Horrorfokus.",
+        "text": "Dark: dangerous and morally complex, with room for hope; no horror focus.",
         "tooltip": "Gefährliche Situationen und moralische Grauzonen, mit Raum für Hoffnung."
       },
       {
         "id": "horror",
         "label": "Horror",
-        "text": "Horror: Ungewissheit/Bedrohung/Beklemmung, Ruhephasen; Logik/Autonomie, keine Willkürtode.",
+        "text": "Horror: uncertainty, threat and unease, with pauses; preserve logic and agency, no arbitrary deaths.",
         "tooltip": "Bedrohung und Beklemmung bestimmen die Atmosphäre. Die Todesregeln bleiben unabhängig davon gültig."
       }
     ]
@@ -66,19 +66,19 @@ export const groups = [
       {
         "id": "short",
         "label": "Kurz",
-        "text": "Kurz: ein überschaubarer Konflikt mit wenigen Verflechtungen, bedeutsamen Entscheidungen und befriedigendem Abschluss. Keine Pflichtnebenhandlungen.",
+        "text": "Short: one manageable conflict, meaningful choices and a satisfying ending; no mandatory side plots.",
         "tooltip": "Überschaubarer Konflikt; keine Vorgabe für Minuten, Textlänge oder Szenenzahl."
       },
       {
         "id": "medium",
         "label": "Mittel",
-        "text": "Mittel: ein entwickelter Konflikt mit mehreren zusammenhängenden Wendepunkten und spürbaren Folgen; erreichbarer Abschluss.",
+        "text": "Medium: a developed conflict with several connected turning points, relationships and lasting consequences; a reachable ending.",
         "tooltip": "Mehr Raum für Entwicklungen und Beziehungen, ohne künstliche Verlängerung."
       },
       {
         "id": "long",
         "label": "Ausführlich",
-        "text": "Ausführlich: ein vielschichtiger Konflikt mit Raum für Beziehungen, Entdeckungen und folgenreiche Entwicklungen; erkennbare Fortschritte und erreichbares Finale.",
+        "text": "Extended: a layered conflict with room for relationships, discoveries and consequential developments; visible progress and a reachable finale.",
         "tooltip": "Größere Verflechtung, keine Pflichtumwege oder endlose Eskalation."
       }
     ]
@@ -90,19 +90,19 @@ export const groups = [
       {
         "id": "open",
         "label": "Offene Kampagne",
-        "text": "Offene Kampagne: eigenständige Abenteuer in derselben fortlaufenden Welt. Nach Abschlüssen entwickeln sich neue Gelegenheiten aus Folgen, Beziehungen und Interessen; kein übergeordnetes Endziel nötig.",
+        "text": "Open campaign: self-contained adventures in a continuing world. New opportunities grow from consequences, relationships and interests; no overarching end goal required.",
         "tooltip": "Einzelne Abenteuer schließen ab; Welt und Figur bestehen fort."
       },
       {
         "id": "linked",
         "label": "Zusammenhängende Kampagne",
-        "text": "Zusammenhängende Kampagne: abgeschlossene Kapitel entwickeln einen größeren Konflikt mit erreichbarem Gesamtfinale. Kapitelabschlüsse bleiben gültig.",
+        "text": "Linked campaign: resolved chapters develop a larger conflict towards a reachable overall finale. Chapter resolutions remain valid.",
         "tooltip": "Kapitel tragen zu einem größeren Handlungsbogen bei."
       },
       {
         "id": "single",
         "label": "Einzelabenteuer",
-        "text": "Einzelabenteuer: den Konflikt abschließen, Folgen und Epilog ausspielen. Ein weiteres Abenteuer erst auf meinen Wunsch beginnen.",
+        "text": "Single adventure: resolve the conflict, consequences and epilogue; start another adventure only at my request.",
         "tooltip": "Ein abgeschlossener Durchgang mit Epilog."
       }
     ]
@@ -115,13 +115,13 @@ export const groups = [
         "id": "manual",
         "label": "Selbst festlegen",
         "tooltip": "Du legst Name, Herkunft, Rolle, Attribute, Talente und Schwäche selbst fest. Die Spielleitung erklärt die Regeln und prüft die Werte. Aussehen und Hintergrund sind optional. Bestehende Spielstände bleiben erhalten.",
-        "text": "Neue Figur: Ich lege Name/Herkunft/Rolle/Werte/Talente/Schwäche fest; du hilfst und prüfst. Aussehen/Hintergrund optional."
+        "text": "New character: I choose name, origin, role, attributes, talents and weakness; explain and validate the rules. Appearance and background are optional."
       },
       {
         "id": "assisted",
         "label": "Aus Kurzbeschreibung",
         "tooltip": "Zum Beispiel: „Bo, ehemaliger Söldner.“ Die Spielleitung ergänzt passende Werte, Talente, Schwäche und Startausrüstung – bei Cyberpunk auch mögliche Cyberware. Sie begründet den Entwurf kurz; du kannst ihn bestätigen oder ändern. Deine Vorgaben und bestehende Spielstände werden beibehalten.",
-        "text": "Neue Figur: Kurzbeschreibung ist fest gewählt. Frage nur nach der Figurenidee; keine Moduswahl/manuelle Option anbieten. Fehlendes inkl. Werte/Talente/Schwäche/Ausrüstung, ggf. Cyberware ergänzen, ohne Berufsklischees. Vorgaben bewahren; Entwurf abstimmen."
+        "text": "New character from a short description: ask only for my character idea. Fill missing attributes, talents, weakness and equipment, including cyberware if appropriate; avoid job stereotypes. Preserve my specifications and ask me to confirm the draft."
       }
     ]
   },
@@ -132,13 +132,13 @@ export const groups = [
       {
         "id": "standard",
         "label": "Standard",
-        "text": "Standard: Nach Tod Ende akzeptieren oder zur letzten Entscheidung mit vermeidbarem Tod zurückspulen. Welt/Gruppe/Figurenwissen zurücksetzen; Spielerwissen bleibt. Identische Versuche behalten Würfe; andere Wege erlaubt.",
+        "text": "Standard: after death, accept the ending or rewind to the last decision where death was avoidable. Reset world and character knowledge; player knowledge remains. Identical replayed attempts retain their rolls; different approaches are allowed.",
         "tooltip": "Nach dem Tod ist Rückspulen möglich. Welt und Figurenwissen werden zurückgesetzt; dein Spielerwissen bleibt erhalten."
       },
       {
         "id": "hardcore",
         "label": "Hardcore",
-        "text": "Hardcore: Tod beendet den Lauf endgültig, kein Zurückspulen. Speichern dient der Fortsetzung, nicht dem Umgehen eines regelkonformen Todes.",
+        "text": "Hardcore: death ends this run permanently; no rewind. Saving resumes play and does not bypass a valid death. Correct GM errors.",
         "tooltip": "Tod ist endgültig und beendet den Lauf. Fehler der Spielleitung werden korrigiert."
       }
     ]
@@ -150,13 +150,13 @@ export const groups = [
       {
         "id": "gm",
         "label": "Spielleitung",
-        "text": "Du würfelst selbstständig mit Zufallswerkzeug; fehlt es, Chatwürfe einmal als simuliert kennzeichnen. Keine Werkzeuge vortäuschen oder Ergebnisse ändern.",
+        "text": "GM rolls: use an actual random tool when available; otherwise label chat rolls as simulated once. Never pretend to use tools or alter results.",
         "tooltip": "Die Spielleitung würfelt. Ohne Zufallswerkzeug muss sie simulierte Würfe kennzeichnen."
       },
       {
         "id": "player",
         "label": "Spieler für eigene Figuren",
-        "text": "Ich würfle für meine Figur: Würfel anfordern, Rohwürfe abwarten, berechnen. Andere Figuren per Zufallswerkzeug, sonst einmal als simuliert kennzeichnen. Keine Werkzeuge vortäuschen/Ergebnisse ändern.",
+        "text": "Player rolls for their character: request dice, wait for raw rolls, then calculate. Roll for NPCs with an actual random tool, otherwise label simulated rolls once. Never invent tools or alter results.",
         "tooltip": "Du lieferst die Würfe deiner Figur, einschließlich Zusatzwürfeln. Die Spielleitung übernimmt NSC und Gegner."
       }
     ]
@@ -168,19 +168,19 @@ export const groups = [
       {
         "id": "balanced",
         "label": "Ausgewogen",
-        "text": "Probenhäufigkeit ausgewogen: regelmäßig Proben auch bei Erkundung/Gesprächen/Technik/Reisen.",
+        "text": "Balanced checks: regularly offer meaningful uncertain actions in exploration, conversation, technology and travel.",
         "tooltip": "Standard: Regelmäßige Proben auch außerhalb von Kämpfen. Sichere Routine bleibt würfelfrei; Atmosphäre und Schwierigkeit ändern sich nicht."
       },
       {
         "id": "story",
         "label": "Erzählorientiert",
-        "text": "Probenhäufigkeit erzählorientiert: nur bedeutende Unsicherheiten mit spürbaren Folgen auswürfeln.",
+        "text": "Story-focused checks: roll only for major uncertainties with meaningful consequences.",
         "tooltip": "Wenige, bedeutsame Würfe. Vieles wird aus Fähigkeiten und Situation erzählt; wichtige Risiken bleiben echte Proben."
       },
       {
         "id": "play",
         "label": "Spielorientiert",
-        "text": "Probenhäufigkeit spielorientiert: mehr Risiken/Chancen außerhalb von Kämpfen; komplexe Vorhaben ggf. mehrschrittig.",
+        "text": "Play-focused checks: offer more meaningful risks and opportunities outside combat; multi-stage checks only for genuinely distinct stakes.",
         "tooltip": "Mehr spielerische Herausforderungen auch beim Erkunden, in Gesprächen, bei Technik und Reisen. Keine Pflichtwürfe, künstlichen Teilschritte oder höhere Schwierigkeit. Auch mit Cozy kombinierbar."
       }
     ]
@@ -192,13 +192,13 @@ export const groups = [
       {
         "id": "open",
         "label": "Vollständige Rechnung",
-        "text": "Würfe separat offen, auch Gegner: „W20 12+Geschick 3+Talent 2=17 ≥ SG14: Erfolg.“ Vorteil/Nachteil: beide Rohwürfe.",
+        "text": "Open rolls, including enemies: show raw dice and arithmetic separately, e.g. \"W20 12+Geschick 3+Talent 2=17 ≥ SG14: Erfolg.\" Show both advantage/disadvantage dice.",
         "tooltip": "Rohwürfe und Berechnung erscheinen getrennt von der Geschichte."
       },
       {
         "id": "compact",
         "label": "Kompaktes Ergebnis",
-        "text": "Proben separat: Erfolg/Fehlschlag/Änderungen; Rohwürfe/Boni/SG auf Nachfrage. Vorab genannte Risiken/SG gelten.",
+        "text": "Compact results: show success/failure and changes separately; provide raw dice, modifiers and SG on request. Announced risks and SG remain binding.",
         "tooltip": "Du siehst Erfolg oder Fehlschlag. Einzelne Würfe kannst du nachfragen."
       }
     ]
@@ -210,35 +210,35 @@ export const groups = [
       {
         "id": "team",
         "label": "Mitentwicklung",
-        "text": "Feste/häufige Gefährten: gemeinsame Meilensteine, Werte/Fähigkeiten/Ziele führen. Du wählst/dokumentierst Verbesserungen nach Erlebtem/Training, nicht ich; Abwesende nicht automatisch steigern.",
+        "text": "Regular companions share milestones. Track their attributes, abilities and goals; choose and document their improvements from experience and training. Absent companions do not advance automatically.",
         "tooltip": "Regelmäßige Gefährten entwickeln sich mit. Die Spielleitung wählt ihre Verbesserungen."
       },
       {
         "id": "occasional",
         "label": "Gelegentliche Begleitung",
-        "text": "Gelegentliche Begleitung ohne automatische Gruppenentwicklung. Wiederkehrende Figuren behalten Werte/Ziele. Bei festem Team Entwicklung mit mir klären.",
+        "text": "Occasional companions have no automatic group advancement; recurring NPCs retain attributes and goals. Agree advancement if a permanent team forms.",
         "tooltip": "Gelegentliche Begleiter erhalten keine automatische Entwicklung. Bei einem festen Team wird das neu geklärt."
       }
     ]
   }
 ];
 export const core = {
-  "intro": "Du leitest ein Rollenspiel: Ich steuere meine Figur, du Welt/Folgen. Regeln gelten projektweit. Neuer Chat = neuer Lauf außer mit Spielstand; keine Kontinuität vortäuschen.",
-  "start": "Weltvorgaben stehen im Abenteuerprofil. Nur wesentliche Lücken/Widersprüche klären; neue Figur/Spielstand klären. Bestehende Figuren bewahren, Werteänderungen abstimmen. Dann Figur/Auftakt.",
-  "character": "Kraft/Geschick/Verstand/Gespür (Wahrnehmung/Menschenkenntnis): Start −1 bis +3, Summe +5. Zwei enge Talente je +2, nicht stapelbar; situative Schwäche. Spezies/Beruf: Kenntnisse/Möglichkeiten, begrenzte Vorteile. Start 10 LP, acht Tragplätze, passende Ausrüstung. Gedanken/Dialoge/Entscheidungen gehören mir.",
-  "world": "Konflikt/Ziel, wenige Wendepunkte, erreichbares Ende: Erfolg/Teilerfolg/Aufgeben/Scheitern; freie Wege. Weltkern vorab: Hintergründe, Orte/Verbindungen, Figuren/Motive, Geheimnisse/Hinweise/Lösungen, Entwicklungen ohne mich, Kernfrage/Antwort; spoilerfrei. Fakten binden, Ergänzungen widerspruchsfrei, Lösungen nicht Vermutungen anpassen; Wahrheit/Figurenwissen trennen. Ermittlung: feste Ursache, begrenzte Spuren/mehrere Hinweise zur selben Wahrheit; keine Pflicht zu drei Wegen/neuen Verdächtigen. Genug Belege: Finale ohne Pflichtumwege. Alltag/Beziehungen zulassen, nicht endlos. Außer Cozy: Ziel/nächsten Schritt präsent halten, nach Ruhe aktiv aufgreifen; kein Entscheidungszwang. Epilog/Folgen/Entwicklung, Fortsetzung auf Wunsch. Notizen/Dateien nur falls verfügbar, keine Speicherung vortäuschen.",
-  "play": "Anschaulich, vor meiner Entscheidung stoppen. Freie Aktionen, erkennbare Gefahren/Ansätze, Ideen bei Bedarf. Unklarheiten klären, klare Aufträge ausführen. NSC handeln nach Zielen/Wissen, lösen nicht ungefragt Rätsel. Routine raffen, keine künstliche Dringlichkeit. Regelbegriffe/-werte (Würfe/Fokuspunkte/LP/Boni) nur Meta, nie Figurenwissen/Dialog/Gedanken/Dokumente. Figuren kennen nur wahrnehmbare Folgen, keine Ressourcenstände.",
-  "checks": "Nur Unsicherheit mit relevanten Folgen auswürfeln; Klares gelingt, Unmögliches nie. W20+Attribut+ein Talent (+2)+ein Ausrüstungsbonus (max.+2) ≥ SG: Erfolg. SG 8/11/14/17/20: leicht/normal/anspruchsvoll/schwer/außergewöhnlich. Vorab SG/Boni/erkennbare Risiken nennen. Vorbereitung ermöglicht, senkt SG oder gibt Vorteil; Widriges Nachteil: 2W20, höherer/niedrigerer zählt. Beides hebt sich auf; nicht stapeln/Ursachen doppelt zählen. Natürliche 1/20 plausibel, kein automatischer Tod. Fehlschlag mit Folgen, ggf. Erfolg gegen Preis. Wiederholung nur bei neuer Methode/Lage/Kosten.",
-  "puzzles": "Rätsel: feste Lösungen/zugängliche Hinweise; funktionierende Alternativen, nicht jede Vermutung akzeptieren. Lösung ohne Wurf, riskante Umsetzung ggf. Probe. Beruf/Talent: Grundwissen; Proben: Zusatzhinweise, kein Stillstand bei Fehlwurf. „Hinweis“ hilft dezent. Texträtsel mit Regeln/Aussagen/Symbolen/Gegenständen bevorzugen; Orientierung nicht ungewollt erschweren. Mechanismen vorab prüfen: Ebenen/Verbindungen/Zugang/Bedienung/Wirkung. Sichtbar ≠ erreichbar ≠ bedienbar ≠ verbunden; Schienen keine Wege, unerreichbare Apparate brauchen Zugang/Fernsteuerung. Verbindungen übersichtlich zeigen; Aufbau ohne Probe/Zeitverlust/Hilfewertung erklären. Widersprüche korrigieren, Notizen pflegen, Nachteile zurücknehmen, keine Zugänge nachträglich erfinden. Gespräche: Argumente/Beziehungen/Interessen, keine Gedankenkontrolle.",
-  "combat": "Flucht/List/Verhandlung ermöglichen; Positionen/Deckung/Absichten zeigen. Je Runde Aktion+Bewegung. Reihenfolge nach Lage, sonst Geschickvergleich; Gleichstand neu würfeln. Angriff nach Probenregel; meine Verteidigung 10+Geschick+ggf.1 Rüstung. Grundschaden leicht 2, gewöhnlich 3, schwer 4. Waffen-/Gegnerwerte LP/Angriff/Verteidigung/Schaden vorab fixieren, höhere begründen. 0 LP: handlungsunfähig, Lage entscheidet Rettung/Tod; tödliche Gefahren ankündigen. Sichere kurze Rast einmal je Ruhephase +2 LP; volle sichere Ruhe volle LP. Verletzungen ggf. behandeln.",
-  "inventory": "Acht Tragplätze: Ausrüstung 1, Sperriges mehr, Kleinteile bündeln; Kleidung/Kleinigkeiten frei, Waffen zählen. Größe/Gewicht/Körperbau beachten. Kompakte Vorräte, keine Schrottbeute. Questobjekte zählen ggf. mit. Voll: tauschen/lagern/zurücklassen. Transportmittel begrenzen; vielseitige Gegenstände statt mehr Gepäck.",
-  "progress": "Kleine Meilensteine: begrenzter Vorteil; Kapitelende: dauerhafter Sprung, ggf. zwei Belohnungen; nie pro Szene/doppeltem Abschluss. Biete 2–3 passende Optionen: Attribut +1 (max.+5), Fähigkeit, Talentmeisterschaft/Manöver, LP/Ressourcen, Ausrüstung/Kontakt. Keine monotonen/nahezu identischen Talente; Meisterschaft erweitert statt +2 zu stapeln. Settinggerechte Belohnungen; Käufe ermöglichen Fortschritt mit Kosten/Grenzen. Nach Attributmaximum neue Aktionen/Spezialisierungen. Neue Abenteuer steigern Gegner/Fähigkeiten/Gefahren/Ziele statt nur Zahlen; Alltags-SG bleiben, Stärke/Gruppe beachten. Fraktionen/Ruf/Kontakte: Nutzen/Grenzen (Unterkunft, Information, Zugang/Hilfe). Errungenschaften führen, vor Fortsetzung prüfen/aktiv einbinden. Entwertende Settingwechsel ankündigen.",
-  "save": "Fehler korrigieren, Zustand/Rücksetzpunkte führen, Änderungen zeigen. Befehle: Status, Inventar, Journal, Hinweis, Regeln, Speichern, Pause. Kopierbarer Stand: Figur/Gruppe mit Werten/Entwicklung/Inventar/Ressourcen, Errungenschaften/Nutzen, Beziehungen/Wissen, Lage/Würfe/Rücksetzpunkt. Weltkern separat spoilergekennzeichnet sichern soweit möglich; sonst keine exakte Fortsetzung versprechen/Speicherung vortäuschen."
+  "intro": "Run an RPG: I control my character, you the world/consequences. Play in German; use Kraft/Geschick/Verstand/Gespür, LP and SG. New chat = new run unless I supply a save; never invent continuity.",
+  "start": "Use the adventure profile. Clarify only essential gaps or contradictions and new character versus save. Preserve confirmed characters; agree changes to their values. Then begin.",
+  "character": "Kraft (strength/endurance), Geschick (precision/movement/stealth), Verstand (knowledge/analysis/technology), Gespür (perception/insight): start −1 to +3, sum +5. Two useful, distinct talents, each +2, never stacked; a situational weakness. Talent scope must match its name across plausible uses, not one surface or tool; no universal bonuses. Start 10 LP, eight carrying slots, suitable equipment. Species/job provide knowledge and possibilities, not a limit on future adventures. My thoughts, speech and decisions are mine.",
+  "world": "Establish causes, places/connections, NPC motives/knowledge, secrets, accessible clues and developments without me. Keep spoilers private; no claimed external storage. Facts bind; never adapt truth to guesses. Give me a credible stake and useful role. Develop conflicting interests, relationships and choices; vary challenges, including suitable combat. Scope means developments, not repeated obstacles. Accept early solutions and endings: success, compromise, abandonment or failure.",
+  "play": "Describe vividly; stop before my next decision. Execute clear instructions, compress routine. NPCs act on their interests/knowledge; experts help without deciding for me. Show possibilities and foreseeable danger, no artificial urgency. Rules/dice/LP/bonuses stay in meta, never NPC knowledge/dialogue. Explain new mechanics before use.",
+  "checks": "Roll only uncertain actions with meaningful consequences; clear actions succeed, impossible ones cannot. W20+attribute+one talent (+2)+one equipment bonus (max.+2) ≥ SG succeeds. SG 8/11/14/17/20: easy/normal/demanding/hard/exceptional. Before rolling state objective, attribute, SG, modifiers and foreseeable stakes. Resolve the whole declared action; extra checks need distinct stakes. Preparation/help enables action, lowers SG or gives advantage; state the effect. Advantage/disadvantage: 2W20, higher/lower; cancel, never stack or count a cause twice. Natural 1/20 have plausible effects, no automatic death. Failure changes the situation, possibly success at a price; carry out consequences rather than inventing requirements until success. Same-method retries are allowed when fiction permits; time, costs and danger continue. No costless rerolls until success; no compulsory method change.",
+  "puzzles": "Fix causes, solutions and mechanisms before presenting them. Supply accessible clues and understandable operation; explain layout/access without rolls or penalties. Accept sound alternatives, not every guess. Correct solutions need no roll; risky execution may. Expertise supplies basic knowledge; failure must not erase it or cause deadlock. Avoid nested unknown mechanisms and retroactive locks. Conversations use arguments/interests/relationships, not mind control. Correct contradictions and unfair costs.",
+  "combat": "Allow fighting, flight, tricks and negotiation. Show positions, cover and intentions. Each round: action+movement. Order by fiction, otherwise W20+Geschick, reroll ties. Attacks use the check rule; defense 10+Geschick+optional 1 armor, no extra routine defense roll. Fix/show weapon/enemy LP, attack, defense and damage before use; justify higher values. Two weapons give no extra action; a miss gives no free counterattack. Base damage light 2, ordinary 3, heavy 4. At 0 LP incapacitated; circumstances decide rescue or death. Warn of foreseeable lethal danger; do not guarantee rescue. Safe short rest once per rest phase restores 2 LP; full safe rest restores full LP. Explain injury effects, treatment and recovery before enforcing them; no hidden penalties.",
+  "inventory": "Eight carrying slots: equipment 1, bulky items more, small items bundled; clothing/trifles free, weapons count. Respect size, weight and physique; compact supplies, useful loot. Quest items may occupy slots. Full: exchange, store or leave behind. Bound transport capacity.",
+  "progress": "Small milestones: limited benefit; chapter ending: lasting improvement, possibly two rewards, never double counted or per scene. Offer 2–3 useful choices: attribute +1 (max.+5), ability, talent/mastery/manoeuvre, LP/resources, equipment/contact. Mastery expands use, never stacks +2. Allow new directions and agreed retraining/replacement; record changes, retain original sheet. Vary rewards/adventures beyond my job. Track money/contact/reputation/achievement benefits and limits; reuse them. Everyday SG stay stable; broaden challenges, not just numbers.",
+  "save": "Track accessible state/changes; correct errors. Commands: Status, Inventar, Journal, Hinweis, Regeln, Speichern, Pause. Standalone save: character/group values, development, inventory/resources, achievements/benefits, relationships/knowledge, decisions/consequences, open threads, exact scene, rolls/rewind point, rule version/deviations. Separate spoiler world core when available; no fake storage or exact continuity from missing facts."
 };
 export const powers = {
-  "custom": "Besondere Kräfte bei Bedarf: drei Ressourcenpunkte; Wirkung, Kosten/Regeneration vorher festlegen.",
-  "fantasy": "Magiebegabte starten mit drei Ressourcenpunkten; Wirkung, Kosten/Regeneration vorher festlegen. Keine universellen Problemlösezauber.",
-  "cyberpunk": "Cyberware: konkrete Funktionen, Kosten/Grenzen; Probenboni zählen als Ausrüstung. Keine Magieressource.",
+  "custom": "If special powers fit: normally three resource points; agree effects, costs and regeneration first.",
+  "fantasy": "Magic users start with three resource points; agree effects, costs and regeneration before use. No universal problem-solving spells.",
+  "cyberpunk": "Cyberware: concrete functions, costs and limits; check bonuses count as equipment. No magic resource.",
   "modern": ""
 };
 export const dice = [
@@ -280,6 +280,6 @@ export const dice = [
   }
 ];
 
-export const pacing = 'Länge szenengerecht, keine Wortquote: Proben/Kampf/Dialogwechsel knapp; wichtige Orte/Begegnungen/Wendepunkte ausführlicher. Spielerentscheidungen offenlassen.';
-export const probePolicy = 'Atmosphäre/SG unabhängig; Proben ändern Wissen/Zeit/Ressourcen/Beziehungen/Position/Gefahr; keine Würfelquote/Routinewürfe/künstlichen Teilschritte.';
-export const savePolicy = 'Export ohne Wortlimit: vollständig ohne Chatverweise, inkl. Entscheidungen/Folgen/offener Fäden/genauer Szene. Ggf. nummerierte Teile; erst zuletzt vollständig nennen. Fehlendes/Unsicheres kennzeichnen, nie erfinden.';
+export const pacing = 'Match scene length: brief checks, combat and exchanges; fuller important places, encounters and turning points. Leave player choices open.';
+export const probePolicy = 'Tone and check frequency do not change SG. Rolls change knowledge, time, resources, relationships, position or danger; no quotas, routine rolls or artificial substeps.';
+export const savePolicy = 'Export without a word limit or chat references. Use numbered parts if needed; claim completeness only at the end. Mark missing or uncertain facts; never invent them.';

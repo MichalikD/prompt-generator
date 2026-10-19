@@ -55,14 +55,14 @@ test('Fehlerhafte Strukturen und unbekannte Felder werden ohne unbehandelte Ausn
 });
 
 test('KI-Template enthält das importierbare Format und verlangt Prüfung statt automatischer Bestätigung',()=>{
- const prompt=characterTemplate('Eine Mechanikerin ohne Magie.','Gegenwart ohne Übernatürliches.');
+ const prompt=characterTemplate('Eine Mechanikerin ohne Magie.','Contemporary world without Übernatürliches.');
  assert.ok(prompt.includes('Eine Mechanikerin ohne Magie.'));
- assert.ok(prompt.includes('Gegenwart ohne Übernatürliches.'));
+ assert.ok(prompt.includes('Contemporary world without Übernatürliches.'));
  const template=JSON.parse(prompt.slice(prompt.indexOf('{\n')));
  assert.deepEqual(validateCharacterDocument(template),[]);
  assert.equal(template.confirmed,false);
- assert.ok(prompt.includes('Summe +5'));
- assert.ok(prompt.includes('Spezies/Abstammung, Herkunft, persönliche Ziele und Beziehungen dürfen unbekannt oder offen bleiben'));
+ assert.ok(prompt.includes('sum +5'));
+ assert.ok(prompt.includes('Ancestry, origin, personal goals and relationships may remain unknown or open'));
  assert.ok(validateCharacterDocument(newCharacterDocument()).length>0);
 });
 

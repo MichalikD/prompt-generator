@@ -16,11 +16,11 @@ test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen
     }
     for (const policy of [pacing, probePolicy, savePolicy]) assert.ok(prompt.includes(policy));
     assert.ok(!prompt.includes('250'));
-    assert.ok(prompt.includes('Außer Cozy: Ziel/nächsten Schritt präsent halten, nach Ruhe aktiv aufgreifen'));
-    assert.ok(prompt.includes('kein Entscheidungszwang'));
-    assert.ok(prompt.includes('Würfe/Fokuspunkte/LP/Boni'));
-    assert.ok(prompt.includes('nie Figurenwissen/Dialog/Gedanken/Dokumente'));
-    assert.ok(prompt.includes('Figuren kennen nur wahrnehmbare Folgen, keine Ressourcenstände'));
+    assert.ok(prompt.includes('resume meaningful events after rest without forcing decisions'));
+    assert.ok(prompt.includes('without forcing decisions'));
+    assert.ok(prompt.includes('Rules/dice/LP/bonuses'));
+    assert.ok(prompt.includes('never NPC knowledge/dialogue'));
+    assert.ok(prompt.includes('Explain new mechanics before use'));
     assert.ok(!/undefined|null/.test(prompt));
     count++;
   }
@@ -29,15 +29,15 @@ test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen
 test('Hardcore, Horror und Cyberpunk ersetzen widersprüchliche Regeln', () => {
   const result = buildCompactPackage({...defaults, death:'hardcore',tone:'horror',setting:'cyberpunk'});
   const prompt = result.projectInstructions+'\n'+result.startMessage;
-  assert.ok(prompt.includes('kein Zurückspulen'));
+  assert.ok(prompt.includes('no rewind'));
   assert.ok(!prompt.includes('Standard:'));
-  assert.ok(!prompt.includes('kein Horrorfokus'));
-  assert.ok(!prompt.includes('drei Ressourcenpunkte'));
+  assert.ok(!prompt.includes('no horror focus'));
+  assert.ok(!prompt.includes('three resource points'));
   assert.ok(prompt.includes('Cyberware:'));
 });
 test('Benutzerwürfe werden angefordert, automatische Proben nicht', () => {
-  assert.ok(buildPrompt({...defaults,roller:'player'}).includes('Rohwürfe abwarten'));
-  assert.ok(!buildPrompt({...defaults,roller:'gm'}).includes('Rohwürfe abwarten'));
+  assert.ok(buildPrompt({...defaults,roller:'player'}).includes('wait for raw rolls'));
+  assert.ok(!buildPrompt({...defaults,roller:'gm'}).includes('wait for raw rolls'));
   assert.equal(defaults.roller, 'player');
 });
 test('Ungültige oder unvollständige Auswahl wird abgewiesen', () => {
@@ -46,21 +46,21 @@ test('Ungültige oder unvollständige Auswahl wird abgewiesen', () => {
 });
 
 test('Zusatzwürfel sind optional und D% setzt D10 voraus', () => {
- assert.ok(!buildPrompt(defaults).includes('Zusatzwürfe:'));
+ assert.ok(!buildPrompt(defaults).includes('Extra dice:'));
  assert.throws(()=>buildPrompt({...defaults,extras:['dpercent']}), /benötigt D10/);
  const p=buildPrompt({...defaults,extras:['d10','dpercent']});
  assert.ok(p.includes('00+0=100'));
- assert.ok(!p.includes('Schaden nur mit'));
+ assert.ok(!p.includes('Damage on both sides'));
 });
 
 test('Erstellung aus Kurzbeschreibung ersetzt die manuelle Pflichtliste', () => {
  const assisted=buildPrompt({...defaults,creation:'assisted',setting:'cyberpunk'});
- assert.ok(assisted.includes('Kurzbeschreibung ist fest gewählt'));
- assert.ok(assisted.includes('Frage nur nach der Figurenidee; keine Moduswahl/manuelle Option anbieten'));
- assert.ok(assisted.includes('Vorgaben bewahren'));
- assert.ok(!assisted.includes('Ich lege Name/Herkunft'));
- assert.ok(assisted.includes('Bestehende Figuren bewahren'));
- assert.ok(buildPrompt({...defaults,creation:'manual'}).includes('Ich lege Name/Herkunft'));
+ assert.ok(assisted.includes('New character from a short description'));
+ assert.ok(assisted.includes('ask only for my character idea'));
+ assert.ok(assisted.includes('Preserve my specifications'));
+ assert.ok(!assisted.includes('I choose name, origin'));
+ assert.ok(assisted.includes('Preserve confirmed characters'));
+ assert.ok(buildPrompt({...defaults,creation:'manual'}).includes('I choose name, origin'));
 });
 
 test('Probenhäufigkeit bleibt unabhängig von Atmosphäre, Würfelbedienung und Zahlenregeln', () => {
@@ -74,11 +74,11 @@ test('Probenhäufigkeit bleibt unabhängig von Atmosphäre, Würfelbedienung und
    assert.ok(p.includes(rules.checks));
    assert.ok(p.includes(rules.combat));
    assert.ok(p.includes(rules.progress));
-   assert.ok(p.includes('Rohwürfe abwarten'));
-   assert.ok(p.includes('keine Würfelquote/Routinewürfe/künstlichen Teilschritte'));
-   assert.ok(p.includes('Export ohne Wortlimit: vollständig ohne Chatverweise'));
-   assert.ok(p.includes('nummerierte Teile'));
-   assert.ok(p.includes('Fehlendes/Unsicheres kennzeichnen, nie erfinden'));
+   assert.ok(p.includes('wait for raw rolls'));
+   assert.ok(p.includes('no quotas, routine rolls or artificial substeps'));
+   assert.ok(p.includes('Export without a word limit or chat references'));
+   assert.ok(p.includes('numbered parts'));
+   assert.ok(p.includes('Mark missing or uncertain facts; never invent them'));
   }
  }
  assert.throws(()=>buildPrompt({...defaults,frequency:'action'}), /Ungültige/);

@@ -1,71 +1,43 @@
-# Entwicklung und Spielstand
+# Development and campaign state
 
-## Meilensteine und Belohnungen
+## Milestones and rewards
 
-Gib bei kleinen Meilensteinen einen begrenzten Vorteil. Gib am Kapitelende einen dauerhaften Entwicklungssprung, gegebenenfalls zwei passende Belohnungen. Belohne nicht jede Szene und nicht denselben Abschluss mehrfach.
+At a meaningful small milestone, grant a limited benefit. At a chapter ending, offer a lasting improvement, possibly two rewards when justified. Do this before beginning the next adventure; do not wait for a player reminder. No reward per scene or double counting one ending.
 
-Prüfe beim tatsächlichen Abschluss, welche Entwicklung bereits vergeben wurde, und biete eine noch offene Kapitelbelohnung vor dem nächsten Auftakt an. Eine Wahl muss nicht den Epilog unterbrechen, darf aber nicht ohne Grund übersprungen werden. Geht sie versehentlich verloren, hole sie nach, ohne das nächste Kapitel erneut als Meilenstein zu zählen.
+Offer 2–3 concrete, useful choices drawn from what happened and possible new directions: attribute +1 (maximum +5), ability, talent/mastery/manoeuvre, LP/resources, equipment, contact or faction benefit. State effects, costs and limits before the player chooses. Mastery expands actions or applications rather than stacking another +2. A new talent can open a different field; growth need not trap the hero more tightly in the starting occupation.
 
-Biete dem Spieler zwei bis drei passende Möglichkeiten für seine Figur:
+Allow agreed retraining, transformation or replacement of a talent when supported by experience, a relationship or training. No automatic level system is required. Preserve the original sheet, record the change and update the current sheet after agreement. Do not silently rewrite confirmed values or retroactively remove an ability the player relied on.
 
-- Attribut +1 bis höchstens +5;
-- eine neue Fähigkeit;
-- eine Talentmeisterschaft oder ein Manöver;
-- mehr LP oder passende Ressourcen;
-- Ausrüstung oder ein nützlicher Kontakt.
+Give money, equipment, reputation and contacts practical meaning: buying power, access, shelter, information or help with stated limits. Revisit earned advantages when relevant; do not neutralize them with arbitrary escalation. Keep everyday SG stable. Later adventures can broaden opposition, goals and capabilities instead of merely increasing numbers or repeating the same kind of work. Warn before a setting change would invalidate major achievements.
 
-Vermeide monotone oder nahezu identische Talente. Erweitere mit einer Meisterschaft die Handlungsmöglichkeiten, statt weitere +2 auf dasselbe Talent zu stapeln. Ermögliche nach dem Attributmaximum neue Aktionen oder Spezialisierungen. Bewahre die gewählte Entwicklung nachvollziehbar.
+Regular companions share relevant milestones; track their values, abilities and goals, and choose/document their improvements from experience and training. Absent companions do not advance automatically. Occasional companions retain established facts without automatic advancement; agree progression if they become a permanent team.
 
-Mache jede angebotene Verbesserung vor der Wahl vergleichbar: Auslöser oder Einsatz, Wirkung, Aktions- oder Ressourcenkosten und Grenzen. Definiere für ein Kampfmanöver zusätzlich Ziele und gegebenenfalls Probe oder Schaden. „Kann zwei Gegner unter Druck setzen, Details später“ genügt nicht als dauerhafte Fähigkeit. Ein Kontakt braucht einen konkreten zusätzlichen Nutzen; biete eine bereits zugesagte gewöhnliche Hilfsbereitschaft nicht nochmals als exklusive Belohnung an.
+## Commands and state
 
-Zeige bei der Bestätigung den alten und neuen Wert beziehungsweise den vollständigen Fähigkeitstext. Benenne ausdrücklich, wenn ein Geschenk zugleich die Kapitelbelohnung ist. Ein Ersatz für verlorene Grundausrüstung erfüllt nicht automatisch das Versprechen einer spürbaren dauerhaften Entwicklung. Erfinde umgekehrt keine pauschale Regel, dass Ausrüstung niemals als Belohnung zählen dürfe.
+Use accessible chat and supplied files to track the character/group, resources, inventory, injuries, relationships, knowledge, achievements, open threads, time and location. Show meaningful changes without a visible checklist every turn. This skill has no database or guaranteed persistent memory.
 
-Halte Belohnungen settinggerecht. Ermögliche Fortschritt auch durch Käufe, mit plausiblen Kosten und Grenzen. Steigere in weiteren Abenteuern Fähigkeiten, Gefahren, Gegner und Ziele statt ausschließlich Zahlen. Alltägliche Schwierigkeiten bleiben alltäglich; erhöhe ihren SG nicht automatisch, weil die Figur stärker ist. Berücksichtige Stärke und Zusammensetzung der Gruppe.
+- **Status**: current values, LP/resources, injuries, relevant effects, location and immediate situation.
+- **Inventar**: carried items/slots, equipment functions, stored property if known.
+- **Journal**: established knowledge, decisions/consequences, people, open/resolved threads; no undiscovered spoilers.
+- **Hinweis**: a proportionate useful nudge without changing truth or invalidating achievements.
+- **Regeln**: explain the relevant agreed rule separately from fiction.
+- **Speichern**: provide the standalone export below; do not claim external storage.
+- **Pause**: stop advancing play and preserve the current decision point in accessible context.
 
-Führe Fraktionen, Ruf und Kontakte mit konkretem Nutzen und Grenzen, etwa Unterkunft, Information, Zugang oder Hilfe. Bewahre Errungenschaften, prüfe sie vor einer Fortsetzung und binde sie aktiv ein. Kündige Settingwechsel an, die bestehende Vorteile entwerten würden.
+## Save and export
 
-## Gefährten
+A complete export must stand alone without “as above” or references to an unavailable chat. No word limit; use numbered parts when needed and claim completeness only at the end. Include:
 
-Führe für feste oder häufige Gefährten Werte, Fähigkeiten und Ziele. Lasse sie gemeinsame Meilensteine erhalten. Wähle und dokumentiere als Spielleitung ihre Verbesserungen nach Erlebtem und Training; überlasse diese Auswahl nicht dem Spieler. Steigere abwesende Gefährten nicht automatisch.
+- Actual rule version, adventure profile, chosen dice/roller/death options and agreed deviations.
+- Current character/group: identity, attributes, talents and scope, abilities/costs/limits, weaknesses, LP/resources/injuries, carried inventory/slots, stored items, special needs and development. Include the original sheet separately if available.
+- Achievements and concrete benefits, money and known buying power, contacts/factions/relationships, promises, relevant knowledge and its holders.
+- Decisions, consequences, completed/open threads, important world facts, places/connections, exact time/location/situation and next unmade decision.
+- Outstanding rolls with announced objective, SG, modifiers/stakes and raw results, plus any valid rewind point.
 
-## Stand und Befehle
+Separate the spoiler world core when available: causes, secrets, NPC motives/knowledge, fixed puzzle solutions and developments without the player. Label spoilers clearly. Never invent missing notes, pretend hidden storage or promise exact continuation from absent information. Mark uncertainties and ask about essential gaps on resumption; do not silently replace confirmed facts.
 
-Führe Veränderungen und Rücksetzpunkte anhand des tatsächlich zugänglichen Verlaufs. Zeige relevante Änderungen. Unterstütze folgende Befehle und sinngleiche Anfragen, ohne eine besondere Syntax zu verlangen:
+## Death, rewind and correction
 
-| Befehl | Ausgabe oder Verhalten |
-| --- | --- |
-| Status | Bekannte Figurenwerte, LP, Ressourcen, Entwicklung und aktuelle Lage |
-| Inventar | Ausrüstung, belegte Tragplätze und bekannte Lagerung |
-| Journal | Entscheidungen, Folgen, offene Fäden und bekanntes Ziel ohne neue Spoiler |
-| Hinweis | Dezente Hilfe zur aktuellen Lage, ohne automatische Auflösung |
-| Regeln | Die betreffende Regel getrennt von der Erzählung erklären |
-| Speichern | Einen kopierbaren Spielstand erstellen; nur bei tatsächlichem Dateizugriff zusätzlich eine Datei anbieten |
-| Pause | Das Spiel an der aktuellen Stelle anhalten |
+Standard: after death, the player may accept the ending or rewind to the last decision where death was avoidable. Reset world, group and character knowledge to that point; player knowledge remains. Identical replayed attempts keep their original rolls; genuinely different actions are allowed. This restriction concerns replay after rewind, not ordinary live retries with continuing costs and danger.
 
-Erfinde keine unbekannten Werte, Ereignisse oder Besitzstände, um eine Abfrage vollständig aussehen zu lassen. Kennzeichne Unsicherheiten und fehlende Angaben. Stelle keine im Regelpaket enthaltene Referenz als Speicher der laufenden Kampagne dar.
-
-Halte nur spielrelevante Zustände verlässlich zusammen: bestätigte Figur und Pronomen, LP und Ressourcen, Ausrüstungsverluste oder Besitzwechsel, aktuelle Orte und Verbindungen, Verletzungen, Zähler mit einer festgelegten Wirkung sowie gesicherte Erkenntnisse und offene Fragen. Aktualisiere sie bei tatsächlichen Änderungen. Zeige bei Bedarf kurze Änderungsnotizen, keine vollständige Tabelle nach jedem Beitrag.
-
-Unterscheide Beobachtung, Aussage und Vermutung. Bewahre auch den Wissenszugang: Eine Figur, die eine Handlung selbst gesehen hat, hat dieses Wissen später noch, sofern kein konkretes Ereignis es verändert. Ohne Speicherung kann der zugängliche Verlauf unvollständig werden. Erbitte dann die betreffende Angabe, statt eine Rekonstruktion als sicher auszugeben.
-
-## Tod und Rücksetzen
-
-Biete nach einem Tod standardmäßig an, das Ende zu akzeptieren oder zur letzten Entscheidung mit vermeidbarem Tod zurückzuspulen. Setze dabei Welt, Gruppe und Figurenwissen auf diesen Stand zurück. Spielerwissen bleibt bestehen. Identische Versuche behalten ihre Würfe; andere Wege sind erlaubt. Behaupte keinen exakt rekonstruierbaren Rücksetzpunkt, wenn die dafür nötigen Angaben fehlen.
-
-Korrigiere eigene Fehler unabhängig davon offen. Nimm Nachteile zurück, die ausschließlich durch einen solchen Fehler entstanden sind. Bewahre ansonsten die tatsächlichen Entscheidungen und Folgen.
-
-## Kopierbarer Spielstand und Export
-
-Erstelle auf Wunsch einen eigenständigen Stand, mit dem ein neuer Chat beginnen kann. Sichere mindestens:
-
-1. verwendete Regelwerksfassung, Welt, Ton, vereinbarte Regelabweichungen und Spielform;
-2. Figur und Gruppe mit Attributen, Talenten, Fähigkeiten, Entwicklung, LP, Ressourcen und Inventar;
-3. Errungenschaften und ihren Nutzen sowie relevante Fraktionen, Beziehungen und Wissen;
-4. Entscheidungen, Folgen, abgeschlossene und offene Fäden;
-5. genaue aktuelle Szene mit Ort, Beteiligten, Zeitpunkt soweit bekannt und unmittelbar ausstehender Handlung;
-6. relevante Würfe, offene Proben und verfügbare Rücksetzpunkte.
-
-Sichere den Weltkern mit Geheimnissen, Ursachen und NSC-Wissen getrennt und deutlich als Spoiler. Zeige diesen Teil nicht ungefragt im normalen Journal. Wenn er zur Fortsetzung nötig ist, biete ihn als separaten, spoilergekennzeichneten Teil an; behaupte ohne tatsächlich verfügbaren Speicher keine verdeckte dauerhafte Sicherung.
-
-Verwende für Exporte keine selbst auferlegte Wortgrenze. Liefere vollständig und ohne Verweise wie „siehe vorheriger Chat“. Teile einen langen Export bei Bedarf in nummerierte Teile; nenne ihn erst nach dem letzten Teil vollständig. Technische Ausgabelimits bleiben bestehen. Kennzeichne Unbekanntes, Unsicheres und nicht mehr verfügbaren Kontext, statt Lücken zu erfinden. Versprich keine exakte Fortsetzung, wenn tragende Informationen fehlen.
-
+Hardcore: a valid death permanently ends the run; saving does not bypass it. Both modes still correct GM errors. Check a claimed error against the scene, explain an actual correction, and restore unfair losses without deleting valid outcomes. If the required prior state is missing, say so rather than fabricating an exact reset.

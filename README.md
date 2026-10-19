@@ -5,7 +5,7 @@ kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API, Anmeldun
 Speicherung oder Synchronisierung.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
 
-## Neue Plugin-Regelbasis 0.2
+## Plugin-Regelbasis 0.3.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -199,9 +199,9 @@ automatisch: Vor Neuladen oder Schließen JSON herunterladen.
 
 [Bedienung, Format und Grenzen](docs/charakterbogen.md)
 
-## Überarbeitung nach dem Mason-Test (Regelsatz 0.2.1)
+## Frühere Überarbeitung nach dem Mason-Test (Regelsatz 0.2.1)
 
-Die bestehende private Freie Spielleitung 0.2 erhält den Regelsatz 0.2.1 mit
+Die frühere Fassung 0.2.1 ergänzte die private Freie Spielleitung 0.2 um
 aktiver Beteiligung der Spielerfigur, geraffter Routine und eigenständigen
 Abenteuern innerhalb einer Kampagne. Der Umfang gilt je Abenteuer. Frühe gute
 Lösungen bleiben gültig; es werden keine zusätzlichen Pflichtszenen angehängt.
@@ -220,3 +220,27 @@ Abenteuerauswahl zurück; der Bogen bleibt erhalten und muss bei geänderter Wel
 neu bestätigt werden. Keine automatische Speicherung nach Neuladen.
 
 [Prioritäten und bewusst zurückgestellte Punkte](docs/roadmap.md)
+
+
+## Überarbeitung 0.3.0 nach den Rika-Durchläufen
+
+Die internen Spielleitungsanweisungen, ausgewählten Regeln und das KI-Template
+sind auf Englisch formuliert. Spielsprache und Oberfläche bleiben Deutsch;
+Attributnamen, LP und SG bleiben erhalten. Englisch ist eine redaktionelle
+Entscheidung, kein Nachweis besserer Modellleistung.
+
+Fehlschläge haben konkrete Folgen. Derselbe Ansatz darf erneut versucht werden,
+wenn die Lage es erlaubt; Zeit, Kosten und Gefahr laufen weiter. Vorbereitung
+muss eine benannte Wirkung haben. Talente beschreiben brauchbare Bereiche statt
+einzelner Handgriffe. Entwicklung darf neue Richtungen und vereinbarte
+Umschulung eröffnen. Abenteuer sollen Interessen, Beziehungen, Entscheidungen und
+passende unterschiedliche Herausforderungen entwickeln, einschließlich Kämpfen.
+Die bisherigen Zahlenregeln, Kommandos und Exporte bleiben erhalten.
+
+Das Plugin heißt vorerst weiterhin **Freie Spielleitung 0.2**, verwendet aber
+Regelsatz **0.3.0**. Die Trennung von Anzeigename und Version sowie weitere
+Bedienungsänderungen gehören zum nächsten Schritt. Kein neuer Testlauf nötig,
+bevor dieser Schritt abgeschlossen ist. Die Änderungen sind Modellanweisungen,
+keine technische Garantie für Kontinuität oder Erzählqualität.
+
+[Rückkehr zum Stand vor 0.3.0](docs/rollback-0.3.md).

@@ -1,30 +1,40 @@
-# Prioritäten nach den Mason-Durchläufen
+# Prioritäten nach den Rika-Durchläufen
 
-Maßstab: Einfluss auf Spielerlebnis und verständliche Bedienung. Kleine
-Darstellungsfehler werden nicht automatisch zu Entwicklungsaufträgen. Ein
-misslungener Durchgang darf beendet werden; der Prototyp muss nicht jeden Lauf
-retten. Stand der Umsetzung: Regelsatz 0.2.1.
+Maßstab ist das Spielerlebnis. Ein schlechter Run darf beendet werden;
+dekorative Fehler werden nicht automatisch Entwicklungsaufträge.
 
-## Jetzt umgesetzt; im nächsten Durchlauf zu prüfen
+## Schritt 1 umgesetzt: Regelbasis 0.3.0
 
-- Aktive Beteiligung mit echten Handlungsmöglichkeiten statt wiederholter
-  Besprechungen und Wartephasen. Ablehnungen bleiben möglich.
-- Abenteuerumfang je eigenständigem Abenteuer, unabhängig vom Kampagnenbogen.
-- Gefahrlos vereinbarte Routine raffen; keine Bestätigung jedes Positionswechsels.
-- Erstellungstemplate: unbekannte Herkunft ist erlaubt; nur tatsächliche
-  Spielergrenzen als Ausschlüsse. Beobachtbare situative Schwächen, normale
-  Ressourcenbegrenzungen nicht als zusätzliche Schwäche darstellen.
-- Verbundener Einstieg: Weltvorgaben ans Template übergeben, Profil und bestätigten
-  Bogen in einer Startnachricht; unpassende Erstellungsoption ausblenden.
-- Textausgabe ohne Bilder, sofern nicht ausdrücklich gewünscht.
-- Alte Vesper-API-Konvertierung entfernt; keine Altformat-Kompatibilität im Prototyp.
+- Englische interne Regeln mit ausdrücklich deutscher Spielausgabe; kompakter
+  Projektprompt, Plugin und Charaktertemplate gleichzeitig angepasst.
+- Weniger wiederholte Voraussetzungen: ganze Vorhaben abwickeln, Vorbereitung
+  wirksam machen und Fehlschläge mit konkreten Konsequenzen fortführen.
+- Gleiche Methode erneut erlaubt, wenn plausibel; Kosten und Gefahr laufen weiter.
+  Scheitern und Tod sind möglich. Keine automatische Rettung bis zum Erfolgswurf.
+- Eigenständige NSC-Interessen, Beziehungen, Entscheidungen und abwechslungsreiche
+  Konflikte; Figur und neue Abenteuer nicht auf den Beruf reduzieren.
+- Brauchbare Talente mit passendem Namen; Entwicklung in neue Richtungen und
+  vereinbarte Umschulung möglich, Originalbogen bleibt erhalten.
+- Neue Mechaniken vor Anwendung erklären; kein zusätzliches Verletzungssystem.
+- Zahlenregeln, Inventar, Befehle, Exporte und ausdrückliche Spielergrenzen erhalten.
+- Rückkehrpunkt: [Rollback](rollback-0.3.md).
+
+Die Prüfungen sichern Ausgabe, Regelverträge und Paketierung. Ob die gebündelten
+Anweisungen das Spielerlebnis verbessern, bleibt im nächsten Run zu prüfen.
+
+## Schritt 2 als Nächstes: Einstieg und Bedienung
+
+- Missverständliche Bezeichnungen und doppelte Ausgaben reduzieren.
+- Generischen Plugin-Anzeigenamen und Regelversion getrennt darstellen.
+- Einstieg, gemeinsame Startnachricht und Bogenübergabe verständlicher machen.
+
+Dieser Schritt ist noch nicht umgesetzt. Vor seinem Abschluss kein neuer
+Spieltest erforderlich.
 
 ## Danach gezielt prüfen (Priorität 2)
 
 - Figurenwissen: plausible Kontakt- und Wissensübertragungen; private Überlegungen
   nicht automatisch NSC bekannt machen. Keine nachträglichen Belege zu jeder Theorie.
-- Mechaniken vor regelrelevantem Einsatz erklären; vorerst kein detailliertes
-  Verletzungssystem hinzufügen.
 - Gegenwart nicht zwingend mit Ausschluss übernatürlicher Kräfte koppeln.
 - Epoche, Setting und konkretes Universum gegenüber bloßem Vorbild besser trennen.
 - Feldbeschreibungen für Identität, Herkunft und Hintergrund vereinfachen.
@@ -36,8 +46,7 @@ retten. Stand der Umsetzung: Regelsatz 0.2.1.
 - Bogen als übersichtliche Nachschlagehilfe; automatische Chat-Synchronisierung
   wäre ein eigenständiger, technisch ungeklärter Schritt.
 - Allgemeine UI-Überarbeitung und Themes.
-- Entwicklung durch neue Kräfte, Verwandlungen und veränderte Schwächen in den
-  Spielregeln ausarbeiten. Optionales Levelsystem erst bei nachgewiesenem Bedarf.
+- Optionales Levelsystem erst bei nachgewiesenem Bedarf; bisher Entwicklung ohne Level.
 
 ## Beobachten; kein eigener Entwicklungsauftrag
 
@@ -46,7 +55,8 @@ retten. Stand der Umsetzung: Regelsatz 0.2.1.
 - Häufige Eigennamen für unwichtige NSC und wiederkehrende Erzählerfloskeln.
 - Widersprüchliche dekorative Symbole bei ansonsten korrekter Rechnung.
 
-Nächster Spieltest: neuer Chat mit neu erzeugtem Profil und bestätigtem Bogen.
-Erzählqualität, Entscheidungen und angemessenen Umfang bewerten. Weitere
-Funktionen erst nach dem Ergebnis priorisieren. Die frühere API-Spiel-App bleibt
-unberührt und eingefroren.
+Nächster Spieltest erst nach der anschließenden Bedienungsüberarbeitung.
+Ein neuer Chat mit neu erzeugtem Profil und bestätigtem Bogen genügt; keine
+separaten vollständigen Durchläufe pro kleiner Regeländerung. Erzählqualität,
+Entscheidungen, Konsequenzen und Umfang gemeinsam bewerten. Die API-Spiel-App
+bleibt unberührt und eingefroren.
