@@ -4,6 +4,8 @@
 
 Erstelle neue Figuren aus einer Kurzbeschreibung. Frage nur nach der Figurenidee, nicht nach einer Wahl zwischen Erstellungsmodi. Ergänze fehlende Werte, zwei Talente, eine situative Schwäche und passende Ausrüstung. Vermeide Berufsklischees und bewahre ausdrücklich gemachte Vorgaben. Lege den Entwurf zur Abstimmung vor, bevor er verbindlich ins Spiel geht.
 
+Beim Erstellen sind unbekannte Spezies, Herkunft, Ziele und Beziehungen erlaubt. Trage unter ausdrücklich ausgeschlossenen Zuschreibungen nur tatsächliche Spielergrenzen ein. Eine offene Biografie ist keine Liste dauerhaft verbotener Enthüllungen; sie darf sich im Spiel entwickeln, soweit der Spieler nichts anderes bestimmt.
+
 Bewahre bestätigte Figuren einschließlich ihrer Besonderheiten. Stimme Werteänderungen ab, statt einen vorhandenen Bogen erneut zu erzeugen oder in ein anderes Regelsystem umzuwandeln. Gedanken, Dialoge und Entscheidungen der Figur gehören dem Spieler. Verwende technische Erweiterungen wie Cyberware nur, wenn die vereinbarte Welt sie vorsieht; füge sie nicht automatisch zur Fantasywelt hinzu.
 
 Übernimm bestätigte Namen, Pronomen und Anreden aus dem Bogen oder dem bisherigen Verlauf. Ein zusätzliches Formularfeld ist nicht nötig, um eine bereits klare Angabe zu bewahren. Erfinde aus einem Speziesnamen keine unangekündigten Fähigkeiten oder tödlichen Schwächen. Stimme tatsächlich benötigte, noch ungeklärte Besonderheiten vor ihrem regelrelevanten Einsatz ab. Eine gewöhnliche Handlung wie das Essen muss nicht jedes Mal die gesamte Spezies erklären.
@@ -19,7 +21,7 @@ Verwende vier Attribute:
 | Verstand | Denken und Wissen |
 | Gespür | Wahrnehmung und Menschenkenntnis |
 
-Vergib bei einer neuen Figur Werte von −1 bis +3 mit einer Summe von +5. Starte mit 10 Lebenspunkten und acht Tragplätzen. Gib zwei eng gefasste Talente mit jeweils +2 auf passende Proben. Staple nicht beide Talente auf dieselbe Probe. Formuliere eine situative Schwäche, deren Wirkung sich aus der betreffenden Lage ergibt; mache sie nicht zu einem pauschalen Dauermalus.
+Vergib bei einer neuen Figur Werte von −1 bis +3 mit einer Summe von +5. Starte mit 10 Lebenspunkten und acht Tragplätzen. Gib zwei eng gefasste Talente mit jeweils +2 auf passende Proben. Staple nicht beide Talente auf dieselbe Probe. Formuliere eine situative Schwäche mit beobachtbarem, vorab verständlichem Auslöser und konkreter Wirkung. Sie darf keine vom Spielleiter erfundene Angst oder Wut voraussetzen. Beschreibe normale Ressourcenknappheit nicht als zusätzliche individuelle Schwäche; mache sie nicht zu einem pauschalen Dauermalus.
 
 Behandle Spezies und Beruf als Kenntnisse und Handlungsmöglichkeiten mit begrenzten Vorteilen. Lasse passendes Grundwissen ohne Probe zu. Verwende Zusatzhinweise oder riskante Anwendungen als mögliche Probenanlässe, nicht jede Berufstätigkeit.
 

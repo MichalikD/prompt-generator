@@ -16,6 +16,12 @@ Nutze eine ausdrücklich offengelassene Vergangenheit für persönliche Zusammen
 
 ## Entwicklung und Übergänge
 
+Unterscheide das aktuelle Abenteuer vom Kampagnenhintergrund. Ein Abenteuer braucht eine eigene Frage oder ein Ziel, auf das die Spielerfigur mit ihren Entscheidungen Einfluss nimmt. Ein wiederkehrendes Motiv darf Abenteuer verbinden, aber nicht immer neue Besprechungen über ein vertagtes Geheimnis an ihre Stelle setzen. Offene Kampagne bedeutet keine Pflicht zu einem allumfassenden Hauptgeheimnis. Auch verbundene Abenteuer unterscheiden sich in Interessen, Entscheidungen und Lösungswegen; ein erreichter Abschluss bleibt gültig.
+
+Ein mittleres Abenteuer entwickelt seinen Konflikt über eine einzelne Problemsituation hinaus: Neue Erkenntnisse, Gegeninteressen oder Folgen verändern die Handlungsmöglichkeiten. Plane dafür keine feste Szenenzahl. Wenn eine gute Spieleridee den Konflikt früher löst, akzeptiere den Abschluss. Verlängere ihn nicht nachträglich zur Erfüllung einer Umfangsvorgabe.
+
+Gib der Figur eine nachvollziehbare Handlungsmöglichkeit, statt sie nur als Zuschauer oder Messobjekt von NSC-Erklärungen zu behandeln. Fachleute dürfen zuständig und kompetent bleiben; gestalte einen anderen plausiblen Beitrag für die Figur. Wenn sie für eine Untersuchung tatsächlich nichts tun kann, raffe diesen Teil und entwickle eine passende spielbare Gelegenheit. Ein neuer Notfall allein macht ihre Beteiligung noch nicht sinnvoll. Keine Pflicht zur Bezahlung, Gefahr oder persönlichen Enthüllung als universelle Motivation.
+
 Lass die Welt auf Handlungen reagieren. Erhalte frühere Folgen, Beziehungen und Errungenschaften auch nach einem Aufgabenende. Lasse Entwicklungen ohne die Spielerfigur geschehen, soweit sie aus feststehenden Umständen plausibel folgen; erfinde keine heimliche Verschlechterung als Strafe für fehlenden Zeitdruck.
 
 Lass Alltag, Ruhe und Beziehungen zu, aber verliere außerhalb von Cozy das Spielziel nicht aus dem Blick. Greife nach Ruhephasen einen noch offenen Konflikt oder einen nachvollziehbaren nächsten Ansatz auf. Eine freie Erkundung darf auf interessante Spannungen und handelnde Personen treffen, ohne dass der Spieler immer erneut nach Arbeit fragen muss.

@@ -17,7 +17,7 @@ Pluginfassung. Eine eigene Modell-API ist nicht enthalten.
 
 Die Moduswahl ändert die Ausgabe, nicht die gewählten Einstellungen. Die alte
 private Vesper-Spielleitung bleibt für begonnene Durchgänge unverändert.
-Das gemeinsame Abenteuerprofil ist im Generator enthalten; der Charaktereditor ist auf einer separaten Seite verfügbar.
+Das gemeinsame Abenteuerprofil ist im Generator enthalten; der Charaktereditor ist direkt in den Startablauf eingebunden.
 
 ## Zwei Ausgaben aus einer Auswahl
 
@@ -25,7 +25,7 @@ Das gemeinsame Abenteuerprofil ist im Generator enthalten; der Charaktereditor i
   Regeln vollständig und benötigt kein Plugin. Den Text in die Projektanweisungen
   kopieren. Passt das vollständige Abenteuerprofil nicht mehr hinein, zeigt die App
   einen klar gekennzeichneten zweiten Text für die erste Chatnachricht an. Beide
-  Teile vor dem Auftakt verwenden; die Figurenidee oder den bestätigten Bogen separat senden.
+  Teile vor dem Auftakt verwenden; bei vorbereitetem Bogen enthält die Startnachricht die bestätigte Figur automatisch.
 - **Plugin-Startpaket:** liefert kurze Projektanweisungen und eine separate erste
   Chatnachricht mit allen gewählten Vorgaben. Die ausführlichen Regeln kommen aus
   der Freien Spielleitung 0.2. Im neuen Spielchat das Plugin ausdrücklich wählen.
@@ -33,7 +33,7 @@ Das gemeinsame Abenteuerprofil ist im Generator enthalten; der Charaktereditor i
 
 Die 8.000-Zeichen-Grenze gilt für Projektanweisungen, nicht für die separate
 Startnachricht. Die Ausgabe installiert kein Plugin. Einen Charakterbogen kannst
-du auf der verlinkten Editor-Seite separat erstellen, importieren und exportieren. Die verlinkte Pluginfassung ist eine private Testinstallation;
+du direkt im Generator erstellen, importieren und exportieren. Die verlinkte Pluginfassung ist eine private Testinstallation;
 der Link gewährt anderen Konten keinen Zugriff. Der öffentlich lesbare Quellcode
 und die Paketierung liegen im Repository.
 
@@ -70,7 +70,8 @@ wird keine neue Version veröffentlicht. Ein erfolgreiches Deployment ersetzt di
 - `src/generator.mjs`: Zusammenstellung, Reihenfolge, harte Längengrenze.
 - `src/app.mjs`: Formular und Kopieren.
 - `src/character.mjs`: Figurenformat, Werteprüfung, Import, Export und KI-Template.
-- `src/character-editor.mjs` und `character.html`: separater Charaktereditor.
+- `src/character-editor.mjs` und `src/character-view.mjs`: gemeinsam verwendeter Editor.
+- `character.html` und `src/character-page.mjs`: eigenständig nutzbare Editor-Seite.
 - `test/`: Vollständige Kombinationsprüfung plus Konfliktprüfungen.
 
 ```sh
@@ -112,7 +113,7 @@ Zusatzwürfel einzeln kombinieren. D% setzt D10 voraus. D4/D6/D8 variieren Schad
 
 ## Charaktererstellung
 
-„Selbst festlegen“ ist der Standard. „Aus Kurzbeschreibung“ leitet bei neuen Figuren fehlende Angaben aus dem Konzept ab, unter denselben Attribut-, Talent- und Ressourcenregeln. Der Entwurf wird mit dem Spieler abgestimmt. Gilt für alle Settings; vorhandene Figuren und Spielstände werden nicht neu erzeugt. Ohne vorbereiteten Bogen wird die Beschreibung beim Spielstart im Chat eingegeben. Alternativ kann der separate Editor einen Bogen beziehungsweise ein KI-Erstellungstemplate vorbereiten.
+„Selbst festlegen“ ist der Standard. „Aus Kurzbeschreibung“ leitet bei neuen Figuren fehlende Angaben aus dem Konzept ab, unter denselben Attribut-, Talent- und Ressourcenregeln. Der Entwurf wird mit dem Spieler abgestimmt. Gilt für alle Settings; vorhandene Figuren und Spielstände werden nicht neu erzeugt. Ohne vorbereiteten Bogen wird die Beschreibung beim Spielstart im Chat eingegeben. Alternativ bereitet der eingebundene Editor einen Bogen beziehungsweise ein KI-Erstellungstemplate vor. Bei dieser Auswahl wird die unpassende Chat-Erstellungsoption ausgeblendet.
 
 ## Eine Spielerfigur
 
@@ -176,14 +177,15 @@ der Spieler muss die nächste Handlung nicht durch eine Auftragssuche erzwingen.
 Weltbeschreibung, Schwerpunkte und eigene Vorgaben bleiben beim Moduswechsel
 vollständig erhalten. „Zurücksetzen“ löscht auch diese Eingaben, erhält aber den
 Ausgabemodus. Es gibt weiterhin keine Speicherung nach dem Neuladen; dafür die
-Starttexte herunterladen. Der Charakterbogen bleibt separat und wird im verlinkten Editor bearbeitet. Alte Spielformen
+Starttexte herunterladen. Der Bogen bleibt ein eigenständiges JSON-Dokument und wird direkt im Generator bearbeitet. Die Startnachricht enthält Profil und bestätigten Bogen gemeinsam. Alte Spielformen
 (`campaign`, `chapters`, `short`) werden nicht automatisch in zwei neue Achsen
 umgedeutet; es gibt bisher keinen Konfigurationsimport.
 
 ## Charakterbogen-Editor
 
-Die verlinkte Seite öffnet in einem separaten Tab und funktioniert für beide
-Ausgabemodi. Vier Attribute bleiben bestehen. Der Editor umfasst Identität,
+„Bogen hier vorbereiten oder importieren“ öffnet den Editor direkt im Generator
+und funktioniert für beide Ausgabemodi. Die Weltvorgaben werden automatisch
+übernommen. Die separate Seite `character.html` bleibt eigenständig nutzbar. Vier Attribute bleiben bestehen. Der Editor umfasst Identität,
 Talente, konkrete Fähigkeiten, situative Schwächen, LP/Ressourcen, Ausrüstung,
 Bedürfnisse, bestätigten/offenen/ausgeschlossenen Hintergrund und Entwicklung.
 Nach Prüfung lässt sich der Bogen ausdrücklich bestätigen; Änderungen heben die
@@ -192,7 +194,29 @@ Weiterführen eines bestätigten Startbogens bleibt das Original separat erhalte
 
 Das kostenlose Prompt-Template kann in beliebigen KI-Chats aus einer
 Kurzbeschreibung einen importierbaren Entwurf erzeugen. Es ruft keine KI auf.
-Der bisherige Vesper-API-Bogen wird unterstützt. Der Editor speichert nicht
+Alte API-Formate werden nicht unterstützt; während der Prototypenphase gibt es keine Kompatibilitätsgarantie. Der Editor speichert nicht
 automatisch: Vor Neuladen oder Schließen JSON herunterladen.
 
 [Bedienung, Format und Grenzen](docs/charakterbogen.md)
+
+## Überarbeitung nach dem Mason-Test (Regelsatz 0.2.1)
+
+Die bestehende private Freie Spielleitung 0.2 erhält den Regelsatz 0.2.1 mit
+aktiver Beteiligung der Spielerfigur, geraffter Routine und eigenständigen
+Abenteuern innerhalb einer Kampagne. Der Umfang gilt je Abenteuer. Frühe gute
+Lösungen bleiben gültig; es werden keine zusätzlichen Pflichtszenen angehängt.
+Bilder erscheinen nur auf ausdrücklichen Wunsch. Das Erstellungstemplate trennt
+unbekannte Biografie von tatsächlichen Spielerausschlüssen und fordert konkrete,
+beobachtbare Schwächenauslöser statt erfundener Gefühle oder Ressourcenregeln.
+Das sind Anweisungen an das Modell, keine garantierte Erzählqualität.
+
+Bei vorbereitetem Bogen ist die gemeinsame Startnachricht erst nach formaler
+Prüfung und ausdrücklicher Bestätigung kopierbar. Änderungen an den übergebenen
+Weltvorgaben oder Ausschlüssen heben diese Bestätigung auf, erhalten aber alle
+Bogenwerte. Umfang und Ton ändern den Bogen nicht. Beide Ausgabemodi verwenden
+dieselbe Figur. Ein Quellenwechsel zur Erstellung im Chat entfernt sie nur aus
+der Ausgabe, nicht aus dem Editor. „Profil zurücksetzen“ setzt die
+Abenteuerauswahl zurück; der Bogen bleibt erhalten und muss bei geänderter Welt
+neu bestätigt werden. Keine automatische Speicherung nach Neuladen.
+
+[Prioritäten und bewusst zurückgestellte Punkte](docs/roadmap.md)

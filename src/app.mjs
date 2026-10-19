@@ -1,7 +1,8 @@
+import { mountCharacterEditor } from './character-editor.mjs';
 import { focuses } from './profile.mjs';
 import { infoButton } from './tooltips.mjs';
 import { groups, dice, defaults, LIMIT } from './generator.mjs';
-import { buildOutput, outputModes, PLUGIN } from './outputs.mjs';
+import { buildOutput, outputModes, PLUGIN, worldForCharacter } from './outputs.mjs';
 const form = document.querySelector('#options');
 const output = document.querySelector('#prompt');
 const copy = document.querySelector('#copy');
@@ -14,6 +15,8 @@ const startStatus = document.querySelector('#start-status');
 const download = document.querySelector('#download');
 let currentOutput = null;
 let revision = 0;
+let editor=null, characterDoc=null, mounting=false;
+const source=document.querySelector('#character-source');
 
 for (const [index, mode] of outputModes.entries()) {
  const label = document.createElement('label'); label.className = 'choice';
@@ -24,7 +27,7 @@ for (const [index, mode] of outputModes.entries()) {
 document.querySelector('#plugin-link').href = PLUGIN.url;
 const selectedMode = () => modes.querySelector('input:checked').value;
 function addChoices(group, multi=false) {
- const field=document.createElement('fieldset');
+ const field=document.createElement('fieldset');field.dataset.group=group.id;
  const legend=document.createElement('legend');legend.textContent=group.label;field.append(legend);
  const row=document.createElement('div');row.className='choices';
  for(const option of group.options) {
@@ -57,6 +60,9 @@ addChoices({id:'extras',label:'Zusatzwürfel · D20 bleibt gesetzt',options:dice
 function update() {
   revision++;
   const plugin = selectedMode() === 'plugin';
+  const prepared=source.querySelector('input:checked').value==='prepared';
+  document.querySelector('#prepared-character').hidden=!prepared;
+  form.querySelector('[data-group=creation]').hidden=prepared;
   const custom=form.querySelector('input[name=setting]:checked').value==='custom';
   document.querySelector('#world-label').textContent=custom?'Eigene Welt beschreiben (erforderlich)':'Welt ergänzen (optional)';
   document.querySelector('#world-description').required=custom;
@@ -72,12 +78,20 @@ function update() {
   copy.textContent = plugin ? 'Projektanweisungen kopieren' : 'Prompt kopieren ↗';
   try {
     const data = new FormData(form);
-    currentOutput = buildOutput({...Object.fromEntries(data), extras:data.getAll('extras'), focus:data.getAll('focus')}, selectedMode());
+    const config={...Object.fromEntries(data), extras:data.getAll('extras'), focus:data.getAll('focus'), characterSource:prepared?'prepared':'chat'};
+    const world=worldForCharacter(config);
+    if(prepared && !editor) {
+      mounting=true;
+      editor=mountCharacterEditor(document.querySelector('#character-editor'), {world,worldLocked:true,onChange:doc=>{characterDoc=doc;if(!mounting)update();}});
+      mounting=false;
+    }
+    if(editor) {editor.setWorld(world);characterDoc=editor.getDocument();}
+    currentOutput = buildOutput(config, selectedMode(), prepared?characterDoc:null);
     const hasStart=!!currentOutput.startMessage;
     document.querySelector('.output').classList.toggle('is-plugin', plugin || hasStart);
     document.querySelector('#plugin-starter').hidden=!hasStart;
     document.querySelector('#start-label').textContent=plugin?'Erste Chatnachricht':'Erste Chatnachricht · Abenteuerprofil';
-    document.querySelector('#starter-help').textContent=plugin?'Diese Nachricht kommt in den Spielchat. Einen bestätigten Charakterbogen kannst du separat anhängen.':'Das vollständige Abenteuerprofil passt nicht zusätzlich in die Projektanweisungen. Sende es vor dem Spielstart als erste Chatnachricht. Es wurde nichts weggelassen.';
+    document.querySelector('#starter-help').textContent=plugin?'Diese Nachricht kommt in den Spielchat. Ein hier bestätigter Bogen ist in dieser Nachricht enthalten.':'Sende diese vollständige Nachricht vor dem Spielstart. Sie enthält das Abenteuerprofil und gegebenenfalls deinen bestätigten Bogen. Es wurde nichts weggelassen.';
     document.querySelector('#download-row').hidden=false;
     const prompt = currentOutput.projectInstructions;
     output.value = prompt;
@@ -100,6 +114,7 @@ function update() {
   }
 }
 modes.addEventListener('change', update);
+source.addEventListener('change', update);
 form.addEventListener('input', event => { if(event.target.matches('textarea')) update(); });
 form.addEventListener('change', event => {
  const percent=form.querySelector('input[value="dpercent"]');

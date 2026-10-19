@@ -1,7 +1,10 @@
 import {newCharacterDocument, validateCharacterDocument, parseCharacter, serializeCharacter, characterText, continueCharacter, characterTemplate, attributeLabels} from './character.mjs';
+import {characterMarkup} from './character-view.mjs';
+export function mountCharacterEditor(root, {onChange=()=>{}, world='', worldLocked=false}={}) {
+root.innerHTML=characterMarkup;
 let doc=newCharacterDocument();
 let textRevision=0;
-const $=selector=>document.querySelector(selector);
+const $=selector=>root.querySelector(selector);
 const form=$('#character-fields');
 form.addEventListener('submit',event=>event.preventDefault());
 const labels={name:'Name',description:'Beschreibung / Funktion',bonus:'Bonus',effect:'Wirkung',cost:'Kosten (ggf. „keine“)',limits:'Grenzen',trigger:'Auslöser',mitigation:'Abmilderung',quantity:'Anzahl',slots:'Tragplätze pro Einheit',current:'Aktuell',max:'Maximum',regeneration:'Regeneration',milestone:'Meilenstein',change:'Änderung',benefit:'Konkreter Nutzen'};
@@ -68,6 +71,7 @@ function update() {
  $('#character-status').textContent=errors.length?`${errors.length} Angaben bitte prüfen. Ausgabe erst nach gültigem Bogen.`:doc.confirmed?'Bogen bestätigt. Separat zur Spielnachricht hinzufügen.':'Bogen formal gültig. Entwurf prüfen und vor dem Spielstart bestätigen.';
  $('#character-preview').value=errors.length?'':characterText(doc);
  $('#character-json').value=errors.length?'':serializeCharacter(doc);
+ onChange(structuredClone(doc));
 }
 $('#character-confirmed').addEventListener('change',()=>{doc.confirmed=$('#character-confirmed').checked;update();});
 $('#character-new').addEventListener('click',()=>{if(!window.confirm('Den bearbeiteten Bogen ersetzen? Sichere ihn vorher als JSON, wenn du ihn behalten möchtest.'))return;doc=newCharacterDocument();render();});
@@ -100,4 +104,16 @@ $('#download-character-json').addEventListener('click',()=>{if(!validateCharacte
 $('#download-character-text').addEventListener('click',()=>{if(!validateCharacterDocument(doc).length)download(characterText(doc),'charakterbogen.md','text/markdown;charset=utf-8');});
 function template() {textRevision++;$('#character-template').value=characterTemplate($('#character-idea').value,$('#character-world').value);}
 for(const id of ['character-idea','character-world']) $('#'+id).addEventListener('input',template);
+$('#character-world').value=world;
+$('#character-world').readOnly=worldLocked;
+if(worldLocked) $('#character-world').setAttribute('aria-label','Weltvorgaben aus dem Abenteuerprofil (automatisch übernommen)');
 template();render();
+return {
+ getDocument:()=>structuredClone(doc),
+ setWorld(value) {
+  if($('#character-world').value===value)return;
+  $('#character-world').value=value;template();
+  doc.confirmed=false;$('#character-confirmed').checked=false;update();
+ }
+};
+}
