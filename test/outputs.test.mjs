@@ -20,7 +20,7 @@ test('Beide Ausgaben verwenden in jeder Kombination dieselbe gültige Auswahl', 
     if (powers[config.setting]) assert.ok(result.startMessage.includes(powers[config.setting]));
     assert.ok(!result.projectInstructions.includes('W20+Attribut'));
     const extras = diceText(config);
-    assert.ok(result.startMessage.includes(extras || 'Zusatzwürfel: keine.'));
+    assert.ok(result.startMessage.includes(extras || 'Extra dice: none.'));
     count++;
   }
   assert.equal(count, 663552);
@@ -47,8 +47,8 @@ test('Plugin-Paket trennt Projektanweisungen und Startnachricht im Download', ()
   assert.ok(output.downloadText.includes(output.startMessage));
   assert.ok(output.downloadText.indexOf('## 1. Projektanweisungen') < output.downloadText.indexOf('## 2. Erste Chatnachricht'));
   assert.ok(output.downloadText.includes(PLUGIN.url));
-  assert.ok(output.startMessage.includes('bestätigten Charakterbogen'));
-  assert.ok(!output.projectInstructions.includes('Gegenwart ohne'));
+  assert.ok(output.startMessage.includes('confirmed character sheet'));
+  assert.ok(!output.projectInstructions.includes('Contemporary world without'));
   assert.match(output.downloadName, /^[a-z-]+\.md$/);
 });
 

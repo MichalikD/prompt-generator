@@ -27,7 +27,7 @@ Kurze Projektanweisungen:
 
 ```text
 Dieses Projekt enthält einen Textrollenspiel-Durchgang mit dem ausdrücklich
-ausgewählten Plugin „Freie Spielleitung 0.2“, Regelsatz 0.2.1.
+ausgewählten Plugin „Freie Spielleitung 0.2“, Regelsatz 0.3.0.
 Verwende dessen Anweisungen und Regelreferenzen sowie meine bestätigten
 Setting- und Spielvorgaben. Ich steuere meine Figur, du die Welt und Folgen.
 Bewahre den bestätigten Bogen und etablierte Fakten. Übernimm keine andere
@@ -53,7 +53,7 @@ erzeugt entsprechende Projektanweisungen und eine Startnachricht aus der Auswahl
 Fehlende Angaben werden bei Bedarf geklärt. Die neue Spielleitung ist nicht auf
 Fantasy, einen bestimmten Charakter oder eine vorgefertigte Welt festgelegt.
 Der bisherige kompakte Projektprompt sollte nicht zusätzlich vollständig in
-dasselbe Projekt kopiert werden: Er enthält teilweise andere Vorgaben.
+dasselbe Projekt kopiert werden: Er ist eine eigenständige kompakte Ausgabe derselben Grundsätze; doppeltes Einfügen erzeugt unnötige Wiederholungen.
 
 ## Überarbeitete Verhaltensregeln
 
@@ -116,7 +116,7 @@ npm run plugin:check
 npm run plugin:build
 ```
 
-Das ZIP entsteht unter `dist/freie-spielleitung-02-0.2.1.zip`. Es enthält nur
+Das ZIP entsteht unter `dist/freie-spielleitung-02-0.3.0.zip`. Es enthält nur
 Manifest, Skill und Referenzen. Es kann über Plugin Creator als privates Plugin
 gespeichert werden. Ein Git-Commit oder Pages-Deployment aktualisiert ein
 ChatGPT-Plugin nicht automatisch. Die Paketprüfung kontrolliert Struktur und
@@ -132,7 +132,7 @@ Ein anderes Setting benötigt keine weitere Plugininstanz. Verwendete Fassung
 und individuelle Abweichungen gehören in jeden Spielstand.
 
 Die private Freie Spielleitung wird während des Prototyps unter derselben
-Paketidentität aktualisiert. Aktuell ist Regelsatz 0.2.1. Ein Versionsfeld im
+Paketidentität aktualisiert. Aktuell ist Regelsatz 0.3.0. Ein Versionsfeld im
 Projekt ist keine technische Sperre gegen geänderte Pluginanweisungen. Für einen
 neuen Test einen neuen Chat und frisch erzeugte Starttexte verwenden. Alte
 Spielstände oder Eingabeformate müssen im Prototyp nicht kompatibel bleiben.
@@ -159,3 +159,21 @@ beliebige KI-Chats. Eine optionale eigene API-Anbindung ist weiterhin nicht geba
 
 Die Wirkung auf die Erzählqualität muss in einem neuen Durchlauf geprüft werden;
 Paket- und Quellprüfungen ersetzen diesen Test nicht.
+
+
+## 0.3.0: Vereinfachte Regelbasis
+
+Die ausführlichen Referenzen wurden als englische interne Anleitung neu
+formuliert und gekürzt. Die Spielausgabe bleibt ausdrücklich Deutsch. Beide
+Generatorausgaben und das Charaktertemplate wurden gleichzeitig angeglichen.
+Die Erweiterungen betreffen Folgen, Wiederholungsversuche, Vorbereitung,
+brauchbare Talente und Entwicklung sowie abwechslungsreichere Konflikte.
+Es wurde kein neues Würfel-, Level- oder Verletzungssystem eingeführt.
+
+Gleiche Methode ist bei laufendem Spiel erlaubt, solange Zeit, Lage und
+Konsequenzen weitere Versuche zulassen. Die Beibehaltung identischer Würfe gilt
+weiterhin beim Zurückspulen nach Tod; sie verbietet keine neuen Live-Versuche.
+Eine getragene Sicherheitsmaßnahme wird nicht nachträglich unwirksam, nur um
+einen Fehlschlag zu erklären. Eine endende Gelegenheit kann endgültig scheitern.
+
+[Quellstand, Pluginfassung und Rückkehr](rollback-0.3.md).

@@ -57,7 +57,7 @@ test('Lange freie Angaben bleiben vollständig erhalten und sprengen nur die Sta
   assert.ok(output.downloadText.includes(output.startMessage));
   if(mode==='compact') {
    assert.equal(output.profileExternal,true);
-   assert.ok(output.projectInstructions.includes('Warte mit dem Spielstart darauf'));
+   assert.ok(output.projectInstructions.includes('Wait for it before starting'));
   }
  }
  assert.equal(JSON.stringify(config),snapshot);

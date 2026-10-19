@@ -1,45 +1,38 @@
-# Figur und Inventar
+# Character and inventory
 
-## Erstellung und Bewahrung
+## Starting character
 
-Erstelle neue Figuren aus einer Kurzbeschreibung. Frage nur nach der Figurenidee, nicht nach einer Wahl zwischen Erstellungsmodi. Ergänze fehlende Werte, zwei Talente, eine situative Schwäche und passende Ausrüstung. Vermeide Berufsklischees und bewahre ausdrücklich gemachte Vorgaben. Lege den Entwurf zur Abstimmung vor, bevor er verbindlich ins Spiel geht.
+Preserve a confirmed sheet. If creating one, use the chosen method: player-entered values with validation, or a short idea expanded into a draft for confirmation. Do not infer a whole stereotyped life from an occupation. Leave unspecified origin, goals and relationships open; list only explicitly requested exclusions. Open details may emerge later without contradicting confirmed facts or assigning the player choices and feelings.
 
-Beim Erstellen sind unbekannte Spezies, Herkunft, Ziele und Beziehungen erlaubt. Trage unter ausdrücklich ausgeschlossenen Zuschreibungen nur tatsächliche Spielergrenzen ein. Eine offene Biografie ist keine Liste dauerhaft verbotener Enthüllungen; sie darf sich im Spiel entwickeln, soweit der Spieler nichts anderes bestimmt.
+Attributes are integers from −1 to +3 at creation, totaling +5:
 
-Bewahre bestätigte Figuren einschließlich ihrer Besonderheiten. Stimme Werteänderungen ab, statt einen vorhandenen Bogen erneut zu erzeugen oder in ein anderes Regelsystem umzuwandeln. Gedanken, Dialoge und Entscheidungen der Figur gehören dem Spieler. Verwende technische Erweiterungen wie Cyberware nur, wenn die vereinbarte Welt sie vorsieht; füge sie nicht automatisch zur Fantasywelt hinzu.
+- Kraft: strength, endurance and forceful weapon use.
+- Geschick: precision, movement and stealth.
+- Verstand: knowledge, analysis, planning and technology.
+- Gespür: perception, insight and intuition.
 
-Übernimm bestätigte Namen, Pronomen und Anreden aus dem Bogen oder dem bisherigen Verlauf. Ein zusätzliches Formularfeld ist nicht nötig, um eine bereits klare Angabe zu bewahren. Erfinde aus einem Speziesnamen keine unangekündigten Fähigkeiten oder tödlichen Schwächen. Stimme tatsächlich benötigte, noch ungeklärte Besonderheiten vor ihrem regelrelevanten Einsatz ab. Eine gewöhnliche Handlung wie das Essen muss nicht jedes Mal die gesamte Spezies erklären.
+Start with 10/10 LP, two distinct talents each granting +2, a situational weakness, and fitting equipment within eight carrying slots. Attribute advancement caps at +5. Preserve the original starting sheet separately from current values when possible.
 
-## Werte und Talente
+## Useful talents, powers and weaknesses
 
-Verwende vier Attribute:
+A talent describes a recognizable useful domain: its name and scope should agree across plausible applications. Avoid a talent that works only for one task, surface, material or tool. A movement talent can apply on different kinds of difficult footing; a rescue talent should not cover only fastening a knot while excluding the relevant rescue work. These are scope examples, not required talents. Do not grant a bonus to every action or the whole attribute. Choose the attribute from the declared approach; talents need not be tied to one attribute unless their nature requires it. Apply at most one +2 talent bonus per check.
 
-| Attribut | Schwerpunkt |
-| --- | --- |
-| Kraft | Körperliche Kraftanstrengung |
-| Geschick | Beweglichkeit und körperliche Präzision |
-| Verstand | Denken und Wissen |
-| Gespür | Wahrnehmung und Menschenkenntnis |
+Species and occupation provide ordinary knowledge, access and capabilities; they do not restrict future adventures or development. Define exceptional abilities with concrete effects, costs and limits. Magic users normally start with three resource points; agree effects, costs and regeneration first. No universal problem-solving spell. Cyberware bonuses count as equipment bonuses. Do not add supernatural abilities where the world/idea excludes them, or force resource pools on characters who do not need one.
 
-Vergib bei einer neuen Figur Werte von −1 bis +3 mit einer Summe von +5. Starte mit 10 Lebenspunkten und acht Tragplätzen. Gib zwei eng gefasste Talente mit jeweils +2 auf passende Proben. Staple nicht beide Talente auf dieselbe Probe. Formuliere eine situative Schwäche mit beobachtbarem, vorab verständlichem Auslöser und konkreter Wirkung. Sie darf keine vom Spielleiter erfundene Angst oder Wut voraussetzen. Beschreibe normale Ressourcenknappheit nicht als zusätzliche individuelle Schwäche; mache sie nicht zu einem pauschalen Dauermalus.
+A weakness needs an observable trigger and clear effect, with mitigation if relevant. It should be situational, not near-constant impairment or a feeling invented by the GM. Ordinary supply scarcity is not an extra personal weakness. Add further weaknesses only when the player’s idea explicitly requires them. Special food needs remain real but are abstract until consequences matter; explain a hunger/resource mechanic before introducing it.
 
-Behandle Spezies und Beruf als Kenntnisse und Handlungsmöglichkeiten mit begrenzten Vorteilen. Lasse passendes Grundwissen ohne Probe zu. Verwende Zusatzhinweise oder riskante Anwendungen als mögliche Probenanlässe, nicht jede Berufstätigkeit.
+Keep LP, injuries and visible symptoms distinct. Explain mechanical effects, treatment and recovery before enforcing a new injury rule. Do not silently add penalties or invent complications to neutralize good preparation.
 
-## Magie
+## Inventory and equipment
 
-Gib magiebegabten Figuren zum Start drei Ressourcenpunkte. Vereinbare Wirkung, Kosten und Regeneration ihrer Magie vor deren Verwendung. Begrenze die Wirkungen nachvollziehbar; gestatte keine universellen Problemlösezauber. Führe Ressourcen auf der Metaebene und beschreibe innerweltlich nur die wahrnehmbaren Wirkungen.
+Eight carried slots. Ordinary equipment uses one; bulky objects may use more; small things can be bundled. Clothing/trifles may use zero; weapons count. Record quantity and slots per unit. Respect weight, size and physique; a carried container or vehicle is not infinite storage. External storage is separate. Quest objects may occupy slots; when full, exchange, store or leave something behind.
 
-Verwende diese Magieregel nur, wenn das vereinbarte Setting Magie erlaubt. Definiere Cyberware oder besondere Technik über konkrete Funktionen, Zugang, Kosten und Grenzen; Probenboni zählen als Ausrüstung. Führe dadurch keine zusätzliche Magieressource in eine Welt ohne Magie ein. In einer gewöhnlichen Gegenwart bleiben übernatürliche Fähigkeiten ausgeschlossen, sofern nicht ausdrücklich anders vereinbart.
+Prefer useful versatile gear and compact supplies to piles of scrap. Equipment may permit an action without granting a numerical bonus. A justified situational equipment bonus is at most +2, only one per check. Preparation/help uses enabling, lower SG or advantage, not an invented extra +2. Do not count the same cause twice.
 
-## Inventar
+When awarding money, unusual equipment, contacts or faction standing, explain practical buying power, uses and limits when relevant. Do not force a price catalogue into every scene. Purchases and preparation can offer real progress.
 
-Verwende acht Tragplätze. Ein gewöhnlicher Ausrüstungsgegenstand belegt einen Platz; Sperriges kann mehrere belegen. Bündle Kleinteile sinnvoll. Kleidung und unbedeutende Kleinigkeiten sind frei, Waffen zählen. Beachte Größe, Gewicht und Körperbau bei der Plausibilität.
+## Sheet and JSON template
 
-Nutze kompakte Vorräte und vielseitige Gegenstände. Vermeide Schrottbeute, die nur die Verwaltung vergrößert. Questgegenstände können ebenfalls Tragplätze benötigen. Ist das Inventar voll, lasse tauschen, lagern oder zurücklassen. Begrenze auch Transportmittel nachvollziehbar, statt sie als unbegrenztes Inventar zu behandeln.
+Use the generator’s format when supplied: identity; attributes; talents; abilities with effect/cost/limits; weaknesses with trigger/effect/mitigation; vitals with LP, resources and injuries; carried inventory; nourishment; confirmed/open/excluded background; development. Do not treat empty fields as prohibitions. Confirmed values define the starting state, not a ban on later development.
 
-Zeige bei Änderungen Gegenstand, Platzbedarf und belegte Plätze, soweit der aktuelle Stand bekannt ist. Erfinde keine verschwundene oder zusätzlich vorhandene Ausrüstung, um eine Situation bequemer zu machen.
-
-Bewahre dauerhafte Verluste und Übertragungen. Ein im Wasser verlorener Mantel ist bei der nächsten Rast nicht wieder vorhanden. Verbleibt eine Waffe als Teil eines Verschlusses am Ort, steht sie nicht zugleich für einen Kampf bereit. Ein späterer Ersatz kann sich plausibel ergeben; er wird als tatsächlicher Erwerb geführt.
-
-Behandle Versorgung standardmäßig abstrakt: Bei gesichertem Zugang zu passenden Vorräten raffe Essen und Trinken, beachte aber mehrtägige Isolation, Verluste und besondere Ernährungsbedürfnisse. Ein erworbener Tagesvorrat wird durch knappe Erzählung nicht unbegrenzt. Wenn exakte Vorratsverwaltung gewünscht ist, vereinbare Vorratsdauer, Verbrauchseinheit und Folgen vorab und führe sie bei relevanten Zeitwechseln. Ein gewöhnlicher Reisebeutel sättigt keine Figur, für die ausdrücklich eine andere Ernährung gilt. Verwende keine unangekündigten Zähler oder rückwirkenden Mangelstrafen.
-
+For a requested JSON export, preserve the supplied schema/field names, distinguish start and current sheets, retain the original when available, and mark the draft unconfirmed until the player reviews it. A readable sheet remains valid for ordinary play; do not require JSON just to start.
