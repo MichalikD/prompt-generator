@@ -13,9 +13,9 @@ test('Beide Ausgaben verwenden in jeder Kombination dieselbe gültige Auswahl', 
     assert.ok(result.startMessage.includes(PLUGIN.version));
     for (const group of groups) {
       const chosen = group.options.find(option => option.id === config[group.id]);
-      assert.ok(result.startMessage.includes(`${optionNames[group.id]}: ${chosen.text}`));
+      assert.ok(result.startMessage.includes(group.id==='setting' ? chosen.text : `${optionNames[group.id]}: ${chosen.text}`));
       for (const option of group.options) {
-        if (option !== chosen) assert.ok(!result.startMessage.includes(`${optionNames[group.id]}: ${option.text}`));
+        if (option !== chosen) assert.ok(!result.startMessage.includes(group.id==='setting' ? option.text : `${optionNames[group.id]}: ${option.text}`));
       }
     }
     if (powers[config.setting]) assert.ok(result.startMessage.includes(powers[config.setting]));
@@ -24,7 +24,7 @@ test('Beide Ausgaben verwenden in jeder Kombination dieselbe gültige Auswahl', 
     assert.ok(result.startMessage.includes(extras || 'Extra dice: none.'));
     count++;
   }
-  assert.equal(count, 663552);
+  assert.equal(count,48 * groups.reduce((n,g)=>n*g.options.length,1));
 });
 
 test('Moduswechsel verändert keine Einstellungen und erhält den kompakten Prompt', () => {

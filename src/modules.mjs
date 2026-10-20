@@ -1,34 +1,6 @@
+import {worldTemplates,worldRules,resolveWorld} from './worlds.mjs';
 export const groups = [
-  {
-    "id": "setting",
-    "label": "Welt",
-    "options": [
-      {
-        "id": "custom",
-        "label": "Eigene Welt",
-        "text": "Use my custom world description; add compatible details.",
-        "tooltip": "Beschreibe deine Welt vor dem Spielstart. Ein kurzer Satz genügt."
-      },
-      {
-        "id": "fantasy",
-        "label": "Fantasy",
-        "text": "Fantasy: diverse species and cultures, limited magic, preindustrial technology.",
-        "tooltip": "Vorindustrielle Welt mit begrenzter Magie und verschiedenen Spezies."
-      },
-      {
-        "id": "cyberpunk",
-        "label": "Cyberpunk",
-        "text": "Cyberpunk: networked megacities, corporations, inequality, cyberware and hacking; no magic. Respect access, range and countermeasures.",
-        "tooltip": "Konzerne, Hacking und Implantate sind möglich. Magie ist ausgeschlossen."
-      },
-      {
-        "id": "modern",
-        "label": "Gegenwart",
-        "text": "Contemporary world without supernatural powers; plausible technology, institutions and abilities.",
-        "tooltip": "Plausible heutige Technik; keine übernatürlichen Kräfte."
-      }
-    ]
-  },
+  {id:'setting',label:'Weltvorlage',options:worldTemplates.map(t=>({...t,tooltip:t.label==='Eigene Welt'?'Beschreibe deine eigene Welt.':'Stimmige Vorgaben übernehmen oder unter Welt anpassen verändern.'}))},
   {
     "id": "tone",
     "label": "Atmosphäre",
@@ -66,8 +38,8 @@ export const groups = [
       {
         "id": "short",
         "label": "Kurz",
-        "text": "Short: one manageable conflict, meaningful choices and a satisfying ending; no mandatory side plots.",
-        "tooltip": "Überschaubarer Konflikt; keine Vorgabe für Minuten, Textlänge oder Szenenzahl."
+        "text": "Short: one central goal and its decisive challenge. Keep only complications that directly affect it; resolve and reward it before any follow-up adventure. No mandatory side plots.",
+        "tooltip": "Ein zentrales Ziel mit entscheidender Herausforderung. Folgeaufgaben gehören ins nächste Abenteuer; keine Minuten- oder Szenenquote."
       },
       {
         "id": "medium",
@@ -225,8 +197,8 @@ export const groups = [
 export const core = {
   "intro": "Run an RPG: I control my character, you the world/consequences. Use Strength/Dexterity/Intellect/Insight, HP and DC as internal rule terms. New chat = new run unless I supply a save; never invent continuity.",
   "start": "Use the adventure profile. Clarify only essential gaps or contradictions and new character versus save. Preserve confirmed characters; agree changes to their values. Then begin.",
-  "character": "Strength (strength/endurance), Dexterity (precision/movement/stealth), Intellect (knowledge/analysis/technology), Insight (perception/insight): start −1 to +3, sum +5. Two useful, distinct talents, each +2, never stacked; a situational weakness. Talent scope must match its name across plausible uses, not one surface or tool; no universal bonuses. Start 10 HP, eight carrying slots, suitable equipment. Species/job provide knowledge and possibilities, not a limit on future adventures. My thoughts, speech and decisions are mine.",
-  "world": "Establish causes, places/connections, NPC motives/knowledge, secrets, accessible clues and developments without me. Keep spoilers private; no fake storage. Facts bind, not guesses. Give me a credible stake and useful role; develop conflicting interests and varied choices, including suitable combat. Accept early solutions. Close achieved, failed or abandoned goals even if background questions remain; settle payment and development before moving on.",
+  "character": "Strength (force/endurance), Dexterity (precision/movement/stealth), Intellect (knowledge/technology), Insight (perception/intuition): start −1 to +3, sum +5. Two distinct useful talents +2, never stacked; situational weakness. Talent names match useful domains, not one task/tool; no universal bonuses. Start 10 HP, eight carrying slots, suitable equipment. Species/job give knowledge, not adventure limits. My thoughts, speech and decisions are mine.",
+  "world": "Establish causes, places/connections, NPC motives/knowledge, secrets, accessible clues and developments without me. Keep spoilers private; no fake storage. Facts bind; do not adapt truth to guesses. Give me a credible stake and useful role. Vary goals and opposition, not just names; include suitable combat. Accept early solutions. Close achieved, failed or abandoned goals even if background questions remain; settle payment and development before moving on.",
   "play": "Describe vividly; stop before my next decision. Execute clear instructions, compress routine. NPCs act on their interests/knowledge; experts help without deciding for me. Show possibilities and foreseeable danger, no artificial urgency. Rules/dice/HP/bonuses stay in meta, never NPC knowledge/dialogue. Explain new mechanics before use.",
   "checks": "Roll only uncertain actions with meaningful consequences; clear actions succeed, impossible ones cannot. D20+attribute+one talent (+2)+one equipment bonus (max.+2) ≥ DC succeeds. DC 8/11/14/17/20: easy/normal/demanding/hard/exceptional. Before rolling state objective, attribute, DC, modifiers and foreseeable stakes. Resolve the whole declared action; extra checks need distinct stakes. Preparation/help enables action, lowers DC or gives advantage; state the effect. Advantage/disadvantage: 2D20, higher/lower; cancel, never stack or count a cause twice. Natural 1/20 have plausible effects, no automatic death. Failure changes the situation, possibly success at a price; carry out consequences rather than inventing requirements until success. Same-method retries are allowed when fiction permits; time, costs and danger continue. No costless rerolls until success; no compulsory method change.",
   "puzzles": "Fix causes, solutions and mechanisms before presenting them. Supply accessible clues and understandable operation; explain layout/access without rolls or penalties. Accept sound alternatives, not every guess. Correct solutions need no roll; risky execution may. Expertise supplies basic knowledge; failure must not erase it or cause deadlock. Avoid nested unknown mechanisms and retroactive locks. Conversations use arguments/interests/relationships, not mind control. Correct contradictions and unfair costs.",
@@ -235,12 +207,10 @@ export const core = {
   "progress": "Milestones follow outcomes, not headings or all secrets solved. Small: limited benefit; substantial adventure/chapter ending: offer lasting improvement before moving on, possibly two rewards. Routine paid work need not earn advancement; wages do not replace earned development. No per-scene or duplicate rewards. Offer 2–3 useful choices: attribute +1 (max.+5), ability, talent/mastery/manoeuvre, HP/resources, equipment/contact. Mastery expands use, never stacks +2. Allow new directions and agreed retraining/replacement; retain original sheet and record changes. Track money/contact/reputation benefits and limits; reuse them. Keep everyday DC stable; broaden challenges, not just numbers.",
   "save": "Track accessible state/changes; correct errors. Commands: Status, Inventory, Journal, Hint, Rules, Save, Pause. Standalone save: character/group values, development, inventory/resources, achievements/benefits, relationships/knowledge, decisions/consequences, open threads, exact scene, rolls/rewind point, rule version/deviations. Separate spoiler world core when available; no fake storage or exact continuity from missing facts."
 };
-export const powers = {
-  "custom": "If special powers fit: normally three resource points; agree effects, costs and regeneration first.",
-  "fantasy": "Magic users start with three resource points; agree effects, costs and regeneration before use. No universal problem-solving spells.",
-  "cyberpunk": "Cyberware: concrete functions, costs and limits; check bonuses count as equipment. No magic resource.",
-  "modern": ""
-};
+export const powers = Object.fromEntries(worldTemplates.map(t => {
+ const config={setting:t.id,...(t.id==='custom'?{worldDescription:'Custom world.'}:{})};
+ return [t.id,worldRules(resolveWorld(config))];
+}));
 export const dice = [
   {
     "id": "d4",
