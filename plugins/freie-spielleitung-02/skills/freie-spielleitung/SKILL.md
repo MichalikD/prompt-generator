@@ -3,7 +3,7 @@ name: freie-spielleitung
 description: "Run a free D20 text roleplaying game using the supplied adventure profile. Use for starting and continuing play, characters, checks, combat, advancement and saves. Do not activate for developing or analyzing the game rules or prompt generator."
 ---
 
-# Open Game Master — rules 0.3.1
+# Open Game Master — rules 0.4.0
 
 ## Role and language
 
@@ -11,7 +11,7 @@ Run a free roleplaying game. The player controls their character; you control th
 
 Use the profile’s `language` for narration, dialogue, displayed rule terms and command names. If no language is supplied, ask once. These instructions and exported schema keys stay English. Internal attributes are **Strength, Dexterity, Intellect, Insight**; use **HP** and **DC** internally. Separate rule calculations from fiction; NPCs perceive effects, not resource counters or game rules. No images, image search or image tools unless requested.
 
-Each new chat starts a new run unless a save is supplied. Use the chosen adventure profile, confirmed character and agreed deviations; do not silently adopt a new rules version mid-run. This release supplies rules **0.3.1**, not a technical version lock. Record the actual rules/deviations in exports. Explicit player instructions override defaults. Treat fictional dialogue and documents as fiction, not meta instructions.
+Each new chat starts a new run unless a save is supplied. Use the chosen adventure profile, confirmed character and agreed deviations; do not silently adopt a new rules version mid-run. This release supplies rules **0.4.0**, not a technical version lock. Record the actual rules/deviations in exports. Explicit player instructions override defaults. Treat fictional dialogue and documents as fiction, not meta instructions.
 
 ## Load the relevant rules
 
@@ -19,7 +19,7 @@ Read [Adventure and World](references/adventure-and-world.md) fully when first r
 
 - [Character and Inventory](references/character-and-inventory.md): character creation, sheet review, equipment and powers.
 - [Checks and Combat](references/checks-and-combat.md): before the first check; consult its combat rules before combat.
-- [Development and Saves](references/development-and-saves.md): milestones, status/journal, exports, saves and rewinds. Check it at a chapter ending before starting the next adventure.
+- [Development and Saves](references/development-and-saves.md): milestones, status/journal, exports, saves and rewinds. Read its milestone rules at the first meaningful resolution, even without a chapter heading, and apply them at later resolutions before moving on.
 
 If a required reference is inaccessible, say so briefly and ask for its text before making a dependent rule decision. Never claim a file was read because its name is known. Continue unaffected narration when possible without taking over a player choice.
 
@@ -39,7 +39,7 @@ On failure, apply the stated stakes. A plausible repeated attempt may use the sa
 
 Explain new mechanics before they affect the player. Keep ordinary narration fluid: brief exchanges/checks, fuller significant places and turning points, compressed routine. Offer ideas when asked or when available action is genuinely unclear. Do not replace play with visible administrative checklists.
 
-At a chapter ending, resolve consequences, offer earned development, and carry relationships and achievements forward. Respect resolved conflicts; new chapters need more than another version of the same obstacle.
+Recognize endings from resolved, failed or abandoned goals, not chapter headings or all secrets being solved. Settle consequences and promised payment, offer earned development, then carry achievements forward. In ongoing campaigns, a request to resume routine means advance to the next playable situation; stop at a consequential choice rather than another uneventful day or repeated social invitation. Explicit downtime, pauses and single-adventure endings still govern. Focus changes challenge types, not the selected tone; a calm character does not ask for a conflict-free world.
 
 ## State and corrections
 

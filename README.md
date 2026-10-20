@@ -5,7 +5,7 @@ kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API, Anmeldun
 Speicherung oder Synchronisierung.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
 
-## Plugin-Regelbasis 0.3.1
+## Plugin-Regelbasis 0.4.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -287,3 +287,31 @@ alten Bogenformate. Nara kann unabhängig davon im bestehenden Chat weiterlaufen
 Prüfungen des geführten Ablaufs liegen in `test/setup.test.mjs`, des neuen
 Bogens in `test/finances-and-needs.test.mjs`. Die Website bleibt ohne
 Laufzeitabhängigkeiten, API, Anmeldung oder automatische Speicherung.
+
+
+## Abenteuerfortsetzung und Abschlüsse 0.4.0
+
+Nach dem Jaro-Test wurden beide Ausgaben und das bestehende Plugin gemeinsam
+überarbeitet. In laufenden Kampagnen führt eine angeforderte Alltagsraffung bis
+zur nächsten spielbaren Situation mit nachvollziehbarer Beteiligung und einer
+bedeutsamen Entscheidung. Ausdrücklich gewünschte Alltagsszenen, Ablehnung,
+Pause und das Ende eines Einzelabenteuers bleiben erhalten.
+
+Schwerpunkte bestimmen die Art der Herausforderungen, nicht deren Wegfall.
+Eine kooperative Figur oder ein sozialer Schwerpunkt überschreibt den gewählten
+Gefahrenton nicht. Wirkliche Lösungen bleiben gültig; die Spielleitung soll
+keinen Konflikt gegen eine erfolgreiche Lösung erzwingen.
+
+Abschlüsse richten sich nach erreichten, gescheiterten oder aufgegebenen Zielen.
+Offene Hintergrundfragen oder Arbeit anderer Figuren verschieben sie nicht
+unbegrenzt. Vereinbarte Bezahlung, Kontakte und dauerhafte Entwicklung werden
+unterschieden. Entwicklung wird bei einem substanziellen Abschluss angeboten,
+nicht nach jeder Routineaufgabe. Die Meilensteinregeln werden im Plugin schon
+bei der ersten bedeutsamen Auflösung geladen, auch ohne Kapitelüberschrift.
+
+Das Charaktertemplate hält Entwurfs- und Bestätigungsanweisungen aus den
+bestätigten fiktionalen Hintergrundfakten heraus. Vorhandener Freitext wird
+nicht automatisch umgeschrieben. Bogenformat 3, Zahlenregeln, Würfelbedienung,
+Probenhäufigkeit und Antwortlängenvorgabe bleiben erhalten.
+
+[Prüfsituationen und Grenzen der Verifikation](docs/fortsetzung-0.4.md).

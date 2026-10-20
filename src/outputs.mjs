@@ -6,7 +6,7 @@ import { powers } from './modules.mjs';
 
 export const PLUGIN = Object.freeze({
   name: 'Open Game Master',
-  version: '0.3.1',
+  version: '0.4.0',
   url: 'https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37',
 });
 

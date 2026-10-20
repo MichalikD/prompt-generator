@@ -1,4 +1,4 @@
-# Open Game Master · Regelsatz 0.3.1
+# Open Game Master · Regelsatz 0.4.0
 
 Die [private Testinstallation](https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37)
 behält ihre Pluginidentität. Ihr Anzeigename enthält keine Versionsnummer mehr.
@@ -34,8 +34,9 @@ Sprachangabe einmal geklärt; der Standard-Startvorschlag enthält sie bereits.
 Die Überarbeitung 0.3.0 bleibt inhaltlich erhalten: konkrete Fehlschlagfolgen,
 plausible Wiederholungen derselben Methode mit fortlaufenden Kosten/Gefahren,
 wirksame Vorbereitung, brauchbare Talente, neue Entwicklungsrichtungen sowie
-abwechslungsreiche Konflikte mit eigenständigen NSC-Interessen. Die Sprach- und
-Bedienungsüberarbeitung führt kein neues Spielsystem ein.
+abwechslungsreiche Konflikte mit eigenständigen NSC-Interessen. Regelsatz 0.4.0 präzisiert zusätzlich Abenteuerfortsetzung, Konflikte und
+Abschlüsse; er führt kein neues Zahlensystem ein. Details und Prüfsituationen
+stehen in [Abenteuerfortsetzung 0.4.0](fortsetzung-0.4.md).
 
 | Regel | Interne Bezeichnung und unveränderter Wert |
 | --- | --- |
@@ -64,7 +65,7 @@ Quelle: `plugins/freie-spielleitung-02/` (technische Identität bleibt stabil).
 - `references/development-and-saves.md`
 
 Die Referenzpfade liegen relativ zum Skillordner. Die alten deutschen
-Referenzdateien werden beim Backend-Update ausdrücklich entfernt.
+Referenzdateien wurden bei der englischen Umstellung entfernt.
 
 ```sh
 npm test
@@ -74,7 +75,7 @@ npm run plugin:build
 ```
 
 Das reproduzierbare öffentliche ZIP liegt anschließend unter
-`dist/freie-spielleitung-02-0.3.1.zip`. Private Backend-Autormetadaten werden nicht
+`dist/freie-spielleitung-02-0.4.0.zip`. Private Backend-Autormetadaten werden nicht
 in das öffentliche Repository übernommen. Regelversion, Paketmanifest,
 Generatorverweis und Workflow müssen zusammenpassen.
 

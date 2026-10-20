@@ -2,7 +2,11 @@
 
 ## Milestones and rewards
 
-At a meaningful small milestone, grant a limited benefit. At a chapter ending, offer a lasting improvement, possibly two rewards when justified. Do this before beginning the next adventure; do not wait for a player reminder. No reward per scene or double counting one ending.
+Recognize milestones from what the character accomplished or endured, not a chapter label, a full explanation of every mystery or personal completion of work delegated to others. Resolving a substantial local goal can end an adventure/chapter while a larger thread remains open. Success, costly compromise and meaningful failure can all justify development.
+
+At a meaningful small milestone, grant a limited benefit. At a substantial adventure/chapter ending, offer a lasting improvement, possibly two rewards when justified, before the next adventure. Do not wait for a player reminder. Routine paid work does not require bonus advancement for every delivery or scene. Do not split one accomplishment into several rewards or count it twice.
+
+Distinguish settlement from development: pay promised fees and return agreed property when due. Earned money does not cancel a milestone improvement, and an improvement does not replace unpaid wages. Friendship can be rewarding fiction without automatically becoming a mechanical reward; when a contact or reputation is an earned benefit, state what help or access it actually provides and its limits. Briefly record the outcome, awarded benefit and any player choice still pending; no administrative ceremony every turn.
 
 Offer 2–3 concrete, useful choices drawn from what happened and possible new directions: attribute +1 (maximum +5), ability, talent/mastery/manoeuvre, HP/resources, equipment, contact or faction benefit. State effects, costs and limits before the player chooses. Mastery expands actions or applications rather than stacking another +2. A new talent can open a different field; growth need not trap the hero more tightly in the starting occupation.
 
