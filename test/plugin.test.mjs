@@ -57,3 +57,14 @@ test('Symlinks und ein Archiv im eigenen Quellordner werden abgewiesen', () => f
   symlinkSync(join(temp, 'private.txt'), join(copy, 'private.txt'));
   assert.notEqual(run('--source', copy, '--check').status, 0);
 }));
+
+test('Generator, Skill und veröffentlichbares Paket verwenden dieselbe Regelversion', async () => {
+  const { PLUGIN } = await import('../src/outputs.mjs');
+  const manifest = JSON.parse(readFileSync(join(source, 'plugin.json'), 'utf8'));
+  const skill = readFileSync(join(source, 'skills/freie-spielleitung/SKILL.md'), 'utf8');
+  const workflow = readFileSync(join(root, '.github/workflows/pages.yml'), 'utf8');
+  assert.equal(manifest.version, PLUGIN.version);
+  assert.ok(skill.includes(`rules ${PLUGIN.version}`));
+  assert.ok(skill.includes(`rules **${PLUGIN.version}**`));
+  assert.ok(workflow.includes(`dist/${manifest.name}-${manifest.version}.zip`));
+});

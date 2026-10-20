@@ -1,4 +1,27 @@
-# Prioritäten nach dem Nara-Durchlauf
+# Entwicklungsstand nach Nara und Jaro
+
+## Aktuell: Priorität 1 umgesetzt, Regelsatz 0.4.0
+
+- Fortsetzung: angeforderte Alltagsraffung führt bis zur nächsten spielbaren,
+  zur Figur passenden Situation; keine wiederholten Leerläufe und Einladungen.
+- Konflikte: soziale Schwerpunkte und eine entspannte Figur entfernen nicht den
+  gewählten Gefahrenton. Eigenständige Interessen bleiben, echte Lösungen gelten.
+- Abschlüsse: lokale Ziele können enden, obwohl größere Fragen offen sind.
+  Bezahlung, begrenzte Vorteile und dauerhafte Entwicklung getrennt behandeln;
+  Meilensteine ohne Kapitelüberschrift erkennen und vor dem nächsten Abenteuer anbieten.
+- Beide Ausgaben und bestehendes Plugin gemeinsam aktualisiert. Bogenformat,
+  Zahlenregeln, Probenhäufigkeit, Antwortlängenvorgabe und Layout nicht verändert.
+- Kleinkorrektur: Charaktertemplate legt Entwurfsstatus ausschließlich im
+  Bestätigungsfeld ab, nicht im fiktionalen Hintergrund.
+
+Nächster Schritt nach Merge/Deployment: ein neuer Durchlauf in einem anderen
+Setting mit anderer Figur, über den ersten Abschluss hinaus. Beobachten, ob ein
+interessanter zweiter Abschnitt ohne Anschieben entsteht. Kein neuer Test pro
+Einzeländerung. Bestehende Runs nicht stillschweigend auf neue Regeln umstellen.
+Prüfsituationen und Rückkehrpunkt: [Fortsetzung 0.4.0](fortsetzung-0.4.md).
+
+Die folgenden Abschnitte dokumentieren bisherige Schritte und weiterhin offene
+Punkte; Aussagen zu unveränderten Regeln beziehen sich auf den jeweiligen Stand.
 
 Maßstab ist das Spielerlebnis. Ein schlechter Run darf beendet werden;
 dekorative Fehler werden nicht automatisch Entwicklungsaufträge.

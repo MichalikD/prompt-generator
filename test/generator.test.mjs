@@ -16,8 +16,7 @@ test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen
     }
     for (const policy of [pacing, probePolicy, savePolicy]) assert.ok(prompt.includes(policy));
     assert.ok(!prompt.includes('250'));
-    assert.ok(prompt.includes('resume meaningful events after rest without forcing decisions'));
-    assert.ok(prompt.includes('without forcing decisions'));
+    assert.ok(prompt.includes('Respect refusal, explicit downtime, pauses and single-adventure endings'));
     assert.ok(prompt.includes('Rules/dice/HP/bonuses'));
     assert.ok(prompt.includes('never NPC knowledge/dialogue'));
     assert.ok(prompt.includes('Explain new mechanics before use'));
