@@ -1,3 +1,4 @@
+import {validateWorld} from './worlds.mjs';
 import {createProfile} from './profile.mjs';
 import {groups,selectOptions} from './generator.mjs';
 import {validateCharacterDocument} from './character.mjs';
@@ -7,8 +8,7 @@ export const stepForGroup = id => id==='setting'?0:id==='creation'?2:1;
 export function setupErrors(step,config,character=null) {
  if(step===0) {
   if(!groups.find(g=>g.id==='setting').options.some(o=>o.id===config.setting))return ['Bitte eine Welt auswählen.'];
-  if(config.setting==='custom'&&!config.worldDescription?.trim())return ['Bitte beschreibe deine eigene Welt. Ein kurzer Satz genügt.'];
-  return [];
+  try {validateWorld(config);return [];}catch(error){return [error.message];}
  }
  if(step===1) {
   try {selectOptions(config);createProfile(config);return [];}catch(error){return [error.message];}

@@ -5,7 +5,7 @@ kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API, Anmeldun
 Speicherung oder Synchronisierung.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
 
-## Plugin-Regelbasis 0.4.0
+## Plugin-Regelbasis 0.5.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -65,7 +65,9 @@ wird keine neue Version veröffentlicht. Ein erfolgreiches Deployment ersetzt di
 ## Textmodule und Längengarantie
 
 - `src/modules.mjs`: Kernregeln und auswählbare Textvarianten.
-- `src/profile.mjs`: gemeinsames Abenteuerprofil, Weltbeschreibung, Schwerpunkte und Erzählvorgaben.
+- `src/profile.mjs`: gemeinsames Abenteuerprofil, Schwerpunkte und Erzählvorgaben.
+- `src/worlds.mjs`: Weltvorlagen, wirksame Anpassungen und Konfliktprüfung.
+- `src/world-editor.mjs`: eingeklappte Weltanpassungen im ersten Vorbereitungsschritt.
 - `src/outputs.mjs`: Moduswahl, Pluginverweis und getrennte Startpaket-Texte.
 - `src/generator.mjs`: Zusammenstellung, Reihenfolge, harte Längengrenze.
 - `src/app.mjs`: Formular und Kopieren.
@@ -79,7 +81,7 @@ npm test
 npm run check
 ```
 
-Die aktuelle Solo-Fassung enthält 663.552 Kombinationen der festen Auswahlschalter
+Die aktuelle Solo-Fassung enthält 1.658.880 Kombinationen der festen Auswahlschalter
 und Zusatzwürfel. Freitexte und die elf zulässigen Schwerpunktkombinationen kommen
 hinzu. Die Projektanweisungen bleiben strikt unter 8.000 Zeichen, einschließlich
 Überschriften und LF-Zeilenumbrüchen (konservative JavaScript-UTF-16-Zählung).
@@ -91,7 +93,7 @@ Ungültige Eingaben sperren Kopieren und Download. Manuelles Ergänzen nach dem
 Kopieren wird nicht durch die Längenprüfung erfasst.
 
 Jede Gruppe liefert genau eine Variante. Standard/Hardcore, Ton und Würfelbedienung werden ersetzt,
-nicht zusammen angehängt. Weltabhängige Ressourcen werden separat gewählt. Die Tests prüfen Länge,
+nicht zusammen angehängt. Kräfteregeln richten sich nach den wirksamen Weltangaben. Die Tests prüfen Länge,
 Kernvollständigkeit und bekannte Konflikte; sie beweisen keine allgemeine erzählerische Widerspruchsfreiheit.
 Neue Module brauchen zusätzlich redaktionelle Prüfung. Die Qualität der KI-Spielleitung ist nicht garantiert.
 
@@ -151,10 +153,9 @@ Figuren dürfen nur wahrnehmbare Folgen wie Erschöpfung oder Verletzungen einsc
 
 ## Gemeinsames Abenteuerprofil
 
-Beide Ausgabemodi verwenden dieselben Daten aus `src/profile.mjs` (Profilversion 1).
+Beide Ausgabemodi verwenden dieselben Daten aus `src/profile.mjs` (Profilversion 2).
 Die Welt wird vor dem Chatstart festgelegt. „Eigene Welt“ erfordert eine kurze
-Weltbeschreibung; bei Fantasy, Cyberpunk und Gegenwart ist sie eine optionale
-Ergänzung. Die Spielleitung ergänzt passende Details und klärt nur wesentliche
+Weltbeschreibung; alle anderen Vorlagen liefern bearbeitbare Vorgaben. Die Spielleitung ergänzt passende Details und klärt nur wesentliche
 Lücken oder Widersprüche, statt die Einrichtung im Chat zu wiederholen.
 
 - **Atmosphäre:** Abenteuerlich, Cozy, Düster oder Horror. Abenteuerlich beginnt
@@ -315,3 +316,21 @@ nicht automatisch umgeschrieben. Bogenformat 3, Zahlenregeln, Würfelbedienung,
 Probenhäufigkeit und Antwortlängenvorgabe bleiben erhalten.
 
 [Prüfsituationen und Grenzen der Verifikation](docs/fortsetzung-0.4.md).
+
+
+## Weltvorlagen und fokussierte Kurzabenteuer 0.5.0
+
+Zehn Weltvorlagen mit zunächst eingeklappten Anpassungen ersetzen die bisherige
+Viererauswahl. Grundlage (eigenständig, inspiriert, bekanntes Universum), Epoche,
+Technik, Kräfte, Gesellschaft und Mythologie ergeben ein gemeinsames Weltprofil
+für beide Ausgaben und den Charakterbogen. Bewusste Mischungen sind möglich;
+erkennbare Konflikte erfordern Bestätigung. Widersprüche zwischen ausdrücklichen
+Angaben müssen aufgelöst werden. Freitext wird nicht vollständig semantisch geprüft.
+Eigene Änderungen bleiben beim Vorlagenwechsel erhalten, bis sie zurückgesetzt werden.
+
+Kurze Abenteuer lösen ein zentrales Ziel auf, bevor Folgeaufgaben beginnen.
+Gegenspieler, Ziele und Lösungen sollen sich stärker unterscheiden; soziale
+Lösungen bleiben gültig, andere Vorgehensweisen müssen für die Figur tragfähig sein.
+Die Fassung baut auf den Abschlüssen und Übergängen aus 0.4.0 auf.
+
+[Bedienung, Annahmen, Prüfumfang und Rückkehrpunkt](docs/welten-und-kurzabenteuer-0.5.md).

@@ -2,11 +2,11 @@ import { languageDirective, localizationPolicy, optionNames } from './language.m
 import { characterText, validateCharacterDocument } from './character.mjs';
 import { createProfile, profileText, profileIds } from './profile.mjs';
 import { buildCompactPackage, defaults, groups, selectOptions, diceText } from './generator.mjs';
-import { powers } from './modules.mjs';
+import {worldText,worldRules} from './worlds.mjs';
 
 export const PLUGIN = Object.freeze({
   name: 'Open Game Master',
-  version: '0.4.0',
+  version: '0.5.0',
   url: 'https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37',
 });
 
@@ -35,7 +35,7 @@ export function buildPluginPackage(config = defaults, character=null) {
     'The following choices override conflicting plugin defaults for this run; retain them across chapters.',
     profileText(profile, selected, groups),
     ...groups.filter(group=>!profileIds.includes(group.id) && !(character && group.id==='creation')).map(group => `${optionNames[group.id]}: ${selected[group.id].text}`),
-    powers[config.setting],
+    worldRules(profile.world),
     diceText(config) || 'Extra dice: none. Use fixed base damage; attribute checks remain D20.',
     ...(character ? [characterText(character), 'Use this confirmed sheet as the starting state and begin the adventure according to the profile.'] : ['Follow the selected character creation method, confirm the draft, then begin the adventure. Ask only for information essential to starting.']),
   ].filter(Boolean).join('\n\n');
@@ -65,8 +65,9 @@ function checkPrepared(config, character) {
   }
 }
 export function worldForCharacter(config=defaults) {
- const selected=selectOptions(config);
- return [selected.setting.text, config.worldDescription?.trim(), powers[config.setting], config.wishes?.trim() && 'User wishes and exclusions: '+config.wishes.trim()].filter(Boolean).join('\n\n');
+ selectOptions(config);
+ const world=createProfile(config).world;
+ return [worldText(world),worldRules(world), config.wishes?.trim() && 'User wishes and exclusions: '+config.wishes.trim()].filter(Boolean).join('\n\n');
 }
 export function buildOutput(config = defaults, mode = 'compact', character=null) {
   if (!outputModes.some(option => option.id === mode)) throw new Error('Ungültiger Ausgabemodus');

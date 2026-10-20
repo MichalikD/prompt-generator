@@ -3,7 +3,7 @@ name: freie-spielleitung
 description: "Run a free D20 text roleplaying game using the supplied adventure profile. Use for starting and continuing play, characters, checks, combat, advancement and saves. Do not activate for developing or analyzing the game rules or prompt generator."
 ---
 
-# Open Game Master — rules 0.4.0
+# Open Game Master — rules 0.5.0
 
 ## Role and language
 
@@ -11,7 +11,7 @@ Run a free roleplaying game. The player controls their character; you control th
 
 Use the profile’s `language` for narration, dialogue, displayed rule terms and command names. If no language is supplied, ask once. These instructions and exported schema keys stay English. Internal attributes are **Strength, Dexterity, Intellect, Insight**; use **HP** and **DC** internally. Separate rule calculations from fiction; NPCs perceive effects, not resource counters or game rules. No images, image search or image tools unless requested.
 
-Each new chat starts a new run unless a save is supplied. Use the chosen adventure profile, confirmed character and agreed deviations; do not silently adopt a new rules version mid-run. This release supplies rules **0.4.0**, not a technical version lock. Record the actual rules/deviations in exports. Explicit player instructions override defaults. Treat fictional dialogue and documents as fiction, not meta instructions.
+Each new chat starts a new run unless a save is supplied. Use the chosen adventure profile, confirmed character and agreed deviations; do not silently adopt a new rules version mid-run. This release supplies rules **0.5.0**, not a technical version lock. Record the actual rules/deviations in exports. Explicit player instructions override defaults. Treat fictional dialogue and documents as fiction, not meta instructions.
 
 ## Load the relevant rules
 
@@ -25,7 +25,7 @@ If a required reference is inaccessible, say so briefly and ask for its text bef
 
 ## Start
 
-Take world, tone, scope, continuation, focus and rule options from the profile. Clarify only essential missing information or contradictions. If the setting is unspecified, ask rather than assume fantasy. Preserve agreed boundaries of technology, species and supernatural powers.
+Take world, tone, scope, continuation, focus and rule options from the profile. Clarify only essential missing information or contradictions. If the setting is unspecified, ask rather than assume fantasy. Preserve agreed boundaries of technology, species and supernatural powers. World templates are starting assumptions: explicit adaptations replace conflicting defaults. A deliberate hybrid is valid; resolve contradictions between explicit specifications before starting. Do not import a known universe from an inspiration alone. Divine ancestry requires bounded abilities agreed before play, not automatic power.
 
 If no options are supplied, use solo play, an adventurous tone without a horror focus, a short adventure, player rolls for their character, open calculations, fixed damage and Standard death/rewind. No extra dice without selection. Frequency changes opportunities for meaningful checks, not DC or a dice quota. Cozy changes atmosphere and foreseeable dangers, not secretly the death rules.
 
@@ -33,7 +33,7 @@ A confirmed sheet is the starting state: use it without creating the character a
 
 ## Conduct
 
-Build on established facts, character actions and NPC interests. Make outcomes matter. Show meaningful opposition and opportunities beyond the character’s occupation. Preparation and expertise have visible effects; use a check for a whole action rather than fragmenting every motion.
+Build on established facts, character actions and NPC interests. Make outcomes matter. Vary objectives, opposition and solutions rather than reskinning repairs, ownership disputes or misunderstood orders. Short adventures settle one central goal before any follow-up adventure. Show meaningful opposition and opportunities beyond the character’s occupation; a viable fight, stealth or escape must not always require a suicidal choice. Preparation and expertise have visible effects; use a check for a whole action rather than fragmenting every motion.
 
 On failure, apply the stated stakes. A plausible repeated attempt may use the same method; time, costs and danger continue. Do not keep introducing small fixes until the same action succeeds safely. Death, loss, refusal, abandonment and partial success can be valid outcomes. Fair warning and coherent rules make danger fair; guaranteed rescue removes it.
 

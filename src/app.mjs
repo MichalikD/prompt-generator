@@ -1,3 +1,6 @@
+import {mountWorldEditor} from './world-editor.mjs';
+import {worldText} from './worlds.mjs';
+import {createProfile} from './profile.mjs';
 import {mountCharacterEditor} from './character-editor.mjs';
 import {focuses} from './profile.mjs';
 import {infoButton} from './tooltips.mjs';
@@ -36,14 +39,9 @@ function addChoices(group,multi=false) {
  }
  field.append(row);form.append(field);
 }
+const worldEditor=mountWorldEditor(form);
 for(const group of groups) {
- addChoices(group);
- if(group.id==='setting') {
-  const field=document.createElement('div');field.className='text-option';field.dataset.step=0;
-  field.innerHTML='<label id="world-label" for="world-description">Welt ergänzen (optional)</label><p id="world-help">Besondere Orte, Magie, Technik oder Kulturen. Ein kurzer Satz genügt.</p><textarea id="world-description" name="worldDescription" aria-describedby="world-help" rows="3"></textarea>';form.append(field);
-  const wishes=document.createElement('div');wishes.className='text-option';wishes.dataset.step=0;
-  wishes.innerHTML='<label for="wishes">Eigene Vorgaben und Ausschlüsse (optional)</label><p id="wishes-help">Zum Beispiel: keine verlorene Erinnerung als Aufhänger.</p><textarea id="wishes" name="wishes" aria-describedby="wishes-help" rows="3"></textarea>';form.append(wishes);
- }
+ if(group.id!=='setting')addChoices(group);
  if(group.id==='continuation')addChoices({id:'focus',label:'Spielschwerpunkte · optional, höchstens zwei',options:focuses},true);
 }
 addChoices({id:'extras',label:'Zusatzwürfel · D20 bleibt gesetzt',options:dice},true);
@@ -58,7 +56,7 @@ function clearOutput(message) {
 }
 function summary(config) {
  const rows=[['Ausgabe',outputModes.find(m=>m.id===selectedMode()).label],...groups.filter(g=>!(g.id==='creation'&&config.characterSource==='prepared')).map(g=>[g.label,g.options.find(o=>o.id===config[g.id]).label])];
- if(config.worldDescription?.trim())rows.push(['Weltbeschreibung',config.worldDescription.trim()]);
+ rows.push(['Weltprofil',worldText(createProfile(config).world)]);
  if(config.wishes?.trim())rows.push(['Eigene Vorgaben',config.wishes.trim()]);
  rows.push(['Schwerpunkte',config.focus.map(id=>focuses.find(f=>f.id===id).label).join(', ')||'Situativ vielfältig']);
  rows.push(['Zusatzwürfel',config.extras.map(id=>dice.find(d=>d.id===id).label).join(', ')||'Keine']);
@@ -82,8 +80,7 @@ function update() {
    else editor.setWorld(world);
    characterDoc=editor.getDocument();
   }else if(editor&&!worldErrors.length)editor.setWorld(worldForCharacter(config));
-  $('#world-label').textContent=config.setting==='custom'?'Eigene Welt beschreiben (erforderlich)':'Welt ergänzen (optional)';
-  $('#world-description').required=config.setting==='custom';
+  worldEditor.update(config);
   for(const el of form.querySelectorAll('[data-step]'))el.hidden=Number(el.dataset.step)!==step||(el.dataset.group==='creation'&&prepared);
   source.hidden=step!==2;$('#prepared-character').hidden=step!==2||!prepared;
   $('.configuration').hidden=step===3;$('#setup-output').hidden=step!==3;
@@ -104,7 +101,7 @@ function update() {
   copy.textContent='Projektanweisungen kopieren';copyStart.textContent='Erste Chatnachricht kopieren';
   const errors=setupErrors(step,config,characterDoc);
   $('#setup-feedback').textContent=showErrors?errors.slice(0,4).join(' '):'';
-  $('#world-description').setAttribute('aria-invalid',String(showErrors&&worldErrors.length>0));
+  $('#world-description').setAttribute('aria-invalid',String(showErrors&&config.setting==='custom'&&!config.worldDescription?.trim()));
   if(step!==3) {clearOutput('Die Starttexte erscheinen nach Abschluss der Vorbereitung.');return;}
   if(errors.length){clearOutput(errors[0]);$('#setup-feedback').textContent=errors.slice(0,4).join(' ');return;}
   currentOutput=buildOutput(config,selectedMode(),prepared?characterDoc:null);
@@ -125,7 +122,7 @@ function goTo(target) {
 }
 $('#setup-next').addEventListener('click',()=>{
  const errors=setupErrors(step,configFromForm(),characterDoc);
- if(errors.length){showErrors=true;update();if(step===0)$('#world-description').focus();return;}
+ if(errors.length){showErrors=true;update();if(step===0)worldEditor.focusError();return;}
  goTo(Math.min(step+1,3));
 });
 $('#setup-back').addEventListener('click',()=>goTo(Math.max(step-1,0)));
@@ -141,7 +138,9 @@ form.addEventListener('change',event=>{
 });
 reset.disabled=false;reset.addEventListener('click',()=>{
  for(const input of form.querySelectorAll('input'))input.checked=defaults[input.name]===input.value;
- for(const field of form.querySelectorAll('textarea'))field.value='';goTo(0);
+ for(const field of form.querySelectorAll('textarea'))field.value='';
+ for(const field of form.querySelectorAll('select'))field.value=field.name==='setting'?'fantasy':field.name==='worldSource'?'original':field.name==='worldPlayerKind'?'mortal':'';
+ form.querySelector('.world-details').open=false;goTo(0);
 });
 function enableCopy(button,field,feedback,success) {
  button.addEventListener('click',async()=>{

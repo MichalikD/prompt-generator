@@ -1,6 +1,7 @@
+import {worldRules} from './worlds.mjs';
 import { languageDirective, localizationPolicy } from './language.mjs';
 import { createProfile, profileText } from './profile.mjs';
-import { groups, core, powers, dice, pacing, probePolicy, savePolicy } from './modules.mjs';
+import { groups, core, dice, pacing, probePolicy, savePolicy } from './modules.mjs';
 export { groups, dice };
 // UTF-16 length is conservative for supplementary Unicode characters.
 export const LIMIT = 8000;
@@ -26,7 +27,7 @@ export function buildCompactPackage(config = defaults, {prepared=false}={}) {
   const sections = [
     ['ROLE', languageDirective, localizationPolicy, rules.intro],
     ['START', rules.start],
-    ['CHARACTER', prepared ? 'Use the confirmed sheet in my first message as the starting state; do not recreate the character.' : selected.creation, rules.character, powers[config.setting]],
+    ['CHARACTER', prepared ? 'Use the confirmed sheet in my first message as the starting state; do not recreate the character.' : selected.creation, rules.character, worldRules(profile.world)],
     ['ADVENTURE', rules.world],
     ['PLAY STYLE', rules.play, pacing],
     ['D20 CHECKS', rules.checks, selected.frequency, probePolicy, selected.roller, selected.visibility, diceText(config)],
