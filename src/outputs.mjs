@@ -6,13 +6,13 @@ import {worldText,worldRules} from './worlds.mjs';
 
 export const PLUGIN = Object.freeze({
   name: 'Open Game Master',
-  version: '0.5.0',
+  version: '0.6.0',
   url: 'https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37',
 });
 
 export const outputModes = [
-  { id: 'compact', label: 'Projektprompt · unter 8.000 Zeichen' },
   { id: 'plugin', label: 'Plugin-Startpaket' },
+  { id: 'compact', label: 'Projektprompt · eingefrorene Regelbasis 0.5' },
 ];
 
 export function buildPluginPackage(config = defaults, character=null) {
@@ -69,7 +69,7 @@ export function worldForCharacter(config=defaults) {
  const world=createProfile(config).world;
  return [worldText(world),worldRules(world), config.wishes?.trim() && 'User wishes and exclusions: '+config.wishes.trim()].filter(Boolean).join('\n\n');
 }
-export function buildOutput(config = defaults, mode = 'compact', character=null) {
+export function buildOutput(config = defaults, mode = 'plugin', character=null) {
   if (!outputModes.some(option => option.id === mode)) throw new Error('Ungültiger Ausgabemodus');
   checkPrepared(config,character);
   if (mode === 'plugin') return buildPluginPackage(config,character);

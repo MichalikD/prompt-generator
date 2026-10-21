@@ -39,7 +39,9 @@ test('Moduswechsel verändert keine Einstellungen und erhält den kompakten Prom
   assert.ok(!plugin.startMessage.includes('Standard:'));
   assert.equal(buildOutput(config, 'compact').projectInstructions, compact.projectInstructions);
   assert.equal(JSON.stringify(config), snapshot);
-  assert.deepEqual(outputModes.map(mode => mode.id), ['compact', 'plugin']);
+  assert.deepEqual(outputModes.map(mode => mode.id), ['plugin', 'compact']);
+  assert.equal(buildOutput(config).mode, 'plugin');
+  assert.match(outputModes.find(mode => mode.id === 'compact').label, /eingefroren/);
 });
 
 test('Plugin-Paket trennt Projektanweisungen und Startnachricht im Download', () => {
