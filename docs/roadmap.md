@@ -1,6 +1,47 @@
-# Entwicklungsstand nach Nara und Jaro
+# Entwicklungsstand nach Jack
 
-## Aktuell: Weltvorlagen, Umfang und Vielfalt · 0.5.0
+## Aktuell: Abschlüsse, Entwicklung und Vielfalt · 0.6.0
+
+Jacks Western-Durchlauf zeigt kurze abgeschlossene Abschnitte, einen eigenständigen
+Wettbewerb und brauchbare Übergänge. Atmosphäre durch kleine Begegnungen funktioniert.
+Das ist ein guter spielbarer Prototyp, kein Nachweis für alle Figuren und Optionen.
+
+- Neue Entwicklung nur für die Plugin-Regelbasis; kompakter 8.000-Zeichen-Regelsatz
+  bleibt auf Stand 0.5 eingefroren und als Alt-Ausgabe verfügbar. Plugin ist Standard.
+- Fortsetzungen anhand tatsächlicher Entscheidungen variieren; zusammenhängende
+  Folgen erhalten, ohne dieselbe Begegnung nur mit neuem Auftraggeber zu wiederholen.
+- Abenteuer und Routineaufträge unterscheidbar abschließen; Entwicklung prüfen,
+  ausstehende Wahl und noch nicht belohnte Fortschritte behalten. Keine EP/Level.
+- Vorbereitung regeltechnisch erklären; Fehlschläge mit vereinbarten Kosten
+  abwickeln, neue relevante Entscheidungen beim Spieler lassen.
+- Auch beim Rückzug gefährliche Angriffe nach denselben Regeln auflösen.
+- Kleine atmosphärische Einschübe ohne Pflichtprobe oder Folgeauftrag erhalten.
+
+Details, Grenzen und Rückkehrpunkt: [Stand nach Jack](spielbarer-prototyp-0.6.md).
+
+### Nächste Prioritäten
+
+1. **Ressourcen und besondere Bedürfnisse gezielt erproben:** Mana und Blutdurst
+   sind noch kaum getestet. Bestehendes Format verwenden, vorab eindeutige Wirkung,
+   Kosten/Auslöser, Versorgung und Verhalten bei Mangel vereinbaren. Nicht auf
+   Verdacht ein neues Ressourcen- oder Hungersystem ergänzen.
+2. **Kampf und zusätzliche Würfel beobachten:** vollständiger Kampf mit Treffern,
+   Schaden, Heilung, gegnerischen Würfen und ggf. Rückzug noch nicht belastbar
+   geprüft; Zusatzwürfel und feste Gefährten ebenfalls. Keine Pflichtkämpfe für Tests.
+3. **Bedienkomfort:** Generator übersichtlicher gestalten, Charakterablage,
+   Nachschlagebogen, ggf. Lokalisierung. Kein neuer API-Unterbau.
+
+Kontinuität bei Wissen, Namen, Wegen und Zeiten bleibt eine Grenze des Chatansatzes.
+Relevante Fehler sammeln; dekorative oder folgenlose Fehler bleiben nachrangig.
+Die Wirkung von 0.6.0 auf das Erzählen muss im Spiel geprüft werden. Kein neuer
+vollständiger Durchlauf pro kleiner Korrektur; ein gezielt gewählter nächster Test genügt.
+
+## Historie
+
+Die folgenden Abschnitte beschreiben frühere Entwicklungsschritte und damalige
+Testpläne; die aktuelle Priorisierung steht oben.
+
+## Weltvorlagen, Umfang und Vielfalt · 0.5.0
 
 - Zehn Weltvorlagen, eigenständig/inspiriert/Kanon und eingeklappte Anpassungen.
 - Gemeinsames Weltprofil für beide Modi und Charaktertemplate; eigene Angaben

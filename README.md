@@ -5,7 +5,7 @@ kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API, Anmeldun
 Speicherung oder Synchronisierung.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
 
-## Plugin-Regelbasis 0.5.0
+## Plugin-Regelbasis 0.6.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -15,18 +15,26 @@ Pluginfassung. Eine eigene Modell-API ist nicht enthalten.
 
 [Verwendung, Regeländerungen und Paketierung](docs/regelbasis-0.2.md)
 
+Die Weiterentwicklung konzentriert sich auf das Plugin. **0.6.0** schärft
+Handlungsvielfalt, erkennbare Abenteuerabschlüsse, Entwicklung und offene
+Gefahrenauflösung anhand des Jack-Western-Durchlaufs. Kurze atmosphärische
+Begegnungen bleiben ausdrücklich möglich. Zahlenregeln, Figurenformat und
+Ressourcenmechaniken bleiben unverändert. Details und noch ungeprüfte Bereiche:
+[Stand nach Jack](docs/spielbarer-prototyp-0.6.md).
+
 Die Moduswahl ändert die Ausgabe, nicht die gewählten Einstellungen. Die alte
 private Vesper-Spielleitung bleibt für begonnene Durchgänge unverändert.
 Das gemeinsame Abenteuerprofil ist im Generator enthalten; der Charaktereditor ist direkt in den Startablauf eingebunden.
 
 ## Zwei Ausgaben aus einer Auswahl
 
-- **Projektprompt · unter 8.000 Zeichen:** enthält die bisherigen kompakten
+- **Projektprompt · eingefrorene Regelbasis 0.5:** wird nicht mehr inhaltlich
+  weiterentwickelt und erhält die neuen Plugin-Regeln nicht. Enthält die bisherigen kompakten
   Regeln vollständig und benötigt kein Plugin. Den Text in die Projektanweisungen
   kopieren. Passt das vollständige Abenteuerprofil nicht mehr hinein, zeigt die App
   einen klar gekennzeichneten zweiten Text für die erste Chatnachricht an. Beide
   Teile vor dem Auftakt verwenden; bei vorbereitetem Bogen enthält die Startnachricht die bestätigte Figur automatisch.
-- **Plugin-Startpaket:** liefert kurze Projektanweisungen und eine separate erste
+- **Plugin-Startpaket (Standard):** liefert kurze Projektanweisungen und eine separate erste
   Chatnachricht mit allen gewählten Vorgaben. Die ausführlichen Regeln kommen aus
   dem Open Game Master. Im neuen Spielchat das Plugin ausdrücklich wählen.
   Beide Texte lassen sich einzeln kopieren oder zusammen als Markdown speichern.

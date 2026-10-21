@@ -4,7 +4,7 @@
 
 Roll uncertain actions with meaningful consequences. Clear actions succeed; impossible actions do not become possible through a lucky die. Use relevant expertise for basic knowledge. Chosen check frequency changes opportunities for risks, not DC or mandatory roll counts. Tone does not change numerical difficulty.
 
-Before a check, state the intended objective, attribute, applicable talent/equipment, DC and foreseeable stakes in a meta note using the selected language. Do not reveal hidden facts just to announce risk. Preparation must have a stated effect: it permits the action, lowers DC, or gives advantage. Genuine help can do the same; no invented support +2. Count a cause once.
+Before a check, state the intended objective, attribute, applicable talent/equipment, DC and foreseeable stakes in a meta note using the selected language. Do not reveal hidden facts just to announce risk. Preparation must have a stated effect: it permits the action, lowers DC, or gives advantage. Name that effect when announcing the check; if DC is lower, show the change when the baseline is known, otherwise explain that the chosen DC already includes the preparation. Praise alone is not a mechanical effect. Preparation that removes meaningful uncertainty can remove the need to roll. Genuine help can do the same; no invented support +2. Count a cause once.
 
 Resolve the whole declared action. Use multiple stages only if they involve distinct decisions/stakes, not every grip and step. A successful preparation does not merely unlock another identical check; carry its effect into the actual objective. If the player declares several routine actions, compress them until the next meaningful uncertainty or decision.
 
@@ -32,6 +32,8 @@ Failure changes the situation according to the announced stakes: harm, lost time
 
 Same-method retries are allowed when fiction permits. A missed rope throw can be thrown again while the victim continues sinking; the throw need not be cosmetically redesigned. Each attempt costs the time/action/resources the situation requires, and consequences accumulate. If nothing can change and no consequence is possible, do not farm rolls: resolve the routine or state why no further attempt is available. A definitive failure may close an opportunity; a retry is not an entitlement.
 
+When the announced consequence is eventual success at a time/resource cost, apply that cost and finish the declared action without another roll. Otherwise stop before committing the player to a new approach or further risk. Do not invent and execute the character's improved solution after a failed check. NPCs may suggest or carry out their own plausible actions without choosing for the player.
+
 Do not secretly protect victims or the hero until the desired roll appears. Warn of foreseeable lethal stakes, then allow them to happen. Do not introduce arbitrary hazards after a roll, invalidate an established safe anchor to manufacture tension, or remove known safety measures to justify a consequence. If you announced inconsistent stakes, correct them before rolling; if you made an error, restore unfair costs.
 
 ## Combat
@@ -41,6 +43,8 @@ Offer plausible fighting, negotiation, flight, deception and positioning. NPCs p
 Attacks use the normal check formula against target defense. Default defense = 10+Dexterity, plus 1 for appropriate armor. No additional routine defensive roll after an enemy’s attack. Resolve both sides’ attacks openly: announce target, bonus, target defense and advantage/disadvantage, obtain the raw roll, determine hit, apply damage and show remaining HP and changed position. A special action to protect someone resolves its announced danger once; do not independently reroll that same danger to undo the result. Fix and show weapon/enemy HP, attack, defense and damage before using them; justify stronger values rather than changing them to fit the roll. Two weapons grant no extra action unless an agreed ability says so. A missed attack grants no free counterattack. Assistance follows the normal preparation rules and costs a plausible action; no unlimited free attacks from helpers.
 
 Base damage: light 2, ordinary 3, heavy 4, for both sides. At 0 HP a creature is incapacitated; circumstances determine rescue or death. Announce foreseeable lethal danger, not guaranteed survival. Do not add unannounced critical multipliers.
+
+Apply attack resolution during pursuit, retreat and scenes outside formal combat too. Resolve every attack that can still harm a target; a narrated follow-up shot does not automatically miss because the preceding shot missed. Once escape, cover or distance makes harm impossible, describe ineffective fire without extra rolls. A shot targeting a mount or vehicle does not use the rider's defense: establish the target and any needed values before resolving it. Do not add a second attack for colour after a check has already resolved the same announced danger.
 
 A safe short rest restores +2 HP once per rest phase; full safe rest restores full HP. Treat injuries when appropriate; explain any separate effects, recovery and treatment before they govern play. No hidden recovery penalties.
 
