@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {defaults,LIMIT,groups} from '../src/generator.mjs';
 import {buildOutput,worldForCharacter} from '../src/outputs.mjs';
-import {resolveWorld,validateWorld,worldTemplates,worldFields,worldSources} from '../src/worlds.mjs';
+import {resolveWorld,validateWorld,worldTemplates,worldFields,worldSources,worldText} from '../src/worlds.mjs';
 import {setupErrors} from '../src/setup.mjs';
 const modes=['compact','plugin'];
 const text=o=>o.projectInstructions+'\n'+o.startMessage;
@@ -14,8 +14,8 @@ test('Zehn Weltvorlagen liefern beiden Modi und dem Charaktertemplate dieselbe a
   const a=buildOutput(config,'compact'),b=buildOutput(config,'plugin');
   assert.deepEqual(a.profile.world,b.profile.world);
   assert.equal(a.profile.version,2);
-  for(const o of [a,b])for(const f of worldFields)assert.ok(text(o).includes(f.options.find(x=>x.id===o.profile.world[f.key]).text));
-  for(const f of worldFields)assert.ok(worldForCharacter(config).includes(f.options.find(x=>x.id===a.profile.world[f.key]).text));
+  for(const o of [a,b])assert.ok(text(o).includes(worldText(o.profile.world,{legacy:o.mode==='compact'})));
+  assert.ok(worldForCharacter(config).includes(worldText(a.profile.world)));
   assert.deepEqual(setupErrors(0,config),[]);
  }
 });
@@ -23,7 +23,7 @@ test('Zehn Weltvorlagen liefern beiden Modi und dem Charaktertemplate dieselbe a
 test('Abweichungen ersetzen Vorgaben, ohne widersprüchliche alte Kräfte in die Ausgaben zu übernehmen',()=>{
  for(const mode of modes) {
   const modern=text(buildOutput({...defaults,setting:'modern',worldPowers:'limited'},mode));
-  assert.ok(modern.includes('three resource points'));
+  assert.ok(modern.includes(mode==='compact'?'three resource points':'Supernatural powers exist;'));
   assert.ok(!modern.includes('No supernatural abilities.'));
   assert.ok(!modern.includes('No supernatural powers.'));
   const fantasy=text(buildOutput({...defaults,setting:'fantasy',worldPowers:'none'},mode));
@@ -60,7 +60,7 @@ test('Vorbild, Kanon und Mythologie bleiben eindeutig; eine versteckte alte Refe
  const config={...defaults,setting:'mythology',worldMythology:'Nordische Götterwelt.',worldSociety:'Eine eigene nordische Küstengesellschaft.'};
  for(const mode of modes){const s=text(buildOutput(config,mode));assert.ok(s.includes(config.worldMythology));assert.ok(!s.includes('Greek mythology'));}
  const god={...config,worldPlayerKind:'god',worldMixConfirmed:true};
- assert.ok(worldForCharacter(god).includes('no omnipotence'));
+ assert.ok(worldForCharacter(god).includes('starts as a deity at an agreed playable scale'));
 });
 
 test('Auch maximale freie Weltvorgaben und kombinierte Kräfte passen ohne Kürzung in beide Ausgaben',()=>{

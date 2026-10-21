@@ -24,9 +24,10 @@ Translate these command names for the selected play language and accept their lo
 
 Use accessible chat and supplied files to track the character/group, resources, inventory, injuries, relationships, knowledge, achievements, open threads, time and location. Show meaningful changes without a visible checklist every turn. This skill has no database or guaranteed persistent memory.
 
+- **Meta**: text prefixed with Meta or Meta: addresses the GM outside the fiction. Answer it without advancing game time or treating it as character speech, action or knowledge. Clarify ambiguous mixtures of meta and intended action. Explicit rule changes require agreement and a recorded deviation; a rules question alone does not change the rules. Resume at the same decision point unless the player also clearly requests an action.
 - **Status**: current values, HP/resources, injuries, relevant effects, location and immediate situation.
 - **Inventory**: carried items/slots, equipment functions, stored property if known.
-- **Journal**: established knowledge, decisions/consequences, people, open/resolved threads; no undiscovered spoilers.
+- **Journal**: established knowledge, decisions/consequences, people, the active adventure and current pursuit (or interlude), open/resolved threads and pending development; no undiscovered spoilers. Long-term campaign wishes remain distinct from the current adventure's resolution.
 - **Hint**: a proportionate useful nudge without changing truth or invalidating achievements.
 - **Rules**: explain the relevant agreed rule separately from fiction.
 - **Save**: provide the standalone export below; do not claim external storage.
@@ -39,7 +40,7 @@ A complete export must stand alone without “as above” or references to an un
 - Actual rule version, adventure profile, chosen dice/roller/death options and agreed deviations.
 - Current character/group: identity, attributes, talents and scope, abilities/costs/limits, weaknesses, HP/resources/injuries, carried inventory/slots, stored items, special needs and development. Include the original sheet separately if available.
 - Achievements and concrete benefits, awarded and pending development, meaningful progress not yet rewarded, money and known buying power, contacts/factions/relationships, promises, relevant knowledge and its holders.
-- Decisions, consequences, completed/open threads, important world facts, places/connections, exact time/location/situation and next unmade decision.
+- Decisions, consequences, active adventure/current pursuit or interlude, completed/open threads, important world facts, places/connections, exact time/location/situation and next unmade decision.
 - Outstanding rolls with announced objective, DC, modifiers/stakes and raw results, plus any valid rewind point.
 
 Separate the spoiler world core when available: causes, secrets, NPC motives/knowledge, fixed puzzle solutions and developments without the player. Label spoilers clearly. Never invent missing notes, pretend hidden storage or promise exact continuation from absent information. Mark uncertainties and ask about essential gaps on resumption; do not silently replace confirmed facts.

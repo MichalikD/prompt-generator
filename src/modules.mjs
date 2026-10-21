@@ -9,7 +9,7 @@ export const groups = [
         "id": "adventure",
         "label": "Abenteuerlich",
         "text": "Adventure: discovery, initiative and real danger, with humour and rest; no horror focus.",
-        "tooltip": "Echte Gefahren mit Platz für Humor und Ruhe; kein Horrorfokus."
+        "tooltip": "Entdeckungen, Eigeninitiative und echte Gefahren; kein Horrorfokus."
       },
       {
         "id": "cozy",

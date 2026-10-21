@@ -77,7 +77,7 @@ function render() {
  if(doc.kind==='current') list('Entwicklung',['development'],{milestone:'',change:'',benefit:'',limits:''});
  $('#character-confirmed').checked=doc.confirmed;
  $('#character-title').textContent=doc.kind==='start'?'Startbogen bearbeiten':'Aktuellen Figurenbogen bearbeiten';
- $('#character-kind-help').textContent=doc.kind==='start'?'Start: Attribute −1 bis +3, Summe +5; zwei Talente, situative Schwäche, 10 LP und acht Tragplätze.':'Aktueller Bogen: Attribute bis +5. Entwicklung mit Nutzen dokumentieren. Der ursprüngliche Startbogen bleibt unverändert; dies ist kein vollständiger Kampagnenspielstand.';
+ $('#character-kind-help').textContent=doc.kind==='start'?'Start: Attribute −1 bis +3, Summe +5; zwei Talente, situative Schwäche, 10 LP und acht Tragplätze. Entwicklung entsteht im Spiel. Nach Bestätigung kannst du mit „Als aktuellen Bogen weiterführen“ erhaltene Verbesserungen dokumentieren.':'Aktueller Bogen: Attribute bis +5. Bereits erhaltene Entwicklung mit Nutzen dokumentieren, keinen Pflichtplan für künftige Steigerungen. Der ursprüngliche Startbogen bleibt unverändert; dies ist kein vollständiger Kampagnenspielstand.';
  $('#character-original-panel').hidden=doc.kind!=='current';
  $('#character-original').value=doc.startCharacter?characterText({...newCharacterDocument(),character:doc.startCharacter,confirmed:true}):'Ursprünglicher Startbogen nicht verfügbar; nicht erfinden.';
  update();
