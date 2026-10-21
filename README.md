@@ -5,7 +5,7 @@ kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API, Anmeldun
 Speicherung oder Synchronisierung.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
 
-## Plugin-Regelbasis 0.6.0
+## Plugin-Regelbasis 0.7.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -15,12 +15,14 @@ Pluginfassung. Eine eigene Modell-API ist nicht enthalten.
 
 [Verwendung, Regeländerungen und Paketierung](docs/regelbasis-0.2.md)
 
-Die Weiterentwicklung konzentriert sich auf das Plugin. **0.6.0** schärft
-Handlungsvielfalt, erkennbare Abenteuerabschlüsse, Entwicklung und offene
-Gefahrenauflösung anhand des Jack-Western-Durchlaufs. Kurze atmosphärische
-Begegnungen bleiben ausdrücklich möglich. Zahlenregeln, Figurenformat und
-Ressourcenmechaniken bleiben unverändert. Details und noch ungeprüfte Bereiche:
-[Stand nach Jack](docs/spielbarer-prototyp-0.6.md).
+Die Weiterentwicklung konzentriert sich auf das Plugin. **0.7.0** verwendet
+für erstes und jedes weitere Abenteuer denselben Vorbereitungs- und Abschlussauftrag.
+Erkundung, Weltentwicklung, Szenenfortschritt und kurze Übergänge sind gemeinsam
+überarbeitet. Die Plugin-Startnachricht enthält Auswahl, Welt und Figur statt
+eines zusätzlichen allgemeinen Erzählregelblocks. Meta-Eingaben, Kosten bei
+geraffter Zeit, Magiebegriffe und Entwicklungshinweise sind geklärt.
+Zahlenregeln, Figurenformat und Ressourcenmechaniken bleiben bestehen.
+[Änderungen, Grenzen und Prüfumfang](docs/erzaehlauftrag-0.7.md).
 
 Die Moduswahl ändert die Ausgabe, nicht die gewählten Einstellungen. Die alte
 private Vesper-Spielleitung bleibt für begonnene Durchgänge unverändert.
@@ -73,7 +75,8 @@ wird keine neue Version veröffentlicht. Ein erfolgreiches Deployment ersetzt di
 ## Textmodule und Längengarantie
 
 - `src/modules.mjs`: Kernregeln und auswählbare Textvarianten.
-- `src/profile.mjs`: gemeinsames Abenteuerprofil, Schwerpunkte und Erzählvorgaben.
+- `src/profile.mjs`: gemeinsame Profildaten und eingefrorener kompakter Erzähltext.
+- `src/plugin-profile.mjs`: ausgewählte Vorgaben für das Plugin, ohne allgemeinen Regelblock.
 - `src/worlds.mjs`: Weltvorlagen, wirksame Anpassungen und Konfliktprüfung.
 - `src/world-editor.mjs`: eingeklappte Weltanpassungen im ersten Vorbereitungsschritt.
 - `src/outputs.mjs`: Moduswahl, Pluginverweis und getrennte Startpaket-Texte.

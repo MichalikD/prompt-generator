@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { allConfigs, buildPrompt, defaults, groups, LIMIT, diceText } from '../src/generator.mjs';
 import { buildOutput, buildPluginPackage, outputModes, PLUGIN } from '../src/outputs.mjs';
-import { powers } from '../src/modules.mjs';
+import { pluginChoiceText } from '../src/plugin-profile.mjs';
 
 test('Beide Ausgaben verwenden in jeder Kombination dieselbe gültige Auswahl', () => {
   let count = 0;
@@ -13,12 +13,11 @@ test('Beide Ausgaben verwenden in jeder Kombination dieselbe gültige Auswahl', 
     assert.ok(result.startMessage.includes(PLUGIN.version));
     for (const group of groups) {
       const chosen = group.options.find(option => option.id === config[group.id]);
-      assert.ok(result.startMessage.includes(group.id==='setting' ? chosen.text : `${optionNames[group.id]}: ${chosen.text}`));
+      assert.ok(result.startMessage.includes(group.id==='setting' ? chosen.text : `${optionNames[group.id]}: ${pluginChoiceText(group.id,chosen)}`));
       for (const option of group.options) {
-        if (option !== chosen) assert.ok(!result.startMessage.includes(group.id==='setting' ? option.text : `${optionNames[group.id]}: ${option.text}`));
+        if (option !== chosen) assert.ok(!result.startMessage.includes(group.id==='setting' ? option.text : `${optionNames[group.id]}: ${pluginChoiceText(group.id,option)}`));
       }
     }
-    if (powers[config.setting]) assert.ok(result.startMessage.includes(powers[config.setting]));
     assert.ok(!result.projectInstructions.includes('D20+attribute'));
     const extras = diceText(config);
     assert.ok(result.startMessage.includes(extras || 'Extra dice: none.'));

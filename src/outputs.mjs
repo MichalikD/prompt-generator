@@ -1,12 +1,13 @@
 import { languageDirective, localizationPolicy, optionNames } from './language.mjs';
 import { characterText, validateCharacterDocument } from './character.mjs';
-import { createProfile, profileText, profileIds } from './profile.mjs';
+import { createProfile, profileIds } from './profile.mjs';
+import { pluginProfileText } from './plugin-profile.mjs';
 import { buildCompactPackage, defaults, groups, selectOptions, diceText } from './generator.mjs';
 import {worldText,worldRules} from './worlds.mjs';
 
 export const PLUGIN = Object.freeze({
   name: 'Open Game Master',
-  version: '0.6.0',
+  version: '0.7.0',
   url: 'https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37',
 });
 
@@ -32,10 +33,9 @@ export function buildPluginPackage(config = defaults, character=null) {
     languageDirective,
     `New solo run with "${PLUGIN.name}", rules version ${PLUGIN.version}.`,
     'Read the GM skill and “Adventure and World” first. Mention access problems only; begin without a loading report.',
-    'The following choices override conflicting plugin defaults for this run; retain them across chapters.',
-    profileText(profile, selected, groups),
+    'Apply the selected profile and confirmed sheet throughout this run. Explicit choices replace the plugin fallback values; world adaptations replace conflicting template suggestions.',
+    pluginProfileText(profile, selected, groups),
     ...groups.filter(group=>!profileIds.includes(group.id) && !(character && group.id==='creation')).map(group => `${optionNames[group.id]}: ${selected[group.id].text}`),
-    worldRules(profile.world),
     diceText(config) || 'Extra dice: none. Use fixed base damage; attribute checks remain D20.',
     ...(character ? [characterText(character), 'Use this confirmed sheet as the starting state and begin the adventure according to the profile.'] : ['Follow the selected character creation method, confirm the draft, then begin the adventure. Ask only for information essential to starting.']),
   ].filter(Boolean).join('\n\n');

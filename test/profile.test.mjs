@@ -27,7 +27,7 @@ test('Umfang und Verlauf sind unabhängig; beide Modi erhalten identische Profil
    const text=combined(o);
    assert.ok(text.includes('Keine Amnesie.'));
    assert.ok(text.includes('Die Küste ist vereist.'));
-   assert.ok(text.includes(narrativePolicy));
+   assert.equal(text.includes(narrativePolicy),o.mode==='compact');
    assert.equal(o.profile.scope,scope); assert.equal(o.profile.continuation,continuation);
   }
  }

@@ -1,0 +1,62 @@
+[
+  {
+    "override": {},
+    "sha256": "01f6a507b1604a8cedf3d18472a05fb354c4b5592da0f60819644e3960de69c6"
+  },
+  {
+    "override": {
+      "setting": "cyberpunk",
+      "scope": "medium",
+      "death": "hardcore"
+    },
+    "sha256": "6258ecee7cc8019d2736b18b2efc9c32c87fcddece6e35331ec14da4c1ca7368"
+  },
+  {
+    "override": {
+      "scope": "long",
+      "continuation": "linked",
+      "extras": [
+        "d4",
+        "d6",
+        "d8",
+        "d10",
+        "d12",
+        "dpercent"
+      ]
+    },
+    "sha256": "e0ef4d244f98b8aefed35d8c5de8daf51c3ffc2360f482de1f2b1b3e2c8744a0"
+  },
+  {
+    "override": {
+      "setting": "custom",
+      "worldDescription": "Eine Welt aus Glas.",
+      "wishes": "Keine Bilder."
+    },
+    "sha256": "4181495b3ccc54a929c950db89ce443a1da7fa7de9650077532034b9903124ae"
+  },
+  {
+    "override": {
+      "setting": "fantasy",
+      "worldPowers": "none",
+      "continuation": "single"
+    },
+    "sha256": "3c9c4f762dd642d6da076156efff73d889d7af63d65e3b9f388a6e0f8890eacc"
+  },
+  {
+    "override": {
+      "setting": "mythology",
+      "worldPlayerKind": "god",
+      "worldMixConfirmed": true
+    },
+    "sha256": "cfae987321e4ddeab817ff6ead4f8a4c2b5e69d035c3a70d15ede8e24ff7e192"
+  },
+  {
+    "override": {
+      "setting": "western",
+      "worldEra": "future",
+      "worldTechnology": "space",
+      "worldMixConfirmed": true
+    },
+    "sha256": "2494f807e256d84c07bcaf666f98b3a9e4a6dbfeae4f6879a100d7650305adde"
+  }
+]

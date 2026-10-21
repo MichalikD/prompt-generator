@@ -1,54 +1,65 @@
-# To-do-Liste und Entwicklungsstand nach Aren
+# To-do-Liste und Entwicklungsstand · 0.7.0
 
-## Bewertung und Vorgehen
+## Umsetzung: gemeinsamer Erzählauftrag · 0.7.0
 
-Stand: Regelbasis 0.6.0. Gute Auftakte und einzelne abwechslungsreiche Abenteuer
+Die vier Priorität-1-Pakete und begleitenden Klarstellungen sind als gebündelte
+Überarbeitung umgesetzt. Neue Startpakete enthalten Auswahl, Welt und Figur;
+die allgemeine Spielleitung liegt zentral im Plugin. Erstes und jedes weitere
+Abenteuer verwenden dieselbe Vorbereitung, Zielverfolgung und Auflösung.
+Die kompakte Regel-/Profilausgabe bleibt auf ihrem eingefrorenen Stand.
+Details und Prüfumfang: [Erzählauftrag 0.7.0](erzaehlauftrag-0.7.md).
+
+Die Wirkung in einer längeren Spielrunde ist noch nicht bestätigt. Die offenen
+Tests unter Priorität 2 bleiben offen; Quellprüfung ersetzt keine Spielerfahrung.
+
+## Bewertung nach dem Aren-Durchlauf
+
+Ausgangsbefund mit Regelbasis 0.6.0: Gute Auftakte und einzelne abwechslungsreiche Abenteuer
 sind möglich. Eine offene Kampagne wird nach Abschlüssen noch nicht zuverlässig
 weitergetragen. Arens Durchlauf endet nach wiederholten Reisehilfen; damit ist
 die Qualität längerer Fortsetzungen weiterhin offen. Die frühere Bewertung nach
 Jack war für diesen Bereich zu optimistisch.
 
-Die folgende Liste ist Planung, keine bereits umgesetzte Regeländerung. Als
-nächster Schritt ist eine größere zusammenhängende Überarbeitung vorgesehen.
-Zuerst diese Priorisierung gemeinsam prüfen, dann den vereinbarten Umfang umsetzen.
-Keine vollständigen neuen Spieltests nach jeder einzelnen Textkorrektur.
+Die folgende Liste unterscheidet umgesetzte Anweisungen von noch offenen Tests
+und späteren Erweiterungen. Keine vollständigen neuen Spieltests nach jeder
+einzelnen Textkorrektur.
 
 ## Priorität 1: Erzählauftrag gemeinsam überarbeiten
 
-- [ ] **Erstes und jedes weitere Abenteuer gleichwertig vorbereiten.** Ein
+- [x] **Erstes und jedes weitere Abenteuer gleichwertig vorbereiten.** Ein
   gemeinsamer Auftrag für eine tragfähige Situation: Beteiligte und Interessen,
   Anlass, wesentliche Herausforderung, mögliche Entwicklungen und erkennbarer
   Ausgang. Spielerentscheidungen dürfen Ziele und Verlauf ändern; keine feste
   Route, kein Pflichtfinale und keine vorgefertigte Kampagne erforderlich.
-- [ ] **Abenteuergrenzen verständlich machen.** Laufendes Abenteuer, kurze
+- [x] **Abenteuergrenzen verständlich machen.** Laufendes Abenteuer, kurze
   Begegnung, Routine und längerfristige Kampagnenmotivation unterscheiden.
   Ein Karren ist nicht automatisch ein Abenteuer; Weltreisen allein hat keinen
   begrenzten Abschluss. Ein Erkundungsabenteuer braucht einen verständlichen
   Gegenstand und eine erkennbare Auflösung. Ziel und Ausgang im Spiel vermitteln,
   ohne verpflichtende Questkästen oder administrative Ansagen pro Szene.
-- [ ] **Den Übergang zum nächsten Abenteuer beauftragen.** Nach Auflösung,
+- [x] **Den Übergang zum nächsten Abenteuer beauftragen.** Nach Auflösung,
   Folgen und Entwicklung in offenen Kampagnen erneut eine tragfähige Situation
   vorbereiten. Gewünschten Alltag zulassen und bereits erklärte Weiterreise
   zusammenfassen. Einen abgelehnten Ansatz durch andere passende Möglichkeiten
   ablösen, ohne wieder in dieselbe harmlose Hilfsaufgabe zurückzufallen.
-- [ ] **Vielfalt durch Weltentwicklung und Entscheidungen tragen.** Personen
+- [x] **Vielfalt durch Weltentwicklung und Entscheidungen tragen.** Personen
   verfolgen Ziele, Ereignisse verändern Möglichkeiten, Entdeckungen eröffnen
   Handlungsrichtungen. Derselbe Auftraggeber, Ort oder Konflikt darf lange
   bestehen bleiben, etwa wie bei Eiko; keine erzwungene Rotation. Verbundene
   Folgen sollen andere Entscheidungen ermöglichen statt den letzten Ablauf
   mit neuen Namen zu wiederholen.
-- [ ] **Erkundung spielbar machen.** Abgelegene Gebiete dürfen abgelegen bleiben;
+- [x] **Erkundung spielbar machen.** Abgelegene Gebiete dürfen abgelegen bleiben;
   Wildnis nicht ständig hinter das nächste Dorf verschieben. Entdeckungen sollen
   relevante Möglichkeiten eröffnen. Ruhige Reiseabschnitte bleiben zulässig;
   nicht jede Begegnung braucht eine Aufgabe, Gefahr oder einen Wurf.
-- [ ] **Konfrontationen voranbringen.** Ganze deklarierte Vorhaben abwickeln,
+- [x] **Konfrontationen voranbringen.** Ganze deklarierte Vorhaben abwickeln,
   Zeit und Handlungen aller Beteiligten fortschreiten lassen. Wiederholte
   Annäherungsproben dürfen eine Szene nicht im selben Zustand festhalten.
   Gültige Fehlschläge, Kosten und Gefahr erhalten; keine garantierte Rettung.
-- [ ] **Texte straffen.** Kurze Reaktionen und Proben, ausführlichere wichtige
+- [x] **Texte straffen.** Kurze Reaktionen und Proben, ausführlichere wichtige
   Szenen. Bereits erklärte Lage und Möglichkeiten nicht ständig wiederholen.
   Keine starre Wortquote.
-- [ ] **Den wirksamen Gesamtauftrag entflechten.** Allgemeine Spielleitung im
+- [x] **Den wirksamen Gesamtauftrag entflechten.** Allgemeine Spielleitung im
   Plugin, Auswahl/Welt/Figur in der Startnachricht. Wiederholungen ersetzen,
   statt weitere Einzelverbote anzuhängen. Nur die gewählte Umfangsvariante
   ausgeben; Mittel-Erklärung aus Kurz-Startpaketen entfernen, allgemeine
@@ -56,27 +67,27 @@ Keine vollständigen neuen Spieltests nach jeder einzelnen Textkorrektur.
 
 ## Begleitende Klarstellungen im selben Entwicklungsschritt
 
-- [ ] **Standardwerte eindeutig zuordnen.** Gewähltes Profil gilt für den Lauf;
+- [x] **Standardwerte eindeutig zuordnen.** Gewähltes Profil gilt für den Lauf;
   Ersatzwerte im Plugin und Vorgaben der Weltvorlagen klar benennen.
-- [ ] **Magieformulierungen prüfen.** Verbreitung von Mächtigkeit unterscheiden.
+- [x] **Magieformulierungen prüfen.** Verbreitung von Mächtigkeit unterscheiden.
   Fantasy nicht begrifflich mit schwacher Magie gleichsetzen; konkrete
   Figurenfähigkeiten trotzdem verständlich definieren. Umfang einer möglichen
   UI-Aufteilung erst festlegen, bevor neue Auswahlachsen eingebaut werden.
-- [ ] **Humor, Ruhe und Regeneration trennen.** Humor ermöglichen, nicht als
+- [x] **Humor, Ruhe und Regeneration trennen.** Humor ermöglichen, nicht als
   Pflichtton vorgeben. Erzählpausen nicht mit Ressourcenregeneration oder
   ständig neu erzeugten sicheren Rastorten gleichsetzen. Ihre tatsächliche
   Rolle als Fehlerursache ist bislang nicht bewiesen.
-- [ ] **Meta ergänzen.** Direkt an die Spielleitung gerichtete Eingaben erkennen;
+- [x] **Meta ergänzen.** Direkt an die Spielleitung gerichtete Eingaben erkennen;
   keine automatische Figurenrede, Wissensübertragung oder verstrichene Spielzeit.
   Regeländerungen als solche vereinbaren, nicht beiläufig unterstellen.
-- [ ] **Entwicklungsanzeige erklären.** `None recorded` bedeutet bisher keine
+- [x] **Entwicklungsanzeige erklären.** `None recorded` bedeutet bisher keine
   erhaltene Entwicklung, keinen Ausschluss künftiger Entwicklung. Start- und
   aktuellen Bogen sowie den vorhandenen Weiterführen-Schalter verständlicher
   erklären. Entwicklungsfelder existieren bereits für aktuelle Bögen.
-- [ ] **Startfähigkeiten offen für Wachstum formulieren.** Talente wie Zauberei
+- [x] **Startfähigkeiten offen für Wachstum formulieren.** Talente wie Zauberei
   sollen später erlernte passende Fähigkeiten einschließen. Ein Talent gewährt
   selbst keine zusätzlichen Zauber; deren Wirkung/Kosten werden vereinbart.
-- [ ] **Kosten bei geraffter Zeit erhalten.** Etablierte Reise-/Unterkunftskosten
+- [x] **Kosten bei geraffter Zeit erhalten.** Etablierte Reise-/Unterkunftskosten
   zusammengefasst nachvollziehen. Kostenlos verdiente Unterkunft bleibt möglich;
   Arens Nacht bei Mira war begründet, die zwei übersprungenen Reisetage dagegen
   nicht erkennbar abgerechnet. Kein Pflicht-Survivalsystem einführen.

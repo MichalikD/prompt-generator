@@ -1,6 +1,6 @@
 import { optionNames } from './language.mjs';
 import {validateWorld,worldText} from './worlds.mjs';
-// Gemeinsame narrative Daten; beide Ausgabewege verwenden dieselbe Quelle.
+// Gemeinsame Profildaten; der kompakte Ausgabetext bleibt auf Stand 0.5.
 export const profileIds = ['setting', 'tone', 'scope', 'continuation'];
 export const focuses = [
  {id:'discovery', label:'Entdeckung', tooltip:'Neue Orte, Zusammenhänge und Möglichkeiten entdecken.', text:'Discover new places, connections and possibilities.'},
@@ -27,7 +27,7 @@ export function profileText(profile, selected, groups) {
  return [
   'ADVENTURE PROFILE',
   'These choices define this run and override conflicting defaults.',
-  worldText(profile.world),
+  worldText(profile.world,{legacy:true}),
   ...groups.filter(g=>profileIds.includes(g.id)&&g.id!=='setting').map(g=>`${optionNames[g.id]}: ${selected[g.id].text}`),
   profile.focus.length ? 'Play focus: '+profile.focus.map(id=>focuses.find(f=>f.id===id).text).join(' ') : 'Play focus: varied according to the situation, no fixed weighting.',
   profile.wishes && `User wishes and exclusions:\n${profile.wishes}`,

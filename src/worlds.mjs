@@ -25,7 +25,7 @@ export const worldFields = [
  ]},
  {key:'powers',config:'worldPowers',label:'Magie und besondere Kräfte',options:[
   {id:'none',label:'Keine übernatürlichen Kräfte',text:'No supernatural powers.'},
-  {id:'limited',label:'Begrenzte Magie / besondere Kräfte',text:'Limited supernatural powers; establish effects, costs and limits before use.'},
+  {id:'limited',label:'Magie vorhanden · Verbreitung offen',text:'Limited supernatural powers; establish effects, costs and limits before use.'},
   {id:'common',label:'Verbreitete Magie / besondere Kräfte',text:'Supernatural powers are widespread, but have concrete limits and costs.'},
   {id:'divine',label:'Götter prägen die Welt',text:'Gods, cults and divine powers shape the world; distinguish belief, divine action and mortal knowledge.'},
   {id:'other',label:'Eigene Festlegung',text:'Use the custom powers and limits specified below.'},
@@ -87,19 +87,28 @@ export function validateWorld(config) {
  if(world.mixed&&!world.mixConfirmed)throw new Error(world.warnings.join(' ')+' Bitte die bewusste Mischung bestätigen oder die Angaben ändern.');
  return world;
 }
-export function worldText(w) {
+export function worldText(w,{legacy=false}={}) {
  const template=choice(worldTemplates,w.template,'Vorlage');
+ const powers={
+  limited:'Supernatural powers exist; their prevalence and world-scale strength may be established in play. Individual abilities use their agreed effects, costs and limits.',
+  common:'Supernatural powers are widespread. Prevalence does not determine their strength; individual abilities use their agreed effects, costs and limits.',
+ };
+ const kinds={
+  mortal:'The character starts mortal; later changes of nature or abilities require agreed development.',
+  demigod:'The character starts as a demigod with agreed abilities; ancestry alone grants no additional powers.',
+  god:'The character starts as a deity at an agreed playable scale with defined abilities.',
+ };
  return [
   `World template: ${template.text.split(':')[0]}. ${w.mixed?'Deliberate hybrid; the effective specifications below replace conflicting template assumptions.':template.text}`,
   choice(worldSources,w.source,'Grundlage').text,
   w.reference&&`Reference and requested influences/deviations:\n${w.reference}`,
-  ...worldFields.map(f=>`${f.key[0].toUpperCase()+f.key.slice(1)}: ${choice(f.options,w[f.key],f.label).text}`),
+  ...worldFields.map(f=>`${f.key[0].toUpperCase()+f.key.slice(1)}: ${!legacy&&f.key==='powers'&&powers[w.powers] || choice(f.options,w[f.key],f.label).text}`),
   ['advanced','space'].includes(w.technology)&&'Cyberware: concrete functions, costs and access/range limits; bonuses count as equipment.',
   `Society and place: ${w.society}`,
   w.mythology&&`Mythology: ${w.mythology}`,
-  choice(worldPlayerKinds,w.playerKind,'Figurenart').text,
+  legacy?choice(worldPlayerKinds,w.playerKind,'Figurenart').text:kinds[w.playerKind],
   w.description&&`World description (user specifications):\n${w.description}`,
-  'Explicit custom specifications replace conflicting template defaults. Preserve other compatible assumptions. Resolve contradictions between explicit specifications before play; never silently ignore one. A calendar date alone does not define technology.',
+  legacy?'Explicit custom specifications replace conflicting template defaults. Preserve other compatible assumptions. Resolve contradictions between explicit specifications before play; never silently ignore one. A calendar date alone does not define technology.':'The effective specifications above define this world. User adaptations replace conflicting template suggestions. Clarify contradictions between explicit specifications before play.',
  ].filter(Boolean).join('\n\n');
 }
 export function worldRules(world) {
