@@ -1,6 +1,124 @@
-# Entwicklungsstand nach Jack
+# To-do-Liste und Entwicklungsstand nach Aren
 
-## Aktuell: Abschlüsse, Entwicklung und Vielfalt · 0.6.0
+## Bewertung und Vorgehen
+
+Stand: Regelbasis 0.6.0. Gute Auftakte und einzelne abwechslungsreiche Abenteuer
+sind möglich. Eine offene Kampagne wird nach Abschlüssen noch nicht zuverlässig
+weitergetragen. Arens Durchlauf endet nach wiederholten Reisehilfen; damit ist
+die Qualität längerer Fortsetzungen weiterhin offen. Die frühere Bewertung nach
+Jack war für diesen Bereich zu optimistisch.
+
+Die folgende Liste ist Planung, keine bereits umgesetzte Regeländerung. Als
+nächster Schritt ist eine größere zusammenhängende Überarbeitung vorgesehen.
+Zuerst diese Priorisierung gemeinsam prüfen, dann den vereinbarten Umfang umsetzen.
+Keine vollständigen neuen Spieltests nach jeder einzelnen Textkorrektur.
+
+## Priorität 1: Erzählauftrag gemeinsam überarbeiten
+
+- [ ] **Erstes und jedes weitere Abenteuer gleichwertig vorbereiten.** Ein
+  gemeinsamer Auftrag für eine tragfähige Situation: Beteiligte und Interessen,
+  Anlass, wesentliche Herausforderung, mögliche Entwicklungen und erkennbarer
+  Ausgang. Spielerentscheidungen dürfen Ziele und Verlauf ändern; keine feste
+  Route, kein Pflichtfinale und keine vorgefertigte Kampagne erforderlich.
+- [ ] **Abenteuergrenzen verständlich machen.** Laufendes Abenteuer, kurze
+  Begegnung, Routine und längerfristige Kampagnenmotivation unterscheiden.
+  Ein Karren ist nicht automatisch ein Abenteuer; Weltreisen allein hat keinen
+  begrenzten Abschluss. Ein Erkundungsabenteuer braucht einen verständlichen
+  Gegenstand und eine erkennbare Auflösung. Ziel und Ausgang im Spiel vermitteln,
+  ohne verpflichtende Questkästen oder administrative Ansagen pro Szene.
+- [ ] **Den Übergang zum nächsten Abenteuer beauftragen.** Nach Auflösung,
+  Folgen und Entwicklung in offenen Kampagnen erneut eine tragfähige Situation
+  vorbereiten. Gewünschten Alltag zulassen und bereits erklärte Weiterreise
+  zusammenfassen. Einen abgelehnten Ansatz durch andere passende Möglichkeiten
+  ablösen, ohne wieder in dieselbe harmlose Hilfsaufgabe zurückzufallen.
+- [ ] **Vielfalt durch Weltentwicklung und Entscheidungen tragen.** Personen
+  verfolgen Ziele, Ereignisse verändern Möglichkeiten, Entdeckungen eröffnen
+  Handlungsrichtungen. Derselbe Auftraggeber, Ort oder Konflikt darf lange
+  bestehen bleiben, etwa wie bei Eiko; keine erzwungene Rotation. Verbundene
+  Folgen sollen andere Entscheidungen ermöglichen statt den letzten Ablauf
+  mit neuen Namen zu wiederholen.
+- [ ] **Erkundung spielbar machen.** Abgelegene Gebiete dürfen abgelegen bleiben;
+  Wildnis nicht ständig hinter das nächste Dorf verschieben. Entdeckungen sollen
+  relevante Möglichkeiten eröffnen. Ruhige Reiseabschnitte bleiben zulässig;
+  nicht jede Begegnung braucht eine Aufgabe, Gefahr oder einen Wurf.
+- [ ] **Konfrontationen voranbringen.** Ganze deklarierte Vorhaben abwickeln,
+  Zeit und Handlungen aller Beteiligten fortschreiten lassen. Wiederholte
+  Annäherungsproben dürfen eine Szene nicht im selben Zustand festhalten.
+  Gültige Fehlschläge, Kosten und Gefahr erhalten; keine garantierte Rettung.
+- [ ] **Texte straffen.** Kurze Reaktionen und Proben, ausführlichere wichtige
+  Szenen. Bereits erklärte Lage und Möglichkeiten nicht ständig wiederholen.
+  Keine starre Wortquote.
+- [ ] **Den wirksamen Gesamtauftrag entflechten.** Allgemeine Spielleitung im
+  Plugin, Auswahl/Welt/Figur in der Startnachricht. Wiederholungen ersetzen,
+  statt weitere Einzelverbote anzuhängen. Nur die gewählte Umfangsvariante
+  ausgeben; Mittel-Erklärung aus Kurz-Startpaketen entfernen, allgemeine
+  Aussagen ausdrücklich davon trennen. Kompakter Regelsatz bleibt eingefroren.
+
+## Begleitende Klarstellungen im selben Entwicklungsschritt
+
+- [ ] **Standardwerte eindeutig zuordnen.** Gewähltes Profil gilt für den Lauf;
+  Ersatzwerte im Plugin und Vorgaben der Weltvorlagen klar benennen.
+- [ ] **Magieformulierungen prüfen.** Verbreitung von Mächtigkeit unterscheiden.
+  Fantasy nicht begrifflich mit schwacher Magie gleichsetzen; konkrete
+  Figurenfähigkeiten trotzdem verständlich definieren. Umfang einer möglichen
+  UI-Aufteilung erst festlegen, bevor neue Auswahlachsen eingebaut werden.
+- [ ] **Humor, Ruhe und Regeneration trennen.** Humor ermöglichen, nicht als
+  Pflichtton vorgeben. Erzählpausen nicht mit Ressourcenregeneration oder
+  ständig neu erzeugten sicheren Rastorten gleichsetzen. Ihre tatsächliche
+  Rolle als Fehlerursache ist bislang nicht bewiesen.
+- [ ] **Meta ergänzen.** Direkt an die Spielleitung gerichtete Eingaben erkennen;
+  keine automatische Figurenrede, Wissensübertragung oder verstrichene Spielzeit.
+  Regeländerungen als solche vereinbaren, nicht beiläufig unterstellen.
+- [ ] **Entwicklungsanzeige erklären.** `None recorded` bedeutet bisher keine
+  erhaltene Entwicklung, keinen Ausschluss künftiger Entwicklung. Start- und
+  aktuellen Bogen sowie den vorhandenen Weiterführen-Schalter verständlicher
+  erklären. Entwicklungsfelder existieren bereits für aktuelle Bögen.
+- [ ] **Startfähigkeiten offen für Wachstum formulieren.** Talente wie Zauberei
+  sollen später erlernte passende Fähigkeiten einschließen. Ein Talent gewährt
+  selbst keine zusätzlichen Zauber; deren Wirkung/Kosten werden vereinbart.
+- [ ] **Kosten bei geraffter Zeit erhalten.** Etablierte Reise-/Unterkunftskosten
+  zusammengefasst nachvollziehen. Kostenlos verdiente Unterkunft bleibt möglich;
+  Arens Nacht bei Mira war begründet, die zwei übersprungenen Reisetage dagegen
+  nicht erkennbar abgerechnet. Kein Pflicht-Survivalsystem einführen.
+
+## Priorität 2: Nach der Überarbeitung gezielt erproben
+
+- [ ] **Fortsetzung über einen Abschluss hinaus:** nächster tragfähiger Abschnitt,
+  erkennbare Grenzen, Vielfalt ohne erzwungenen Wechsel von Auftraggebern.
+- [ ] **Ressourcen und besondere Bedürfnisse:** Mana-Verbrauch, Fehlschlagkosten,
+  leerer Vorrat und vereinbarte Regeneration; Blutdurst separat mit erreichbarer
+  Versorgung und vorher vereinbarten Folgen. Aren blieb bei 3/3: bisher kein
+  belastbarer Ressourcentest. Bestehendes Format zuerst prüfen.
+- [ ] **Vollständiger Kampf:** Handlungsfortschritt, Treffer, Schaden, Heilung,
+  gegnerische Würfe und Rückzug. Keine Pflichtkämpfe nur für Testabdeckung.
+- [ ] **Weitere Optionen bei Bedarf:** Zusatzwürfel, feste Gefährten und deren
+  Entwicklung. Nicht jede Kombination erfordert einen neuen Durchlauf.
+
+Diese Punkte möglichst in einem passenden gebündelten Test beobachten. Kein
+erneuter Aren-Durchlauf nötig, um bereits festgestellte Probleme zu bestätigen.
+Technische Prüfungen belegen Ausgabe und Paketierung, nicht Erzählqualität.
+
+## Priorität 3: Spätere Erweiterungen und Bedienkomfort
+
+- [ ] Große Aufstiege und Transformationen: etwa Dämon zu Erzdämon oder Aufnahme
+  ins Pantheon. Vereinbarte Änderungen von Fähigkeiten, Einfluss und Spielmaßstab;
+  auch bewusst übermächtige Phasen zulassen. Startgrenzen nicht als ewige
+  Entwicklungssperre formulieren; Umsetzung und Balancing später abstimmen.
+- [ ] Charaktere speichern und wieder auswählen; aktuell JSON-Export/-Import.
+- [ ] Übersichtlichere Generatoroberfläche, Nachschlagebogen, Themes,
+  Pronomenauswahl und weitere Sprachen nach Nutzen priorisieren.
+- [ ] Figurenwissen, Namen, Räume, Zeit und Finanzen weiter beobachten und nach
+  tatsächlicher Spielauswirkung gewichten. Dekorative Symbole sind nachrangig.
+
+Die API-Spiel-App bleibt eingefroren. Kein neuer API-Unterbau, kein Pflichtlevel-
+oder EP-System und keine behauptete automatische Chat-Synchronisierung.
+
+## Historie und frühere Einschätzungen
+
+Die Abschnitte darunter dokumentieren frühere Schritte und damalige Testpläne.
+Die aktuelle Bewertung und Priorisierung steht oben.
+
+## Umsetzung vor dem Aren-Test: Abschlüsse, Entwicklung und Vielfalt · 0.6.0
 
 Jacks Western-Durchlauf zeigt kurze abgeschlossene Abschnitte, einen eigenständigen
 Wettbewerb und brauchbare Übergänge. Atmosphäre durch kleine Begegnungen funktioniert.
