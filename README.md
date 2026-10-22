@@ -5,7 +5,7 @@ kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API, Anmeldun
 Speicherung oder Synchronisierung.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
 
-## Plugin-Regelbasis 0.8.0
+## Plugin-Regelbasis 0.9.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -15,7 +15,7 @@ Pluginfassung. Eine eigene Modell-API ist nicht enthalten.
 
 [Verwendung, Regeländerungen und Paketierung](docs/regelbasis-0.2.md)
 
-Die aktuelle Regelbasis **0.8.0** trennt die Kontrolle über die eigene Figur von
+Die Regelbasis **0.8.0** trennt die Kontrolle über die eigene Figur von
 Schonung durch die Welt. Gegner handeln aus Wissen, Temperament und Zielen,
 einschließlich eigener Angriffe und unvereinbarer Absichten. Der gewählte Ton
 prägt das Spiel; Standard und Hardcore unterscheiden den Umgang nach einem
@@ -29,6 +29,14 @@ Ruf und Entwicklung dürfen gewöhnliche Hindernisse tatsächlich leichter mache
 Bestätigte Figuren werden nicht automatisch verändert. Die Qualität späterer
 Abenteuer ist weiterhin offen; technische Prüfung beweist keinen Spielspaß.
 [Änderungen, Grenzen und Prüfumfang](docs/weltinitiative-0.8.md).
+
+Neu in **0.9.0**: feste Kampfwerte und Zugfolge, einfache Magie ohne
+Ressourcenverbrauch als Vorschlag für neue Kampfmagier und gemeinsame Regeln für
+Handlungsunfähigkeit und Erholung aller Beteiligten. Meta-Fragen lösen keine
+automatischen Weltkorrekturen aus. Eine separate Charakterübersicht ist im Editor
+und nach Abschluss der Vorbereitung kopierbar, herunterladbar und druckbar. Sie
+übernimmt die eingetragenen Fähigkeiten unverändert und wird nicht mit dem
+Spielchat synchronisiert. [Entscheidungen und Prüfumfang](docs/kampf-und-erholung-0.9.md).
 
 Die Moduswahl ändert die Ausgabe, nicht die gewählten Einstellungen. Die alte
 private Vesper-Spielleitung bleibt für begonnene Durchgänge unverändert.

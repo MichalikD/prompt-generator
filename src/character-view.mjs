@@ -36,4 +36,5 @@ export const characterMarkup = `
     <details id="character-original-panel" hidden><summary>Ursprünglicher Startbogen (unverändert)</summary><textarea id="character-original" readonly rows="10" aria-label="Ursprünglicher Startbogen"></textarea></details>
    </section>
   </div>
+  <div class="character-reference"></div>
 `;

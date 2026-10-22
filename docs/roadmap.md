@@ -1,7 +1,35 @@
-# To-do-Liste und Entwicklungsstand · 0.8.0
+# To-do-Liste und Entwicklungsstand · 0.9.0
 
 
-## Aktueller Schritt · Weltinitiative und wirkungsvolle Fähigkeiten · 0.8.0
+## Aktueller Schritt · Kampf, Erholung und Spielübersicht · 0.9.0
+
+Mariks Durchlauf liefert positives menschliches Feedback zum Auftakt, zur
+Fantasypräsenz und zu Konsequenzen innerhalb eines größeren Handlungsbogens.
+Eine eigenständige neue Aufgabe nach dessen Ende ist weiterhin nicht geprüft.
+Der Lauf wird für diesen Zweck nicht künstlich um viele Stunden verlängert.
+
+- [x] Kampfwerte einschließlich LP für sichtbare Beteiligte vor Verwendung
+  festlegen; verbleibende LP und feste Zugfolge offen führen.
+- [x] Bewegung, Deckung, Rückzug und Abwehr in einem gemeinsamen Verfahren
+  definieren; räumliche Angaben für Zauber aus derselben Lage ableiten.
+- [x] Für neue Kampfmagier einen definierten einfachen Angriff ohne
+  Fokusverbrauch vorschlagen; bestehende Bögen nicht automatisch verändern.
+- [x] Handlungsunfähigkeit, Stabilisierung und Erholung für Spieler, Begleiter
+  und Gegner gleich behandeln; dauerhafte Verletzungen nur nach Vereinbarung.
+- [x] Meta-Rückfragen prüfen statt reflexartig Szenen umzuschreiben; Figurenrede
+  nicht erweitern und Spielerentscheidungen nicht übernehmen.
+- [x] Vorbereitung und tatsächliche Kooperation berücksichtigen; Reparaturen
+  nicht durch immer neue Voraussetzungen verlängern.
+- [x] Separate statische Charakterübersicht mit Kopieren, Download und Druck
+  im Editor und am Ende der Vorbereitung bereitstellen.
+- [ ] Balance und Spielfluss im normalen Chat bewerten. Einfache Angriffe und
+  Gegner-Richtwerte sind Designentscheidungen, keine erwiesene Balance.
+- [ ] Unabhängige Folgeabenteuer mit einer abgeschlossenen kurzen Ausgangslage
+  prüfen, ohne eine vorbereitete große Sammelmission als Voraussetzung.
+
+[Regeln, Grenzen und Validierung](kampf-und-erholung-0.9.md).
+
+## Vorheriger Schritt · Weltinitiative und wirkungsvolle Fähigkeiten · 0.8.0
 
 Die bisherigen Durchläufe bestätigten keine zuverlässige Qualität offener
 Fortsetzungen. Der vorbereitete Elchabschnitt wurde gut bewertet, während

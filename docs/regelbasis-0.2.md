@@ -1,4 +1,4 @@
-# Open Game Master · Regelsatz 0.8.0
+# Open Game Master · Regelsatz 0.9.0
 
 Die [private Testinstallation](https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37)
 behält ihre Pluginidentität. Ihr Anzeigename enthält keine Versionsnummer mehr.
@@ -31,7 +31,9 @@ Sprachangabe einmal geklärt; der Standard-Startvorschlag enthält sie bereits.
 
 ## Regeln
 
-Aktueller Spielauftrag und Fähigkeiten: [Weltinitiative 0.8.0](weltinitiative-0.8.md).
+Aktuelle Kampf-, Erholungs- und Bedienungsregeln: [Regelbasis 0.9.0](kampf-und-erholung-0.9.md).
+
+Spielauftrag und Fähigkeiten: [Weltinitiative 0.8.0](weltinitiative-0.8.md).
 Die folgenden älteren Versionshinweise dokumentieren die Entwicklung.
 
 Die Überarbeitung 0.3.0 bleibt inhaltlich erhalten: konkrete Fehlschlagfolgen,
@@ -80,7 +82,7 @@ npm run plugin:build
 ```
 
 Das reproduzierbare öffentliche ZIP liegt anschließend unter
-`dist/freie-spielleitung-02-0.8.0.zip`. Private Backend-Autormetadaten werden nicht
+`dist/freie-spielleitung-02-0.9.0.zip`. Private Backend-Autormetadaten werden nicht
 in das öffentliche Repository übernommen. Regelversion, Paketmanifest,
 Generatorverweis und Workflow müssen zusammenpassen.
 

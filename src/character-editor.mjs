@@ -1,7 +1,9 @@
 import {newCharacterDocument, validateCharacterDocument, parseCharacter, serializeCharacter, characterText, continueCharacter, characterTemplate, attributeLabels} from './character.mjs';
 import {characterMarkup} from './character-view.mjs';
+import {mountCharacterReference} from './character-reference.mjs';
 export function mountCharacterEditor(root, {onChange=()=>{}, world='', worldLocked=false}={}) {
 root.innerHTML=characterMarkup;
+const reference=mountCharacterReference(root.querySelector('.character-reference'));
 root.classList.toggle('embedded-editor',worldLocked);
 if(worldLocked) {
  for(const id of ['copy-character','download-character-text'])root.querySelector('#'+id).hidden=true;
@@ -86,6 +88,7 @@ function render() {
 function update() {
  textRevision++;
  const errors=validateCharacterDocument(doc);
+ reference.setDocument(doc);
  $('#character-errors').replaceChildren(...errors.map(message=>{const li=document.createElement('li');li.textContent=message;return li;}));
  for(const id of ['copy-character','download-character-text','download-character-json']) $('#'+id).disabled=errors.length>0;
  $('#character-continue').disabled=errors.length>0||doc.kind!=='start'||!doc.confirmed;
