@@ -4,10 +4,11 @@ import { createProfile, profileIds } from './profile.mjs';
 import { pluginProfileText, pluginChoiceText } from './plugin-profile.mjs';
 import { buildCompactPackage, defaults, groups, selectOptions, diceText } from './generator.mjs';
 import {worldText,worldRules} from './worlds.mjs';
+import {openingEnabled,resolveOpening,openingText} from './opening.mjs';
 
 export const PLUGIN = Object.freeze({
   name: 'Open Game Master',
-  version: '0.9.0',
+  version: '0.10.0',
   url: 'https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37',
 });
 
@@ -20,6 +21,7 @@ export function buildPluginPackage(config = defaults, character=null) {
   checkPrepared(config, character);
   const selected = selectOptions(config);
   const profile = createProfile(config);
+  const opening = resolveOpening(config);
   const projectInstructions = [
     languageDirective, localizationPolicy,
     `This project contains one solo RPG run with the explicitly selected plugin "${PLUGIN.name}", rules version ${PLUGIN.version}.`,
@@ -37,11 +39,12 @@ export function buildPluginPackage(config = defaults, character=null) {
     pluginProfileText(profile, selected, groups),
     ...groups.filter(group=>!profileIds.includes(group.id) && !(character && group.id==='creation')).map(group => `${optionNames[group.id]}: ${pluginChoiceText(group.id,selected[group.id])}`),
     diceText(config) || 'Extra dice: none. Use fixed base damage; attribute checks remain D20.',
+    openingText(opening),
     ...(character ? [characterText(character), 'Use this confirmed sheet as the starting state and begin the adventure according to the profile.'] : ['Follow the selected character creation method, confirm the draft, then begin the adventure. Ask only for information essential to starting.']),
   ].filter(Boolean).join('\n\n');
 
   return {
-    mode: 'plugin', profile, projectInstructions, startMessage,
+    mode: 'plugin', profile, opening, projectInstructions, startMessage,
     downloadName: 'plugin-startpaket.md',
     downloadText: [
       `# Start package · ${PLUGIN.name}`, `Rules version: ${PLUGIN.version}`,
@@ -73,6 +76,7 @@ export function buildOutput(config = defaults, mode = 'plugin', character=null) 
   if (!outputModes.some(option => option.id === mode)) throw new Error('Ungültiger Ausgabemodus');
   checkPrepared(config,character);
   if (mode === 'plugin') return buildPluginPackage(config,character);
+  if(openingEnabled(config))throw new Error('Der Ausgangsimpuls ist nur im Plugin-Startpaket verfügbar.');
   const output = buildCompactPackage(config,{prepared:!!character});
   const startMessage=[output.startMessage, ...(character ? [characterText(character),'Use this confirmed sheet as the starting state and begin the adventure according to the profile.'] : [])].filter(Boolean).join('\n\n');
   return {...output, startMessage, downloadName:'projekt-startpaket.md', downloadText:['# Project start package', '## 1. Project instructions', output.projectInstructions, ...(startMessage ? ['## 2. First chat message', startMessage] : [])].join('\n\n')};

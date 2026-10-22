@@ -5,7 +5,7 @@ kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API, Anmeldun
 Speicherung oder Synchronisierung.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
 
-## Plugin-Regelbasis 0.9.0
+## Plugin-Regelbasis 0.10.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -37,6 +37,16 @@ automatischen Weltkorrekturen aus. Eine separate Charakterübersicht ist im Edit
 und nach Abschluss der Vorbereitung kopierbar, herunterladbar und druckbar. Sie
 übernimmt die eingetragenen Fähigkeiten unverändert und wird nicht mit dem
 Spielchat synchronisiert. [Entscheidungen und Prüfumfang](docs/kampf-und-erholung-0.9.md).
+
+Neu in **0.10.0**: Im Schritt Spielvorgaben kann ein optionaler Ausgangsimpuls
+aktiviert werden. Er kombiniert nur Umgebung und Ausgangslage; konkrete Motive,
+Ziele und Lösungen entwickelt weiterhin die Spielleitung. Die Kennung hält die
+Auslosung stabil und erlaubt dieselben Bausteine bei denselben Vorgaben erneut.
+Eigene Freitextwelten erhalten keine konkrete zufällige Ortsvorgabe. Bausteine und
+Starttext lassen sich bewusst aufdecken oder ungesehen kopieren. Technisch sind
+sie im Startpaket einsehbar. Der Talentbonus wird fest als +2 angezeigt;
+NSC kennen Fähigkeiten aus dem Bogen nicht automatisch.
+[Bedienung, Bausteine und Grenzen](docs/ausgangsimpulse-0.10.md).
 
 Die Moduswahl ändert die Ausgabe, nicht die gewählten Einstellungen. Die alte
 private Vesper-Spielleitung bleibt für begonnene Durchgänge unverändert.

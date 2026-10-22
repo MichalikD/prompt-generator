@@ -3,6 +3,7 @@ import {worldText} from './worlds.mjs';
 import {createProfile} from './profile.mjs';
 import {mountCharacterEditor} from './character-editor.mjs';
 import {mountCharacterReference} from './character-reference.mjs';
+import {mountOpeningEditor} from './opening-editor.mjs';
 import {focuses} from './profile.mjs';
 import {infoButton} from './tooltips.mjs';
 import {groups,dice,defaults,LIMIT} from './generator.mjs';
@@ -13,6 +14,7 @@ const form=$('#options'),output=$('#prompt'),copy=$('#copy'),status=$('#status')
 const modes=$('#output-modes'),source=$('#character-source');
 const startMessage=$('#start-message'),copyStart=$('#copy-start'),startStatus=$('#start-status'),download=$('#download');
 let currentOutput=null,revision=0,editor=null,characterDoc=null,updating=false,step=0,showErrors=false;
+let openingShown='';
 const playReference=mountCharacterReference($('#play-character-reference'));
 
 for(const [index,mode] of outputModes.entries()) {
@@ -47,12 +49,16 @@ for(const group of groups) {
  if(group.id==='continuation')addChoices({id:'focus',label:'Spielschwerpunkte · optional, höchstens zwei',options:focuses},true);
 }
 addChoices({id:'extras',label:'Zusatzwürfel · D20 bleibt gesetzt',options:dice},true);
+const openingEditor=mountOpeningEditor(form);
 function configFromForm() {
  const data=new FormData(form);
- return {...Object.fromEntries(data),extras:data.getAll('extras'),focus:data.getAll('focus'),characterSource:source.querySelector('input:checked').value};
+ return {...Object.fromEntries(data),extras:data.getAll('extras'),focus:data.getAll('focus'),characterSource:source.querySelector('input:checked').value,
+  openingEnabled:selectedMode()==='plugin'&&form.querySelector('[name=openingEnabled]').checked,
+  openingSeed:form.querySelector('[name=openingSeed]').value};
 }
 function clearOutput(message) {
  playReference.setDocument(null);
+ $('#opening-output-guard').hidden=true;startMessage.hidden=false;
  currentOutput=null;output.value=startMessage.value='';copy.disabled=copyStart.disabled=download.disabled=true;
  output.placeholder=message;startMessage.placeholder=message;status.textContent=message;
  $('#count').textContent='–';$('#remaining').textContent='Vorbereitung noch nicht abgeschlossen';$('#meter').value=0;
@@ -63,6 +69,7 @@ function summary(config) {
  if(config.wishes?.trim())rows.push(['Eigene Vorgaben',config.wishes.trim()]);
  rows.push(['Schwerpunkte',config.focus.map(id=>focuses.find(f=>f.id===id).label).join(', ')||'Situativ vielfältig']);
  rows.push(['Zusatzwürfel',config.extras.map(id=>dice.find(d=>d.id===id).label).join(', ')||'Keine']);
+ rows.push(['Ausgangsimpuls',currentOutput?.opening?`Aktiv · ${currentOutput.opening.seed} · Bausteine im Starttext`:'Ausgeschaltet']);
  if(config.characterSource==='prepared') {
   const c=characterDoc.character;rows.push(['Bestätigte Figur',c.identity.name]);
   rows.push(['Startgeld',c.finances.funds.map(r=>`${r.amount} ${r.currency}`).join(', ')||'Nicht festgelegt; bedeutet nicht mittellos.']);
@@ -84,7 +91,8 @@ function update() {
    characterDoc=editor.getDocument();
   }else if(editor&&!worldErrors.length)editor.setWorld(worldForCharacter(config));
   worldEditor.update(config);
-  for(const el of form.querySelectorAll('[data-step]'))el.hidden=Number(el.dataset.step)!==step||(el.dataset.group==='creation'&&prepared);
+  openingEditor.update(config,plugin);
+  for(const el of form.querySelectorAll('[data-step]'))el.hidden=Number(el.dataset.step)!==step||(el.dataset.group==='creation'&&prepared)||(el.dataset.group==='opening'&&!plugin);
   source.hidden=step!==2;$('#prepared-character').hidden=step!==2||!prepared;
   $('.configuration').hidden=step===3;$('#setup-output').hidden=step!==3;
   $('#step-number').textContent=String(step+1);$('#step-title').textContent=setupSteps[step];
@@ -111,12 +119,17 @@ function update() {
   playReference.setDocument(prepared?characterDoc:null);
   summary(config);
   output.value=currentOutput.projectInstructions;startMessage.value=currentOutput.startMessage;
+  const openingKey=currentOutput.opening?`${currentOutput.opening.seed}:${currentOutput.opening.fingerprint}`:'';
+  if(!openingKey)openingShown='';
+  startMessage.hidden=!!openingKey&&openingShown!==openingKey;
+  $('#opening-output-guard').hidden=!openingKey;
+  $('#reveal-opening-start').hidden=!startMessage.hidden;
   $('#plugin-starter').hidden=!currentOutput.startMessage;
   $('#starter-help').textContent=prepared?'Profil und bestätigter Bogen sind enthalten. Sende diese Nachricht vollständig; den Bogen nicht zusätzlich senden.':'Das Profil ist enthalten. Deine Figur wird anschließend im Spielchat erstellt.';
   $('#count').textContent=output.value.length.toLocaleString('de-DE');$('#remaining').textContent=`${LIMIT-output.value.length} Zeichen frei`;$('#meter').value=output.value.length;
   copy.disabled=false;copyStart.disabled=!startMessage.value;download.disabled=false;
   status.textContent='In die Anweisungen eines neuen Projekts einfügen.';
-  startStatus.textContent='Danach in einem Chat dieses Projekts senden. Kein 8.000-Zeichen-Limit.';
+  startStatus.textContent=openingKey?'Der vollständige Starttext kann ohne Aufdecken kopiert werden.':'Danach in einem Chat dieses Projekts senden. Kein 8.000-Zeichen-Limit.';
  }catch(error){clearOutput(error.message);$('#setup-feedback').textContent=error.message;}
  finally{updating=false;}
 }
@@ -132,7 +145,7 @@ $('#setup-next').addEventListener('click',()=>{
 $('#setup-back').addEventListener('click',()=>goTo(Math.max(step-1,0)));
 modes.addEventListener('change',update);source.addEventListener('change',update);
 form.addEventListener('submit',event=>event.preventDefault());
-form.addEventListener('input',event=>{if(event.target.matches('textarea'))update();});
+form.addEventListener('input',event=>{if(event.target.matches('textarea')||event.target.name==='openingSeed')update();});
 form.addEventListener('change',event=>{
  const percent=form.querySelector('input[value=dpercent]'),ten=form.querySelector('input[value=d10]');
  if(event.target.name==='focus'&&form.querySelectorAll('input[name=focus]:checked').length>2)event.target.checked=false;
@@ -141,6 +154,7 @@ form.addEventListener('change',event=>{
  update();
 });
 reset.disabled=false;reset.addEventListener('click',()=>{
+ openingEditor.reset();openingShown='';
  for(const input of form.querySelectorAll('input'))input.checked=defaults[input.name]===input.value;
  for(const field of form.querySelectorAll('textarea'))field.value='';
  for(const field of form.querySelectorAll('select'))field.value=field.name==='setting'?'fantasy':field.name==='worldSource'?'original':field.name==='worldPlayerKind'?'mortal':'';
@@ -153,13 +167,20 @@ function enableCopy(button,field,feedback,success) {
    if(!navigator.clipboard?.writeText)throw new Error('Clipboard unavailable');
    await navigator.clipboard.writeText(text);if(revision===current)feedback.textContent=success;
   }catch{
-   if(revision!==current)return;field.focus();field.select();field.setSelectionRange(0,field.value.length);
+   if(revision!==current)return;
+   if(field.hidden){feedback.textContent='Zwischenablage nicht verfügbar. Bitte den Starttext aufdecken und manuell kopieren.';return;}
+   field.focus();field.select();field.setSelectionRange(0,field.value.length);
    feedback.textContent='Bitte den markierten Text manuell kopieren.';
   }
  });
 }
 enableCopy(copy,output,status,'Kopiert. In die Projektanweisungen einfügen.');
 enableCopy(copyStart,startMessage,startStatus,'Kopiert. Als erste Nachricht im Spielchat senden.');
+$('#reveal-opening-start').addEventListener('click',()=>{
+ if(!currentOutput?.opening)return;
+ openingShown=`${currentOutput.opening.seed}:${currentOutput.opening.fingerprint}`;
+ startMessage.hidden=false;$('#reveal-opening-start').hidden=true;
+});
 download.addEventListener('click',()=>{
  if(!currentOutput?.downloadText)return;
  const url=URL.createObjectURL(new Blob([currentOutput.downloadText],{type:'text/markdown;charset=utf-8'}));
