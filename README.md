@@ -5,7 +5,7 @@ kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API, Anmeldun
 Speicherung oder Synchronisierung.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
 
-## Plugin-Regelbasis 0.7.0
+## Plugin-Regelbasis 0.8.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -15,14 +15,20 @@ Pluginfassung. Eine eigene Modell-API ist nicht enthalten.
 
 [Verwendung, Regeländerungen und Paketierung](docs/regelbasis-0.2.md)
 
-Die Weiterentwicklung konzentriert sich auf das Plugin. **0.7.0** verwendet
-für erstes und jedes weitere Abenteuer denselben Vorbereitungs- und Abschlussauftrag.
-Erkundung, Weltentwicklung, Szenenfortschritt und kurze Übergänge sind gemeinsam
-überarbeitet. Die Plugin-Startnachricht enthält Auswahl, Welt und Figur statt
-eines zusätzlichen allgemeinen Erzählregelblocks. Meta-Eingaben, Kosten bei
-geraffter Zeit, Magiebegriffe und Entwicklungshinweise sind geklärt.
-Zahlenregeln, Figurenformat und Ressourcenmechaniken bleiben bestehen.
-[Änderungen, Grenzen und Prüfumfang](docs/erzaehlauftrag-0.7.md).
+Die aktuelle Regelbasis **0.8.0** trennt die Kontrolle über die eigene Figur von
+Schonung durch die Welt. Gegner handeln aus Wissen, Temperament und Zielen,
+einschließlich eigener Angriffe und unvereinbarer Absichten. Der gewählte Ton
+prägt das Spiel; Standard und Hardcore unterscheiden den Umgang nach einem
+Tod, nicht die grundsätzliche Gefahr. Fantasy soll auch in Folgehandlungen
+konkrete Möglichkeiten, Wesen und Orte liefern.
+
+Das Charaktertemplate verlangt wirksame Fähigkeiten auf dem gewünschten
+Machtniveau, einschließlich passender Schadensmagie. Reichweite, Ziele/Fläche,
+Kosten, Schaden und Umgebungsfolgen werden vor Bestätigung definiert. Macht,
+Ruf und Entwicklung dürfen gewöhnliche Hindernisse tatsächlich leichter machen.
+Bestätigte Figuren werden nicht automatisch verändert. Die Qualität späterer
+Abenteuer ist weiterhin offen; technische Prüfung beweist keinen Spielspaß.
+[Änderungen, Grenzen und Prüfumfang](docs/weltinitiative-0.8.md).
 
 Die Moduswahl ändert die Ausgabe, nicht die gewählten Einstellungen. Die alte
 private Vesper-Spielleitung bleibt für begonnene Durchgänge unverändert.

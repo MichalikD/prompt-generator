@@ -5,7 +5,8 @@ export const characterMarkup = `
   </div>
   <details class="character-panel">
    <summary>Aus Kurzbeschreibung mit einer beliebigen KI erstellen</summary>
-   <label for="character-idea">Figurenidee</label><textarea id="character-idea" rows="3" placeholder="Zum Beispiel: Eine ehemalige Kartografin, die mit List statt Gewalt arbeitet."></textarea>
+   <label for="character-idea">Figurenidee</label><textarea id="character-idea" rows="3" placeholder="Zum Beispiel: Eine reisende Magierin, deren Feuerzauber im Kampf gefährlich sind. Herkunft und Ziele bleiben offen."></textarea>
+   <p>Beschreibe auch die gewünschte Macht und wichtige Einsatzmöglichkeiten. Kräfte dürfen gefährlich sein; Wirkung, Kosten und Folgen werden im Entwurf festgelegt.</p>
    <label for="character-world">Weltvorgaben aus deinem Abenteuerprofil</label><textarea id="character-world" rows="3"></textarea>
    <label for="character-template">Prompt-Template</label><textarea id="character-template" readonly rows="8"></textarea>
    <button id="copy-template" type="button" class="primary">Template kopieren</button>

@@ -1,13 +1,13 @@
 import { languageDirective, localizationPolicy, optionNames } from './language.mjs';
 import { characterText, validateCharacterDocument } from './character.mjs';
 import { createProfile, profileIds } from './profile.mjs';
-import { pluginProfileText } from './plugin-profile.mjs';
+import { pluginProfileText, pluginChoiceText } from './plugin-profile.mjs';
 import { buildCompactPackage, defaults, groups, selectOptions, diceText } from './generator.mjs';
 import {worldText,worldRules} from './worlds.mjs';
 
 export const PLUGIN = Object.freeze({
   name: 'Open Game Master',
-  version: '0.7.0',
+  version: '0.8.0',
   url: 'https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37',
 });
 
@@ -23,7 +23,7 @@ export function buildPluginPackage(config = defaults, character=null) {
   const projectInstructions = [
     languageDirective, localizationPolicy,
     `This project contains one solo RPG run with the explicitly selected plugin "${PLUGIN.name}", rules version ${PLUGIN.version}.`,
-    'Use its GM instructions and references together with my confirmed setting and play options from the first message. ',
+    'Use its GM instructions and references together with my confirmed setting and play options from the first message. Apply that tone; player control of their character does not prevent the world or opponents from initiating consequential action.',
     'I control my character; you control the world and consequences. Preserve confirmed facts, the starting sheet and agreed deviations. Adopt another rules version only at my explicit request.',
     'New chat = new run unless I provide a save. Never claim unavailable memory, storage or file access.',
     'If the plugin or a required reference is inaccessible, say so before applying dependent rules.',
@@ -35,7 +35,7 @@ export function buildPluginPackage(config = defaults, character=null) {
     'Read the GM skill and “Adventure and World” first. Mention access problems only; begin without a loading report.',
     'Apply the selected profile and confirmed sheet throughout this run. Explicit choices replace the plugin fallback values; world adaptations replace conflicting template suggestions.',
     pluginProfileText(profile, selected, groups),
-    ...groups.filter(group=>!profileIds.includes(group.id) && !(character && group.id==='creation')).map(group => `${optionNames[group.id]}: ${selected[group.id].text}`),
+    ...groups.filter(group=>!profileIds.includes(group.id) && !(character && group.id==='creation')).map(group => `${optionNames[group.id]}: ${pluginChoiceText(group.id,selected[group.id])}`),
     diceText(config) || 'Extra dice: none. Use fixed base damage; attribute checks remain D20.',
     ...(character ? [characterText(character), 'Use this confirmed sheet as the starting state and begin the adventure according to the profile.'] : ['Follow the selected character creation method, confirm the draft, then begin the adventure. Ask only for information essential to starting.']),
   ].filter(Boolean).join('\n\n');
@@ -67,7 +67,7 @@ function checkPrepared(config, character) {
 export function worldForCharacter(config=defaults) {
  selectOptions(config);
  const world=createProfile(config).world;
- return [worldText(world),worldRules(world), config.wishes?.trim() && 'User wishes and exclusions: '+config.wishes.trim()].filter(Boolean).join('\n\n');
+ return [worldText(world),worldRules(world,{legacy:false}), config.wishes?.trim() && 'User wishes and exclusions: '+config.wishes.trim()].filter(Boolean).join('\n\n');
 }
 export function buildOutput(config = defaults, mode = 'plugin', character=null) {
   if (!outputModes.some(option => option.id === mode)) throw new Error('Ungültiger Ausgabemodus');

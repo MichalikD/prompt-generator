@@ -5,13 +5,17 @@ import { worldText } from './worlds.mjs';
 // Run-specific choices only. General GM instructions live in the plugin.
 const choices = {
   tone: {
-    adventure: 'Adventure: discovery, initiative and real danger; no horror focus.',
+    adventure: 'Adventure: wonder, exploration, initiative and real danger. Hostile actors may attack; defeat, loss and death are possible. Quiet and humour can occur; no horror focus.',
     cozy: 'Cozy: a reassuring atmosphere, manageable conflicts and rare foreseeable dangers; no cruelty or horror scenes.',
-    dark: 'Dark: danger and moral complexity with room for hope; no horror focus.',
+    dark: 'Dark: danger, harsh consequences and moral complexity with room for hope. Threats can act decisively; no horror focus.',
     horror: 'Horror: threat, uncertainty and unease; preserve coherent consequences and player agency.',
   },
+  death: {
+    standard: 'Standard: the world permits injury, defeat and death. After death, accept the ending or rewind to the last decision where death was avoidable. Reset world and character knowledge; player knowledge remains. Identical replayed attempts retain their rolls; different approaches are allowed.',
+    hardcore: 'Hardcore: the same world danger and consequences as Standard; a valid death permanently ends this run with no rewind. Saving does not bypass death. Correct GM errors.',
+  },
   scope: {
-    short: 'Short: one bounded pursuit with a decisive challenge and a satisfying outcome.',
+    short: 'Short: one bounded pursuit with a decisive challenge and a recognizable consequential outcome.',
     medium: 'Medium: a developed pursuit with connected turning points, relationships and lasting consequences; a reachable ending.',
     long: 'Extended: a layered pursuit with room for relationships and discoveries, visible progress and a reachable finale.',
   },

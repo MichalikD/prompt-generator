@@ -1,4 +1,38 @@
-# To-do-Liste und Entwicklungsstand · 0.7.0
+# To-do-Liste und Entwicklungsstand · 0.8.0
+
+
+## Aktueller Schritt · Weltinitiative und wirkungsvolle Fähigkeiten · 0.8.0
+
+Die bisherigen Durchläufe bestätigten keine zuverlässige Qualität offener
+Fortsetzungen. Der vorbereitete Elchabschnitt wurde gut bewertet, während
+selbstständig erzeugte Folgehandlungen erneut in harmlose Reisehilfen und
+vermittelbare Streitigkeiten abglitten. Getrennte Vorbereitung allein hat das
+nicht gelöst. Die nachfolgenden alten Abhakungen betreffen implementierte
+Anweisungen, nicht eine nachgewiesene Lösung dieses Problems.
+
+- [x] Spielerhoheit von Schonung unterscheiden: Gegner und Welt dürfen selbst
+  handeln; Angriffe benötigen keine Auftragsannahme. Flucht und Verhandlung sind
+  Versuche unter konkreten Umständen, keine garantierten Auswege.
+- [x] Gegner nach Temperament, Wissen, Zielen und Gewaltbereitschaft führen;
+  irrationales oder skrupelloses Verhalten ist möglich. Freundliche Ansprache
+  reformiert keinen entschlossenen Gegner.
+- [x] Ton und Todesverfahren trennen. Standard erlaubt dieselben Folgen wie
+  Hardcore; die vereinbarte Wiederaufnahme nach Tod unterscheidet sich.
+- [x] Fantasy auch nach dem Auftakt wirksam machen; Szenenfolge nicht aus
+  bloßen Andeutungen, Routine und wiederholten Hilfsangeboten bestreiten.
+- [x] Charakteridee und Macht wirksam abbilden; Schadensmagie, Flächenwirkung,
+  Ressourcen und Umgebungsfolgen vor Bestätigung beschreiben. Bestehende Bögen
+  erhalten dadurch keine ungefragten neuen Kräfte.
+- [x] Mächtige Entwicklung und soziale Wirkung von Erscheinung/Ruf ermöglichen;
+  gewöhnliche Hindernisse nicht automatisch mitwachsen lassen.
+- [x] Projekt, ausgewähltes Profil, Template und Plugin auf denselben Stand bringen.
+- [ ] Wirkung in menschlichem Spiel bewerten: eigenständige interessante Folgehandlung,
+  Initiative der Welt und Konsequenzen ohne dauerndes Nachsteuern. Kurze künstliche
+  Szenenprüfungen ersetzen diesen Nachweis nicht.
+
+[Änderungen, Regelgrenzen und Prüfung](weltinitiative-0.8.md).
+
+## Historischer Stand bis 0.7
 
 ## Umsetzung: gemeinsamer Erzählauftrag · 0.7.0
 

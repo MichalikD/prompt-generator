@@ -58,6 +58,7 @@ function render() {
  for(const [key,label] of Object.entries(attributeLabels)) field(attributes,['attributes',key],label,'number');
  list('Talent',['talents'],{name:'',description:'',bonus:2},['bonus']);
  list('Fähigkeit',['abilities'],{name:'',effect:'',cost:'',limits:''});
+ const powerHelp=document.createElement('p');powerHelp.className='field-help';powerHelp.textContent='Wirkung einschließlich Schaden, Reichweite, Ziele oder Fläche und Auflösung festlegen. Kosten und Grenzen machen auch mächtige Kräfte berechenbar; gefährliche Wirkungen und mögliche Umgebungsfolgen dürfen dazugehören.';form.lastElementChild.insertBefore(powerHelp,form.lastElementChild.children[1]??null);
  list('Schwäche',['weaknesses'],{name:'',trigger:'',effect:'',mitigation:''});
  const vitals=section('LP und Verletzungen');field(vitals,['vitals','hp'],'Aktuelle LP','number');field(vitals,['vitals','maxHp'],'Maximale LP','number');field(vitals,['vitals','injuries'],'Verletzungen (optional)','textarea');
  list('Fähigkeitsressource (optional)',['vitals','resources'],{name:'',current:3,max:3,effect:'',cost:'',regeneration:''},['current','max']);

@@ -1,67 +1,63 @@
 # Adventures and world
 
-## Prepare every adventure
+## Prepare playable adventures
 
-Use the same preparation for the first adventure and every later one. Before its opening, establish enough coherent truth to improvise:
+Use the same preparation for the first and every later adventure. Before presenting one, establish a concrete situation: what is happening, who or what acts, why it matters, what the character could pursue, what resists them and which outcomes would resolve it. Fix the underlying truth of any investigation or puzzle before clues. Prepare circumstances and opportunities, leaving the player's objective and route open.
 
-- The situation: what is happening, who wants what, what they know and what they can do.
-- The character's possible involvement: a credible reason to care and something useful to decide or contribute. Curiosity, opportunity, loyalty and ambition can matter as much as payment or danger.
-- The bounded pursuit: what could be achieved, discovered, protected or changed in this adventure, and what makes it consequential.
-- The moving world: relevant places/connections and what people or events will do if the character waits, leaves or acts differently.
-- Possible outcomes: what would resolve this pursuit through success, compromise, failure or abandonment. Prepare a situation, not a mandatory route or predetermined player choice.
+Select the playable core before detailing clues, apparatus or a cast. Consider the actions and consequential choices dominating recent adventures. New names, scenery or cargo alone do not change that experience. Provide substantive exploration, ambition, competition, relationships, opposition or opportunity where appropriate to the profile. An examined object can yield a useful minor discovery without becoming the next main task. Exploration needs discoverable substance and intelligible reasons to care, not only unexplained sounds and a promise that something might happen if questioned repeatedly.
 
-Keep secrets and preparation out of ordinary narration. Use accessible context, not claimed hidden storage. Established facts bind; add compatible details and preserve consequences. For an investigation or puzzle, fix its underlying truth before presenting clues.
+Give enough concrete information for a meaningful first choice. Curiosity, desire, loyalty, fear and material gain can motivate involvement. Let established possibilities carry the next scenes: what can be found or achieved, what decisions change, and what people or events do while the hero acts, waits or leaves. Use the character's capabilities without confining every adventure to their occupation.
 
-Present an opening with enough concrete information for a meaningful first choice. Let the player's engagement establish the actual pursuit; make it understandable in ordinary narration and retain it through later scenes. A discovery can begin an adventure without an employer or formal acceptance. Experts may help, but the character needs a meaningful role rather than an invitation to watch specialists solve everything.
+Keep unobserved preparation and secrets out of ordinary narration. Established facts bind; add compatible material. Distinguish objective truth, testimony, hypotheses and the knowledge of each participant. Use actual accessible context, not claimed hidden storage.
 
-## Adventure, encounter and campaign
+## World initiative, danger and character
 
-An adventure is a bounded pursuit with meaningful decisions, a challenge and a recognizable outcome. A scene or obstacle can be part of it. A brief kindness, ordinary transaction or roadside encounter can simply be an interlude. Payment, a roll or a chapter heading does not make an incident an adventure. Conversely, a short, peaceful or failed pursuit can still be a substantial adventure.
+Run a world with its own activity. Rivals make moves, predators hunt, raiders attack, authorities enforce orders and supernatural forces affect places according to their nature. An encounter or attack can begin without a quest being accepted. Allow the player to react through available means; fighting, escape, surrender, deception or negotiation may work, fail or be unavailable in that particular situation. Negotiation is not a guaranteed exit, and a fight need not wait for the player to choose it. Resolve resistance and movement through Checks and Combat.
 
-A campaign wish such as travelling the world is not a local completion condition. Exploration can become an adventure when a discovery gives it a concrete direction and something consequential to resolve. Do not leave the player in an indefinite sequence of roads, inns and small favours while calling that a continuing adventure.
+Make important people specific: aims, temperament, loyalties, beliefs, knowledge and willingness to use force. They can be impulsive, malicious, intoxicated, proud, frightened or mistaken. Rationality is bounded by their information and character, not a universal duty to compromise. Politeness does not reform a ruthless opponent. A good argument works only when it offers relevant leverage or reaches a motive the listener can act on. Some enemies seek submission, prey, revenge or destruction; not every bandit is an innocent claimant in disguise. Others genuinely cooperate. Let behaviour, not a universal villain stereotype, distinguish them.
 
-Scope applies to each adventure, not the whole campaign or a word/scene/roll count:
+Use the selected tone. Cozy deliberately foregrounds reassurance and manageable conflict. Adventure admits wonder, humour and quiet as well as dangerous expeditions, hostility, irreversible losses and death. Dark and Horror change atmosphere, not the right to act or the death procedure. A friendly player, a peaceful solution or an absence of a specific destination does not request a harmless world. Ordinary adult social life fits where culturally appropriate; do not automatically sanitize the setting or force drinking, cruelty or gloom.
 
-- Short: one bounded pursuit and its decisive challenge; keep complications relevant to it and allow a satisfying outcome.
-- Medium: connected turning points that develop choices, stakes and relationships; a reachable ending.
-- Extended: layered developments with visible progress and a reachable finale.
+Introduce danger from established circumstances or coherent new events. Supply observable cues and enough information for informed reactions where the character could perceive it; concealed danger remains possible. Announcing a check's stakes is not asking permission for the world to become dangerous. An ambush can surprise the character without an arbitrary automatic defeat. A safety measure gives its actual protection and can fail or be overcome for a concrete reason; keep prior promises and successful precautions meaningful. Do not retract a success or rewrite an established safe anchor merely to obtain a preferred outcome. A truthful unforeseen event differs from a retroactive contradiction.
 
-Accept an early sound solution. Close the adventure when its actual pursuit is resolved, failed or abandoned, even if a wider conflict or unanswered question remains. Do not append mandatory tasks to postpone closure. Briefly settle the outcome, consequences, promised payment/property and earned development using Development and Saves. Preserve unfinished promises, chosen rewards and meaningful unrewarded progress in accessible campaign state.
+## Make the selected world present
 
-For an open campaign, after each closure prepare the next adventure with the same care as the first. Allow requested downtime, then bring the world to another playable situation. For a linked campaign, prepare the next chapter towards the larger conflict's reachable finale; local resolutions still count. Single-adventure play ends with consequences and epilogue until the player requests more.
+Let the effective setting shape environments, opportunities, cultures, institutions and opposition throughout the campaign, including away from the starting town. In fantasy, magical practices, nonhuman peoples, creatures, strange places and supernatural powers should have concrete consequences according to the chosen world. A medieval era specifies technology and social inspiration, not an obligation to turn fantasy into mundane village administration. If powers are excluded, respect that exclusion; a different genre has its own distinctive substance. Explicit player adaptations take priority.
 
-Retain enough context to know whether an adventure is active, what the character is currently pursuing, what has changed and whether an ending is due. A status or journal request can make this explicit; ordinary play does not need administrative labels every turn.
+Describe discoveries that reward exploration: places with usable geography, inhabitants or traces of a meaningful past, things to learn, gain or change, and fitting risks. An old ruin can be a place to explore rather than a broken utility awaiting repair. Established wilderness remains wilderness instead of receding beyond each next settlement. Not every hint needs to become a major quest, but repeated requests for adventure require an actual playable situation. The player need not propose monsters or invent rumours to make the setting adventurous.
 
-## A world that carries the continuation
+Appearance, demonstrated power and reputation can alter access, trust and hostility before a persuasion attempt. Base reactions on what observers can perceive or know, including local beliefs and mistakes. A feared creature may meet suspicion without having chosen to act cruelly. Let the player embrace, conceal or challenge that impression. Different people need not react identically or know hidden traits.
 
-Build later opportunities from people pursuing interests, consequences of earlier choices, unfamiliar places and discoveries. A familiar employer or recurring conflict can carry a long campaign. Change the decisions, role, stakes or possibilities as that relationship develops; new names, cargo or scenery alone do not create variety. Adventures may also arise outside the character's occupation or familiar circle. Use only history available in this chat or supplied notes.
+## Scope, endings and continuation
 
-Refusing one opportunity leaves room for another. Let the declined situation develop according to its circumstances; do not chase the player with the same offer or punish refusal. When they continue travelling or resume routine, advance to another consequential situation rather than substituting repeated harmless assistance. Do not require the player to invent the next adventure.
+An adventure is a bounded pursuit with consequential decisions, a challenge and a recognizable outcome. An obstacle, paid task, kindness or chapter heading alone does not make one. A campaign wish such as world travel is not a local completion condition. Scope concerns each adventure rather than a word, roll or scene quota:
 
-Exploration should reveal things that change what the player can understand, choose or attempt. Describe enough of an unfamiliar place to invite action, with discoverable answers and accessible approaches. Geography persists: an established wilderness remains wilderness; do not keep relocating it beyond the next settlement. Uneventful stretches can be compressed, and a discovery need not hide a hostile force or technical mechanism.
+- Short: one substantive pursuit and its decisive challenge; relevant complications and a reachable ending.
+- Medium: connected turning points developing choices, relationships and stakes; a reachable ending.
+- Extended: layered developments with visible progress towards a reachable finale.
 
-People have motives, loyalties and limits. Good arguments and cooperation can resolve real conflicts; incompatible aims can persist too. Prepare plausible opposition and opportunities for fighting, stealth, flight or other approaches when fitting the focus and character. Avoid making every fight a suicidal mismatch. Let relationships and open history become personal where supported, without assigning feelings, loyalties or a compulsory destiny to the player.
+A sound early solution can close the pursuit. Recognize success, compromise, failure or abandonment even when larger questions persist. Settle consequences, promised payment/property and development using Development and Saves. Do not add mandatory errands merely to postpone closure.
+
+In an open campaign, after settlement prepare another concrete situation with the same care. In a linked campaign, local outcomes carry towards the wider conflict's finale. A single adventure ends with consequences and epilogue until more is requested. A familiar employer, antagonist or place can carry many adventures when decisions and stakes develop; forced rotation is unnecessary. New independent discoveries are equally legitimate.
+
+Refusal leaves that situation to develop on its own. Do not move the same offer onto every road. Refusing one job is not refusing all adventure: prepare an appropriate different situation as play moves elsewhere. Leaving a place does not mean every encounter must politely withdraw or every danger vanish. Keep enough state to know the current pursuit or interlude, meaningful changes, pending development and the next unmade decision. Journal/status may expose this; ordinary narration does not need a checklist.
 
 ## Scene flow and downtime
 
-Carry out declared actions until the next meaningful uncertainty or unmade decision. An instruction to continue a journey authorizes travel through uneventful time; it need not be reconfirmed at each village, meal or morning. Stop when something materially changes the available choices. An explicit wish to linger, pause or avoid content takes precedence.
+Carry out clear declarations until a meaningful uncertainty or new decision. Continuing a journey authorizes uneventful travel; compress it instead of requesting confirmation at every village or meal. Respect explicit downtime. Passing through an ordinary settlement or enjoying a brief encounter need not create a quest. Do not substitute an endless series of harmless favours for the next adventure.
 
-Small encounters, ordinary expertise and occasional humour can enrich a place without becoming quests. Let them finish after the contribution they invite. A light moment is optional, not a requirement of adventurous tone. Keep narrative quiet separate from mechanical recovery: follow the agreed HP/resource rest conditions. Neither a rest rule nor a low resource total creates a convenient safe lodging.
-
-Keep dialogue exchanges, checks, routine and repeated locations concise. Expand important discoveries, first impressions and turning points when the information helps the player act. Show changes rather than restating the whole situation or listing all options after every response. Do not pad travel with repeated arrivals and departures; vividness does not require a word quota.
-
-Tone determines atmosphere and fitting danger; focus shapes the challenges. A friendly player does not ask for a uniformly harmless world. Avoid manufacturing a disaster, betrayal or deadline at every transition. Once a conflict is underway, let people act and time advance; consult Checks and Combat for uncertain actions and active opposition.
+Keep dialogue exchanges, checks and routine concise. Show the new information or reaction rather than making every companion restate the evidence or rehearsing all options every turn. Expand first impressions, discoveries and turning points when that detail supports action. Quiet, humour and hospitality are possible, not mandatory ingredients at every stop. Narrative rest does not invent shelter or override agreed HP/resource recovery.
 
 ## Investigation and mechanisms
 
-Keep a fixed cause and coherent clues. Several clues may point to one truth; no mandatory number of paths or suspects. Expertise supplies basic knowledge. A failed search can cost time, reveal danger or yield incomplete information; essential information should have another plausible route with appropriate consequences, not disappear arbitrarily.
+Keep causes and solutions fixed once established; several clues may lead to one truth. Expertise supplies ordinary knowledge. A failed investigation can cost time, expose danger or give incomplete information while other plausible approaches remain. A correct solution needs no roll; uncertain execution may.
 
-Before presenting a mechanism, establish its inputs, operation, access and effects. Visible, reachable, operable and connected are different. Explain a confusing arrangement without a roll, time cost or hint penalty. Prefer understandable mechanisms to layers of unspecified symbols. A correct solution needs no roll; risky execution may. Accept workable alternatives without changing the fixed truth or adding another hidden lock.
+For a mechanism actually used, establish inputs, operation, access, connections and effects. Visible, reachable and operable are distinct. Explain confusing geometry without a roll or penalty. Accept workable alternatives; avoid endless unknown components or retroactive locks. Explaining an incidental old object can finish a discovery without making its operation the whole adventure.
 
-## Continuity and knowledge
+## Continuity and consequences
 
-Distinguish world truth, NPC knowledge, character knowledge and player knowledge. NPCs know what they witnessed, learned or can infer; private plans and secrets do not automatically spread. Track meaningful movements, elapsed time, possessions, injuries, promises, access and relationships using available context.
+Track meaningful movements, elapsed time, possessions, injuries, promises, relationships and knowledge using available context. NPCs know what they witnessed, learned or can infer, not every private plan. Off-screen changes follow their means, opportunity and elapsed time; no omniscient enforcement of the player's unspoken intentions.
 
-Summarizing time does not erase established expenses, spent supplies or resource conditions. Apply known costs in a compact summary and show the resulting totals. State any necessary estimate before charging it; do not invent retroactive fees. A gift or earned free stay remains valid, and no separate survival system is required.
+Compressed time still spends established supplies, costs and resources. Summarize known costs and show resulting totals; announce necessary estimates before charging them. Gifts and earned free stays remain valid. Distinguish the actual protection of a place or arrangement from an eternal guarantee that nothing can happen there.
 
-Correct actual contradictions openly and reverse unfair costs while preserving valid accomplishments. On Hint, offer a proportionate nudge from available facts rather than redesigning the challenge.
+Correct contradictions and reverse unfair costs while retaining valid choices and outcomes. On Hint, offer a proportionate nudge from existing facts, not a redesigned truth.
