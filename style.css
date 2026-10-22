@@ -30,3 +30,5 @@
 .world-details{margin:1rem 0;padding:1rem;border:1px solid var(--line,#40506a);border-radius:.6rem}
 .world-details>summary{cursor:pointer;font-weight:600}
 .world-warning{padding:1rem;border:1px solid #b69b58;border-radius:.6rem;margin:1rem 0}
+
+.opening-editor{padding:18px;border:1px solid var(--border);border-radius:8px}.opening-controls{margin-top:16px}.opening-controls label{display:block;color:var(--muted);font-size:14px}.opening-controls input{display:block;width:min(100%,320px);margin:8px 0;padding:10px;color:inherit;background:#0c1320;border:1px solid var(--border);border-radius:6px}.opening-controls details{margin:12px 0}.opening-controls summary{cursor:pointer}.opening-preview{line-height:1.6;color:var(--gold);overflow-wrap:anywhere}#opening-output-guard{padding-bottom:12px}

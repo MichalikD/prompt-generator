@@ -2,6 +2,7 @@ import {validateWorld} from './worlds.mjs';
 import {createProfile} from './profile.mjs';
 import {groups,selectOptions} from './generator.mjs';
 import {validateCharacterDocument} from './character.mjs';
+import {resolveOpening} from './opening.mjs';
 
 export const setupSteps = ['Welt','Spielvorgaben','Figur','Prüfung und Ausgabe'];
 export const stepForGroup = id => id==='setting'?0:id==='creation'?2:1;
@@ -11,7 +12,7 @@ export function setupErrors(step,config,character=null) {
   try {validateWorld(config);return [];}catch(error){return [error.message];}
  }
  if(step===1) {
-  try {selectOptions(config);createProfile(config);return [];}catch(error){return [error.message];}
+  try {selectOptions(config);createProfile(config);resolveOpening(config);return [];}catch(error){return [error.message];}
  }
  if(step===2) {
   if(!['chat','prepared'].includes(config.characterSource))return ['Bitte auswählen, wo die Figur erstellt wird.'];

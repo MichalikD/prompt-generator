@@ -21,6 +21,9 @@ form.addEventListener('submit',event=>event.preventDefault());
 const labels={currency:'Währung',amount:'Verfügbarer Betrag',mechanical:'Eine Mechanik für dieses Bedürfnis vereinbaren',care:'Versorgung / Erholung',name:'Name',description:'Beschreibung / Funktion',bonus:'Bonus',effect:'Wirkung',cost:'Kosten (ggf. „keine“)',limits:'Grenzen',trigger:'Auslöser',mitigation:'Abmilderung',quantity:'Anzahl',slots:'Tragplätze pro Einheit',current:'Aktuell',max:'Maximum',regeneration:'Regeneration',milestone:'Meilenstein',change:'Änderung',benefit:'Konkreter Nutzen'};
 function field(parent,path,label,type='text') {
  const wrap=document.createElement('div');wrap.className='character-field';
+ if(path[0]==='talents'&&path.at(-1)==='bonus') {
+  const value=document.createElement('p');value.className='field-help';value.textContent='Bonus: +2 · fest, nicht stapelbar';wrap.append(value);parent.append(wrap);return;
+ }
  const caption=document.createElement('label');caption.textContent=label;caption.htmlFor='cf-'+path.join('-');
  const input=document.createElement(type==='textarea'?'textarea':'input');
  input.id=caption.htmlFor;input.name=path.join('.');
