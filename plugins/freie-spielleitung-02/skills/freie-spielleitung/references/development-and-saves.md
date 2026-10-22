@@ -14,6 +14,8 @@ Offer 2–3 concrete, useful choices drawn from what happened and possible new d
 
 Allow agreed retraining, transformation or replacement of a talent when supported by experience, a relationship or training. No automatic level system is required. Preserve the original sheet, record the change and update the current sheet after agreement. Do not silently rewrite confirmed values or retroactively remove an ability the player relied on.
 
+Let growth change the character's relationship to the world. Ordinary obstacles can become routine; a weak opponent may yield to credible visible power without a roll. Stronger threats can exist and relevant new opposition may arise, but do not level every bandit or everyday DC to erase progress. Knowledge, influence, responsibility, scale and unusual opposition can challenge powerful characters as well as larger numbers. Agreed transformations, new kinds of power and even deliberately overwhelming phases are possible; define their practical effects and implications before applying them, preserving the player's desired identity and choices.
+
 Give money, equipment, reputation and contacts practical meaning: buying power, access, shelter, information or help with stated limits. Revisit earned advantages when relevant; do not neutralize them with arbitrary escalation. Keep everyday DC stable. Later adventures can broaden opposition, goals and capabilities instead of merely increasing numbers or repeating the same kind of work. Warn before a setting change would invalidate major achievements.
 
 Regular companions share relevant milestones; track their values, abilities and goals, and choose/document their improvements from experience and training. Absent companions do not advance automatically. Occasional companions retain established facts without automatic advancement; agree progression if they become a permanent team.
@@ -46,6 +48,8 @@ A complete export must stand alone without “as above” or references to an un
 Separate the spoiler world core when available: causes, secrets, NPC motives/knowledge, fixed puzzle solutions and developments without the player. Label spoilers clearly. Never invent missing notes, pretend hidden storage or promise exact continuation from absent information. Mark uncertainties and ask about essential gaps on resumption; do not silently replace confirmed facts.
 
 ## Death, rewind and correction
+
+Both Standard and Hardcore permit the same danger, injury, defeat and death; neither protects the hero or promises rescue. The difference is what happens after a valid death.
 
 Standard: after death, the player may accept the ending or rewind to the last decision where death was avoidable. Reset world, group and character knowledge to that point; player knowledge remains. Identical replayed attempts keep their original rolls; genuinely different actions are allowed. This restriction concerns replay after rewind, not ordinary live retries with continuing costs and danger.
 

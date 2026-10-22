@@ -108,12 +108,21 @@ export function worldText(w,{legacy=false}={}) {
   w.mythology&&`Mythology: ${w.mythology}`,
   legacy?choice(worldPlayerKinds,w.playerKind,'Figurenart').text:kinds[w.playerKind],
   w.description&&`World description (user specifications):\n${w.description}`,
+  !legacy&&worldPresence(w),
   legacy?'Explicit custom specifications replace conflicting template defaults. Preserve other compatible assumptions. Resolve contradictions between explicit specifications before play; never silently ignore one. A calendar date alone does not define technology.':'The effective specifications above define this world. User adaptations replace conflicting template suggestions. Clarify contradictions between explicit specifications before play.',
  ].filter(Boolean).join('\n\n');
 }
-export function worldRules(world) {
+export function worldRules(world,{legacy=true}={}) {
  const rules=[];
  if(world.powers==='none')rules.push('No supernatural abilities.');
- else rules.push('Special powers: agree effects, costs and limits before play; magic users start with three resource points. No universal problem-solving powers.');
+ else rules.push(legacy ? 'Special powers: agree effects, costs and limits before play; magic users start with three resource points. No universal problem-solving powers.' : 'Special powers: express the requested character concept and power scale with effective abilities, including damaging powers when fitting. Define effects, costs and limits before play. Three resource points are the default proposal, not a limit on the potency of a power or on later development. Agree any necessary deviation before confirming the sheet.');
  return rules.join(' ');
+}
+
+function worldPresence(world) {
+ if(world.template==='fantasy') return world.powers==='none'
+  ? 'Make the fantasy world concrete through its peoples, cultures, landscapes and unusual places while respecting the exclusion of supernatural powers.'
+  : 'Make fantasy present throughout the campaign: magical practices, nonhuman peoples, creatures and extraordinary places shape opportunities, institutions and dangers according to the effective specifications and explicit exclusions. A medieval era does not reduce this world to mundane village life. The character\'s starting abilities do not cap the powers or creatures that exist elsewhere.';
+ if(world.template==='mythology') return 'Let the selected mythology shape places, interests and extraordinary encounters in play; distinguish divine action, mortal knowledge and belief.';
+ return '';
 }
