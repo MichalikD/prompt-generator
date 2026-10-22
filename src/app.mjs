@@ -2,6 +2,7 @@ import {mountWorldEditor} from './world-editor.mjs';
 import {worldText} from './worlds.mjs';
 import {createProfile} from './profile.mjs';
 import {mountCharacterEditor} from './character-editor.mjs';
+import {mountCharacterReference} from './character-reference.mjs';
 import {focuses} from './profile.mjs';
 import {infoButton} from './tooltips.mjs';
 import {groups,dice,defaults,LIMIT} from './generator.mjs';
@@ -12,6 +13,7 @@ const form=$('#options'),output=$('#prompt'),copy=$('#copy'),status=$('#status')
 const modes=$('#output-modes'),source=$('#character-source');
 const startMessage=$('#start-message'),copyStart=$('#copy-start'),startStatus=$('#start-status'),download=$('#download');
 let currentOutput=null,revision=0,editor=null,characterDoc=null,updating=false,step=0,showErrors=false;
+const playReference=mountCharacterReference($('#play-character-reference'));
 
 for(const [index,mode] of outputModes.entries()) {
  const label=document.createElement('label');label.className='choice';
@@ -50,6 +52,7 @@ function configFromForm() {
  return {...Object.fromEntries(data),extras:data.getAll('extras'),focus:data.getAll('focus'),characterSource:source.querySelector('input:checked').value};
 }
 function clearOutput(message) {
+ playReference.setDocument(null);
  currentOutput=null;output.value=startMessage.value='';copy.disabled=copyStart.disabled=download.disabled=true;
  output.placeholder=message;startMessage.placeholder=message;status.textContent=message;
  $('#count').textContent='–';$('#remaining').textContent='Vorbereitung noch nicht abgeschlossen';$('#meter').value=0;
@@ -105,6 +108,7 @@ function update() {
   if(step!==3) {clearOutput('Die Starttexte erscheinen nach Abschluss der Vorbereitung.');return;}
   if(errors.length){clearOutput(errors[0]);$('#setup-feedback').textContent=errors.slice(0,4).join(' ');return;}
   currentOutput=buildOutput(config,selectedMode(),prepared?characterDoc:null);
+  playReference.setDocument(prepared?characterDoc:null);
   summary(config);
   output.value=currentOutput.projectInstructions;startMessage.value=currentOutput.startMessage;
   $('#plugin-starter').hidden=!currentOutput.startMessage;
