@@ -1,4 +1,4 @@
-# Open Game Master · Regelsatz 0.12.0
+# Open Game Master · Regelsatz 0.13.0
 
 Die [private Testinstallation](https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37)
 behält ihre Pluginidentität. Ihr Anzeigename enthält keine Versionsnummer mehr.
@@ -33,7 +33,7 @@ Sprachangabe einmal geklärt; der Standard-Startvorschlag enthält sie bereits.
 
 Optionale Startimpulse und NSC-Wissen: [Regelbasis 0.10.0](ausgangsimpulse-0.10.md).
 
-Abenteuerumfang, Zwischenentwicklung und separater Spieltab: [Regelbasis 0.12.0](umfang-fortschritt-spieltab-0.11.md).
+Abenteuerumfang, Zwischenentwicklung und separater Spieltab: [Regelbasis 0.13.0](umfang-fortschritt-spieltab-0.11.md).
 
 Kampf-, Erholungs- und Bedienungsregeln: [Regelbasis 0.9.0](kampf-und-erholung-0.9.md).
 
@@ -86,7 +86,7 @@ npm run plugin:build
 ```
 
 Das reproduzierbare öffentliche ZIP liegt anschließend unter
-`dist/freie-spielleitung-02-0.12.0.zip`. Private Backend-Autormetadaten werden nicht
+`dist/freie-spielleitung-02-0.13.0.zip`. Private Backend-Autormetadaten werden nicht
 in das öffentliche Repository übernommen. Regelversion, Paketmanifest,
 Generatorverweis und Workflow müssen zusammenpassen.
 
@@ -98,3 +98,5 @@ Starttexten beginnen; alte Testbögen haben keine Kompatibilitätsgarantie.
 [Rückkehrpunkt und getrenntes Zurücknehmen von Website/Plugin](rollback-0.3.md).
 
 Aktuelle Bedienung und additive Fähigkeitsfelder: [Layout 0.12](layout-und-faehigkeiten-0.12.md).
+
+Folgeabenteuer, Ruhephasen und Weltvorgaben: [Regelbasis 0.13](fortsetzungen-0.13.md).

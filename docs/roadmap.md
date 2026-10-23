@@ -1,6 +1,6 @@
-# Roadmap nach den beiden Impuls-Durchläufen
+# Roadmap nach dem Kenji-Durchlauf
 
-Stand: 23. Oktober 2026 · Regelbasis: 0.12.0
+Stand: 24. Oktober 2026 · Regelbasis: 0.13.0
 
 Diese Liste ersetzt die vorherige Priorisierung; ältere Stände bleiben über Git
 nachvollziehbar. Implementierte Regeln, kurze Regelproben und längere menschliche
@@ -67,18 +67,28 @@ alleinige Wirkung der Impulse und beliebig lange Vielfalt sind damit nicht bewie
 
 [Bedienung und Grenzen 0.12](layout-und-faehigkeiten-0.12.md)
 
-## 3. Nächster menschlicher Durchlauf: Spielen statt Pflichtprüfung
+## 3. Kenji: erfolgreicher Verlauf und Paket 0.13
 
-- [x] Spieler wählt Figur, Welt und Umfang nach eigener Lust.
-- [ ] Aktueller Durchlauf startet ohne vorherige Prüfung des Startpakets durch den
-  Entwicklungsassistenten: normaler Einstieg wie für einen neuen Spieler.
-  Rückmeldungen entstehen beim Spielen; kein weiterer Vorab-Prüfschritt.
-- [ ] Ziel ist ein längerer unterhaltsamer Verlauf; Notizen zu Generator,
-  Spielübersicht, Neuerungen und Spielgefühl entstehen nebenbei.
-- [ ] Keine erzwungenen Kämpfe, Mindestspielzeit oder vorgeschriebenen Entscheidungen.
-  Ein schlechter oder ermüdender Verlauf darf jederzeit beendet werden.
-- [ ] Prüfen, ob gewählter Umfang und Fortschritt sich im normalen Spielen bewähren.
-  Keine neue Kampagne nach jeder kleinen Korrektur verlangen.
+- [x] Freie Wahl von Figur, Welt und Umfang; Start ohne Vorabprüfung des Pakets.
+- [x] Mehrere kurze Abenteuer mit wiederkehrender Besatzung und funktionierenden
+  Abschlüssen; Spieler hatte Spaß und bewertet die Kampagne ausdrücklich als Erfolg.
+- [x] Wiederholte Vermittlung, Alltagsschleifen, wenig spielbare Magie und ähnliche
+  Fortschrittsangebote als verbleibende Probleme identifiziert.
+- [x] An Abenteuergrenzen Abschluss/Entwicklung, gewählte Ruhe und neue Vorbereitung
+  als gemeinsamen Ablauf formulieren; unbestimmte Routine raffen.
+- [x] Folgeaufgaben nach dominierenden Spielerhandlungen variieren; ganze Figur und
+  nutzbare alternative Handlungen berücksichtigen, einschließlich plausibler Duelle.
+- [x] Konkrete Grenzen und Interessen von NSC; bedeutsame unsichere Überzeugung mit
+  Probe und Folgen statt automatischem Einlenken auf moralische Ansprachen.
+- [x] Gewählte Magie auch in anderen Weltvorlagen praktisch präsent halten,
+  ohne ausgeschlossene oder seltene Kräfte und bestätigte Figuren umzudeuten.
+- [x] Entwicklung am Abschluss abwickeln und nützliche, tatsächlich neue Alternativen
+  anbieten; wiederholte Attributwahl bleibt möglich.
+- [x] Sichtbare Regelbegriffe konsequenter lokalisieren und Textstandard präzisieren.
+- [ ] Längere menschliche Spielerfahrung mit 0.13: Abwechslung, Weltpräsenz,
+  Proben und praktisch nutzbare Fortschritte. Keine Pflichtspielzeit oder Vorabkorrektur.
+
+[Änderungen und Prüfgrenzen 0.13](fortsetzungen-0.13.md)
 
 ## 4. Nächste mögliche Ausbaupakete
 
@@ -101,7 +111,9 @@ alleinige Wirkung der Impulse und beliebig lange Vielfalt sind damit nicht bewie
    Akzenten bleibt die bisherige gestalterische Grundlage.
 6. **Lokalisierung:** Oberfläche, Hilfetexte und Spielübersicht für weitere
    Sprachen vorbereiten. Sprache der Spielausgabe weiterhin zentral bestimmen;
-   Schema-Schlüssel bleiben stabil. Übersetzungen dürfen die Regeln nicht verändern.
+   Schema-Schlüssel bleiben stabil. Verbindliches Wörterbuch für angezeigte Attribute
+   und Regelbegriffe ergänzen; die Kurzprüfungen von 0.13 übersetzen noch unterschiedlich.
+   Übersetzungen dürfen die Regeln nicht verändern.
 7. **Name und durchgängiges Symbol:** einen besseren Namen für Generator und
    Spielhilfe finden. Das Tab-Symbol auch für die Spielübersicht verwenden und
    links im Kopfbereich neben dem bisherigen „ABENTEUER / GENERATOR“ zeigen.
@@ -109,9 +121,8 @@ alleinige Wirkung der Impulse und beliebig lange Vielfalt sind damit nicht bewie
    umbenennen. Noch keine Entscheidung oder Änderung am Datenformat bzw. Geldsystem.
 
 Einzelne Impulsachsen festhalten bleibt eine mögliche spätere Komfortfunktion.
-Kein Ausbau ist Voraussetzung für den jetzt beginnenden normalen Durchlauf.
-Während dieses Durchlaufs bleiben diese Punkte vorgemerkt; keine Regeländerung
-oder zusätzliche Einrichtungsrunde allein für diese Komfortwünsche.
+Diese Komfortwünsche bleiben vorgemerkt und sind keine Voraussetzung für den
+nächsten normalen Durchlauf. Änderungen am Erzählunterbau gehören zum Paket 0.13.
 
 ## 5. Beobachten und bei Gelegenheit erproben
 
@@ -134,6 +145,7 @@ Spielspaß entscheidet mit, nicht allein eine möglichst strenge Regelauslegung.
 
 ## Versionsdokumente
 
+- [Folgeabenteuer, Ruhephasen und Weltpräsenz 0.13](fortsetzungen-0.13.md)
 - [Geführtes Layout und Fähigkeiten 0.12](layout-und-faehigkeiten-0.12.md)
 - [Umfang, Fortschritt und Spieltab 0.11](umfang-fortschritt-spieltab-0.11.md)
 - [Ausgangsimpulse und Wissensgrenzen 0.10](ausgangsimpulse-0.10.md)
