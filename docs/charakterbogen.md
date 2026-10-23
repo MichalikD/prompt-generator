@@ -161,3 +161,13 @@ Waffenschaden. Es führt keine weiteren Bonusarten oder Spielregeln ein.
 Die Plugin-Regelbasis bleibt **0.3.1**; Figurenformat und Pluginversion sind
 unabhängig. Alte Testformate werden nicht konvertiert. Ein neues Template
 verwenden, nicht nur die Versionsnummer eines alten Bogens ändern.
+
+
+## Spielübersicht und Kampagnennotizen ab 0.11
+
+Gültige Bögen lassen sich über **Im Spieltab öffnen** in `play.html` übernehmen.
+Dort stehen Übersicht, manueller Editor und Notizen zusammen zur Verfügung.
+Der ursprüngliche Startbogen bleibt beim Weiterführen als aktueller Bogen erhalten.
+Tab-Wiederherstellung, bewusstes Gerätespeichern und gemeinsamer JSON-Export sind
+unter [Spieltab 0.11](umfang-fortschritt-spieltab-0.11.md) beschrieben.
+Die Spielübersicht ist kein vollständiger Kampagnenspielstand.

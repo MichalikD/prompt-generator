@@ -13,7 +13,7 @@ test('Beide Ausgaben verwenden in jeder Kombination dieselbe gültige Auswahl', 
     assert.ok(result.startMessage.includes(PLUGIN.version));
     for (const group of groups) {
       const chosen = group.options.find(option => option.id === config[group.id]);
-      assert.ok(result.startMessage.includes(group.id==='setting' ? chosen.text : `${optionNames[group.id]}: ${pluginChoiceText(group.id,chosen)}`));
+      assert.ok(result.startMessage.includes(group.id==='setting' ? chosen.text : `${optionNames[group.id]}: ${pluginChoiceText(group.id,chosen,config.scope)}`));
       for (const option of group.options) {
         if (option !== chosen) assert.ok(!result.startMessage.includes(group.id==='setting' ? option.text : `${optionNames[group.id]}: ${pluginChoiceText(group.id,option)}`));
       }

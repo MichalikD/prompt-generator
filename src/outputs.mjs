@@ -8,7 +8,7 @@ import {openingEnabled,resolveOpening,openingText} from './opening.mjs';
 
 export const PLUGIN = Object.freeze({
   name: 'Open Game Master',
-  version: '0.10.0',
+  version: '0.11.0',
   url: 'https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37',
 });
 

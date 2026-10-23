@@ -15,18 +15,19 @@ const choices = {
     hardcore: 'Hardcore: the same world danger and consequences as Standard; a valid death permanently ends this run with no rewind. Saving does not bypass death. Correct GM errors.',
   },
   scope: {
-    short: 'Short: one bounded pursuit with a decisive challenge and a recognizable consequential outcome.',
-    medium: 'Medium: a developed pursuit with connected turning points, relationships and lasting consequences; a reachable ending.',
-    long: 'Extended: a layered pursuit with room for relationships and discoveries, visible progress and a reachable finale.',
+    short: 'Short: one self-contained conflict with a decisive challenge and a conclusive outcome. Resolve its central problem within this adventure; do not reveal it as merely a preliminary step in an unfinished larger threat. Keep stakes bounded from preparation onward. Continuing play can bring a new independent adventure in the same world.',
+    medium: 'Medium: a larger story arc with several connected turning points, relationships and lasting consequences, reaching a common ending. Grant useful development at meaningful intermediate achievements, while it can still be used in this arc, as well as at its conclusion; do not substitute extra checks for substance.',
+    long: 'Extended: a substantial story arc with multiple developing sections, discoveries and long-term aims towards a reachable finale. Recognize meaningful intermediate achievements with useful abilities, items, improvements or other concrete benefits throughout the story, not only at the final ending; no fixed scene or reward quota.',
   },
   continuation: {
-    open: 'Open campaign: after each adventure, settle its consequences and development, then prepare the next adventure in the continuing world. Allow requested interludes; no overarching end goal is required.',
+    open: 'Open campaign: the same character and world can continue after each completed adventure, with consequences, relationships and earned development preserved. This is a continuation setting, not an instruction to invent an overarching main plot. Apply the selected adventure scope; settle each outcome and allow requested interludes before a new adventure.',
     linked: 'Linked campaign: after each resolved chapter, prepare the next chapter of the larger conflict towards a reachable overall finale. Preserve local outcomes.',
     single: 'Single adventure: finish with consequences and an epilogue. Begin another adventure only at my request.',
   },
 };
 
-export function pluginChoiceText(group, option) {
+export function pluginChoiceText(group, option, scope) {
+  if(group==='continuation'&&scope==='short'&&option.id==='linked')return 'Linked campaign: recurring connections reuse people, places or consequences across self-contained short adventures. Each central conflict closes; do not create an unresolved overarching main quest.';
   return choices[group]?.[option.id] ?? option.text;
 }
 
@@ -36,7 +37,7 @@ export function pluginProfileText(profile, selected, groups) {
     'These are the selected world and play settings for this run.',
     worldText(profile.world),
     ...groups.filter(g=>profileIds.includes(g.id)&&g.id!=='setting')
-      .map(g=>`${optionNames[g.id]}: ${pluginChoiceText(g.id,selected[g.id])}`),
+      .map(g=>`${optionNames[g.id]}: ${pluginChoiceText(g.id,selected[g.id],profile.scope)}`),
     profile.focus.length
       ? 'Play focus: '+profile.focus.map(id=>focuses.find(f=>f.id===id).text).join(' ')
       : 'Play focus: varied according to the situation, no fixed weighting.',

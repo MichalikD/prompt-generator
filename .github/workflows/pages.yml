@@ -25,12 +25,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: freie-spielleitung-02
-          path: dist/freie-spielleitung-02-0.10.0.zip
+          path: dist/freie-spielleitung-02-0.11.0.zip
           if-no-files-found: error
       - name: Statische Dateien vorbereiten
         run: |
           mkdir -p _site/src
-          cp index.html character.html style.css _site/
+          cp index.html character.html play.html style.css _site/
           cp src/*.mjs _site/src/
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@v3

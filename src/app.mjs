@@ -39,7 +39,8 @@ function addChoices(group,multi=false) {
   const input=document.createElement('input');input.type=multi?'checkbox':'radio';input.name=group.id;input.value=option.id;
   input.checked=!multi&&defaults[group.id]===option.id;
   const span=document.createElement('span');span.textContent=option.label;label.append(input,span);
-  wrap.append(label,infoButton(option));row.append(wrap);
+  const tips={scope:{short:'Ein eigenständiger Konflikt mit abschließendem Ergebnis, kein Auftakt einer größeren Hauptbedrohung.',medium:'Ein größerer Handlungsbogen mit verbundenen Wendepunkten und nutzbarer Zwischenentwicklung.',long:'Ein ausgedehnter Handlungsbogen mit mehreren Abschnitten, Entwicklung im Verlauf und erreichbarem Finale.'},continuation:{open:'Weitere Abenteuer mit derselben Figur und Welt. Keine automatische übergeordnete Hauptgeschichte.',linked:'Wiederkehrende Verbindungen. Bei kurz eigenständige Konflikte; bei mittel/lang ein größerer Bogen mit Gesamtfinale.'}};
+  wrap.append(label,infoButton({...option,tooltip:tips[group.id]?.[option.id]??option.tooltip}));row.append(wrap);
  }
  field.append(row);form.append(field);
 }

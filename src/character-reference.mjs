@@ -1,4 +1,5 @@
 import {validateCharacterDocument, attributeLabels} from './character.mjs';
+import {openPlayTab} from './play-state.mjs';
 
 // Read the actual sheet. Free-text effects are retained, never interpreted as new rules.
 export function characterReference(doc) {
@@ -19,15 +20,21 @@ export function characterReference(doc) {
   '## Ressourcen\n\n'+entries(c.vitals.resources,r=>`${r.name}: ${r.current}/${r.max}\nWirkung: ${r.effect}\nVerbrauch: ${r.cost}\nRegeneration: ${r.regeneration}`),
   '## Schwächen und Verletzungen\n\n'+entries(c.weaknesses,w=>`${w.name}\nAuslöser: ${w.trigger}\nWirkung: ${w.effect}\nAbmilderung: ${w.mitigation||'Nicht festgelegt.'}`)+`\n\nVerletzungen: ${c.vitals.injuries||'Keine eingetragen.'}`,
   '## Ausrüstung\n\n'+entries(c.inventory,i=>`${i.name} ×${i.quantity} · ${i.slots} Plätze je Stück · Probenbonus +${i.bonus}\n${i.description}`),
-  '## Geld\n\n'+entries(c.finances.funds,f=>`${f.amount} ${f.currency}`)+(c.finances.purchasingPower?'\n\n'+c.finances.purchasingPower:''),
+  '## Geld\n\n'+entries(c.finances.funds,f=>`${f.amount} ${f.currency}`)+(c.finances.purchasingPower?'\n\n'+c.finances.purchasingPower:'')+(c.finances.assets?'\n\nWeiteres Vermögen: '+c.finances.assets:''),
+  '## Entwicklung und Errungenschaften\n\n'+entries(c.development,d=>`${d.milestone}: ${d.change}\nNutzen: ${d.benefit}\nGrenzen: ${d.limits||'Nicht festgelegt.'}`),
   ...(c.needs?.length?['## Besondere Bedürfnisse\n\n'+entries(c.needs,n=>`${n.name}: ${n.description}`+(n.mechanical?`\nAuslöser: ${n.trigger}\nWirkung: ${n.effect}\nVersorgung: ${n.care}`:''))]:[]),
  ].join('\n\n');
 }
 
 export function mountCharacterReference(root) {
- root.innerHTML='<details class="character-panel"><summary>Charakterübersicht für das Spielen</summary><p>Fähigkeiten, Kosten, Werte und Ausrüstung separat bereithalten. Kein automatischer Abgleich mit dem Spielchat.</p><textarea readonly rows="14" aria-label="Charakterübersicht"></textarea><div class="character-actions"><button type="button" class="quiet" data-action="copy">Übersicht kopieren</button><button type="button" class="quiet" data-action="download">Übersicht herunterladen (.md)</button><button type="button" class="quiet" data-action="print">Übersicht drucken</button></div><p role="status" aria-live="polite"></p></details>';
- const field=root.querySelector('textarea'),status=root.querySelector('[role=status]');let revision=0;
+ root.innerHTML='<details class="character-panel"><summary>Charakterübersicht für das Spielen</summary><p>Fähigkeiten, Kosten, Werte und Ausrüstung separat bereithalten. Kein automatischer Abgleich mit dem Spielchat.</p><textarea readonly rows="14" aria-label="Charakterübersicht"></textarea><div class="character-actions"><button type="button" class="primary" data-action="open">Im Spieltab öffnen</button><button type="button" class="quiet" data-action="copy">Übersicht kopieren</button><button type="button" class="quiet" data-action="download">Übersicht herunterladen (.md)</button><button type="button" class="quiet" data-action="print">Übersicht drucken</button></div><p role="status" aria-live="polite"></p></details>';
+ const field=root.querySelector('textarea'),status=root.querySelector('[role=status]');let revision=0,currentDocument=null;
  root.hidden=true;
+ root.querySelector('[data-action=open]').addEventListener('click',()=>{
+  if(!currentDocument)return;
+  try{openPlayTab(currentDocument);status.textContent='Spieltab geöffnet. Änderungen dort werden unabhängig gepflegt.';}
+  catch(error){status.textContent=error.message;}
+ });
  root.querySelector('[data-action=copy]').addEventListener('click',async()=>{
   const text=field.value,current=revision;if(!text)return;
   try {if(!navigator.clipboard?.writeText)throw new Error();await navigator.clipboard.writeText(text);if(current===revision)status.textContent='Übersicht kopiert.';}
@@ -48,7 +55,8 @@ export function mountCharacterReference(root) {
   preview.document.head.append(style);preview.document.body.replaceChildren(pre);preview.focus();preview.print();
  });
  return {setDocument(doc){revision++;status.textContent='';
-  if(!doc||validateCharacterDocument(doc).length){field.value='';root.hidden=true;return;}
+  if(!doc||validateCharacterDocument(doc).length){currentDocument=null;field.value='';root.hidden=true;return;}
+  currentDocument=structuredClone(doc);
   field.value=characterReference(doc);root.hidden=false;
  }};
 }

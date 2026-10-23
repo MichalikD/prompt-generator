@@ -138,6 +138,9 @@ if(worldLocked) $('#character-world').setAttribute('aria-label','Weltvorgaben au
 template();render();
 return {
  getDocument:()=>structuredClone(doc),
+ setDocument(value) {
+  const next=parseCharacter(JSON.stringify(value));doc=next;render();
+ },
  setWorld(value) {
   if($('#character-world').value===value)return;
   $('#character-world').value=value;template();
