@@ -1,172 +1,109 @@
-# Roadmap nach Marik und Iven
+# Roadmap nach den beiden Impuls-Durchläufen
 
-Stand: 22. Oktober 2026 · Aktuelle Regelbasis: 0.10.0
+Stand: 23. Oktober 2026 · Regelbasis: 0.11.0
 
-Diese Liste ist die aktuelle Priorisierung. Frühere Versionen der Roadmap sind
-über Git nachvollziehbar; die unten verlinkten Versionsdokumente erläutern
-bereits umgesetzte Entscheidungen. Eine implementierte Anweisung und ihr
-beobachtetes Verhalten im Spiel sind unterschiedliche Nachweise.
+Diese Liste ersetzt die vorherige Priorisierung; ältere Stände bleiben über Git
+nachvollziehbar. Implementierte Regeln, kurze Regelproben und längere menschliche
+Spielerfahrungen sind unterschiedliche Nachweise.
 
-## 1. Wo wir stehen
+## 1. Erste spielbare Version
 
-Der Stand ist eine spielbare Grundlage. Der erzählerische Auftrag aus 0.8 bleibt
-erhalten; die Ergebnisse rechtfertigen keinen weiteren grundlegenden Umbau.
+Der erzählerische Unterbau bleibt erhalten. Fünf Einstiege mit Impulsen wurden
+mit **6 / 8,5 / 7 / 9 / 8** bewertet. Zwei weitergespielte Verläufe blieben
+interessant und erlaubten nachvollziehbare Abschlüsse und Entwicklung. Die
+alleinige Wirkung der Impulse und beliebig lange Vielfalt sind damit nicht bewiesen.
 
-| Bereich | Implementiert | Beobachtung und verbleibende Grenze |
+| Bereich | Beobachtung | Verbleibende Grenze |
 | --- | --- | --- |
-| Weltinitiative, wirksame Kräfte und Gefahr | 0.8 | Marik: sehr guter Fantasyauftakt, echte Konfrontationen, Niederlage und Folgen. Noch kein Nachweis für jeden Lauf. |
-| Lokaler Abschluss trotz größerem Hintergrund | 0.7–0.9 | Iven: Anlage gesichert, Abschlusserklärung, Verbesserung und Auszahlung; die Inselgeschichte muss dafür nicht gelöst werden. |
-| Selbstständiger Beginn einer unabhängigen Folgeaufgabe | 0.7–0.9 | Iven: Flüsterwald nach Aelthar, vermisster Reisender und fremdartige Wesen ohne vom Spieler vorgegebene Handlung. Dieses zweite Abenteuer ist noch nicht abgeschlossen. |
-| Sinnvolle Delegation und Entwicklung | 0.7–0.9 | Ivens Entscheidung für Gildenhilfe zählt zum Erfolg. Vorgemerkte Verbesserung wird nach Ruhe angeboten und Fokus auf 4/4 erhöht. |
-| Geld und Fähigkeitspunkte getrennt | Figurenformat 3 | Ivens Unterkunft, Frühstück und Gildenbelohnung werden nachvollziehbar abgerechnet. Längere Wirtschaft und besondere Bedürfnisse sind kaum geprüft. |
-| Kampf, Erholung und kostenlose einfache Magie | 0.9 | Technisch und in kurzen unabhängigen Regelanwendungen geprüft. Iven kämpft nicht; Ausdauer, Zugfolge und Balance sind im normalen Spiel noch offen. Mariks frühere Kämpfe bleiben die Fehlerbasis. |
-| Separate Spielübersicht | 0.9 | Kopieren, Download und Druck vorhanden. Im Einsatz zu umständlich; ein eigener lesbarer Tab ist gewünscht. |
+| Erzählung und Weltinitiative | Seegefecht, korrupte Amtsträger, Anschlag und Flucht; Gegner verfolgen Interessen | Nicht jede Kampagne wird dadurch gut |
+| Abschluss und Fortsetzung | Übergabe/Delegation möglich; danach eigenständiger Nebelpass-Konflikt | Beide kurzen Starts erzeugten zuvor große Hauptbedrohungen; das Folgeabenteuer ist noch nicht vollständig abgeschlossen |
+| Entwicklung | Unterwasserperle, persönliche Geschenke und Quellfrostsegen sind reizvoll | Unzulässiger Talentbonus +3 und überflüssige Verbesserung einer vorhandenen Fähigkeit wurden angeboten |
+| Kampf und Magie | Sichtbare LP, weitgehend feste Reihenfolge, kostenlose Frostsplitter tatsächlich eingesetzt | Zufallswerkzeug wurde widersprüchlich behauptet; Langzeitbalance offen |
+| Ressourcen | Regeneration in Nummer 4 funktioniert | Nach der ruhigen Nacht in Nummer 2 nicht sauber berücksichtigt |
+| Vielfalt | Neue Bedingungen und unterschiedliche Konflikte | Brücken, Wächter, Glocken, Siegel und bedeutungsvolle Zahlen wiederholen sich |
 
-Die wichtigsten verbleibenden Probleme sind ähnliche Einstiege über neue
-Durchläufe hinweg, vereinzeltes unbegründetes NSC-Wissen und der Bedienkomfort
-des Bogens. Schwebende Inseln, ähnlich klingende alte Reiche, sieben Anker und
-Siegelreparaturen wiederholen sich bei Marik und Iven trotz guter Einzelmomente.
-Ein guter Übergang löst diese Wiederholung nicht automatisch.
+## 2. Paket 0.11: Umfang, Fortschritt und Spielübersicht
 
-## 2. Umgesetzt: optionale Ausgangsimpulse · 0.10.0
+### Regeln und Unterbau
 
-Paket 0.10 ergänzt einen kleinen Startimpuls im Generator, eine gezielte
-Klarstellung zum NSC-Wissen und die Korrektur des festen Talentbonus. Der Einstieg bekommt andere
-Ausgangsbedingungen, keine vorgefertigte Handlung oder neue Verbotsliste.
+- [x] Kurz: zentrales Problem innerhalb eines eigenständigen begrenzten Abenteuers
+  abschließen, keine bloße erste Etappe einer größeren Hauptbedrohung.
+- [x] Mittel/lang: größere verbundene Bögen und nutzbare Zwischenentwicklung,
+  nicht nur häufigere Überschriften, Proben oder Schlussbelohnungen.
+- [x] Offene Kampagne von Umfang trennen: gleiche Figur/Welt, keine automatisch
+  übergeordnete Hauptgeschichte. Wiederkehrende Personen und Folgen bleiben möglich.
+- [x] Plugin und ausgewählte Generatorvorgaben widerspruchsfrei anpassen,
+  einschließlich kurz mit wiederkehrenden Verbindungen.
+- [x] Besondere Gaben, Gegenstände, Fähigkeiten, Werte, Kontakte und Zugang als
+  praktische Entwicklung behandeln. Questobjekte können neue Optionen eröffnen.
+- [x] Bereits belohnte Leistungen berücksichtigen; eigenständige Erfolge können
+  weitere Entwicklung rechtfertigen. Bezahlung bleibt davon unabhängig.
+- [x] Talentbonus +2 erhalten; Meisterschaften erweitern Möglichkeiten. Bestehende
+  Fähigkeiten nicht als neue Verbesserung verkaufen. Änderungen vorher abstimmen.
 
-### Umfang des Impulses
+### Charakterübersicht und Notizen
 
-- [x] Optional und standardmäßig ausgeschaltet. Ohne Aktivierung bleibt der
-  bisherige freie Start erhalten.
-- [x] Nur zwei Zufallsachsen: **Umgebung** und **Ausgangslage der Figur**.
-  Beispiele für Umgebungen: Schiff auf See, Küste, Gebirge, Wald, größere Stadt.
-  Beispiele für Ausgangslagen: unterwegs, gefangen, eingeladen, um Hilfe gebeten.
-  Vorrat und Verträglichkeit sind in [Ausgangsimpulse 0.10](ausgangsimpulse-0.10.md) dokumentiert.
-- [x] Kein Katalog besonderer Motive wie Geisterpiraten, keine zufällig vorgegebene
-  Lösung und kein verpflichtendes Spielerziel. Beteiligte, Ursachen, Interessen,
-  Geheimnisse und konkrete Handlung entwickelt die Spielleitung.
-- [x] Beispiel: Schiff auf See + gefangen + Fantasy kann Geisterpiraten, eine
-  feindliche Marine oder andere plausible Umstände hervorbringen. Der Impuls
-  schreibt weder diese Ausgestaltung noch Flucht als einziges Ziel vor.
-- [x] Keine automatische Neuverlosung laufender Abenteuer oder ihrer Wahrheiten.
-  Der Impuls gilt für den Auftakt; spätere Handlung wächst aus Welt und Entscheidungen.
+- [x] Eigener lesbarer Spieltab aus vorhandenem JSON, ohne KI-Aufruf oder Chat-Zugriff.
+- [x] Werte, Fähigkeiten/Kosten/Grenzen, Ressourcen, Ausrüstung und Entwicklung
+  nachschlagen; eingeklappter Editor für manuelle Aktualisierungen.
+- [x] Startbogen beim Weiterführen erhalten; aktuellen Bogen und Bestätigung anzeigen.
+- [x] Freitextnotizen, Wiederherstellung beim Neuladen im Tab, bewusstes
+  Gerätespeichern und gemeinsamer JSON-Export/-Import.
+- [x] Speichergrenzen und manuellen Abgleich erklären; keine automatische Chat-
+  oder Geräte-Synchronisierung und keine vollständige Kampagnensicherung behaupten.
 
-### Verträglichkeit und Dosierung
+[Bedienung und Regeländerungen 0.11](umfang-fortschritt-spieltab-0.11.md)
 
-- [x] Rangfolge: ausdrückliche eigene Vorgaben, bestätigte Figur und vereinbarte
-  Grenzen; ausgewähltes Welt-/Spielprofil; erst danach der Zufallsimpuls.
-- [x] Welt, Epoche/Technik, Übernatürliches, Ton und zulässige Begleitung bei der
-  Auswahl berücksichtigen. Figurengedanken, Entscheidungen und offene Biografie
-  nicht durch erfundene Schwüre oder Verpflichtungen ersetzen.
-- [x] Eigene Weltbeschreibungen nicht überschreiben. Freitext ist lokal nicht
-  zuverlässig semantisch auswertbar: unklare Umgebungen neutral lassen oder
-  auslassen statt eine vermeintlich passende konkrete Umgebung zu erzwingen.
-- [x] Kleine Auswahl breit auslegbarer Situationen statt großer Motivsammlung.
-  Nicht jede Kombination muss erlaubt sein und nicht jede Achse muss belegt sein.
-- [x] Startpaket enthält den dosierten Impuls und dessen Rang gegenüber dem
-  Profil. Das Plugin verwendet ihn als Ausgangsbedingung, nicht als Ablaufplan.
-  Bestätigte Fähigkeiten und Spielregeln bleiben unverändert.
+## 3. Nächster menschlicher Durchlauf: Spielen statt Pflichtprüfung
 
-### Bedienung und Reproduzierbarkeit
+- [ ] Spieler wählt Figur, Welt und Umfang nach eigener Lust.
+- [ ] Ziel ist ein längerer unterhaltsamer Verlauf; Notizen zu Generator,
+  Spielübersicht, Neuerungen und Spielgefühl entstehen nebenbei.
+- [ ] Keine erzwungenen Kämpfe, Mindestspielzeit oder vorgeschriebenen Entscheidungen.
+  Ein schlechter oder ermüdender Verlauf darf jederzeit beendet werden.
+- [ ] Prüfen, ob gewählter Umfang und Fortschritt sich im normalen Spielen bewähren.
+  Keine neue Kampagne nach jeder kleinen Korrektur verlangen.
 
-- [x] Neu auslosen und gewählte Kombination bei späterer Ausgabe stabil halten;
-  keine neue Auslosung durch Kopieren, Bogenausfüllen oder Druck.
-- [x] Eine Kennung/Seed mit Katalogversion und maßgeblichen Einstellungen erlaubt
-  dieselbe Kombination erneut. Derselbe Seed garantiert keine identische KI-Geschichte.
-- [x] Die konkreten Bausteine zunächst verborgen anzeigen und auf Wunsch aufdecken.
-  Die Übergabe im kopierten/geladenen Starttext bleibt technisch einsehbar:
-  Spoilerschutz in der Oberfläche, kein geheimes Speichersystem.
-- [x] Ändert sich das relevante Profil, Verträglichkeit erneut prüfen und einen
-  nicht mehr passenden alten Impuls nicht unbemerkt übernehmen.
-- [ ] Einzelne Bausteine festhalten sowie eine lokale Auslosungshistorie sind
-  mögliche spätere Erweiterungen, keine Voraussetzung für die erste Fassung.
+## 4. Nächste mögliche Ausbaupakete
 
-### Zwei gezielte Begleitkorrekturen
+1. **Impuls-Historie:** verwendete Kombinationen lokal merken und zunächst
+   ausschließen. Verhalten nach Ausschöpfen festlegen; bewusste Wiederholung
+   über Kennung erhalten. Das verhindert keine ähnlichen Geschichten aus
+   unterschiedlichen Kombinationen. Ausgangsimpulse bleiben optional.
+2. **Optionale Motivimpulse prüfen:** dosierte gestalterische Anregungen statt
+   fester Handlungen oder drei verpflichtender Motive. Noch kein festgelegter Katalog.
+3. **Charakterablage und Bedienkomfort:** mehrere Figuren wieder auswählen,
+   hilfreiche Feldbeschreibungen, Gesamtlayout, Themes und weitere Sprachen nach Nutzen.
+   Browser-Sidebar erst erwägen, falls ein separater Tab nicht genügt.
 
-- [x] Talentbonus +2 im Editor fest anzeigen statt veränderliche Zahlen mit
-  anschließender Fehlermeldung anzubieten. Importierte unzulässige Werte weiterhin
-  erklären, nicht still korrigieren. Keine Änderung der Talentmechanik.
-- [x] Beim NSC-Wissen präzisieren: Der Spielleitung bekannte Fähigkeiten aus dem
-  Bogen sind kein automatisch bekanntes Figurenwissen. Unbekannte Spezialisierung
-  erfragen oder allgemein um Hilfe bitten. Keine rückwirkend erfundene
-  Vorführung; sichtbare Merkmale und gezeigte Kräfte dürfen Rückschlüsse erlauben.
+Einzelne Impulsachsen festhalten bleibt eine mögliche spätere Komfortfunktion.
+Kein Ausbau ist Voraussetzung für den nächsten normalen Durchlauf.
 
-### Fertigkriterien und Testaufwand
+## 5. Beobachten und bei Gelegenheit erproben
 
-- [x] Den kleinen Bausteinvorrat anhand einiger Kombinationen geprüft.
-  Unterschiedliche plausible Anfänge ermöglichen, keine fertigen Handlungen schreiben.
-- [x] Automatisiert: ausgeschaltet unveränderte Ausgabe; reproduzierbare Kombination;
-  Verträglichkeit mit strukturierten Welten und Ton; konservativer Freitextfall;
-  stabile Auslosung; keine Änderung des bestätigten Bogens; klare Versionsübergabe.
-- [x] Drei unabhängige Einstiegsproben mit verschiedenen Zweierkombinationen
-  geprüft: unterschiedliche Beteiligte und Konflikte möglich. Ein Motiv wie
-  schwebende Inseln kam trotzdem vor. Nicht nur Ortsnamen vergleichen. Unterschiedliche Randbedingungen sind
-  eine Chance für Vielfalt, keine Garantie gegen Modellwiederholungen.
-- [ ] Erst danach bei Bedarf ein gebündelter menschlicher Spieltest. Keine fünf
-  vollständigen Kampagnen und keine lange Runde pro kleiner Korrektur verlangen.
-  Eigene Zusatzwünsche dürfen nicht reguläre Einstellungen für den Test ersetzen.
-
-## 3. Nächster größerer Schritt: Charaktertab und Notizen
-
-- [ ] Eigenen lesbaren Tab für den zweiten Monitor öffnen: Werte, Talente,
-  Fähigkeiten, Kosten/Reichweiten, Ausrüstung und Ressourcen übersichtlich halten.
-  Ausgangspunkt ist der bestehende bestätigte Bogen, kein neuer KI-Aufruf.
-- [ ] Einfache Kampagnennotizen ergänzen. Speicherort, Dauerhaftigkeit und Export
-  vorab klar festlegen; lokale Browserdaten sind kein Ersatz für eine Sicherung.
-- [ ] Statischen Stand und manuelle Änderungen klar kennzeichnen; keine
-  automatische Übernahme von Chatereignissen behaupten. Kein Chat-Zugriff nötig.
-- [ ] JSON-Import/-Export und der ursprüngliche Startbogen bleiben verfügbar.
-  Eine lokale Charakterablage mit Wiederwahl kann darauf aufbauen, muss aber
-  nicht bereits zum ersten Tab gehören.
-- [ ] Browsererweiterung/Sidebar nur später prüfen, falls der Tab im Spiel nicht
-  genügt. Kein zweites Produkt als Voraussetzung für die Nachschlagehilfe.
-
-Dieses Paket braucht Bedienprüfungen, nicht automatisch einen neuen langen
-Spieldurchlauf. Layout des gesamten Generators, Themes und weitere Sprachen
-folgen nach erkennbarem Nutzen.
-
-## 4. Gezielte Spieltests, wenn sie ohnehin passen
-
-| Thema | Konkreter Prüfpunkt |
+| Thema | Prüfpunkt |
 | --- | --- |
-| Kampf 0.9 | LP aller sichtbaren Beteiligten, feste Initiative, Bewegung/Deckung, Rückzug, Kapitulation und 0 LP |
-| Magische Ausdauer | Einfache Magie bei leerem Vorrat, reizvolle kostenpflichtige Wirkungen, tatsächliche Regeneration |
-| Zusatzwürfel | Zunächst die ausgewählten Schadenswürfel; Auswirkungen auf Tempo, Wirkung und Verständlichkeit. Andere Zusatzwürfel später nach Bedarf. |
-| Erholung | Gleiche Grundregeln für Spieler, Begleiter und Gegner; Zusatzverletzungen nur nach Vereinbarung |
-| Feste Gefährten | Eigenes Handeln, Werte, gemeinsame Meilensteine und dokumentierte Entwicklung |
-| Besondere Bedürfnisse | Etwa Blutdurst: erreichbare Versorgung und vorher vereinbarte Folgen, kein unangekündigter Hungerzähler |
-| Unabhängige Folgeabenteuer | Den bei Iven gelungenen Beginn später in anderen Läufen bestätigen; Fortsetzung und Abschluss der zweiten Aufgabe beobachten |
-| Langfristige Entwicklung | Neue Zauber/Talentmeisterschaften, konkrete Kontakte, Käufe und spürbare Macht statt automatischer Gegneranpassung |
+| Umfang | Kurz wirklich eigenständig; mittel/lang mit tragenden Wendepunkten und Entwicklung vor dem Finale |
+| Handlungsvielfalt | Auch Eigeninteresse, Gewinn oder Entdeckung können tragen; nicht immer andere retten müssen. Keine Verbotsliste für Fantasy-Motive |
+| Entwicklung | Gaben praktisch nutzen, Kontakte/Privilegien mit Nutzen und Grenzen; Meisterschaften und spätere Machtzuwächse |
+| Kampf | LP, Reihenfolge, Deckung, Bewegung, Rückzug, Kapitulation und 0 LP; kein behauptetes Zufallswerkzeug ohne tatsächlichen Einsatz |
+| Ressourcen/Erholung | Wiederholbare einfache Magie, reizvolle bezahlte Kräfte, echte Regeneration; dieselben Grundregeln für NSC |
+| Zusatzwürfel | Zunächst gewählte Schadenswürfel und ihr Einfluss auf Tempo und Verständlichkeit |
+| Feste Gefährten | Eigenes Handeln, dokumentierte Werte und gemeinsame passende Meilensteine |
+| Besondere Bedürfnisse | Etwa Blutdurst: erreichbare Versorgung und vereinbarte Folgen statt unerwarteter Hungermechanik |
+| Große Entwicklung | Neue Zauber, legendäre Ausrüstung, Transformationen und bewusst übermächtige Phasen; keine automatische Gegneranpassung |
+| Kontinuität | Wissen, Namen, Positionen, Zeit und Finanzen nach Spielauswirkung beurteilen. Hareks Vermutung über Iven ist akzeptable erzählerische Verkürzung |
+| Erzählfluss | Reparaturketten, Antwortlänge und wiederkehrende Zahlen/Motive beobachten, ohne immer neue Einschränkungen anzuhängen |
 
-Nicht alles verlangt einen eigenen Testlauf. Spieler sollen frei handeln und
-keinen Kampf für eine Checkliste provozieren. Ein schlechter oder ermüdender Lauf
-darf beendet werden. Technische Tests belegen keine langfristige Balance.
-
-## 5. Spätere Erweiterungen und Beobachtung
-
-- [ ] Große Aufstiege und Transformationen praktisch erproben: neue Machtformen,
-  Einfluss und bewusst übermächtige Phasen. Regelbasis erlaubt sie bereits;
-  konkrete Effekte werden jeweils vereinbart. Kein Pflichtlevel-/EP-System.
-- [ ] Charaktere speichern/wieder auswählen, bessere Feldhilfen, optionale
-  Pronomenauswahl und weitere Sprachen nach Bedarf.
-- [ ] Namen, Orte, Zeiten, Besitz, Figurenwissen und Kosten nach tatsächlicher
-  Spielauswirkung beobachten. Nicht jeden folgenlosen Darstellungsfehler beheben.
-- [ ] Antworten und Reparaturketten weiter beobachten; bestehende Regeln zuerst
-  bewerten statt reflexartig noch mehr Einschränkungen hinzuzufügen.
-- [ ] Bilder niedrig priorisieren. Der Nutzer akzeptiert sie, sofern Kosten und
-  Limits nicht nachteilig sind; der Export belegt diese Frage nicht. Bildverhalten
-  ist kein Grund, den sonst gelungenen Lauf als gescheitert zu werten.
+Bilder und folgenlose Darstellungsfehler bleiben niedrig priorisiert. Der
+Spielspaß entscheidet mit, nicht allein eine möglichst strenge Regelauslegung.
 
 ## Versionsdokumente
 
+- [Umfang, Fortschritt und Spieltab 0.11](umfang-fortschritt-spieltab-0.11.md)
 - [Ausgangsimpulse und Wissensgrenzen 0.10](ausgangsimpulse-0.10.md)
-
 - [Kampf, Erholung und Übersicht 0.9](kampf-und-erholung-0.9.md)
 - [Weltinitiative und wirksame Kräfte 0.8](weltinitiative-0.8.md)
 - [Gemeinsamer Erzählauftrag 0.7](erzaehlauftrag-0.7.md)
 - [Stand nach Jack 0.6](spielbarer-prototyp-0.6.md)
 - [Weltvorlagen und Kurzabenteuer 0.5](welten-und-kurzabenteuer-0.5.md)
-
-Diese Dokumente beschreiben ihren damaligen Schritt. Aktuelle Beobachtungen und
-Prioritäten stehen hier; ältere Aussagen über noch fehlende Tests können durch
-die Ergebnisse von Marik und Iven überholt sein.

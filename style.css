@@ -32,3 +32,15 @@
 .world-warning{padding:1rem;border:1px solid #b69b58;border-radius:.6rem;margin:1rem 0}
 
 .opening-editor{padding:18px;border:1px solid var(--border);border-radius:8px}.opening-controls{margin-top:16px}.opening-controls label{display:block;color:var(--muted);font-size:14px}.opening-controls input{display:block;width:min(100%,320px);margin:8px 0;padding:10px;color:inherit;background:#0c1320;border:1px solid var(--border);border-radius:6px}.opening-controls details{margin:12px 0}.opening-controls summary{cursor:pointer}.opening-preview{line-height:1.6;color:var(--gold);overflow-wrap:anywhere}#opening-output-guard{padding-bottom:12px}
+
+/* Independent character reference and campaign notes. */
+.play-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(16rem,1fr);gap:1.25rem;align-items:start}
+.play-card{margin-block:0 1rem}.play-card-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.55}
+.play-notes{position:sticky;top:1rem}.play-notes textarea{width:100%;min-height:20rem;box-sizing:border-box}
+.file-button{display:inline-flex;flex-direction:column;gap:.4rem}.file-button input{max-width:17rem}
+#desk-edit{margin-block:1.5rem}#desk-editor .character-reference{display:none}
+@media(max-width:850px){.play-layout{grid-template-columns:1fr}.play-notes{position:static}}
+@media print{body:has(#play-desk) .masthead,#play-desk>.character-actions,#desk-edit,#desk-status,#desk-storage{display:none!important}.play-layout{display:block}.play-notes{position:static}.play-notes textarea{height:auto;min-height:15rem}.play-card{break-inside:avoid}#play-desk{max-width:none}}
+
+.print-notes{display:none}#play-desk .play-desk-link a,#play-desk a{text-decoration:underline}
+@media print{#desk-notes{display:none}.print-notes{display:block;white-space:pre-wrap;overflow-wrap:anywhere}}

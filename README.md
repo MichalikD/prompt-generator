@@ -1,11 +1,28 @@
 # Abenteuer · Prompt-Generator
 
+## Aktuell: Umfang, Fortschritt und Spielübersicht · 0.11.0
+
+Kurzabenteuer schließen ihren zentralen Konflikt eigenständig ab. Mittel und lang
+tragen größere Handlungsbögen mit nutzbarer Zwischenentwicklung. Eine offene
+Kampagne erlaubt weitere Abenteuer, ohne automatisch eine große Hauptgeschichte
+anzulegen. Besondere Gaben, Gegenstände und Kontakte zählen als praktische Entwicklung.
+
+Der neue **Spieltab** (`play.html`) zeigt einen gültigen Bogen lesbar neben
+Kampagnennotizen. Im Charakterbereich auf **Im Spieltab öffnen** klicken oder dort
+JSON importieren. Der Tab behält seinen letzten gültigen Stand beim Neuladen;
+dauerhaft auf dem Gerät speichern erfolgt ausdrücklich per Schaltfläche.
+Bogen und Notizen können gemeinsam als JSON gesichert werden. Kein KI-Aufruf,
+kein Zugriff auf den Spielchat und kein automatischer Abgleich mit Chat oder Generator.
+Der ursprüngliche Startbogen bleibt beim Weiterführen erhalten.
+
+[Bedienung und Grenzen](docs/umfang-fortschritt-spieltab-0.11.md) ·
+[Aktuelle Roadmap](docs/roadmap.md)
+
 Eine statische deutschsprachige Web-App: schrittweise Einstellungen wählen und entweder einen
-kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API, Anmeldung,
-Speicherung oder Synchronisierung.
+kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API oder Anmeldung. Der neue Spieltab bietet lokale Speicherung; kein automatischer Abgleich mit dem Chat.
 Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
 
-## Plugin-Regelbasis 0.10.0
+## Plugin-Regelbasis 0.11.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -38,7 +55,7 @@ und nach Abschluss der Vorbereitung kopierbar, herunterladbar und druckbar. Sie
 übernimmt die eingetragenen Fähigkeiten unverändert und wird nicht mit dem
 Spielchat synchronisiert. [Entscheidungen und Prüfumfang](docs/kampf-und-erholung-0.9.md).
 
-Neu in **0.10.0**: Im Schritt Spielvorgaben kann ein optionaler Ausgangsimpuls
+Neu in **0.11.0**: Im Schritt Spielvorgaben kann ein optionaler Ausgangsimpuls
 aktiviert werden. Er kombiniert nur Umgebung und Ausgangslage; konkrete Motive,
 Ziele und Lösungen entwickelt weiterhin die Spielleitung. Die Kennung hält die
 Auslosung stabil und erlaubt dieselben Bausteine bei denselben Vorgaben erneut.
