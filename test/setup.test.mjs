@@ -15,9 +15,10 @@ test('Eigene Welt blockiert den ersten Schritt, ein fehlender Bogen erst den Fig
  assert.match(setupErrors(2,config)[0],/Bogen/);
  assert.deepEqual(setupErrors(2,{...config,characterSource:'chat'}),[]);
 });
-test('Ausgabe verlangt gültige Welt, Optionen und ausdrücklich bestätigte Figur',()=>{
+test('Vorbereitung validiert die Figur; die Übernahme bestätigt sie vor der Ausgabe',()=>{
  assert.deepEqual(setupErrors(3,config,figure),[]);
- assert.match(setupErrors(3,config,{...figure,confirmed:false})[0],/bestätigen/);
+ assert.deepEqual(setupErrors(3,config,{...figure,confirmed:false}),[]);
+ assert.throws(()=>buildOutput(config,'plugin',{...figure,confirmed:false}),/bestätigt|bestätigen/);
  const bad=structuredClone(figure);bad.character.finances.funds=[{currency:'Credits',amount:-1}];
  assert.ok(setupErrors(3,config,bad).length);
  assert.ok(setupErrors(3,{...config,focus:['social','action','mystery']},figure).length);

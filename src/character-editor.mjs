@@ -1,150 +1,102 @@
-import {newCharacterDocument, validateCharacterDocument, parseCharacter, serializeCharacter, characterText, continueCharacter, characterTemplate, attributeLabels} from './character.mjs';
+import {newCharacterDocument,validateCharacterDocument,parseCharacter,serializeCharacter,characterText,continueCharacter,characterTemplate,attributeLabels} from './character.mjs';
 import {characterMarkup} from './character-view.mjs';
-import {mountCharacterReference} from './character-reference.mjs';
-export function mountCharacterEditor(root, {onChange=()=>{}, world='', worldLocked=false}={}) {
-root.innerHTML=characterMarkup;
-const reference=mountCharacterReference(root.querySelector('.character-reference'));
-root.classList.toggle('embedded-editor',worldLocked);
-if(worldLocked) {
- for(const id of ['copy-character','download-character-text'])root.querySelector('#'+id).hidden=true;
- const preview=root.querySelector('[aria-labelledby=character-preview-title]');
- const details=document.createElement('details'), summary=document.createElement('summary');
- summary.textContent='Bogenvorschau und JSON prüfen'; details.append(summary);
- for(const child of [...preview.children])if(!['character-status','character-errors'].includes(child.id))details.append(child);
- preview.append(details);
-}
-let doc=newCharacterDocument();
-let textRevision=0;
-const $=selector=>root.querySelector(selector);
-const form=$('#character-fields');
-form.addEventListener('submit',event=>event.preventDefault());
-const labels={currency:'Währung',amount:'Verfügbarer Betrag',mechanical:'Eine Mechanik für dieses Bedürfnis vereinbaren',care:'Versorgung / Erholung',name:'Name',description:'Beschreibung / Funktion',bonus:'Bonus',effect:'Wirkung',cost:'Kosten (ggf. „keine“)',limits:'Grenzen',trigger:'Auslöser',mitigation:'Abmilderung',quantity:'Anzahl',slots:'Tragplätze pro Einheit',current:'Aktuell',max:'Maximum',regeneration:'Regeneration',milestone:'Meilenstein',change:'Änderung',benefit:'Konkreter Nutzen'};
-function field(parent,path,label,type='text') {
- const wrap=document.createElement('div');wrap.className='character-field';
- if(path[0]==='talents'&&path.at(-1)==='bonus') {
-  const value=document.createElement('p');value.className='field-help';value.textContent='Bonus: +2 · fest, nicht stapelbar';wrap.append(value);parent.append(wrap);return;
+import {autoGrow,watchGrow,openDialog,downloadFile,copyText} from './ui.mjs';
+
+export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=false,running=false}={}) {
+ root.innerHTML=characterMarkup;
+ const $=s=>root.querySelector(s);let doc=newCharacterDocument(),active='identity';
+ const form=$('#character-fields');form.addEventListener('submit',e=>e.preventDefault());
+ const names={identity:'Identität',values:'Werte & Talente',abilities:'Fähigkeiten',inventory:'Ausrüstung & Mittel',background:'Hintergrund',development:'Entwicklung'};
+ const labels={name:'Name',range:'Reichweite',targets:'Ziele / Fläche',damage:'Schaden (ggf. „kein Schaden“)',effect:'Wirkung / Auflösung / Dauer',cost:'Kosten',limits:'Weitere Grenzen',description:'Beschreibung / Funktion',bonus:'Probenbonus',trigger:'Auslöser',mitigation:'Abmilderung',quantity:'Anzahl',slots:'Tragplätze je Stück',currency:'Währung',amount:'Betrag',current:'Aktuell',max:'Maximum',regeneration:'Regeneration',care:'Versorgung / Erholung',mechanical:'Vereinbarte Mechanik',milestone:'Meilenstein',change:'Änderung',benefit:'Konkreter Nutzen'};
+ function changed(){doc.confirmed=false;update();}
+ function field(parent,path,label,type='text') {
+  const wrap=document.createElement('div');wrap.className='character-field';
+  if(path[0]==='talents'&&path.at(-1)==='bonus'){wrap.textContent='Talentbonus +2 · fest, nicht stapelbar';wrap.classList.add('field-help');parent.append(wrap);return;}
+  const caption=document.createElement('label');caption.htmlFor='cf-'+path.join('-');caption.textContent=label;
+  const input=document.createElement(type==='textarea'?'textarea':'input');input.id=caption.htmlFor;input.name=path.join('.');
+  if(type==='textarea'){input.rows=1;input.dataset.grow='';}else input.type=type;
+  if(type==='number')input.step=path.at(-1)==='amount'?'any':'1';
+  const object=path.slice(0,-1).reduce((o,k)=>o[k],doc.character),key=path.at(-1),value=object[key];
+  if(type==='checkbox')input.checked=value;else input.value=value??'';
+  if(path[0]==='abilities'&&['range','targets','damage'].includes(key)&&!Object.hasOwn(object,key))input.placeholder='Bisher in Wirkung / Grenzen erfasst';
+  if(path[0]==='abilities'&&key==='range')input.setAttribute('aria-description','Leer oder 0 bedeutet ohne Reichweitenbeschränkung. Berührung ausdrücklich eintragen.');
+  if(path[0]==='needs'&&['trigger','effect','care'].includes(key))wrap.hidden=!doc.character.needs[path[1]].mechanical;
+  input.addEventListener('input',()=>{object[key]=type==='checkbox'?input.checked:type==='number'?(input.value===''?NaN:Number(input.value)):input.value;doc.confirmed=false;if(type==='checkbox')render();else update();});
+  wrap.append(caption,input);parent.append(wrap);
  }
- const caption=document.createElement('label');caption.textContent=label;caption.htmlFor='cf-'+path.join('-');
- const input=document.createElement(type==='textarea'?'textarea':'input');
- input.id=caption.htmlFor;input.name=path.join('.');
- if(type==='textarea') input.rows=3;
- else input.type=type;
- if(type==='number') input.step=path.at(-1)==='amount'?'any':'1';
- const value=path.reduce((object,key)=>object[key],doc.character);
- if(type==='checkbox')input.checked=value;else input.value=value;
- if(path[0]==='needs'&&['trigger','effect','care'].includes(path.at(-1)))wrap.hidden=!doc.character.needs[path[1]].mechanical;
- input.addEventListener('input',()=>{
-  const object=path.slice(0,-1).reduce((object,key)=>object[key],doc.character);
-  object[path.at(-1)]=type==='checkbox'?input.checked:type==='number'?(input.value===''?NaN:Number(input.value)):input.value;
-  doc.confirmed=false;$('#character-confirmed').checked=false;if(type==='checkbox')render();else update();
- });
- wrap.append(caption,input);parent.append(wrap);
-}
-function section(title) {
- const el=document.createElement('fieldset'), legend=document.createElement('legend');legend.textContent=title;el.append(legend);form.append(el);return el;
-}
-function list(title,path,defaults,numbers=[]) {
- const parent=section(title), rows=path.reduce((o,k)=>o[k],doc.character);
- rows.forEach((row,index)=>{
-  const box=document.createElement('div');box.className='character-row';
-  const heading=document.createElement('h3');heading.textContent=`${title} ${index+1}`;box.append(heading);
-  for(const key of Object.keys(defaults)) field(box,[...path,index,key],labels[key],typeof defaults[key]==='boolean'?'checkbox':numbers.includes(key)?'number':['description','effect','limits','trigger','mitigation','benefit','regeneration','care'].includes(key)?'textarea':'text');
-  const remove=document.createElement('button');remove.type='button';remove.className='quiet';remove.textContent=`${title} ${index+1} entfernen`;
-  remove.addEventListener('click',()=>{rows.splice(index,1);doc.confirmed=false;render();});box.append(remove);parent.append(box);
- });
- const add=document.createElement('button');add.type='button';add.className='quiet';add.textContent=`${title} hinzufügen`;
- add.addEventListener('click',()=>{rows.push(structuredClone(defaults));doc.confirmed=false;render();});parent.append(add);
-}
-function render() {
- form.replaceChildren();
- const identity=section('Identität');
- for(const [key,label] of Object.entries({name:'Name',pronouns:'Pronomen (optional)',ancestry:'Spezies / Abstammung',origin:'Herkunft (darf offen bleiben)',role:'Rolle / Beruf',description:'Figurenbeschreibung'})) field(identity,['identity',key],label,key==='description'?'textarea':'text');
- const attributes=section('Vier Attribute');
- for(const [key,label] of Object.entries(attributeLabels)) field(attributes,['attributes',key],label,'number');
- list('Talent',['talents'],{name:'',description:'',bonus:2},['bonus']);
- list('Fähigkeit',['abilities'],{name:'',effect:'',cost:'',limits:''});
- const powerHelp=document.createElement('p');powerHelp.className='field-help';powerHelp.textContent='Wirkung einschließlich Schaden, Reichweite, Ziele oder Fläche und Auflösung festlegen. Kosten und Grenzen machen auch mächtige Kräfte berechenbar; gefährliche Wirkungen und mögliche Umgebungsfolgen dürfen dazugehören.';form.lastElementChild.insertBefore(powerHelp,form.lastElementChild.children[1]??null);
- list('Schwäche',['weaknesses'],{name:'',trigger:'',effect:'',mitigation:''});
- const vitals=section('LP und Verletzungen');field(vitals,['vitals','hp'],'Aktuelle LP','number');field(vitals,['vitals','maxHp'],'Maximale LP','number');field(vitals,['vitals','injuries'],'Verletzungen (optional)','textarea');
- list('Fähigkeitsressource (optional)',['vitals','resources'],{name:'',current:3,max:3,effect:'',cost:'',regeneration:''},['current','max']);
- const resourceHelp=document.createElement('p');resourceHelp.className='field-help';resourceHelp.textContent='Nur Punkte für Fähigkeiten, etwa Magie oder Fokus. Geld gehört unter Geld und Vermögen, Munition zur Ausrüstung. Ohne solche Fähigkeiten bleibt die Liste leer.';form.lastElementChild.insertBefore(resourceHelp,form.lastElementChild.children[1]??null);
- list('Ausrüstung',['inventory'],{name:'',quantity:1,slots:1,bonus:0,description:''},['quantity','slots','bonus']);
- const money=section('Geld und Vermögen');
- const moneyHelp=document.createElement('p');moneyHelp.className='field-help';moneyHelp.textContent='Geld hat keinen Maximalwert und regeneriert nicht. Kein Eintrag bedeutet unbekannt, nicht mittellos. Für einen bewussten Start ohne Geld 0 eintragen.';money.append(moneyHelp);
- list('Guthaben',['finances','funds'],{currency:'',amount:0},['amount']);
- money.append(form.lastElementChild);
- field(money,['finances','purchasingPower'],'Kaufkraft / Preisanker (optional)','textarea');
- field(money,['finances','assets'],'Weiteres Vermögen (optional)','textarea');
- const needHelp=section('Besondere Bedürfnisse (optional)');
- const hint=document.createElement('p');hint.className='field-help';hint.textContent='Normales Essen, Trinken und Schlafen muss hier nicht stehen. Besondere Bedürfnisse können rein beschreibend bleiben. Eine zusätzliche Mechanik braucht vor dem Spiel einen Auslöser, eine konkrete Wirkung und Versorgung / Erholung.';needHelp.append(hint);
- list('Besonderes Bedürfnis',['needs'],{name:'',description:'',mechanical:false,trigger:'',effect:'',care:''});
- needHelp.append(form.lastElementChild);
- const background=section('Hintergrund');for(const [key,label] of Object.entries({confirmed:'Bestätigte Fakten',open:'Bewusst offen',excluded:'Ausgeschlossene Zuschreibungen'})) field(background,['background',key],label,'textarea');
- if(doc.kind==='current') list('Entwicklung',['development'],{milestone:'',change:'',benefit:'',limits:''});
- $('#character-confirmed').checked=doc.confirmed;
- $('#character-title').textContent=doc.kind==='start'?'Startbogen bearbeiten':'Aktuellen Figurenbogen bearbeiten';
- $('#character-kind-help').textContent=doc.kind==='start'?'Start: Attribute −1 bis +3, Summe +5; zwei Talente, situative Schwäche, 10 LP und acht Tragplätze. Entwicklung entsteht im Spiel. Nach Bestätigung kannst du mit „Als aktuellen Bogen weiterführen“ erhaltene Verbesserungen dokumentieren.':'Aktueller Bogen: Attribute bis +5. Bereits erhaltene Entwicklung mit Nutzen dokumentieren, keinen Pflichtplan für künftige Steigerungen. Der ursprüngliche Startbogen bleibt unverändert; dies ist kein vollständiger Kampagnenspielstand.';
- $('#character-original-panel').hidden=doc.kind!=='current';
- $('#character-original').value=doc.startCharacter?characterText({...newCharacterDocument(),character:doc.startCharacter,confirmed:true}):'Ursprünglicher Startbogen nicht verfügbar; nicht erfinden.';
- update();
-}
-function update() {
- textRevision++;
- const errors=validateCharacterDocument(doc);
- reference.setDocument(doc);
- $('#character-errors').replaceChildren(...errors.map(message=>{const li=document.createElement('li');li.textContent=message;return li;}));
- for(const id of ['copy-character','download-character-text','download-character-json']) $('#'+id).disabled=errors.length>0;
- $('#character-continue').disabled=errors.length>0||doc.kind!=='start'||!doc.confirmed;
- $('#character-confirmed').disabled=errors.length>0;
- $('#character-status').textContent=errors.length?`${errors.length} Angaben bitte prüfen. Ausgabe erst nach gültigem Bogen.`:doc.confirmed?(worldLocked?'Bogen bestätigt. Er wird am Ende automatisch in die erste Chatnachricht übernommen.':'Bogen bestätigt. Für den Spielchat kopieren oder im Generator importieren.'):'Bogen formal gültig. Entwurf prüfen und vor dem Spielstart bestätigen.';
- $('#character-preview').value=errors.length?'':characterText(doc);
- $('#character-json').value=errors.length?'':serializeCharacter(doc);
- onChange(structuredClone(doc));
-}
-$('#character-confirmed').addEventListener('change',()=>{doc.confirmed=$('#character-confirmed').checked;update();});
-$('#character-new').addEventListener('click',()=>{if(!window.confirm('Den bearbeiteten Bogen ersetzen? Sichere ihn vorher als JSON, wenn du ihn behalten möchtest.'))return;doc=newCharacterDocument();render();});
-$('#character-continue').addEventListener('click',()=>{doc=continueCharacter(doc);render();});
-function importText(text) {
- try {
-  const next=parseCharacter(text);
-  if(!window.confirm('Den bearbeiteten Bogen durch den geprüften Import ersetzen?'))return;
-  doc=next;render();$('#import-status').textContent='Import erfolgreich. Angaben prüfen; importierte Entwürfe selbst bestätigen.';
- } catch(error) {$('#import-status').textContent=error.message;}
-}
-$('#import-character').addEventListener('click',()=>importText($('#character-import').value));
-$('#character-file').addEventListener('change',async()=>{
- const file=$('#character-file').files[0];if(!file)return;
- if(file.size>1000000){$('#import-status').textContent='Bitte eine JSON-Datei bis 1 MB verwenden.';return;}
- try {importText(await file.text());}catch{$('#import-status').textContent='Datei konnte nicht gelesen werden. Bisheriger Bogen bleibt erhalten.';}
- $('#character-file').value='';
-});
-async function copy(field) {
- const value=field.value,revision=textRevision;
- try {if(!navigator.clipboard?.writeText)throw new Error();await navigator.clipboard.writeText(value);if(revision===textRevision)$('#character-status').textContent='Kopiert.';}
- catch {if(revision!==textRevision)return;field.focus();field.select();$('#character-status').textContent='Bitte den markierten Text manuell kopieren.';}
-}
-$('#copy-character').addEventListener('click',()=>copy($('#character-preview')));
-$('#copy-template').addEventListener('click',()=>copy($('#character-template')));
-function download(text,name,type) {
- const url=URL.createObjectURL(new Blob([text],{type})),link=document.createElement('a');link.href=url;link.download=name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
-$('#download-character-json').addEventListener('click',()=>{if(!validateCharacterDocument(doc).length)download(serializeCharacter(doc),'charakterbogen.json','application/json');});
-$('#download-character-text').addEventListener('click',()=>{if(!validateCharacterDocument(doc).length)download(characterText(doc),'charakterbogen.md','text/markdown;charset=utf-8');});
-function template() {textRevision++;$('#character-template').value=characterTemplate($('#character-idea').value,$('#character-world').value);}
-for(const id of ['character-idea','character-world']) $('#'+id).addEventListener('input',template);
-$('#character-world').value=world;
-$('#character-world').readOnly=worldLocked;
-if(worldLocked) $('#character-world').setAttribute('aria-label','Weltvorgaben aus dem Abenteuerprofil (automatisch übernommen)');
-template();render();
-return {
- getDocument:()=>structuredClone(doc),
- setDocument(value) {
-  const next=parseCharacter(JSON.stringify(value));doc=next;render();
- },
- setWorld(value) {
-  if($('#character-world').value===value)return;
-  $('#character-world').value=value;template();
-  doc.confirmed=false;$('#character-confirmed').checked=false;update();
+ function section(parent,title){const el=document.createElement('fieldset'),legend=document.createElement('legend');legend.textContent=title;el.append(legend);parent.append(el);return el;}
+ function list(parent,title,path,defaults,numbers=[]) {
+  const box=section(parent,title),rows=path.reduce((o,k)=>o[k],doc.character);
+  rows.forEach((row,index)=>{
+   const entry=document.createElement('details');entry.className='character-row';entry.open=index===0;
+   const summary=document.createElement('summary');summary.textContent=row.name||`${title} ${index+1}`;entry.append(summary);
+   const actions=document.createElement('div');actions.className='actions row-actions';const remove=document.createElement('button');remove.type='button';remove.className='danger small';remove.textContent='Entfernen';remove.setAttribute('aria-label',`${title} ${index+1} entfernen`);remove.addEventListener('click',()=>{rows.splice(index,1);doc.confirmed=false;render();});actions.append(remove);entry.append(actions);
+   const fields=document.createElement('div');fields.className='field-grid';
+   for(const key of Object.keys(defaults)){
+    const type=typeof defaults[key]==='boolean'?'checkbox':numbers.includes(key)?'number':['description','effect','limits','trigger','mitigation','benefit','regeneration','care','targets'].includes(key)?'textarea':'text';
+    field(fields,[...path,index,key],labels[key]??key,type);
+    if(['effect','limits','description','trigger','mitigation','benefit','regeneration','care'].includes(key))fields.lastElementChild.classList.add('full-width');
+   }
+   entry.append(fields);box.append(entry);
+  });
+  const add=document.createElement('button');add.type='button';add.className='small';add.textContent=`+ ${title} hinzufügen`;add.addEventListener('click',()=>{rows.push(structuredClone(defaults));doc.confirmed=false;render();const target=form.querySelectorAll(`[data-area=${active}] details.character-row`);if(target.length)target[target.length-1].open=true;autoGrow(root);});box.append(add);return box;
  }
-};
+ function showArea(id){active=id;for(const p of form.children)p.hidden=p.dataset.area!==active;for(const b of root.querySelectorAll('[data-editor-tab]'))b.setAttribute('aria-selected',String(b.dataset.editorTab===active));autoGrow(root);}
+ function render(){
+  form.replaceChildren();$('.editor-tabs').replaceChildren();
+  const areas={};for(const [id,name]of Object.entries(names)){
+   if(id==='development'&&doc.kind!=='current')continue;
+   const panel=document.createElement('div');panel.dataset.area=id;panel.id='editor-area-'+id;panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby','editor-tab-'+id);form.append(panel);areas[id]=panel;
+   const tab=document.createElement('button');tab.type='button';tab.id='editor-tab-'+id;tab.textContent=name;tab.dataset.editorTab=id;tab.setAttribute('role','tab');tab.setAttribute('aria-controls',panel.id);tab.addEventListener('click',()=>showArea(id));$('.editor-tabs').append(tab);
+  }
+  $('.editor-tabs').setAttribute('role','tablist');
+  const identity=section(areas.identity,'Identität');identity.classList.add('field-grid');
+  for(const [key,label]of Object.entries({name:'Name',pronouns:'Pronomen (optional)',ancestry:'Spezies / Abstammung',origin:'Herkunft (darf offen bleiben)',role:'Rolle / Beruf',description:'Figurenbeschreibung'}))field(identity,['identity',key],label,key==='description'?'textarea':'text');
+  const attributes=section(areas.values,'Vier Attribute');attributes.classList.add('attributes-grid');for(const [key,label]of Object.entries(attributeLabels))field(attributes,['attributes',key],label,'number');
+  list(areas.values,'Talent',['talents'],{name:'',description:'',bonus:2},['bonus']);
+  list(areas.values,'Schwäche',['weaknesses'],{name:'',trigger:'',effect:'',mitigation:''});
+  const vitals=section(areas.values,'LP und Verletzungen');vitals.classList.add('field-grid');field(vitals,['vitals','hp'],'Aktuelle LP','number');field(vitals,['vitals','maxHp'],'Maximale LP','number');field(vitals,['vitals','injuries'],'Verletzungen','textarea');
+  const help=document.createElement('p');help.className='field-help';help.textContent='Reichweite: ausdrücklich leer oder 0 = ohne Reichweitenbeschränkung. Berührung eintragen. Sicht und weitere Grenzen bleiben gültig. Bei bisherigen Bögen stehen fehlende Einzelangaben weiterhin in Wirkung / Grenzen; sie werden nicht automatisch geändert.';areas.abilities.append(help);
+  list(areas.abilities,'Fähigkeit',['abilities'],{name:'',range:'',targets:'',damage:'',effect:'',cost:'',limits:''});
+  list(areas.inventory,'Ausrüstung',['inventory'],{name:'',quantity:1,slots:1,bonus:0,description:''},['quantity','slots','bonus']);
+  const capacity=document.createElement('p');capacity.id='character-capacity';capacity.className='field-help';areas.inventory.append(capacity);
+  list(areas.inventory,'Guthaben',['finances','funds'],{currency:'',amount:0},['amount']);
+  const money=section(areas.inventory,'Geld und Vermögen');field(money,['finances','purchasingPower'],'Kaufkraft / Preisanker','textarea');field(money,['finances','assets'],'Weiteres Vermögen','textarea');
+  list(areas.inventory,'Fähigkeitsressource',['vitals','resources'],{name:'',current:3,max:3,effect:'',cost:'',regeneration:''},['current','max']);
+  list(areas.inventory,'Besonderes Bedürfnis',['needs'],{name:'',description:'',mechanical:false,trigger:'',effect:'',care:''});
+  const background=section(areas.background,'Hintergrund');for(const [key,label]of Object.entries({confirmed:'Bestätigte Fakten',open:'Bewusst offen',excluded:'Ausgeschlossene Zuschreibungen'}))field(background,['background',key],label,'textarea');
+  if(areas.development)list(areas.development,'Entwicklung',['development'],{milestone:'',change:'',benefit:'',limits:''});
+  $('#character-title').textContent=doc.kind==='start'?'Startbogen':'Laufender Bogen';
+  $('#character-kind-help').textContent=doc.kind==='start'?'Start: vier Attribute −1 bis +3, Summe +5; zwei Talente, situative Schwäche, 10 LP und acht Tragplätze.':'Manuell gepflegter Stand. Der ursprüngliche Startbogen bleibt erhalten; Änderungen gelten im Spiel erst nach Absprache.';
+  $('#character-original-panel').hidden=doc.kind!=='current';$('#character-original').value=doc.startCharacter?characterText({...newCharacterDocument(),character:doc.startCharacter,confirmed:true}):'Kein ursprünglicher Startbogen vorhanden.';
+  if(!areas[active])active='identity';showArea(active);update();
+ }
+ function update(){
+  const errors=validateCharacterDocument(doc);
+  $('#character-errors').replaceChildren(...errors.map(message=>{const li=document.createElement('li');li.textContent=message;return li;}));
+  for(const id of ['character-accept','download-character-json'])$('#'+id).disabled=!!errors.length;
+  $('#character-continue').hidden=doc.kind!=='start';$('#character-continue').disabled=!!errors.length;
+  $('#character-capacity').textContent=`Gepäck: ${doc.character.inventory.reduce((n,i)=>n+i.quantity*i.slots,0)} / 8 Tragplätze. Geld und Fähigkeitsressourcen werden getrennt geführt.`;
+  $('#character-status').textContent=errors.length?'Bitte unvollständige Angaben korrigieren.':worldLocked?'Bogen ist formal gültig. „Weiter zur Ausgabe“ übernimmt ihn.':running?'Änderungen mit „Übernehmen“ im Dialog abschließen.':'Bogen ist formal gültig und kann übernommen werden.';
+  onChange(structuredClone(doc));
+ }
+ function acceptDocument(){const errors=validateCharacterDocument(doc);if(errors.length)throw new Error(errors[0]);doc.confirmed=true;update();return structuredClone(doc);}
+ $('#character-accept').addEventListener('click',acceptDocument);
+ $('#character-continue').addEventListener('click',()=>{if(!validateCharacterDocument(doc).length){doc.confirmed=true;doc=continueCharacter(doc);render();}});
+ $('#character-new').addEventListener('click',()=>{if(!window.confirm('Bogen ersetzen? Vorher bei Bedarf als JSON sichern.'))return;doc=newCharacterDocument();render();});
+ const templateDialog=$('#character-template-dialog'),importDialog=$('#character-import-dialog');
+ $('#open-template').addEventListener('click',()=>openDialog(templateDialog));$('#open-import').addEventListener('click',()=>openDialog(importDialog));
+ for(const dialog of [templateDialog,importDialog])dialog.querySelector('[data-close]').addEventListener('click',()=>dialog.close());
+ function importText(text){try{const next=parseCharacter(text);if(!window.confirm('Den Bogen durch den geprüften Import ersetzen?'))return;doc=next;render();$('#import-status').textContent='Import erfolgreich.';importDialog.close();}catch(e){$('#import-status').textContent=e.message;}}
+ $('#import-character').addEventListener('click',()=>importText($('#character-import').value));
+ $('#character-file').addEventListener('change',async()=>{const file=$('#character-file').files[0];if(!file)return;try{if(file.size>1000000)throw new Error('Bitte eine JSON-Datei bis 1 MB verwenden.');importText(await file.text());}catch(e){$('#import-status').textContent=e.message;}finally{$('#character-file').value='';}});
+ $('#download-character-json').addEventListener('click',()=>{if(!validateCharacterDocument(doc).length)downloadFile(serializeCharacter(doc),'charakterbogen.json','application/json');});
+ function template(){$('#character-template').value=characterTemplate($('#character-idea').value,$('#character-world').value);autoGrow(templateDialog);}
+ for(const id of ['character-idea','character-world'])$('#'+id).addEventListener('input',template);
+ $('#copy-template').addEventListener('click',()=>copyText($('#character-template').value,$('#template-status'),$('#character-template')));
+ $('#character-world').value=world;$('#character-world').readOnly=worldLocked;template();
+ if(worldLocked||running)$('.editor-accept').hidden=true;
+ if(running){$('.editor-toolbar').hidden=true;templateDialog.remove();importDialog.remove();}
+ watchGrow(root);render();
+ return {getDocument:()=>structuredClone(doc),acceptDocument,setDocument(value){doc=parseCharacter(JSON.stringify(value));render();},setWorld(value){if($('#character-world').value===value)return;$('#character-world').value=value;template();doc.confirmed=false;update();},refresh(){autoGrow(root);}};
 }
