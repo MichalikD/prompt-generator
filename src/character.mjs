@@ -1,4 +1,4 @@
-import { languageDirective, localizationPolicy, ruleAttributes } from './language.mjs';
+import { languageDirective, pluginLocalizationPolicy, ruleAttributes } from './language.mjs';
 export const CHARACTER_VERSION = 3;
 export const attributeLabels = {strength:'Kraft', dexterity:'Geschick', intellect:'Verstand', insight:'Gespür'};
 export function emptyCharacter() {
@@ -151,7 +151,7 @@ export function characterTemplate(idea='',world='') {
  example.character.talents=[{name:'Talent 1',description:'Useful domain matching the talent name',bonus:2},{name:'Talent 2',description:'Different useful domain',bonus:2}];
  example.character.weaknesses=[{name:'Situational weakness',trigger:'Observable trigger',effect:'Concrete effect',mitigation:'Possible mitigation'}];
  return [
-  languageDirective, localizationPolicy,
+  languageDirective, pluginLocalizationPolicy,
   'Create a starting sheet for a free D20 roleplaying game from my idea. Do not start the story. Return one JSON object, no Markdown or extra fields, matching the template. If an essential contradiction requires agreement first, ask one focused question instead of producing incompatible JSON. Keep format, version, kind and confirmed unchanged. No API or tools required.',
   `CHARACTER IDEA\n${idea.trim()||'[Insert your character idea]'}`,
   `WORLD SPECIFICATIONS\n${world.trim()||'[Insert the world specifications from the adventure profile]'}`,

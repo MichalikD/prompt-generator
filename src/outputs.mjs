@@ -1,4 +1,4 @@
-import { languageDirective, localizationPolicy, optionNames } from './language.mjs';
+import { languageDirective, pluginLocalizationPolicy, optionNames } from './language.mjs';
 import { characterText, validateCharacterDocument } from './character.mjs';
 import { createProfile, profileIds } from './profile.mjs';
 import { pluginProfileText, pluginChoiceText } from './plugin-profile.mjs';
@@ -8,7 +8,7 @@ import {openingEnabled,resolveOpening,openingText} from './opening.mjs';
 
 export const PLUGIN = Object.freeze({
   name: 'Open Game Master',
-  version: '0.12.0',
+  version: '0.13.0',
   url: 'https://chatgpt.com/plugins/plugins_6ad5185c00f481918c6b29c904cfab37',
 });
 
@@ -23,7 +23,7 @@ export function buildPluginPackage(config = defaults, character=null) {
   const profile = createProfile(config);
   const opening = resolveOpening(config);
   const projectInstructions = [
-    languageDirective, localizationPolicy,
+    languageDirective, pluginLocalizationPolicy,
     `This project contains one solo RPG run with the explicitly selected plugin "${PLUGIN.name}", rules version ${PLUGIN.version}.`,
     'Use its GM instructions and references together with my confirmed setting and play options from the first message. Apply that tone; player control of their character does not prevent the world or opponents from initiating consequential action.',
     'I control my character; you control the world and consequences. Preserve confirmed facts, the starting sheet and agreed deviations. Adopt another rules version only at my explicit request.',
@@ -34,7 +34,7 @@ export function buildPluginPackage(config = defaults, character=null) {
   const startMessage = [
     languageDirective,
     `New solo run with "${PLUGIN.name}", rules version ${PLUGIN.version}.`,
-    'Read the GM skill and “Adventure and World” first. Mention access problems only; begin without a loading report.',
+    'Read the GM skill and “Adventure and World” first, and apply their continuation preparation at later adventure boundaries. Mention access problems only; begin without a loading report.',
     'Apply the selected profile and confirmed sheet throughout this run. Explicit choices replace the plugin fallback values; world adaptations replace conflicting template suggestions.',
     pluginProfileText(profile, selected, groups),
     ...groups.filter(group=>!profileIds.includes(group.id) && !(character && group.id==='creation')).map(group => `${optionNames[group.id]}: ${pluginChoiceText(group.id,selected[group.id])}`),

@@ -123,6 +123,9 @@ function worldPresence(world) {
  if(world.template==='fantasy') return world.powers==='none'
   ? 'Make the fantasy world concrete through its peoples, cultures, landscapes and unusual places while respecting the exclusion of supernatural powers.'
   : 'Make fantasy present throughout the campaign: magical practices, nonhuman peoples, creatures and extraordinary places shape opportunities, institutions and dangers according to the effective specifications and explicit exclusions. A medieval era does not reduce this world to mundane village life. The character\'s starting abilities do not cap the powers or creatures that exist elsewhere.';
- if(world.template==='mythology') return 'Let the selected mythology shape places, interests and extraordinary encounters in play; distinguish divine action, mortal knowledge and belief.';
+ if(world.template==='mythology') return world.powers==='none'
+  ? 'Let the selected mythology shape beliefs, cultures and places while respecting the exclusion of supernatural powers; do not turn belief into demonstrated divine intervention.'
+  : 'Let the selected mythology shape places, interests and extraordinary encounters in play; distinguish divine action, mortal knowledge and belief.';
+ if(['limited','common','divine'].includes(world.powers)) return 'Supernatural powers are part of this selected world, including in later adventures. Give them concrete playable presence through fitting beings, places, practices, opportunities or dangers; do not leave them only as rumours or repeatedly explain them all away. Match the agreed prevalence and explicit world specifications, without a magic-encounter quota or automatic powers for the character.';
  return '';
 }

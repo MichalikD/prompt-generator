@@ -1,6 +1,17 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Geführtes Layout und Fähigkeiten · 0.12.0
+## Aktuell: Folgeabenteuer und wirksame Weltvorgaben · 0.13.0
+
+Der erfolgreiche Kenji-Durchlauf bleibt die Grundlage. Die Regelbasis ordnet
+Abschluss, Entwicklung, Ruhephasen und neue Abenteuer gemeinsam. Fortsetzungen
+sollen andere tragende Spielerhandlungen ermöglichen; moralische Ansprachen
+überwinden tatsächlichen Widerstand nicht automatisch. Gewählte Magie erhält
+auch außerhalb klassischer Fantasy eine konkrete spielbare Präsenz. Figur und
+Weltvorgaben bleiben verbindlich; Kampf-, Magie- und Würfelquoten gibt es nicht.
+
+[Änderungen und Prüfgrenzen](docs/fortsetzungen-0.13.md)
+
+## Generator und Spielübersicht · seit 0.12
 
 **Welt → Spielvorgaben → Figur → Ausgabe.** Schritte sind direkt anwählbar;
 fehlende Pflichtangaben werden im zuständigen Schritt erklärt. Der Charaktereditor
@@ -21,7 +32,7 @@ Eine statische deutschsprachige Web-App ohne Anmeldung und ohne KI-Aufruf im Gen
 [Bedienung und Reichweitenregeln](docs/layout-und-faehigkeiten-0.12.md) ·
 [Aktuelle Roadmap](docs/roadmap.md)
 
-## Plugin-Regelbasis 0.12.0
+## Plugin-Regelbasis 0.13.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
