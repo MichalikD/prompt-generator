@@ -69,7 +69,10 @@ alleinige Wirkung der Impulse und beliebig lange Vielfalt sind damit nicht bewie
 
 ## 3. Nächster menschlicher Durchlauf: Spielen statt Pflichtprüfung
 
-- [ ] Spieler wählt Figur, Welt und Umfang nach eigener Lust.
+- [x] Spieler wählt Figur, Welt und Umfang nach eigener Lust.
+- [ ] Aktueller Durchlauf startet ohne vorherige Prüfung des Startpakets durch den
+  Entwicklungsassistenten: normaler Einstieg wie für einen neuen Spieler.
+  Rückmeldungen entstehen beim Spielen; kein weiterer Vorab-Prüfschritt.
 - [ ] Ziel ist ein längerer unterhaltsamer Verlauf; Notizen zu Generator,
   Spielübersicht, Neuerungen und Spielgefühl entstehen nebenbei.
 - [ ] Keine erzwungenen Kämpfe, Mindestspielzeit oder vorgeschriebenen Entscheidungen.
@@ -85,12 +88,30 @@ alleinige Wirkung der Impulse und beliebig lange Vielfalt sind damit nicht bewie
    unterschiedlichen Kombinationen. Ausgangsimpulse bleiben optional.
 2. **Optionale Motivimpulse prüfen:** dosierte gestalterische Anregungen statt
    fester Handlungen oder drei verpflichtender Motive. Noch kein festgelegter Katalog.
-3. **Charakterablage und Bedienkomfort:** mehrere Figuren wieder auswählen,
-   hilfreiche Feldbeschreibungen, Gesamtlayout, Themes und weitere Sprachen nach Nutzen.
-   Browser-Sidebar erst erwägen, falls ein separater Tab nicht genügt.
+3. **Charakterablage und Bedienkomfort:** mehrere Figuren wieder auswählen und
+   hilfreiche Feldbeschreibungen nach Nutzen ergänzen. Browser-Sidebar erst
+   erwägen, falls ein separater Tab nicht genügt.
+4. **Willkommenseite für den ersten Besuch:** Generator und Spielprinzip kurz
+   erklären: Welt und Vorgaben wählen, Figur vorbereiten, Startpaket im Chat mit
+   Plugin verwenden; Spielübersicht und Notizen begleiten das Spiel manuell.
+   Genau eine Schaltfläche **„Start“** leitet den Vorbereitungsablauf ein.
+   Nur beim ersten Besuch automatisch anzeigen; Wiedererkennung lokal merken.
+   Keine zusätzliche Einführung vor jedem Abenteuer.
+5. **Themes:** Dark- und Lightmode sowie weitere Farbvarianten. Blau mit goldenen
+   Akzenten bleibt die bisherige gestalterische Grundlage.
+6. **Lokalisierung:** Oberfläche, Hilfetexte und Spielübersicht für weitere
+   Sprachen vorbereiten. Sprache der Spielausgabe weiterhin zentral bestimmen;
+   Schema-Schlüssel bleiben stabil. Übersetzungen dürfen die Regeln nicht verändern.
+7. **Name und durchgängiges Symbol:** einen besseren Namen für Generator und
+   Spielhilfe finden. Das Tab-Symbol auch für die Spielübersicht verwenden und
+   links im Kopfbereich neben dem bisherigen „ABENTEUER / GENERATOR“ zeigen.
+8. **Bezeichnung für Geld prüfen:** eventuell „Geld“ später in **„Währung“**
+   umbenennen. Noch keine Entscheidung oder Änderung am Datenformat bzw. Geldsystem.
 
 Einzelne Impulsachsen festhalten bleibt eine mögliche spätere Komfortfunktion.
-Kein Ausbau ist Voraussetzung für den nächsten normalen Durchlauf.
+Kein Ausbau ist Voraussetzung für den jetzt beginnenden normalen Durchlauf.
+Während dieses Durchlaufs bleiben diese Punkte vorgemerkt; keine Regeländerung
+oder zusätzliche Einrichtungsrunde allein für diese Komfortwünsche.
 
 ## 5. Beobachten und bei Gelegenheit erproben
 
