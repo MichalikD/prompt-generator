@@ -5,14 +5,14 @@
 **Welt → Spielvorgaben → Figur → Ausgabe.** Schritte sind direkt anwählbar;
 fehlende Pflichtangaben werden im zuständigen Schritt erklärt. Der Charaktereditor
 ist in Bereiche gegliedert, KI-Template und Import öffnen eigene Dialoge.
-Ein gültiger Bogen wird mit „Weiter zur Ausgabe“ übernommen.
+„Bogen hier vorbereiten“ ist Standard. Ein gültiger Bogen wird mit „Weiter zur Ausgabe“ übernommen; ohne Bogen bleibt die Ausgabe gesperrt, außer bei ausdrücklich gewählter Chat-Erstellung.
 
 Fähigkeiten haben getrennte Angaben für Reichweite, Ziele/Fläche und Schaden.
 Bestehende Wirkungs- und Grenztexte bleiben erhalten. Ausrüstung behält Anzahl,
 Tragplätze je Stück, Bonus und Beschreibung. Spielregeln und Erzählauftrag bleiben bestehen.
 
 Im Ausgabeschritt öffnet **Im Spieltab öffnen** eine übersichtliche Darstellung
-mit Fähigkeiten, Werten und Notizen. Änderungen erfolgen in einem eigenen Dialog;
+mit einklappbaren Fähigkeiten, Werten und großen Notizen links. Die Spalten sind tauschbar. Auch der Welt-Schritt übergibt einen bereits gültigen Bogen. Änderungen erfolgen in einem eigenen Dialog;
 der Startbogen bleibt erhalten. Bogen und Notizen lassen sich gemeinsam exportieren
 und importieren. Keine automatische Verbindung zum Spielchat.
 

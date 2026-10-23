@@ -60,7 +60,7 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
   list(areas.abilities,'Fähigkeit',['abilities'],{name:'',range:'',targets:'',damage:'',effect:'',cost:'',limits:''});
   list(areas.inventory,'Ausrüstung',['inventory'],{name:'',quantity:1,slots:1,bonus:0,description:''},['quantity','slots','bonus']);
   const capacity=document.createElement('p');capacity.id='character-capacity';capacity.className='field-help';areas.inventory.append(capacity);
-  list(areas.inventory,'Guthaben',['finances','funds'],{currency:'',amount:0},['amount']);
+  list(areas.inventory,'Geld',['finances','funds'],{currency:'',amount:0},['amount']);
   const money=section(areas.inventory,'Geld und Vermögen');field(money,['finances','purchasingPower'],'Kaufkraft / Preisanker','textarea');field(money,['finances','assets'],'Weiteres Vermögen','textarea');
   list(areas.inventory,'Fähigkeitsressource',['vitals','resources'],{name:'',current:3,max:3,effect:'',cost:'',regeneration:''},['current','max']);
   list(areas.inventory,'Besonderes Bedürfnis',['needs'],{name:'',description:'',mechanical:false,trigger:'',effect:'',care:''});

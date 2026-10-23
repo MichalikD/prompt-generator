@@ -3,6 +3,7 @@ import {worldText} from './worlds.mjs';
 import {createProfile} from './profile.mjs';
 import {mountCharacterEditor} from './character-editor.mjs';
 import {openPlayTab} from './play-state.mjs';
+import {validateCharacterDocument} from './character.mjs';
 import {autoGrow,watchGrow} from './ui.mjs';
 import {mountOpeningEditor} from './opening-editor.mjs';
 import {focuses} from './profile.mjs';
@@ -19,6 +20,15 @@ let openingShown='';
 let playDocument=null;
 const playReference={setDocument(doc){playDocument=doc;$('#play-character-reference').hidden=!doc;}};
 $('#open-play-tab').addEventListener('click',()=>{if(!playDocument)return;try{openPlayTab(playDocument);}catch(e){$('#play-open-status').textContent=e.message;}});
+$('#play-desk-link a').addEventListener('click',event=>{
+ event.preventDefault();
+ try {
+  const doc=editor?.getDocument()??characterDoc;
+  if(doc&&!validateCharacterDocument(doc).length)openPlayTab(doc);
+  else {const child=window.open('./play.html','_blank');if(!child)throw new Error('Spieltab blockiert. Pop-up erlauben und erneut öffnen.');child.opener=null;}
+  $('#play-desk-status').textContent='';
+ }catch(e){$('#play-desk-status').textContent=e.message;}
+});
 for(const [index,title] of setupSteps.entries()) {
  const button=document.createElement('button');button.type='button';button.textContent=`${index+1} · ${title}`;
  button.addEventListener('click',()=>goTo(index));$('#setup-steps').append(button);
@@ -48,7 +58,7 @@ addChoices({id:'extras',label:'Zusatzwürfel · D20 bleibt gesetzt',options:dice
 const openingEditor=mountOpeningEditor(form);
 function configFromForm() {
  const data=new FormData(form);
- return {...Object.fromEntries(data),extras:data.getAll('extras'),focus:data.getAll('focus'),characterSource:source.querySelector('input:checked').value,
+ return {...Object.fromEntries(data),extras:data.getAll('extras'),focus:data.getAll('focus'),characterSource:source.querySelector('input:checked')?.value??'prepared',
   openingEnabled:form.querySelector('[name=openingEnabled][value=yes]').checked,
   openingSeed:form.querySelector('[name=openingSeed]').value};
 }
@@ -89,7 +99,7 @@ function update() {
   worldEditor.update(config);
   openingEditor.update(config);
   for(const el of form.querySelectorAll('[data-step]'))el.hidden=Number(el.dataset.step)!==step||(el.dataset.group==='creation'&&prepared);
-  $('#play-desk-link').hidden=step!==0;$('#intro').hidden=step!==0;
+  $('#play-desk-link').hidden=step!==0;
   source.hidden=step!==2;$('#prepared-character').hidden=step!==2||!prepared;
   $('.configuration').hidden=step===3;$('#setup-output').hidden=step!==3;
   $('#step-number').textContent=String(step+1);$('#step-title').textContent=setupSteps[step];
@@ -160,9 +170,13 @@ reset.disabled=false;reset.addEventListener('click',()=>{
  for(const field of form.querySelectorAll('select'))field.value=field.name==='setting'?'fantasy':field.name==='worldSource'?'original':field.name==='worldPlayerKind'?'mortal':'';
  openingEditor.reset();form.querySelector('.world-details').open=false;goTo(0);
 });
+function outputReady() {
+ const config=configFromForm();
+ return currentOutput&&step===3&&!setupErrors(3,config,characterDoc).length&&(config.characterSource==='chat'||characterDoc?.confirmed===true);
+}
 function enableCopy(button,field,feedback,success) {
  button.addEventListener('click',async()=>{
-  const current=revision,text=field.value;if(button.disabled||!text)return;
+  const current=revision,text=field.value;if(button.disabled||!text||!outputReady())return;
   try {
    if(!navigator.clipboard?.writeText)throw new Error('Clipboard unavailable');
    await navigator.clipboard.writeText(text);if(revision===current)feedback.textContent=success;
@@ -182,7 +196,7 @@ $('#reveal-opening-start').addEventListener('click',()=>{
  startMessage.hidden=false;$('#start-text-panel').hidden=false;$('#start-text-panel').open=true;$('#reveal-opening-start').hidden=true;autoGrow(document);
 });
 download.addEventListener('click',()=>{
- if(!currentOutput?.downloadText)return;
+ if(!currentOutput?.downloadText||!outputReady())return;
  const url=URL.createObjectURL(new Blob([currentOutput.downloadText],{type:'text/markdown;charset=utf-8'}));
  const link=document.createElement('a');link.href=url;link.download=currentOutput.downloadName;document.body.append(link);link.click();link.remove();
  setTimeout(()=>URL.revokeObjectURL(url),1000);

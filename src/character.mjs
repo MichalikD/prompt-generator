@@ -62,13 +62,13 @@ function checkCharacter(c,kind,path,errors) {
   if(used>8) errors.push(`${path}: ${used} Tragplätze belegt; maximal acht. Extern gelagerte Gegenstände nicht als getragen eintragen.`);
  }
  if(keys(c.finances,['funds','purchasingPower','assets'],`${path} · Geld und Vermögen`,errors)) {
-  rows(c.finances.funds,['currency','amount'],`${path} · Guthaben`,errors,(r,p)=>{
+  rows(c.finances.funds,['currency','amount'],`${path} · Geld`,errors,(r,p)=>{
    string(r.currency,p+' · Währung',errors,true);
    if(typeof r.amount!=='number'||!Number.isFinite(r.amount)||r.amount<0||r.amount>Number.MAX_SAFE_INTEGER) errors.push(p+' · Betrag: Nichtnegative, sicher darstellbare Zahl erwartet.');
   });
   if(Array.isArray(c.finances.funds)) {
    const names=c.finances.funds.filter(isObject).map(r=>typeof r.currency==='string'?r.currency.trim().toLowerCase():'');
-   if(new Set(names).size!==names.length) errors.push(path+' · Guthaben: Jede Währung nur einmal eintragen.');
+   if(new Set(names).size!==names.length) errors.push(path+' · Geld: Jede Währung nur einmal eintragen.');
   }
   string(c.finances.purchasingPower,path+' · Kaufkraft',errors);
   string(c.finances.assets,path+' · Weiteres Vermögen',errors);
