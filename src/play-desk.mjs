@@ -1,17 +1,21 @@
 import {characterReference} from './character-reference.mjs';
 import {mountCharacterEditor} from './character-editor.mjs';
-import {abilityRange,attributeLabels,continueCharacter} from './character.mjs';
+import {abilityRange,continueCharacter} from './character.mjs';
 import {createPlayState,parsePlayState,SESSION_KEY,DEVICE_KEY,HANDOFF_KEY} from './play-state.mjs';
 import {openDialog,downloadFile,copyText} from './ui.mjs';
 
 export function mountPlayDesk(root,host=window) {
- root.innerHTML=`<div class="page-heading"><div><p class="eyebrow">DEIN SPIELTAB</p><h1 id="desk-title">Spielübersicht</h1><p>Manuell gepflegt. Änderungen im Spielchat werden nicht automatisch übernommen.</p></div><div class="actions"><button id="desk-import" class="small">Importieren</button><input id="desk-file" type="file" accept=".json,application/json" hidden><button id="desk-export" class="small" disabled>Exportieren</button><button id="desk-copy" class="small" disabled>Kopieren</button></div></div>
+ root.innerHTML=`<div class="page-heading"><div><p class="eyebrow">DEIN SPIELTAB</p><h1 id="desk-title">Spielübersicht</h1><p>Manuell gepflegt. Änderungen im Spielchat werden nicht automatisch übernommen.</p></div><div class="actions"><button id="desk-import" class="small">Importieren</button><input id="desk-file" type="file" accept=".json,application/json" hidden><button id="desk-export" class="small" disabled>Exportieren</button><button id="desk-copy" class="small" disabled>Kopieren</button><button id="desk-swap" class="small" aria-pressed="false">Spalten tauschen</button></div></div>
  <p id="desk-status" role="status" aria-live="polite"></p>
  <div class="play-layout"><section id="desk-overview" aria-label="Charakterübersicht"></section><section class="panel play-notes"><h2>Deine Notizen</h2><label for="desk-notes">Orte, Kontakte, Aufgaben und offene Fragen</label><textarea id="desk-notes" maxlength="300000" placeholder="Was möchtest du für deinen nächsten Spielabend festhalten?"></textarea><p class="field-help">Bogen und Notizen bleiben in diesem Tab erhalten. Für später gemeinsam exportieren oder unten auf diesem Gerät speichern.</p></section></div>
  <details class="storage-options"><summary>Speicheroptionen</summary><div class="actions"><button id="desk-save" class="small" disabled>Auf diesem Gerät speichern</button><button id="desk-restore" class="small">Gerätestand laden</button><button id="desk-forget" class="small danger">Gerätestand löschen</button></div><p id="desk-storage" class="field-help"></p></details>
  <dialog id="desk-edit-dialog"><div class="dialog-heading"><h2>Bogen aktualisieren</h2><button id="desk-cancel">Abbrechen ×</button></div><p>Vereinbarte Veränderungen eintragen. Der ursprüngliche Startbogen bleibt erhalten.</p><div id="desk-editor"></div><div class="actions"><button id="desk-apply" class="primary">Übernehmen</button></div><p id="desk-edit-status" role="status"></p></dialog>`;
  const $=s=>root.querySelector(s);let state=null,sessionOK=true,savedText=null,editor=null;
  const status=message=>{$('#desk-status').textContent=message;};
+ const layout=$('.play-layout');layout.prepend($('.play-notes'));
+ function setLayout(characterFirst){layout.classList.toggle('character-first',characterFirst);$('#desk-swap').setAttribute('aria-pressed',String(characterFirst));}
+ try{setLayout(host.sessionStorage.getItem('ogm-play-layout-v1')==='character-first');}catch{}
+ $('#desk-swap').addEventListener('click',()=>{const first=!layout.classList.contains('character-first');setLayout(first);try{host.sessionStorage.setItem('ogm-play-layout-v1',first?'character-first':'notes-first');}catch{}});
  function storageStatus(){$('#desk-storage').textContent=!sessionOK?'Tab-Speicherung nicht verfügbar. Bitte vor dem Neuladen exportieren.':savedText===JSON.stringify(state)?'Dieser Stand ist zusätzlich auf diesem Gerät gespeichert.':'Im aktuellen Tab gesichert. Ein Gerätestand wird nur auf Wunsch aktualisiert. Browserdaten können gelöscht werden; eine exportierte Datei bleibt deine unabhängige Sicherung.';}
  function persist(){if(!state)return;try{host.sessionStorage.setItem(SESSION_KEY,JSON.stringify(state));sessionOK=true;}catch{sessionOK=false;}storageStatus();}
  const node=(tag,text,cls='')=>{const el=document.createElement(tag);el.textContent=text;el.className=cls;return el;};
@@ -25,11 +29,11 @@ export function mountPlayDesk(root,host=window) {
   const edit=node('button','Bogen aktualisieren','small');edit.id='desk-edit';edit.addEventListener('click',editDocument);heading.append(edit);view.append(heading);
   const stats=node('div','','desk-stats');
   for(const [label,value]of [['LP',`${c.vitals.hp}/${c.vitals.maxHp}`],...c.vitals.resources.map(r=>[r.name,`${r.current}/${r.max}`]),['Gepäck',`${c.inventory.reduce((n,i)=>n+i.quantity*i.slots,0)}/8`]]){const card=node('div','','desk-stat');card.append(node('span',label),node('strong',value));stats.append(card);}view.append(stats);
-  view.append(node('h2','Fähigkeiten'));
-  if(!c.abilities.length)view.append(node('p','Keine besonderen Fähigkeiten eingetragen.','field-help'));
-  for(const a of c.abilities){const card=node('article','','ability-card'),top=node('div','','actions');top.append(node('h3',a.name),node('span',a.cost,'ability-cost'));card.append(top);
+  const abilities=node('details','','overview-section abilities-section');abilities.open=true;abilities.append(node('summary','Fähigkeiten'));view.append(abilities);
+  if(!c.abilities.length)abilities.append(node('p','Keine besonderen Fähigkeiten eingetragen.','field-help'));
+  for(const a of c.abilities){const card=node('details','','ability-card'),top=node('summary');card.open=true;top.append(node('span',a.name),node('span',a.cost,'ability-cost'));card.append(top);
    const facts=node('dl','','ability-facts');for(const [key,value]of [['Reichweite',abilityRange(a)],['Ziele / Fläche',a.targets??'Siehe Wirkung / Grenzen'],['Schaden',a.damage??'Siehe Wirkung / Grenzen']]){facts.append(node('dt',key),node('dd',value));}card.append(facts);
-   for(const [label,text]of [['Wirkung',a.effect],['Weitere Grenzen',a.limits]]){const p=node('p','','ability-body');p.append(node('strong',label+': '),document.createTextNode(text));card.append(p);}view.append(card);
+   for(const [label,text]of [['Wirkung',a.effect],['Weitere Grenzen',a.limits]]){const p=node('p','','ability-body');p.append(node('strong',label+': '),document.createTextNode(text));card.append(p);}abilities.append(card);
   }
   const reference=characterReference(state.document);
   // Retain every rule-bearing field in the secondary sections without interpreting it.

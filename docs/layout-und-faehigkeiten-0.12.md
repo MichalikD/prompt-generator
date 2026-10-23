@@ -88,3 +88,25 @@ keine Voraussetzung für diese Layoutkorrektur.
 Die browsernahe Bedienprüfung lief mit jsdom. Eine echte Browserdarstellung konnte
 in dieser Arbeitsumgebung nicht geprüft werden; responsive CSS und das zuvor
 abgestimmte Layout sind umgesetzt, eine Sichtprüfung nach dem Deployment bleibt offen.
+
+## Bedienkorrekturen nach der ersten Sichtprüfung
+
+- „Bogen hier vorbereiten“ steht links und ist Standard. Ohne gültigen Bogen
+  bleiben Starttexte gesperrt; nur die ausdrücklich gewählte Erstellung im
+  Spielchat erlaubt eine Ausgabe ohne vorbereitete Figur. Kopieren und Download
+  prüfen diese Voraussetzung zusätzlich bei der Betätigung.
+- „Spielübersicht öffnen“ auf der Weltseite übergibt einen bereits gültigen Bogen
+  direkt, auch vor dem Ausgabeschritt. Ohne gültigen Bogen öffnet es die Übersicht
+  zum Laden eines vorhandenen Spielstands aus Bogen und Notizen.
+- Der zusätzliche Welt-Vorspann entfällt; die Schritte haben ihre normalen Titel.
+- Der Geldbereich heißt „Geld“ statt „Guthaben“. Format und Spielregeln bleiben gleich.
+- Fähigkeiten lassen sich als Bereich und einzeln einklappen.
+- Notizen stehen standardmäßig links, die gesamte Übersicht nutzt mehr Bildschirmbreite.
+  Das Notizfeld ist höher. „Spalten tauschen“ wechselt die Anordnung auf breiten
+  Bildschirmen und merkt sie im Tab. Auf schmalen Bildschirmen stehen Notizen vor
+  dem Bogen; die dort nutzlose Tauschschaltfläche wird ausgeblendet.
+
+Gezielt geprüft: 19 Tests für Vorbereitung, Figur, Fähigkeiten, Geld und Spieltab;
+zusätzlicher jsdom-Durchlauf für Standardauswahl, gesperrte Ausgabe, ausdrückliche
+Chat-Erstellung, Bogenübergabe von Welt und Ausgabe, einklappbare Fähigkeiten,
+Spaltentausch und Wiederherstellung. Eine echte Browser-Sichtprüfung bleibt offen.
