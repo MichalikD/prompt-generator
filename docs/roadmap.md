@@ -1,6 +1,6 @@
 # Roadmap nach den beiden Impuls-Durchläufen
 
-Stand: 23. Oktober 2026 · Regelbasis: 0.11.0
+Stand: 23. Oktober 2026 · Regelbasis: 0.12.0
 
 Diese Liste ersetzt die vorherige Priorisierung; ältere Stände bleiben über Git
 nachvollziehbar. Implementierte Regeln, kurze Regelproben und längere menschliche
@@ -45,7 +45,7 @@ alleinige Wirkung der Impulse und beliebig lange Vielfalt sind damit nicht bewie
 
 - [x] Eigener lesbarer Spieltab aus vorhandenem JSON, ohne KI-Aufruf oder Chat-Zugriff.
 - [x] Werte, Fähigkeiten/Kosten/Grenzen, Ressourcen, Ausrüstung und Entwicklung
-  nachschlagen; eingeklappter Editor für manuelle Aktualisierungen.
+  nachschlagen; Dialog für manuelle Aktualisierungen.
 - [x] Startbogen beim Weiterführen erhalten; aktuellen Bogen und Bestätigung anzeigen.
 - [x] Freitextnotizen, Wiederherstellung beim Neuladen im Tab, bewusstes
   Gerätespeichern und gemeinsamer JSON-Export/-Import.
@@ -53,6 +53,19 @@ alleinige Wirkung der Impulse und beliebig lange Vielfalt sind damit nicht bewie
   oder Geräte-Synchronisierung und keine vollständige Kampagnensicherung behaupten.
 
 [Bedienung und Regeländerungen 0.11](umfang-fortschritt-spieltab-0.11.md)
+
+## Layoutkorrektur 0.12 vor dem nächsten Durchlauf
+
+- [x] Nur noch Plugin-Ausgabe in der UI; direkt anwählbare Vorbereitungsschritte.
+- [x] Weltzusammenfassung am Ende, übersichtlichere Spielvorgaben und sichtbares Neuauslosen.
+- [x] Charakterbereiche, Template/Import in Dialogen, wachsende Textfelder, erkennbare Tasten.
+- [x] Übernahme des gültigen Bogens ohne zusätzlichen Bestätigungshaken.
+- [x] Getrennte Fähigkeitstexte für Reichweite, Ziele/Fläche und Schaden; bisherige Angaben erhalten.
+- [x] Vollständige Ausrüstungsfelder mit Tragplätzen, Bonus und Funktion erhalten.
+- [x] Spielübersicht mit Fähigkeiten und Notizen; Aktualisierung im Dialog, gemeinsamer Export/Import.
+- [x] Plugin und Template um die Bedeutung explizit leerer Reichweite und fehlender Altangaben ergänzen.
+
+[Bedienung und Grenzen 0.12](layout-und-faehigkeiten-0.12.md)
 
 ## 3. Nächster menschlicher Durchlauf: Spielen statt Pflichtprüfung
 
@@ -100,6 +113,7 @@ Spielspaß entscheidet mit, nicht allein eine möglichst strenge Regelauslegung.
 
 ## Versionsdokumente
 
+- [Geführtes Layout und Fähigkeiten 0.12](layout-und-faehigkeiten-0.12.md)
 - [Umfang, Fortschritt und Spieltab 0.11](umfang-fortschritt-spieltab-0.11.md)
 - [Ausgangsimpulse und Wissensgrenzen 0.10](ausgangsimpulse-0.10.md)
 - [Kampf, Erholung und Übersicht 0.9](kampf-und-erholung-0.9.md)

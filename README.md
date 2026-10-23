@@ -1,28 +1,27 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Umfang, Fortschritt und Spielübersicht · 0.11.0
+## Aktuell: Geführtes Layout und Fähigkeiten · 0.12.0
 
-Kurzabenteuer schließen ihren zentralen Konflikt eigenständig ab. Mittel und lang
-tragen größere Handlungsbögen mit nutzbarer Zwischenentwicklung. Eine offene
-Kampagne erlaubt weitere Abenteuer, ohne automatisch eine große Hauptgeschichte
-anzulegen. Besondere Gaben, Gegenstände und Kontakte zählen als praktische Entwicklung.
+**Welt → Spielvorgaben → Figur → Ausgabe.** Schritte sind direkt anwählbar;
+fehlende Pflichtangaben werden im zuständigen Schritt erklärt. Der Charaktereditor
+ist in Bereiche gegliedert, KI-Template und Import öffnen eigene Dialoge.
+Ein gültiger Bogen wird mit „Weiter zur Ausgabe“ übernommen.
 
-Der neue **Spieltab** (`play.html`) zeigt einen gültigen Bogen lesbar neben
-Kampagnennotizen. Im Charakterbereich auf **Im Spieltab öffnen** klicken oder dort
-JSON importieren. Der Tab behält seinen letzten gültigen Stand beim Neuladen;
-dauerhaft auf dem Gerät speichern erfolgt ausdrücklich per Schaltfläche.
-Bogen und Notizen können gemeinsam als JSON gesichert werden. Kein KI-Aufruf,
-kein Zugriff auf den Spielchat und kein automatischer Abgleich mit Chat oder Generator.
-Der ursprüngliche Startbogen bleibt beim Weiterführen erhalten.
+Fähigkeiten haben getrennte Angaben für Reichweite, Ziele/Fläche und Schaden.
+Bestehende Wirkungs- und Grenztexte bleiben erhalten. Ausrüstung behält Anzahl,
+Tragplätze je Stück, Bonus und Beschreibung. Spielregeln und Erzählauftrag bleiben bestehen.
 
-[Bedienung und Grenzen](docs/umfang-fortschritt-spieltab-0.11.md) ·
+Im Ausgabeschritt öffnet **Im Spieltab öffnen** eine übersichtliche Darstellung
+mit Fähigkeiten, Werten und Notizen. Änderungen erfolgen in einem eigenen Dialog;
+der Startbogen bleibt erhalten. Bogen und Notizen lassen sich gemeinsam exportieren
+und importieren. Keine automatische Verbindung zum Spielchat.
+
+Eine statische deutschsprachige Web-App ohne Anmeldung und ohne KI-Aufruf im Generator.
+
+[Bedienung und Reichweitenregeln](docs/layout-und-faehigkeiten-0.12.md) ·
 [Aktuelle Roadmap](docs/roadmap.md)
 
-Eine statische deutschsprachige Web-App: schrittweise Einstellungen wählen und entweder einen
-kompakten Projektprompt oder ein Plugin-Startpaket ausgeben. Keine API oder Anmeldung. Der neue Spieltab bietet lokale Speicherung; kein automatischer Abgleich mit dem Chat.
-Die erste Fassung orientiert sich am vorhandenen W20-Regelwerk. Optionen sind redaktionelle Entwürfe.
-
-## Plugin-Regelbasis 0.11.0
+## Plugin-Regelbasis 0.12.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -50,12 +49,11 @@ Abenteuer ist weiterhin offen; technische Prüfung beweist keinen Spielspaß.
 Neu in **0.9.0**: feste Kampfwerte und Zugfolge, einfache Magie ohne
 Ressourcenverbrauch als Vorschlag für neue Kampfmagier und gemeinsame Regeln für
 Handlungsunfähigkeit und Erholung aller Beteiligten. Meta-Fragen lösen keine
-automatischen Weltkorrekturen aus. Eine separate Charakterübersicht ist im Editor
-und nach Abschluss der Vorbereitung kopierbar, herunterladbar und druckbar. Sie
-übernimmt die eingetragenen Fähigkeiten unverändert und wird nicht mit dem
-Spielchat synchronisiert. [Entscheidungen und Prüfumfang](docs/kampf-und-erholung-0.9.md).
+automatischen Weltkorrekturen aus. Eine separate Charakterübersicht ist nach Abschluss der Vorbereitung im Spieltab zugänglich.
+Sie übernimmt die eingetragenen Fähigkeiten und wird nicht mit dem Spielchat synchronisiert.
+[Entscheidungen und Prüfumfang](docs/kampf-und-erholung-0.9.md).
 
-Neu in **0.11.0**: Im Schritt Spielvorgaben kann ein optionaler Ausgangsimpuls
+Neu in **0.10.0**: Im Schritt Spielvorgaben kann ein optionaler Ausgangsimpuls
 aktiviert werden. Er kombiniert nur Umgebung und Ausgangslage; konkrete Motive,
 Ziele und Lösungen entwickelt weiterhin die Spielleitung. Die Kennung hält die
 Auslosung stabil und erlaubt dieselben Bausteine bei denselben Vorgaben erneut.
@@ -65,32 +63,16 @@ sie im Startpaket einsehbar. Der Talentbonus wird fest als +2 angezeigt;
 NSC kennen Fähigkeiten aus dem Bogen nicht automatisch.
 [Bedienung, Bausteine und Grenzen](docs/ausgangsimpulse-0.10.md).
 
-Die Moduswahl ändert die Ausgabe, nicht die gewählten Einstellungen. Die alte
+Der Generator bietet das Plugin-Startpaket als einzige sichtbare Ausgabe an. Die alte
 private Vesper-Spielleitung bleibt für begonnene Durchgänge unverändert.
 Das gemeinsame Abenteuerprofil ist im Generator enthalten; der Charaktereditor ist direkt in den Startablauf eingebunden.
 
-## Zwei Ausgaben aus einer Auswahl
+## Ausgabe
 
-- **Projektprompt · eingefrorene Regelbasis 0.5:** wird nicht mehr inhaltlich
-  weiterentwickelt und erhält die neuen Plugin-Regeln nicht. Enthält die bisherigen kompakten
-  Regeln vollständig und benötigt kein Plugin. Den Text in die Projektanweisungen
-  kopieren. Passt das vollständige Abenteuerprofil nicht mehr hinein, zeigt die App
-  einen klar gekennzeichneten zweiten Text für die erste Chatnachricht an. Beide
-  Teile vor dem Auftakt verwenden; bei vorbereitetem Bogen enthält die Startnachricht die bestätigte Figur automatisch.
-- **Plugin-Startpaket (Standard):** liefert kurze Projektanweisungen und eine separate erste
-  Chatnachricht mit allen gewählten Vorgaben. Die ausführlichen Regeln kommen aus
-  dem Open Game Master. Im neuen Spielchat das Plugin ausdrücklich wählen.
-  Beide Texte lassen sich einzeln kopieren oder zusammen als Markdown speichern.
-
-Die 8.000-Zeichen-Grenze gilt für Projektanweisungen, nicht für die separate
-Startnachricht. Die Ausgabe installiert kein Plugin. Einen Charakterbogen kannst
-du direkt im Generator erstellen, importieren und exportieren. Die verlinkte Pluginfassung ist eine private Testinstallation;
-der Link gewährt anderen Konten keinen Zugriff. Der öffentlich lesbare Quellcode
-und die Paketierung liegen im Repository.
-
-Das Zurücksetzen stellt die Einstellungen zurück, behält aber den aktuell
-gewählten Ausgabemodus bei. Kopierfehler, etwa durch verweigerte Zwischenablage,
-führen zur manuellen Textauswahl als Alternative.
+Projektanweisungen in ein neues Projekt einfügen. Im ersten Chat das Plugin wählen
+und die vollständig kopierte Startnachricht senden. Sie enthält Abenteuerprofil
+und gegebenenfalls den im Generator vorbereiteten Bogen. Das Startpaket ist auch
+als Markdown-Datei herunterladbar.
 
 ## Lokal verwenden
 
@@ -113,53 +95,38 @@ Zur Nutzung auf GitHub Pages ist keine lokale Installation nötig.
 Der Workflow prüft vor jeder Veröffentlichung alle Kombinationen. Scheitert eine Prüfung,
 wird keine neue Version veröffentlicht. Ein erfolgreiches Deployment ersetzt die vorhandene Website.
 
-## Textmodule und Längengarantie
+## Quellcode und Prüfung
 
-- `src/modules.mjs`: Kernregeln und auswählbare Textvarianten.
-- `src/profile.mjs`: gemeinsame Profildaten und eingefrorener kompakter Erzähltext.
-- `src/plugin-profile.mjs`: ausgewählte Vorgaben für das Plugin, ohne allgemeinen Regelblock.
-- `src/worlds.mjs`: Weltvorlagen, wirksame Anpassungen und Konfliktprüfung.
-- `src/world-editor.mjs`: eingeklappte Weltanpassungen im ersten Vorbereitungsschritt.
-- `src/outputs.mjs`: Moduswahl, Pluginverweis und getrennte Startpaket-Texte.
-- `src/generator.mjs`: Zusammenstellung, Reihenfolge, harte Längengrenze.
-- `src/app.mjs`: Formular und Kopieren.
+- `src/worlds.mjs`, `src/world-editor.mjs`: Weltvorlagen, Anpassungen und Konfliktprüfung.
+- `src/profile.mjs`, `src/plugin-profile.mjs`: Abenteuerprofil und ausgewählte Vorgaben.
+- `src/outputs.mjs`: Pluginverweis und Startpaket-Texte.
+- `src/app.mjs`, `src/setup.mjs`: Vorbereitungsschritte und Ausgabe.
 - `src/character.mjs`: Figurenformat, Werteprüfung, Import, Export und KI-Template.
-- `src/character-editor.mjs` und `src/character-view.mjs`: gemeinsam verwendeter Editor.
-- `character.html` und `src/character-page.mjs`: eigenständig nutzbare Editor-Seite.
-- `test/`: Vollständige Kombinationsprüfung plus Konfliktprüfungen.
+- `src/character-editor.mjs`, `src/character-view.mjs`: gemeinsam verwendeter Editor.
+- `src/play-desk.mjs`, `src/play-state.mjs`: Spielübersicht, Notizen und Speicherung.
+- `plugins/freie-spielleitung-02/`: Regelreferenzen und Plugin-Metadaten.
 
 ```sh
 npm test
 npm run check
+npm run plugin:check
+npm run plugin:build
 ```
 
-Die aktuelle Solo-Fassung enthält 1.658.880 Kombinationen der festen Auswahlschalter
-und Zusatzwürfel. Freitexte und die elf zulässigen Schwerpunktkombinationen kommen
-hinzu. Die Projektanweisungen bleiben strikt unter 8.000 Zeichen, einschließlich
-Überschriften und LF-Zeilenumbrüchen (konservative JavaScript-UTF-16-Zählung).
-Es wird nie abgeschnitten. Bei Platzmangel wird das gesamte Abenteuerprofil in die
-erste Chatnachricht ausgelagert. Der Regelkern bleibt unverändert vollständig;
-aktuell benötigen alle festen Kombinationen diesen zweiten Teil. Die Oberfläche
-kennzeichnet beide Teile und der Markdown-Download enthält sie vollständig.
-Ungültige Eingaben sperren Kopieren und Download. Manuelles Ergänzen nach dem
-Kopieren wird nicht durch die Längenprüfung erfasst.
-
-Jede Gruppe liefert genau eine Variante. Standard/Hardcore, Ton und Würfelbedienung werden ersetzt,
-nicht zusammen angehängt. Kräfteregeln richten sich nach den wirksamen Weltangaben. Die Tests prüfen Länge,
-Kernvollständigkeit und bekannte Konflikte; sie beweisen keine allgemeine erzählerische Widerspruchsfreiheit.
-Neue Module brauchen zusätzlich redaktionelle Prüfung. Die Qualität der KI-Spielleitung ist nicht garantiert.
-
-Bewusst noch nicht umgesetzt: regelfreies Spiel, Konfigurationsimport und
-vollständige Kampagnenspielstände.
-Der Download in beiden Modi speichert die erzeugten Starttexte; er ist kein Spielstand.
-„Spielleitung würfelt“ behält das W20-System bei; es bedeutet nicht „ohne Proben“.
+Die Tests prüfen Datenstrukturen, bekannte Konflikte, Ausgaben und Paketkonsistenz.
+Freitexte und tatsächlichen Spielspaß können sie nicht vollständig bewerten.
+Ungültige Eingaben sperren die Ausgabe. Der Download speichert Starttexte und
+ist kein vollständiger Kampagnenspielstand.
 
 ## Datenschutz
 
-Alle App-Berechnungen laufen im Browser. Keine Cookies, localStorage, Telemetrie, externen Schriften,
-APIs oder automatischen Übertragungen der Auswahl. GitHub verarbeitet als Hoster normale Seitenaufrufe.
-Der erzeugte Prompt wird erst durch eigenes Einfügen an den gewählten Chatdienst übergeben.
-Repository und ausgelieferte Textmodule sind öffentlich. Keine persönlichen Daten oder Schlüssel einchecken.
+Die Berechnungen laufen im Browser. Kein Tracking, keine externen Schriften und
+keine automatischen Übertragungen der Auswahl. Der Spieltab verwendet
+sessionStorage für die Tab-Wiederherstellung und auf Wunsch localStorage für
+den Gerätestand. Der Generator selbst speichert Eingaben nicht automatisch.
+GitHub verarbeitet als Hoster normale Seitenaufrufe. Der erzeugte Text wird erst
+durch eigenes Einfügen an den gewählten Chatdienst übergeben. Repository und
+Textmodule sind öffentlich; keine persönlichen Daten oder Schlüssel einchecken.
 
 ## Zusatzwürfel und Hilfen
 
@@ -190,7 +157,6 @@ wichtige Schauplätze und Wendepunkte dürfen ausführlicher werden. Spielerents
 Spielstandexporte sind von der Erzähltextlänge ausgenommen: eigenständig, vollständig und bei Bedarf
 in nummerierten Teilen. Fehlende oder unsichere Angaben werden markiert. Das erweitert weder das
 Kontextfenster noch garantiert es die Wiederherstellung bereits vergessener Details.
-Die Grenze von 8.000 Zeichen betrifft allein den erzeugten Projekt-Prompt.
 
 
 ## Abenteuerfokus und Figurenwissen
@@ -205,7 +171,7 @@ Figuren dürfen nur wahrnehmbare Folgen wie Erschöpfung oder Verletzungen einsc
 
 ## Gemeinsames Abenteuerprofil
 
-Beide Ausgabemodi verwenden dieselben Daten aus `src/profile.mjs` (Profilversion 2).
+Das Startpaket verwendet die Daten aus `src/profile.mjs` (Profilversion 2).
 Die Welt wird vor dem Chatstart festgelegt. „Eigene Welt“ erfordert eine kurze
 Weltbeschreibung; alle anderen Vorlagen liefern bearbeitbare Vorgaben. Die Spielleitung ergänzt passende Details und klärt nur wesentliche
 Lücken oder Widersprüche, statt die Einrichtung im Chat zu wiederholen.
@@ -227,12 +193,8 @@ fest. „Kurz + offene Kampagne“ ist ausdrücklich möglich. Nach einem Einzel
 beginnt eine Fortsetzung nur auf Wunsch. NSC handeln weiterhin eigenständig;
 der Spieler muss die nächste Handlung nicht durch eine Auftragssuche erzwingen.
 
-Weltbeschreibung, Schwerpunkte und eigene Vorgaben bleiben beim Moduswechsel
-vollständig erhalten. „Zurücksetzen“ löscht auch diese Eingaben, erhält aber den
-Ausgabemodus. Es gibt weiterhin keine Speicherung nach dem Neuladen; dafür die
-Starttexte herunterladen. Der Bogen bleibt ein eigenständiges JSON-Dokument und wird direkt im Generator bearbeitet. Die Startnachricht enthält Profil und bestätigten Bogen gemeinsam. Alte Spielformen
-(`campaign`, `chapters`, `short`) werden nicht automatisch in zwei neue Achsen
-umgedeutet; es gibt bisher keinen Konfigurationsimport.
+Zurückspringen erhält Weltbeschreibung, Schwerpunkte und eigene Vorgaben.
+„Profil zurücksetzen“ löscht diese Einstellungen, erhält aber den vorbereiteten Bogen.
 
 ## Charakterbogen-Editor
 

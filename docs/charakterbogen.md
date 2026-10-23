@@ -1,34 +1,16 @@
 # Charaktereditor und Figurenformat 3
 
-Im Generator kann der Spieler zwischen Erstellung im Spielchat und einem
-vorbereiteten Bogen wählen. Der Editor erscheint direkt auf derselben Seite und
-erhält Weltbeschreibung und eigene Vorgaben automatisch aus dem Abenteuerprofil.
-Der Template-Abschnitt zeigt diese Angaben schreibgeschützt. Nach Prüfung und
-Bestätigung enthält die erste Chatnachricht Profil und Bogen gemeinsam, in beiden
-Ausgabemodi. Eine Änderung der Weltvorgaben hebt die Bestätigung auf, verändert
-aber keine Bogenwerte. Unpassende Chat-Erstellungsoptionen werden ausgeblendet.
-Die separate Seite `character.html` kann weiterhin ohne Abenteuerprofil verwendet
-werden; dort werden die Weltangaben manuell eingegeben.
+Aktuelle Bedienung: [Geführtes Layout 0.12](layout-und-faehigkeiten-0.12.md).
+Der Editor übernimmt Weltangaben aus dem Generator. KI-Template und Import öffnen
+eigene Dialoge; die eigene Figurenidee kann mit einer beliebigen KI genutzt werden.
+Hier erfolgt kein KI-Aufruf. JSON-Dateien dürfen bis zu 1 MB groß sein.
+Ungültige Importe verändern den bisherigen Bogen nicht.
 
-## Ablauf
-
-1. Manuell ausfüllen oder im aufklappbaren Bereich eine Figurenidee und die
-   Weltvorgaben eingeben. Das erzeugte Prompt-Template in einer beliebigen KI
-   verwenden; hier gibt es keine Modellanbindung, Schlüssel oder API-Kosten.
-2. Deren reine JSON-Antwort einfügen oder eine JSON-Datei importieren (bis 1 MB).
-   Ein gültiger Import ersetzt nach Rückfrage den bearbeiteten Bogen. Ungültige
-   Daten lassen den bisherigen Stand unverändert. Keine Markdown-Codezäune einfügen.
-3. Angaben und Fehlermeldungen prüfen. Der Editor prüft Zahlen und Struktur;
-   erzählerische Plausibilität, passende Grenzen und gleichwertige Talente muss
-   der Spieler selbst beurteilen. Bogen ausdrücklich bestätigen.
-4. Gemeinsame erste Chatnachricht im Generator kopieren oder das Startpaket herunterladen. Alternativ den lesbaren Einzelbogen als Markdown herunterladen. JSON für
-   spätere Bearbeitung sichern. Ein formal gültiger, unbestätigter Entwurf lässt
-   sich ebenfalls exportieren; die Textausgabe kennzeichnet ihn als Entwurf.
-
-Es gibt keine automatische Speicherung, auch nicht nach Neuladen. Unvollständige
-oder formal ungültige Bögen sind noch nicht exportierbar. Kein Export ist ein
-vollständiger Welt- oder Kampagnenspielstand. Die JSON-Datei dient ausschließlich
-der Figur. Ein Textimport aus frei formulierter Prosa ist nicht enthalten.
+Nach Prüfung der Angaben übernimmt **Weiter zur Ausgabe** den gültigen Bogen ohne
+zusätzlichen Bestätigungshaken. Profil und Bogen stehen gemeinsam in der ersten
+Chatnachricht. Weltänderungen erhalten die Bogenwerte und aktualisieren das Template.
+Der Generator speichert nicht automatisch; vor dem Schließen JSON sichern.
+Der Spieltab hat eine getrennte Tab-Speicherung für Bogen und Notizen.
 
 ## Felder
 
@@ -41,7 +23,7 @@ und `startCharacter`. Vollständiges Beispiel: [Vesper](../examples/vesper-start
 | `identity` | `name`, `pronouns`, `ancestry`, `origin`, `role`, `description` |
 | `attributes` | `strength`, `dexterity`, `intellect`, `insight` |
 | `talents` | Liste: `name`, `description`, `bonus` |
-| `abilities` | Liste: `name`, `effect`, `cost`, `limits` |
+| `abilities` | Liste: `name`, `range`, `targets`, `damage`, `effect`, `cost`, `limits` |
 | `weaknesses` | Liste: `name`, `trigger`, `effect`, `mitigation` |
 | `vitals` | `hp`, `maxHp`, `resources`, `injuries` |
 | `vitals.resources` | Liste: `name`, `current`, `max`, `effect`, `cost`, `regeneration` |
@@ -52,8 +34,8 @@ und `startCharacter`. Vollständiges Beispiel: [Vesper](../examples/vesper-start
 | `background` | Texte: `confirmed`, `open`, `excluded` |
 | `development` | Liste: `milestone`, `change`, `benefit`, `limits` |
 
-Leere optionale Texte sind `""`, ungenutzte Listen `[]`. Alle beschriebenen
-Schlüssel müssen enthalten sein. Unbekannte Schlüssel oder Formatversionen werden
+Leere optionale Texte sind `""`, ungenutzte Listen `[]`. Die neuen Fähigkeitsfelder `range`, `targets`, `damage` sind bei bisherigen Bögen optional.
+Andere beschriebene Schlüssel müssen enthalten sein. Unbekannte Schlüssel oder Formatversionen werden
 abgewiesen, damit der Import keine zusätzlichen Angaben still verliert.
 
 - Startattribute: ganze Zahlen −1 bis +3, Summe +5. Aktueller Bogen: −1 bis +5,
@@ -76,7 +58,7 @@ abgewiesen, damit der Import keine zusätzlichen Angaben still verliert.
 Nach Bestätigung eines gültigen Startbogens aktiviert **Als aktuellen Bogen
 weiterführen** einen aktuellen Bogen und kopiert den Start nach `startCharacter`.
 Im Editor wird nur `character` bearbeitet. Die ursprüngliche Fassung bleibt
-unverändert, wird im JSON mitgeführt und ist in der Vorschau separat einsehbar.
+unverändert, wird im JSON mitgeführt und ist unter „Ursprünglicher Startbogen“ separat einsehbar.
 Eine Änderung hebt die Bestätigung des aktuellen Bogens auf. Fortschritte werden
 mit Meilenstein, Änderung und konkretem Nutzen dokumentiert.
 
@@ -119,13 +101,9 @@ Bestätigung ist weiterhin nötig.
 
 ## Geführte Vorbereitung und Format 3
 
-Der Generator führt in beiden Modi über **Welt → Spielvorgaben → Figur → Prüfung
-und Ausgabe**. „Weiter“ prüft den aktuellen Schritt. Zurückgehen erhält alle
-Eingaben; fertige Starttexte erscheinen erst am Ende. Änderungen am Bogen
-verlangen erneut eine Bestätigung, Änderungen an Weltvorgaben ebenfalls.
-Ein Moduswechsel erhält die Auswahl. Die selbstständige Editor-Seite bleibt
-nutzbar. Vor dem Schließen weiterhin JSON herunterladen; keine automatische
-Speicherung.
+**Welt → Spielvorgaben → Figur → Ausgabe**. Vor- und Zurückspringen erhält die
+Eingaben. Fertige Starttexte erscheinen nach gültiger Vorbereitung. Die
+selbstständige Editor-Seite bleibt nutzbar, benötigt aber manuelle Weltangaben.
 
 ### Geld und Vermögen
 
@@ -158,8 +136,7 @@ in die Spielnachricht übernommen.
 
 Das Template konkretisiert die bestehenden Regeln für Schwächen, Rüstung und
 Waffenschaden. Es führt keine weiteren Bonusarten oder Spielregeln ein.
-Die Plugin-Regelbasis bleibt **0.3.1**; Figurenformat und Pluginversion sind
-unabhängig. Alte Testformate werden nicht konvertiert. Ein neues Template
+Figurenformat und Pluginversion sind unabhängig. Alte Testformate werden nicht konvertiert. Ein neues Template
 verwenden, nicht nur die Versionsnummer eines alten Bogens ändern.
 
 
@@ -171,3 +148,13 @@ Der ursprüngliche Startbogen bleibt beim Weiterführen als aktueller Bogen erha
 Tab-Wiederherstellung, bewusstes Gerätespeichern und gemeinsamer JSON-Export sind
 unter [Spieltab 0.11](umfang-fortschritt-spieltab-0.11.md) beschrieben.
 Die Spielübersicht ist kein vollständiger Kampagnenspielstand.
+
+
+## Getrennte Fähigkeitsfelder ab 0.12
+
+Neue Fähigkeiten verwenden Textfelder für `range`, `targets` und `damage`.
+Explizit leere Reichweite oder `"0"` heißt ohne Entfernungsgrenze, Berührung wird
+ausgeschrieben. Andere Bedingungen bleiben gültig. Fehlende Felder in bisherigen
+Bögen heißen „Siehe Wirkung / Grenzen“, niemals automatisch unbegrenzt.
+Keine automatische Textextraktion oder Neufestlegung vorhandener Kräfte.
+[Details und Spieltab](layout-und-faehigkeiten-0.12.md).

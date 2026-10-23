@@ -4,7 +4,7 @@ import {groups,selectOptions} from './generator.mjs';
 import {validateCharacterDocument} from './character.mjs';
 import {resolveOpening} from './opening.mjs';
 
-export const setupSteps = ['Welt','Spielvorgaben','Figur','Prüfung und Ausgabe'];
+export const setupSteps = ['Welt','Spielvorgaben','Figur','Ausgabe'];
 export const stepForGroup = id => id==='setting'?0:id==='creation'?2:1;
 export function setupErrors(step,config,character=null) {
  if(step===0) {
@@ -20,7 +20,7 @@ export function setupErrors(step,config,character=null) {
   if(!character)return ['Bitte einen Bogen erstellen oder importieren.'];
   const errors=validateCharacterDocument(character);
   if(errors.length)return ['Bitte die markierten Angaben im Charakterbogen vervollständigen.',...errors];
-  return character.confirmed?[]:['Bitte den geprüften Charakterbogen ausdrücklich bestätigen.'];
+  return [];
  }
  return [0,1,2].flatMap(i=>setupErrors(i,config,character));
 }

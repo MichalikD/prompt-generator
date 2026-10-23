@@ -31,7 +31,7 @@ export function openPlayTab(document,host=window) {
  host.sessionStorage.setItem(HANDOFF_KEY,value);
  try {
   const child=host.open('./play.html?handoff=1','_blank');
-  if(!child)throw new Error('Spieltab blockiert. Pop-up erlauben oder play.html öffnen und den JSON-Bogen importieren.');
+  if(!child)throw new Error('Spieltab blockiert. Pop-up erlauben und erneut öffnen.');
   child.opener=null;
  } finally {host.sessionStorage.removeItem(HANDOFF_KEY);}
 }
