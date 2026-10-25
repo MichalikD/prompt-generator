@@ -78,6 +78,12 @@ die bisherigen Angaben und wird nicht aus einem vorhandenen Namen abgeleitet:
 nichtleere Beschreibungen. Waffenreichweite 0 ist kein unbegrenzter Angriff.
 Das davon getrennte bisherige Reichweitenformat für Fähigkeiten bleibt erhalten.
 
+Das Erstellungstemplate enthält gültige JSON-Beispiele für eine Waffe mit Profil
+und ein gewöhnliches Werkzeug ohne Profil. Feste Formatcodes wie `heavy` bleiben
+auch bei deutscher Spielsprache Englisch; Zahlen, Würfel oder Erläuterungen gehören
+nicht in dieses Feld. Die frei beschriebene Schadensangabe einer Fähigkeit ist
+davon unabhängig. Beispielgegenstände werden passend zur Figur ersetzt oder entfernt.
+
 Vorlagen für Schwert, Dolch, Bogen, Pistole, Schrotflinte, Gewehr und automatische
 Waffe sind ausdrücklich übernommene, anpassbare Vorschläge. Sie ändern weder
 Name noch Beschreibung, Plätze, Anzahl oder Bonus. Schrotflinte und Gewehr haben
