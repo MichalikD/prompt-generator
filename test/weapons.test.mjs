@@ -2,11 +2,34 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {weaponFromPreset,weaponPresets,damageBands,weaponProfileText} from '../src/weapons.mjs';
-import {characterText,parseCharacter,serializeCharacter,validateCharacterDocument,continueCharacter} from '../src/character.mjs';
+import {characterText,parseCharacter,serializeCharacter,validateCharacterDocument,continueCharacter,characterTemplate} from '../src/character.mjs';
 import {characterReference} from '../src/character-reference.mjs';
 import {createPlayState,parsePlayState} from '../src/play-state.mjs';
 import {hitChance,damageOutcomes,duelProbability,comparisons} from '../scripts/combat-model.mjs';
 const fixture=()=>JSON.parse(readFileSync(new URL('../examples/vesper-start.json',import.meta.url),'utf8'));
+
+test('Creation JSON demonstrates valid weapon codes and non-weapons without losing localization',()=>{
+ const prompt=characterTemplate('Eine Magierin.','Fantasy mit Magie.');
+ const example=JSON.parse(prompt.slice(prompt.indexOf('{\n')));
+ assert.deepEqual(validateCharacterDocument(example),[]);
+ assert.deepEqual(parseCharacter(serializeCharacter(example)),example);
+ assert.equal(example.confirmed,false);
+ const weapon=example.character.inventory.find(i=>i.weapon);
+ const tool=example.character.inventory.find(i=>!i.weapon);
+ assert.ok(tool);assert.ok(weapon);
+ assert.ok(prompt.includes(JSON.stringify(Object.keys(damageBands))));
+ for(const code of Object.keys(damageBands)){
+  const doc=structuredClone(example);doc.character.inventory[0].weapon.damage=code;
+  assert.deepEqual(validateCharacterDocument(doc),[]);
+ }
+ for(const damage of ['leicht','gewöhnlich','schwer','heavy 4','W8',2,3,4]){
+  const doc=structuredClone(example);doc.character.inventory[0].weapon.damage=damage;
+  assert.throws(()=>serializeCharacter(doc));
+ }
+ assert.ok(prompt.includes('schema keys AND fixed code values remain in English'));
+ assert.ok(prompt.includes('Ability damage remains descriptive text'));
+ assert.ok(prompt.includes('language = German'));
+});
 
 test('Weapon profiles survive sheet, advancement, play export and both text outputs',()=>{
  for(const id of Object.keys(weaponPresets)){
