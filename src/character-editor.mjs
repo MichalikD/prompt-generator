@@ -1,3 +1,4 @@
+import {damageBands,emptyWeapon,weaponPresets,weaponFromPreset} from './weapons.mjs';
 import {newCharacterDocument,validateCharacterDocument,parseCharacter,serializeCharacter,characterText,continueCharacter,characterTemplate,attributeLabels} from './character.mjs';
 import {characterMarkup} from './character-view.mjs';
 import {autoGrow,watchGrow,openDialog,downloadFile,copyText} from './ui.mjs';
@@ -37,9 +38,25 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
     field(fields,[...path,index,key],labels[key]??key,type);
     if(['effect','limits','description','trigger','mitigation','benefit','regeneration','care'].includes(key))fields.lastElementChild.classList.add('full-width');
    }
-   entry.append(fields);box.append(entry);
+   entry.append(fields);
+   if(path[0]==='inventory')weaponFields(entry,row,index);
+   box.append(entry);
   });
   const add=document.createElement('button');add.type='button';add.className='small';add.textContent=`+ ${title} hinzufügen`;add.addEventListener('click',()=>{rows.push(structuredClone(defaults));doc.confirmed=false;render();const target=form.querySelectorAll(`[data-area=${active}] details.character-row`);if(target.length)target[target.length-1].open=true;autoGrow(root);});box.append(add);return box;
+ }
+ function weaponFields(entry,row,index){
+  const toggle=document.createElement('button');toggle.type='button';toggle.className='small';toggle.textContent=row.weapon?'Waffenprofil entfernen':'+ Waffenprofil';toggle.setAttribute('aria-label',`${toggle.textContent} · ${row.name||index+1}`);
+  toggle.addEventListener('click',()=>{if(row.weapon)delete row.weapon;else row.weapon=emptyWeapon();doc.confirmed=false;render();});entry.append(toggle);
+  if(!row.weapon)return;
+  const box=section(entry,'Waffenprofil');box.classList.add('field-grid');
+  const help=document.createElement('p');help.className='field-help full-width';help.textContent='Vorlagen sind Vorschläge für neue Waffen. Übernehmen ersetzt nur das Waffenprofil, nicht Name, Funktion, Tragplätze oder Bonus. Bestätigte Eigenschaften nur nach Absprache ändern. Waffenreichweite immer ausdrücklich angeben; leer oder 0 bedeutet hier nicht unbegrenzt.';box.append(help);
+  const choices=document.createElement('div');choices.className='actions full-width';
+  const preset=document.createElement('select');preset.setAttribute('aria-label','Waffenvorlage');
+  for(const [id,w]of Object.entries(weaponPresets)){const option=document.createElement('option');option.value=id;option.textContent=w.label;preset.append(option);}
+  const apply=document.createElement('button');apply.type='button';apply.className='small';apply.textContent='Vorlage übernehmen';apply.addEventListener('click',()=>{row.weapon=weaponFromPreset(preset.value);doc.confirmed=false;render();});choices.append(preset,apply);box.append(choices);
+  const wrap=document.createElement('div');wrap.className='character-field';const label=document.createElement('label');label.htmlFor=`weapon-damage-${index}`;label.textContent='Schadensklasse';const select=document.createElement('select');select.id=label.htmlFor;select.name=`inventory.${index}.weapon.damage`;
+  for(const [id,b]of Object.entries(damageBands)){const option=document.createElement('option');option.value=id;option.textContent=`${b.label} ${b.base} · W${b.die} nur wenn ausgewählt`;select.append(option);}select.value=row.weapon.damage;select.addEventListener('change',()=>{row.weapon.damage=select.value;changed();});wrap.append(label,select);box.append(wrap);
+  for(const [key,label]of Object.entries({range:'Reichweite / wirksame Distanz',handling:'Handhabung / Platzbedarf',feature:'Besonderheit / Auflösung',limits:'Grenzen / Munition'}))field(box,['inventory',index,'weapon',key],label,'textarea');
  }
  function showArea(id){active=id;for(const p of form.children)p.hidden=p.dataset.area!==active;for(const b of root.querySelectorAll('[data-editor-tab]'))b.setAttribute('aria-selected',String(b.dataset.editorTab===active));autoGrow(root);}
  function render(){

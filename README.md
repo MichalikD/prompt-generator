@@ -1,15 +1,20 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Folgeabenteuer und wirksame Weltvorgaben · 0.13.0
+## Aktuell: Vielfalt und tragfähiges Solospiel · 0.14.0
 
-Der erfolgreiche Kenji-Durchlauf bleibt die Grundlage. Die Regelbasis ordnet
-Abschluss, Entwicklung, Ruhephasen und neue Abenteuer gemeinsam. Fortsetzungen
-sollen andere tragende Spielerhandlungen ermöglichen; moralische Ansprachen
-überwinden tatsächlichen Widerstand nicht automatisch. Gewählte Magie erhält
-auch außerhalb klassischer Fantasy eine konkrete spielbare Präsenz. Figur und
-Weltvorgaben bleiben verbindlich; Kampf-, Magie- und Würfelquoten gibt es nicht.
+Begegnungen berücksichtigen die tatsächlichen Möglichkeiten einer einzelnen Figur
+und die Zahl gegnerischer Aktionen. Vorbereitung, Deckung, Unterstützung und
+Isolieren von Gegnern verändern die Lage; erfolgreiche Umwege bleiben erfolgreich.
+Kämpfe verlangen vollständige Formeln, sichtbare Gegner-LP und die gewählten
+Schadenswürfel vor dem Verbuchen von Schaden. Erkundung und Bergung können ohne
+Auftraggeber konkrete Entwicklung tragen.
 
-[Änderungen und Prüfgrenzen](docs/fortsetzungen-0.13.md)
+Neue Waffen erhalten auf Wunsch schlanke, anpassbare Profile für Schaden,
+Reichweite, Handhabung, Besonderheit und Grenzen. Vorlagen werden ausdrücklich
+übernommen; bestehende bestätigte Gegenstände bleiben unverändert. Dieselben
+Angaben erscheinen im Starttext, in der Spielübersicht und im gemeinsamen Export.
+
+[Änderungen, Zahlenvergleich und Prüfgrenzen](docs/solospiel-und-waffen-0.14.md)
 
 ## Generator und Spielübersicht · seit 0.12
 
@@ -32,7 +37,7 @@ Eine statische deutschsprachige Web-App ohne Anmeldung und ohne KI-Aufruf im Gen
 [Bedienung und Reichweitenregeln](docs/layout-und-faehigkeiten-0.12.md) ·
 [Aktuelle Roadmap](docs/roadmap.md)
 
-## Plugin-Regelbasis 0.13.0
+## Plugin-Regelbasis 0.14.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,

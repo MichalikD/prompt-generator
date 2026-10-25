@@ -1,9 +1,9 @@
 # Roadmap nach Kenji und Deren
 
-Stand: 25. Oktober 2026 · Aktuelle Regelbasis: 0.13.0 · Nächstes Paket: 0.14 vorgeschlagen
+Stand: 25. Oktober 2026 · Aktuelle Regelbasis: 0.14.0 · Paket 0.14 umgesetzt, menschlicher Folgedurchlauf offen
 
-Diese Roadmap ersetzt die bisherige Priorisierung. Sie ist ein Plan, keine bereits
-umgesetzte Regeländerung. Frühere Implementierungen und Prüfungen stehen in den
+Diese Roadmap ersetzt die bisherige Priorisierung. Der Abschnitt zu 0.14 dokumentiert die Umsetzung; die folgenden Abschnitte
+bleiben Planung. Frühere Implementierungen und Prüfungen stehen in den
 Versionsdokumenten und in Git. Menschliches Spielgefühl, kurze Szenenprüfungen und
 automatische Tests sind unterschiedliche Nachweise.
 
@@ -29,85 +29,85 @@ Erkundung, Verhandeln und Ausweichen können tragfähige Entscheidungen sein.
 Offensives Handeln braucht eine nachvollziehbare Erfolgsaussicht und einen
 möglichen Gewinn. Eine theoretische Angriffsmöglichkeit genügt nicht.
 
-## 2. Vorgeschlagenes Paket 0.14: Vielfalt und tragfähiges Solospiel
+## 2. Umgesetztes Paket 0.14: Vielfalt und tragfähiges Solospiel
 
 ### A. Begegnungen und Machtentwicklung
 
-- [ ] Begegnungen an tatsächlichen Möglichkeiten der einzelnen Figur ausrichten,
+- [x] Begegnungen an tatsächlichen Möglichkeiten der einzelnen Figur ausrichten,
   ohne jede Begegnung fair zu machen oder alle Gegner automatisch abzuschwächen.
-- [ ] Unterschiedliche spielbare Kerne anbieten: begrenzte Bergung, Verfolgung,
+- [x] Unterschiedliche spielbare Kerne anbieten: begrenzte Bergung, Verfolgung,
   gefährliche Entdeckung, einzelne Bedrohung, Umweltproblem, Wettbewerb oder
   persönliches Vorhaben; nicht immer mehrere Bewaffnete oder ein zu schlichtender Streit.
-- [ ] Bewaffnete Gruppen dürfen getrennte Positionen, Abläufe, Aufgaben und
+- [x] Bewaffnete Gruppen dürfen getrennte Positionen, Abläufe, Aufgaben und
   Verwundbarkeiten haben. Beobachtung, Deckung, Überraschung, Unterstützung und
   das Isolieren von Gegnern verändern das Kräfteverhältnis tatsächlich.
-- [ ] Unterstützung wie durch Marek ermöglichen, ohne einen dauerhaften Gefährten
+- [x] Unterstützung wie durch Marek ermöglichen, ohne einen dauerhaften Gefährten
   zur Voraussetzung jeder kämpferischen Handlung zu machen.
-- [ ] Erfolgreiches Umgehen beendet die betreffende Gefahr. Kein Verschieben
+- [x] Erfolgreiches Umgehen beendet die betreffende Gefahr. Kein Verschieben
   derselben Sperre auf den Umweg und keine Bestrafung vernünftigen Ausweichens.
   Andere eigenständige Entwicklungen bleiben möglich.
-- [ ] Gewünschte Stärke der Figur und Zahl gegnerischer Aktionen gemeinsam prüfen.
+- [x] Gewünschte Stärke der Figur und Zahl gegnerischer Aktionen gemeinsam prüfen.
   Ein erfahrener Kampfspezialist soll mehrere gewöhnliche Gegner bewältigen können,
   wo seine Fähigkeiten und die Situation das tragen. Keine Garantie auf Sieg
   gegen beliebige Gruppen und keine pauschalen freien Mehrfachangriffe für alle.
-- [ ] Erhaltene Macht eröffnet später neue Wege: frühere Bedrohungen dürfen leichter
+- [x] Erhaltene Macht eröffnet später neue Wege: frühere Bedrohungen dürfen leichter
   werden. Gegner nicht automatisch mitsteigern, um jeden Fortschritt auszugleichen.
-- [ ] Fauna als wirkenden Teil passender Welten berücksichtigen: auch harmlose Tiere,
+- [x] Fauna als wirkenden Teil passender Welten berücksichtigen: auch harmlose Tiere,
   Spuren, Nahrung, Begleiter und gefährliche Wesen. Keine Tier- oder Monsterquote.
   Fahrbereite Technik und ihre Verfügbarkeit am gewählten Endzeitbild ausrichten;
   vorhandene Wracks sind nicht gleich billige, allgemein verfügbare Mobilität.
 
 ### B. Kampf und Würfel verlässlich abwickeln
 
-- [ ] Attribut, ein passendes Talent und ein zulässiger Ausrüstungsbonus vollständig
+- [x] Attribut, ein passendes Talent und ein zulässiger Ausrüstungsbonus vollständig
   berechnen; im Deren-Lauf fehlte bei Schüssen wiederholt Geschick.
-- [ ] Sichtbare Gegnerwerte, insbesondere aktuelle/maximale LP, vor der relevanten
+- [x] Sichtbare Gegnerwerte, insbesondere aktuelle/maximale LP, vor der relevanten
   Entscheidung zeigen. Schaden und verbleibende LP nachvollziehbar weiterführen.
-- [ ] Gegner und Verbündete mit ihren tatsächlichen Aktionen und ausgewählten
+- [x] Gegner und Verbündete mit ihren tatsächlichen Aktionen und ausgewählten
   offenen Würfen auflösen. Kein erzählerisch festgelegter Gegentreffer als Ersatz.
-- [ ] Auswahl der Schadenswürfel verbindlich anwenden: bei passender Kategorie
+- [x] Auswahl der Schadenswürfel verbindlich anwenden: bei passender Kategorie
   nach einem Treffer den gewählten Würfel anfordern, ohne vorzeitig festen Schaden
   zu verbuchen. Symmetrisch für Spieler, NSC, Waffen und Kräfte.
-- [ ] Zusatzwürfel für Funde/Ereignisse/Chancen bei passendem Anlass verwenden,
+- [x] Zusatzwürfel für Funde/Ereignisse/Chancen bei passendem Anlass verwenden,
   ohne alle gewählten Würfel in jedes Abenteuer zu zwingen.
-- [ ] Grund-SG 8/11/14/17/20 von Zielverteidigung unterscheiden. Zwischenwerte
+- [x] Grund-SG 8/11/14/17/20 von Zielverteidigung unterscheiden. Zwischenwerte
   als erkennbare begründete Abwandlungen erklären, nicht still neu erfinden.
-- [ ] Deckung, Vorbereitung, Überraschung und Zugfolge widerspruchsfrei halten;
+- [x] Deckung, Vorbereitung, Überraschung und Zugfolge widerspruchsfrei halten;
   einen plausiblen Überraschungsauftakt nicht durch unnötige neue Regeln entwerten.
-- [ ] Fehlschläge eines Angriffs als fehlenden wirksamen Treffer beschreiben:
+- [x] Fehlschläge eines Angriffs als fehlenden wirksamen Treffer beschreiben:
   Ausweichen, Deckung oder Panzerung können dazu gehören, nicht nur völliges
   Danebenschießen. Kurze Entfernung allein garantiert keinen wirksamen Treffer.
 
 ### C. Waffen mit tatsächlichen Unterschieden
 
-- [ ] Schlanke Profile mit Schadensklasse/Würfel, brauchbarer Reichweite,
+- [x] Schlanke Profile mit Schadensklasse/Würfel, brauchbarer Reichweite,
   Handhabung/Platzbedarf und relevanter Besonderheit samt Einschränkung festlegen.
-- [ ] Pistole, Schrotflinte, Gewehr und automatische Waffe anhand konkreter
+- [x] Pistole, Schrotflinte, Gewehr und automatische Waffe anhand konkreter
   Situationen unterscheiden; dieselbe Grundlage muss Nahkampf- und Fantasywaffen tragen.
-- [ ] Stärken und Grenzen vor einem relevanten Einsatz erkennbar machen.
+- [x] Stärken und Grenzen vor einem relevanten Einsatz erkennbar machen.
   Keine willkürlichen situativen Boni oder neuen Ausnahmearten nach einem Wurf.
-- [ ] Erstellungstemplate, bestätigter Bogen, Inventar/Spielübersicht und
+- [x] Erstellungstemplate, bestätigter Bogen, Inventar/Spielübersicht und
   Pluginregeln gemeinsam abgleichen. Keine stillen neuen Eigenschaften für
   bereits bestätigte Waffen und keine überladene Waffensimulation.
 
 ### D. Erkundung und Entwicklung
 
-- [ ] Erreichte Meilensteine eindeutig abwickeln: konkrete Wahl anbieten,
+- [x] Erreichte Meilensteine eindeutig abwickeln: konkrete Wahl anbieten,
   bereits verdienten praktischen Vorteil benennen oder erklären, warum noch
   kein Meilenstein vorliegt. Nicht nur undefinierten Fortschritt vermerken.
-- [ ] Erkundung, riskante Bergung, neue Zugänge, Wissen und selbst entwickelte
+- [x] Erkundung, riskante Bergung, neue Zugänge, Wissen und selbst entwickelte
   Vorhaben gleichwertig zu Aufträgen und Kämpfen beurteilen.
-- [ ] Bereits gewährte und auf Wunsch aufgeschobene Entwicklung auseinanderhalten;
+- [x] Bereits gewährte und auf Wunsch aufgeschobene Entwicklung auseinanderhalten;
   später keine überraschende Ansammlung ohne nachvollziehbare Zuordnung.
-- [ ] Die Stärke von HELIOS erhalten: vielseitig nutzbare Funde, Eigentum,
+- [x] Die Stärke von HELIOS erhalten: vielseitig nutzbare Funde, Eigentum,
   Einkommen, Kontakte und neue Handlungsmöglichkeiten als praktische Entwicklung.
   Kein Pflichtverkauf, keine automatisch folgende Hauptquest und keine Verdoppelung
   derselben Belohnung. Geld und Entwicklung bleiben unterscheidbar.
-- [ ] Verbesserungen über reine Zahlen hinaus nutzbar machen; vorhandene Talente
+- [x] Verbesserungen über reine Zahlen hinaus nutzbar machen; vorhandene Talente
   nicht unter neuem Namen erneut verkaufen. Attributwahl und besondere Machtentwicklung
   bleiben möglich, Talentbonus bleibt nach bisheriger Grundlage +2.
 
-### Vor Umsetzung zu konkretisieren
+### Entscheidungen der Umsetzung
 
 Das Paket umfasst Plugin, ausgewählte Generatorvorgaben, Erstellungstemplate und
 betroffene Bogen-/Übersichtsangaben zusammen. Layout-Ausbau bleibt getrennt.
@@ -117,9 +117,11 @@ Vergleichsbasis. Ein eigenes Trefferqualitätsmodell mit möglichem Schaden 0 bl
 eine offene Designfrage. Es wird nicht still eingeführt, um fehlerhafte Berechnung
 oder fehlende Gegnerwerte zu kompensieren.
 
-Vor numerischen Änderungen die Wirkung prüfen: Attribut und Talent, Trefferchancen,
+Die numerische Prüfung und ihre Annahmen stehen in
+[Solospiel und Waffen 0.14](solospiel-und-waffen-0.14.md). Geprüft wurden: Attribut und Talent, Trefferchancen,
 Schaden, gegnerische LP, Anzahl der Aktionen, Unterstützung und Vorbereitung.
-Ob neue Manöver oder Änderungen an Zahlen nötig sind, folgt aus diesem Vergleich.
+Die Grundwerte bleiben erhalten. Niederhalten ist eine ausdrücklich gewählte
+Waffeneigenschaft oder gelernte Technik, kein freier Mehrfachangriff.
 Keine ungeprüfte globale Erhöhung der Spieler-LP oder Abwertung sämtlicher Gegner.
 
 ### Woran wir das Paket beurteilen
@@ -183,6 +185,8 @@ spielerische Verbesserung. Keine zusätzlichen Einrichtungsrunden nur für Komfo
   beobachten. Keine automatischen Rückschlüsse von einem einzelnen gelungenen Lauf.
 
 ## Versionsdokumente
+
+- [Solospiel, Waffen und Kampfablauf 0.14](solospiel-und-waffen-0.14.md)
 
 - [Folgeabenteuer, Ruhephasen und Weltpräsenz 0.13](fortsetzungen-0.13.md)
 - [Geführtes Layout und Fähigkeiten 0.12](layout-und-faehigkeiten-0.12.md)

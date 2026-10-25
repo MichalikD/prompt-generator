@@ -22,6 +22,8 @@ D20 + attribute + one applicable talent (+2) + one equipment bonus (at most +2) 
 | 17 | hard |
 | 20 | exceptional |
 
+Use the table as the baseline. If actual preparation or circumstances change a task DC, show the baseline and reason (for example 14 → 11 after proper preparation). Do not silently replace it with arbitrary intermediate task DCs. Target defense is a separate derived value and can legitimately be 12, 13, 15 or another intermediate number; label it defense, not a new task difficulty.
+
 Advantage: 2D20, take the higher. Disadvantage: 2D20, take the lower. Multiple sources do not stack; advantage and disadvantage cancel. No double reward/penalty for one cause. Natural 1/20 receive plausible effects, not automatic death, impossible feats or unannounced critical damage.
 
 With player rolls, request raw dice for their character, wait, then calculate; do not invent the player’s raw roll. The GM handles NPCs/enemies using an actual random tool if available. Without one, label chat rolls as simulated once. Never pretend a tool was used, alter a result or reroll for a preferred outcome.
@@ -50,11 +52,17 @@ Default defense = 10+Dexterity, plus 1 for appropriate armor. Each round grants 
 
 Use the fiction for a clear order; otherwise each participant rolls D20+Dexterity without talent/equipment bonuses, highest first. Reroll only tied participants. Keep that order until circumstances actually change. Finish all earlier turns before requesting the player's action and all later turns before the next round. Do not restart each round at the player or let one actor act twice. On interruption, retain round, current actor and remaining turns. A compact end-of-round summary of HP, active effects, positions and next actor is enough; ordinary narration need not repeat every stat.
 
+### Before each combat decision
+
+Keep a small working combat state in accessible context: round/order/current actor, positions, current/max HP, defense, attack formula, damage band, active effects and relevant ammunition/resources. In open display, put visible targets' current/max HP and defense before asking for a tactical choice, not only after the player has selected a small weak point. A known ordinary hit that can incapacitate must be recognizable from those values; hidden anatomy can remain hidden. Refresh changed values, not the whole rules explanation.
+
+Use this resolution gate for every actor: announce target + complete attribute/talent/equipment arithmetic + target defense + advantage/disadvantage and consequences; obtain the appropriate raw attack roll (label the first tool-free NPC roll as simulated); determine hit; resolve selected damage dice before subtracting HP; update state; advance to the next actor. Do not abbreviate away the attribute or decide an NPC hit in prose. A failed attack deals no effective damage: a nearby shot may meet armor, cover or evasion rather than fly absurdly wide. Close range alone is not an automatic hit. Deliberately aiming at a small component needs a stated useful effect and difficulty before commitment; do not demand it for damage already possible with an ordinary attack.
+
 ### Resolve a turn
 
 Advance opponents and allies through their own turns. They pursue their tasks rather than waiting for another player preparation roll. A declared approach plus action can resolve in the same turn within its allowances. Only roll separately for an obstacle with distinct stakes. Opponents may move or block on their turns, but cannot indefinitely deny an established reachable position by narration alone.
 
-Attacks use the normal formula against target defense. Announce target, bonus, defense, preparation and foreseeable effects; obtain the raw roll; apply damage on a hit and show remaining HP. No routine second defensive roll, free counterattack on a miss or extra attack from holding two weapons. A special protective action resolves its announced danger once rather than rolling again to undo that result. Assistance uses enabling, lower DC or advantage and costs a plausible action.
+Attacks use the normal formula against target defense. Announce target, bonus, defense, preparation and foreseeable effects; obtain the raw roll; on a hit resolve damage through Optional Dice before showing remaining HP. No routine second defensive roll, free counterattack on a miss or extra attack from holding two weapons. A special protective action resolves its announced danger once rather than rolling again to undo that result. Assistance uses enabling, lower DC or advantage and costs a plausible action.
 
 Cover that obscures a reachable target normally gives disadvantage to the attack; a solid obstruction blocking line of effect prevents it. Do not invent a flat defense bonus. A body does not automatically provide safe cover or transfer a missed shot into an automatic hit on someone else. State any actual collateral risk before the roll. Choosing to guard or evade as the action gives disadvantage to attacks the character can perceive until their next turn; ordinary narration of trying to dodge is already represented by defense and grants no free extra roll. A different agreed ability takes priority.
 
@@ -82,9 +90,21 @@ Keep narrative scope distinct from a numeric check bonus. A powerful ability can
 
 ## Optional dice
 
+At combat setup retain the selected dice by damage category. After each hit, if that category's die is selected, request the player's raw damage die and stop before damage, incapacitation, or the next actor's turn; obtain NPC damage through the same available-tool/simulation procedure as their attacks. One message may request attack and damage raw dice together only if it explicitly says the damage die is used on a hit; ignore it on a miss. Never apply base damage first and roll later. A selected D6 means an ordinary hit requires D6 resolution for every side, including spells. If only D6 is selected, heavy damage remains fixed 4; weapon profiles do not activate unselected dice. For an instantaneous area attack roll damage once per use and apply it to all targets hit unless the confirmed power states otherwise.
+
 Use only selected extra dice; otherwise fixed base damage. Explain purpose/table before rolling. Follow the chosen roller/display rules, without attribute/talent modifiers for these extra rolls. Attribute checks remain D20.
 
-- Selected D4 for light, D6 for ordinary, D8 for heavy damage: if roll ≤ floor(W/4), base−1; if roll > W−floor(W/4), base+1; otherwise base. Apply symmetrically to both sides. Selecting one damage die does not activate the other categories.
+- Selected D4 for light, D6 for ordinary, D8 for heavy damage: if roll ≤ floor(W/4), base−1; if roll > W−floor(W/4), base+1; otherwise base. Apply symmetrically to both sides. D4: 1→1 damage, 2–3→2, 4→3. D6: 1→2 damage, 2–5→3, 6→4. D8: 1–2→3 damage, 3–6→4, 7–8→5. These are variations around base damage, not full raw-die damage and not a new damage-0 system. Selecting one damage die does not activate the other categories.
 - Selected D10: ten similarly valuable finds, with 0=10 when rolled alone.
 - Selected D12: twelve world events, not mandatory detours to extend an adventure.
 - Selected D% requires D10: tens 00–90 plus units 0–9; 00+0=100. Announce the chance first; result ≤ chance triggers the event.
+
+Use selected find/event/chance dice when there is a genuine unresolved choice among suitable outcomes, not only in combat. Establish the table or chance before requesting the roll; do not use them to redraw a fixed investigation truth, contradict successful avoidance or create a mandatory extra adventure. Selection makes the option available, not a per-adventure quota.
+
+## Slim weapon profiles
+
+A newly created weapon can carry `weapon:{damage,range,handling,feature,limits}` in inventory. Damage is light/ordinary/heavy; the other fields describe effective reach, hands/space, one useful distinction and its cost or restriction. These fields are authoritative for that agreed item. General description, quantity, carrying slots and check bonus remain separate. Empty/0 weapon range is not unlimited reach. A profile never activates a die not selected by the player. Existing confirmed weapons without profiles keep their stated properties; do not infer a new template from the name. Agree missing consequential properties before their first relevant use.
+
+As creation proposals, a pistol is compact and one-handed with moderate short-range damage; a shotgun is heavy close-range single-target damage with bulk and reload costs; a rifle can cover greater distance but needs two hands and room; an automatic weapon can trade ammunition and its action for suppression. A dagger can work in a confined grapple where a long weapon cannot be aligned; a bow offers a quieter launch and recoverable arrows but needs two hands and drawing space. Apply the actual agreed range/handling, not invented post-roll bonuses. A free hand permits holding or an incidental interaction, never a second substantial action. Long-range disadvantage, cover and immediate melee pressure follow the profile; disadvantage does not stack. Insufficient reach or solid obstruction prevents the attack. Noise matters to actors who can actually hear and respond, not omniscient enemies.
+
+If explicitly chosen at creation or advancement, a standard suppression profile uses one action and three rounds of ammunition, targeting one visible person or a narrow passage within normal effective range until the shooter's next turn. The targeted person's attacks through the swept area have disadvantage while exposed there; leaving it or complete cover avoids the effect. It deals no damage, grants no extra attack, does not freeze targets, bypass solid cover or affect distant unrelated enemies. Allies are not exempt if they enter the declared swept passage. Explain the area and effect before commitment. Other agreed weapon traits need equally clear resolution. Never grant suppression or a free burst to every existing automatic weapon retroactively.
