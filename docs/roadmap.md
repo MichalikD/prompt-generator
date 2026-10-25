@@ -1,149 +1,192 @@
-# Roadmap nach dem Kenji-Durchlauf
+# Roadmap nach Kenji und Deren
 
-Stand: 24. Oktober 2026 · Regelbasis: 0.13.0
+Stand: 25. Oktober 2026 · Aktuelle Regelbasis: 0.14.0 · Paket 0.14 umgesetzt, menschlicher Folgedurchlauf offen
 
-Diese Liste ersetzt die vorherige Priorisierung; ältere Stände bleiben über Git
-nachvollziehbar. Implementierte Regeln, kurze Regelproben und längere menschliche
-Spielerfahrungen sind unterschiedliche Nachweise.
+Diese Roadmap ersetzt die bisherige Priorisierung. Der Abschnitt zu 0.14 dokumentiert die Umsetzung; die folgenden Abschnitte
+bleiben Planung. Frühere Implementierungen und Prüfungen stehen in den
+Versionsdokumenten und in Git. Menschliches Spielgefühl, kurze Szenenprüfungen und
+automatische Tests sind unterschiedliche Nachweise.
 
-## 1. Erste spielbare Version
+## 1. Ausgangspunkt und Ziel
 
-Der erzählerische Unterbau bleibt erhalten. Fünf Einstiege mit Impulsen wurden
-mit **6 / 8,5 / 7 / 9 / 8** bewertet. Zwei weitergespielte Verläufe blieben
-interessant und erlaubten nachvollziehbare Abschlüsse und Entwicklung. Die
-alleinige Wirkung der Impulse und beliebig lange Vielfalt sind damit nicht bewiesen.
+Der Stand ist spielbar. Der erzählerische Unterbau und der geführte Generator
+bleiben Grundlage; es geht um einen zusammenhängenden Ausbau, nicht um einen Neustart.
 
-| Bereich | Beobachtung | Verbleibende Grenze |
+| Durchlauf | Was trägt | Verbleibende Grenze |
 | --- | --- | --- |
-| Erzählung und Weltinitiative | Seegefecht, korrupte Amtsträger, Anschlag und Flucht; Gegner verfolgen Interessen | Nicht jede Kampagne wird dadurch gut |
-| Abschluss und Fortsetzung | Übergabe/Delegation möglich; danach eigenständiger Nebelpass-Konflikt | Beide kurzen Starts erzeugten zuvor große Hauptbedrohungen; das Folgeabenteuer ist noch nicht vollständig abgeschlossen |
-| Entwicklung | Unterwasserperle, persönliche Geschenke und Quellfrostsegen sind reizvoll | Unzulässiger Talentbonus +3 und überflüssige Verbesserung einer vorhandenen Fähigkeit wurden angeboten |
-| Kampf und Magie | Sichtbare LP, weitgehend feste Reihenfolge, kostenlose Frostsplitter tatsächlich eingesetzt | Zufallswerkzeug wurde widersprüchlich behauptet; Langzeitbalance offen |
-| Ressourcen | Regeneration in Nummer 4 funktioniert | Nach der ruhigen Nacht in Nummer 2 nicht sauber berücksichtigt |
-| Vielfalt | Neue Bedingungen und unterschiedliche Konflikte | Brücken, Wächter, Glocken, Siegel und bedeutungsvolle Zahlen wiederholen sich |
+| Impuls-Einstiege und Fortsetzungen | Fünf Starts: 6 / 8,5 / 7 / 9 / 8; zwei interessante Fortsetzungen, besondere Gaben und brauchbare Übergänge | Wiederkehrende Motive; beliebig lange Vielfalt nicht bewiesen |
+| Kenji | Vom Spieler ausdrücklich als Erfolg bewertet; kurze Abschlüsse, Besatzung als Bezugspunkt, emotionale Beziehungen und selbst eingebrachte Gedichte | Wiederholte Vermittlung, wenig spielbare Magie und später zu kleinteiliger Alltag |
+| Deren | Keine schlechte Kampagne, aber weniger Spaß als Kenji; HELIOS als starker Fund mit eigenständig entwickeltem Geschäft und nutzbarem Eigentum; Szene mit Marek ermöglicht offensives Handeln | Zeitweise eintönig; Gruppen bewaffneter Gegner machen Umwege vernünftiger als Beteiligung; Kampfregeln fehlerhaft angewandt, Fortschritt verspätet ausgegeben |
 
-## 2. Paket 0.11: Umfang, Fortschritt und Spielübersicht
+Derens Ende ist ein bewusst gewählter Erfolg mit Einkommen, kein erzwungenes
+Auslaufen in Alltag. Ungereimtheiten waren für den Spieler meist verkraftbar;
+die Struktur der angebotenen Handlungsmöglichkeiten wiegt schwerer als folgenlose
+Darstellungsfehler. Private Kampagnenexporte werden nicht veröffentlicht.
 
-### Regeln und Unterbau
+**Nächstes Ziel:** Eine einzelne Figur findet unterschiedliche, interessante
+Herausforderungen mit erkennbaren Chancen. Kämpfen, Schleichen, Vorbereitung,
+Erkundung, Verhandeln und Ausweichen können tragfähige Entscheidungen sein.
+Offensives Handeln braucht eine nachvollziehbare Erfolgsaussicht und einen
+möglichen Gewinn. Eine theoretische Angriffsmöglichkeit genügt nicht.
 
-- [x] Kurz: zentrales Problem innerhalb eines eigenständigen begrenzten Abenteuers
-  abschließen, keine bloße erste Etappe einer größeren Hauptbedrohung.
-- [x] Mittel/lang: größere verbundene Bögen und nutzbare Zwischenentwicklung,
-  nicht nur häufigere Überschriften, Proben oder Schlussbelohnungen.
-- [x] Offene Kampagne von Umfang trennen: gleiche Figur/Welt, keine automatisch
-  übergeordnete Hauptgeschichte. Wiederkehrende Personen und Folgen bleiben möglich.
-- [x] Plugin und ausgewählte Generatorvorgaben widerspruchsfrei anpassen,
-  einschließlich kurz mit wiederkehrenden Verbindungen.
-- [x] Besondere Gaben, Gegenstände, Fähigkeiten, Werte, Kontakte und Zugang als
-  praktische Entwicklung behandeln. Questobjekte können neue Optionen eröffnen.
-- [x] Bereits belohnte Leistungen berücksichtigen; eigenständige Erfolge können
-  weitere Entwicklung rechtfertigen. Bezahlung bleibt davon unabhängig.
-- [x] Talentbonus +2 erhalten; Meisterschaften erweitern Möglichkeiten. Bestehende
-  Fähigkeiten nicht als neue Verbesserung verkaufen. Änderungen vorher abstimmen.
+## 2. Umgesetztes Paket 0.14: Vielfalt und tragfähiges Solospiel
 
-### Charakterübersicht und Notizen
+### A. Begegnungen und Machtentwicklung
 
-- [x] Eigener lesbarer Spieltab aus vorhandenem JSON, ohne KI-Aufruf oder Chat-Zugriff.
-- [x] Werte, Fähigkeiten/Kosten/Grenzen, Ressourcen, Ausrüstung und Entwicklung
-  nachschlagen; Dialog für manuelle Aktualisierungen.
-- [x] Startbogen beim Weiterführen erhalten; aktuellen Bogen und Bestätigung anzeigen.
-- [x] Freitextnotizen, Wiederherstellung beim Neuladen im Tab, bewusstes
-  Gerätespeichern und gemeinsamer JSON-Export/-Import.
-- [x] Speichergrenzen und manuellen Abgleich erklären; keine automatische Chat-
-  oder Geräte-Synchronisierung und keine vollständige Kampagnensicherung behaupten.
+- [x] Begegnungen an tatsächlichen Möglichkeiten der einzelnen Figur ausrichten,
+  ohne jede Begegnung fair zu machen oder alle Gegner automatisch abzuschwächen.
+- [x] Unterschiedliche spielbare Kerne anbieten: begrenzte Bergung, Verfolgung,
+  gefährliche Entdeckung, einzelne Bedrohung, Umweltproblem, Wettbewerb oder
+  persönliches Vorhaben; nicht immer mehrere Bewaffnete oder ein zu schlichtender Streit.
+- [x] Bewaffnete Gruppen dürfen getrennte Positionen, Abläufe, Aufgaben und
+  Verwundbarkeiten haben. Beobachtung, Deckung, Überraschung, Unterstützung und
+  das Isolieren von Gegnern verändern das Kräfteverhältnis tatsächlich.
+- [x] Unterstützung wie durch Marek ermöglichen, ohne einen dauerhaften Gefährten
+  zur Voraussetzung jeder kämpferischen Handlung zu machen.
+- [x] Erfolgreiches Umgehen beendet die betreffende Gefahr. Kein Verschieben
+  derselben Sperre auf den Umweg und keine Bestrafung vernünftigen Ausweichens.
+  Andere eigenständige Entwicklungen bleiben möglich.
+- [x] Gewünschte Stärke der Figur und Zahl gegnerischer Aktionen gemeinsam prüfen.
+  Ein erfahrener Kampfspezialist soll mehrere gewöhnliche Gegner bewältigen können,
+  wo seine Fähigkeiten und die Situation das tragen. Keine Garantie auf Sieg
+  gegen beliebige Gruppen und keine pauschalen freien Mehrfachangriffe für alle.
+- [x] Erhaltene Macht eröffnet später neue Wege: frühere Bedrohungen dürfen leichter
+  werden. Gegner nicht automatisch mitsteigern, um jeden Fortschritt auszugleichen.
+- [x] Fauna als wirkenden Teil passender Welten berücksichtigen: auch harmlose Tiere,
+  Spuren, Nahrung, Begleiter und gefährliche Wesen. Keine Tier- oder Monsterquote.
+  Fahrbereite Technik und ihre Verfügbarkeit am gewählten Endzeitbild ausrichten;
+  vorhandene Wracks sind nicht gleich billige, allgemein verfügbare Mobilität.
 
-[Bedienung und Regeländerungen 0.11](umfang-fortschritt-spieltab-0.11.md)
+### B. Kampf und Würfel verlässlich abwickeln
 
-## Layoutkorrektur 0.12 vor dem nächsten Durchlauf
+- [x] Attribut, ein passendes Talent und ein zulässiger Ausrüstungsbonus vollständig
+  berechnen; im Deren-Lauf fehlte bei Schüssen wiederholt Geschick.
+- [x] Sichtbare Gegnerwerte, insbesondere aktuelle/maximale LP, vor der relevanten
+  Entscheidung zeigen. Schaden und verbleibende LP nachvollziehbar weiterführen.
+- [x] Gegner und Verbündete mit ihren tatsächlichen Aktionen und ausgewählten
+  offenen Würfen auflösen. Kein erzählerisch festgelegter Gegentreffer als Ersatz.
+- [x] Auswahl der Schadenswürfel verbindlich anwenden: bei passender Kategorie
+  nach einem Treffer den gewählten Würfel anfordern, ohne vorzeitig festen Schaden
+  zu verbuchen. Symmetrisch für Spieler, NSC, Waffen und Kräfte.
+- [x] Zusatzwürfel für Funde/Ereignisse/Chancen bei passendem Anlass verwenden,
+  ohne alle gewählten Würfel in jedes Abenteuer zu zwingen.
+- [x] Grund-SG 8/11/14/17/20 von Zielverteidigung unterscheiden. Zwischenwerte
+  als erkennbare begründete Abwandlungen erklären, nicht still neu erfinden.
+- [x] Deckung, Vorbereitung, Überraschung und Zugfolge widerspruchsfrei halten;
+  einen plausiblen Überraschungsauftakt nicht durch unnötige neue Regeln entwerten.
+- [x] Fehlschläge eines Angriffs als fehlenden wirksamen Treffer beschreiben:
+  Ausweichen, Deckung oder Panzerung können dazu gehören, nicht nur völliges
+  Danebenschießen. Kurze Entfernung allein garantiert keinen wirksamen Treffer.
 
-- [x] Nur noch Plugin-Ausgabe in der UI; direkt anwählbare Vorbereitungsschritte.
-- [x] Weltzusammenfassung am Ende, übersichtlichere Spielvorgaben und sichtbares Neuauslosen.
-- [x] Charakterbereiche, Template/Import in Dialogen, wachsende Textfelder, erkennbare Tasten.
-- [x] Übernahme des gültigen Bogens ohne zusätzlichen Bestätigungshaken.
-- [x] Getrennte Fähigkeitstexte für Reichweite, Ziele/Fläche und Schaden; bisherige Angaben erhalten.
-- [x] Vollständige Ausrüstungsfelder mit Tragplätzen, Bonus und Funktion erhalten.
-- [x] Spielübersicht mit Fähigkeiten und Notizen; Aktualisierung im Dialog, gemeinsamer Export/Import.
-- [x] Plugin und Template um die Bedeutung explizit leerer Reichweite und fehlender Altangaben ergänzen.
+### C. Waffen mit tatsächlichen Unterschieden
 
-[Bedienung und Grenzen 0.12](layout-und-faehigkeiten-0.12.md)
+- [x] Schlanke Profile mit Schadensklasse/Würfel, brauchbarer Reichweite,
+  Handhabung/Platzbedarf und relevanter Besonderheit samt Einschränkung festlegen.
+- [x] Pistole, Schrotflinte, Gewehr und automatische Waffe anhand konkreter
+  Situationen unterscheiden; dieselbe Grundlage muss Nahkampf- und Fantasywaffen tragen.
+- [x] Stärken und Grenzen vor einem relevanten Einsatz erkennbar machen.
+  Keine willkürlichen situativen Boni oder neuen Ausnahmearten nach einem Wurf.
+- [x] Erstellungstemplate, bestätigter Bogen, Inventar/Spielübersicht und
+  Pluginregeln gemeinsam abgleichen. Keine stillen neuen Eigenschaften für
+  bereits bestätigte Waffen und keine überladene Waffensimulation.
 
-## 3. Kenji: erfolgreicher Verlauf und Paket 0.13
+### D. Erkundung und Entwicklung
 
-- [x] Freie Wahl von Figur, Welt und Umfang; Start ohne Vorabprüfung des Pakets.
-- [x] Mehrere kurze Abenteuer mit wiederkehrender Besatzung und funktionierenden
-  Abschlüssen; Spieler hatte Spaß und bewertet die Kampagne ausdrücklich als Erfolg.
-- [x] Wiederholte Vermittlung, Alltagsschleifen, wenig spielbare Magie und ähnliche
-  Fortschrittsangebote als verbleibende Probleme identifiziert.
-- [x] An Abenteuergrenzen Abschluss/Entwicklung, gewählte Ruhe und neue Vorbereitung
-  als gemeinsamen Ablauf formulieren; unbestimmte Routine raffen.
-- [x] Folgeaufgaben nach dominierenden Spielerhandlungen variieren; ganze Figur und
-  nutzbare alternative Handlungen berücksichtigen, einschließlich plausibler Duelle.
-- [x] Konkrete Grenzen und Interessen von NSC; bedeutsame unsichere Überzeugung mit
-  Probe und Folgen statt automatischem Einlenken auf moralische Ansprachen.
-- [x] Gewählte Magie auch in anderen Weltvorlagen praktisch präsent halten,
-  ohne ausgeschlossene oder seltene Kräfte und bestätigte Figuren umzudeuten.
-- [x] Entwicklung am Abschluss abwickeln und nützliche, tatsächlich neue Alternativen
-  anbieten; wiederholte Attributwahl bleibt möglich.
-- [x] Sichtbare Regelbegriffe konsequenter lokalisieren und Textstandard präzisieren.
-- [ ] Längere menschliche Spielerfahrung mit 0.13: Abwechslung, Weltpräsenz,
-  Proben und praktisch nutzbare Fortschritte. Keine Pflichtspielzeit oder Vorabkorrektur.
+- [x] Erreichte Meilensteine eindeutig abwickeln: konkrete Wahl anbieten,
+  bereits verdienten praktischen Vorteil benennen oder erklären, warum noch
+  kein Meilenstein vorliegt. Nicht nur undefinierten Fortschritt vermerken.
+- [x] Erkundung, riskante Bergung, neue Zugänge, Wissen und selbst entwickelte
+  Vorhaben gleichwertig zu Aufträgen und Kämpfen beurteilen.
+- [x] Bereits gewährte und auf Wunsch aufgeschobene Entwicklung auseinanderhalten;
+  später keine überraschende Ansammlung ohne nachvollziehbare Zuordnung.
+- [x] Die Stärke von HELIOS erhalten: vielseitig nutzbare Funde, Eigentum,
+  Einkommen, Kontakte und neue Handlungsmöglichkeiten als praktische Entwicklung.
+  Kein Pflichtverkauf, keine automatisch folgende Hauptquest und keine Verdoppelung
+  derselben Belohnung. Geld und Entwicklung bleiben unterscheidbar.
+- [x] Verbesserungen über reine Zahlen hinaus nutzbar machen; vorhandene Talente
+  nicht unter neuem Namen erneut verkaufen. Attributwahl und besondere Machtentwicklung
+  bleiben möglich, Talentbonus bleibt nach bisheriger Grundlage +2.
 
-[Änderungen und Prüfgrenzen 0.13](fortsetzungen-0.13.md)
+### Entscheidungen der Umsetzung
 
-## 4. Nächste mögliche Ausbaupakete
+Das Paket umfasst Plugin, ausgewählte Generatorvorgaben, Erstellungstemplate und
+betroffene Bogen-/Übersichtsangaben zusammen. Layout-Ausbau bleibt getrennt.
 
-1. **Impuls-Historie:** verwendete Kombinationen lokal merken und zunächst
-   ausschließen. Verhalten nach Ausschöpfen festlegen; bewusste Wiederholung
-   über Kennung erhalten. Das verhindert keine ähnlichen Geschichten aus
-   unterschiedlichen Kombinationen. Ausgangsimpulse bleiben optional.
-2. **Optionale Motivimpulse prüfen:** dosierte gestalterische Anregungen statt
-   fester Handlungen oder drei verpflichtender Motive. Noch kein festgelegter Katalog.
-3. **Charakterablage und Bedienkomfort:** mehrere Figuren wieder auswählen und
-   hilfreiche Feldbeschreibungen nach Nutzen ergänzen. Browser-Sidebar erst
-   erwägen, falls ein separater Tab nicht genügt.
-4. **Willkommenseite für den ersten Besuch:** Generator und Spielprinzip kurz
-   erklären: Welt und Vorgaben wählen, Figur vorbereiten, Startpaket im Chat mit
-   Plugin verwenden; Spielübersicht und Notizen begleiten das Spiel manuell.
-   Genau eine Schaltfläche **„Start“** leitet den Vorbereitungsablauf ein.
-   Nur beim ersten Besuch automatisch anzeigen; Wiedererkennung lokal merken.
-   Keine zusätzliche Einführung vor jedem Abenteuer.
-5. **Themes:** Dark- und Lightmode sowie weitere Farbvarianten. Blau mit goldenen
-   Akzenten bleibt die bisherige gestalterische Grundlage.
-6. **Lokalisierung:** Oberfläche, Hilfetexte und Spielübersicht für weitere
-   Sprachen vorbereiten. Sprache der Spielausgabe weiterhin zentral bestimmen;
-   Schema-Schlüssel bleiben stabil. Verbindliches Wörterbuch für angezeigte Attribute
-   und Regelbegriffe ergänzen; die Kurzprüfungen von 0.13 übersetzen noch unterschiedlich.
-   Übersetzungen dürfen die Regeln nicht verändern.
-7. **Name und durchgängiges Symbol:** einen besseren Namen für Generator und
-   Spielhilfe finden. Das Tab-Symbol auch für die Spielübersicht verwenden und
-   links im Kopfbereich neben dem bisherigen „ABENTEUER / GENERATOR“ zeigen.
-8. **Bezeichnung für Geld prüfen:** eventuell „Geld“ später in **„Währung“**
-   umbenennen. Noch keine Entscheidung oder Änderung am Datenformat bzw. Geldsystem.
+Die bestehende D20-Angriffsprobe und die gewählten Schadenswürfel sind zunächst die
+Vergleichsbasis. Ein eigenes Trefferqualitätsmodell mit möglichem Schaden 0 bleibt
+eine offene Designfrage. Es wird nicht still eingeführt, um fehlerhafte Berechnung
+oder fehlende Gegnerwerte zu kompensieren.
 
-Einzelne Impulsachsen festhalten bleibt eine mögliche spätere Komfortfunktion.
-Diese Komfortwünsche bleiben vorgemerkt und sind keine Voraussetzung für den
-nächsten normalen Durchlauf. Änderungen am Erzählunterbau gehören zum Paket 0.13.
+Die numerische Prüfung und ihre Annahmen stehen in
+[Solospiel und Waffen 0.14](solospiel-und-waffen-0.14.md). Geprüft wurden: Attribut und Talent, Trefferchancen,
+Schaden, gegnerische LP, Anzahl der Aktionen, Unterstützung und Vorbereitung.
+Die Grundwerte bleiben erhalten. Niederhalten ist eine ausdrücklich gewählte
+Waffeneigenschaft oder gelernte Technik, kein freier Mehrfachangriff.
+Keine ungeprüfte globale Erhöhung der Spieler-LP oder Abwertung sämtlicher Gegner.
 
-## 5. Beobachten und bei Gelegenheit erproben
+### Woran wir das Paket beurteilen
 
-| Thema | Prüfpunkt |
-| --- | --- |
-| Umfang | Kurz wirklich eigenständig; mittel/lang mit tragenden Wendepunkten und Entwicklung vor dem Finale |
-| Handlungsvielfalt | Auch Eigeninteresse, Gewinn oder Entdeckung können tragen; nicht immer andere retten müssen. Keine Verbotsliste für Fantasy-Motive |
-| Entwicklung | Gaben praktisch nutzen, Kontakte/Privilegien mit Nutzen und Grenzen; Meisterschaften und spätere Machtzuwächse |
-| Kampf | LP, Reihenfolge, Deckung, Bewegung, Rückzug, Kapitulation und 0 LP; kein behauptetes Zufallswerkzeug ohne tatsächlichen Einsatz |
-| Ressourcen/Erholung | Wiederholbare einfache Magie, reizvolle bezahlte Kräfte, echte Regeneration; dieselben Grundregeln für NSC |
-| Zusatzwürfel | Zunächst gewählte Schadenswürfel und ihr Einfluss auf Tempo und Verständlichkeit |
-| Feste Gefährten | Eigenes Handeln, dokumentierte Werte und gemeinsame passende Meilensteine |
-| Besondere Bedürfnisse | Etwa Blutdurst: erreichbare Versorgung und vereinbarte Folgen statt unerwarteter Hungermechanik |
-| Große Entwicklung | Neue Zauber, legendäre Ausrüstung, Transformationen und bewusst übermächtige Phasen; keine automatische Gegneranpassung |
-| Kontinuität | Wissen, Namen, Positionen, Zeit und Finanzen nach Spielauswirkung beurteilen. Hareks Vermutung über Iven ist akzeptable erzählerische Verkürzung |
-| Erzählfluss | Reparaturketten, Antwortlänge und wiederkehrende Zahlen/Motive beobachten, ohne immer neue Einschränkungen anzuhängen |
+1. Korrekte Berechnungen und ausgewählte Schadenswürfel funktionieren im ganzen
+   Kampf, einschließlich gegnerischer Züge und angezeigter LP.
+2. An vorhandenen Stellen aus Deren kurze Varianten prüfen: ein einzelner Gegner,
+   eine Gruppe ohne Vorbereitung, vorbereiteter Angriff mit Unterstützung sowie
+   eine stärkere Figur gegen mehrere gewöhnliche Gegner. Kein gewünschter Sieg
+   oder Musterweg wird den unabhängigen Szenenprüfungen vorgegeben.
+3. Gefahr und Chancen bleiben erkennbar. Vorbereitung verändert die tatsächliche
+   Lage; Ausweichen führt nicht zur wiederholten gleichen Sperre. Erkundung kann
+   ohne Auftraggeber einen greifbaren Erfolg und Entwicklung tragen.
+4. Erst danach ein frei gewählter menschlicher Durchlauf nach Interesse. Keine
+   vorgeschriebene Stundenzahl, keine Kampagne nach jeder Einzelkorrektur.
 
-Bilder und folgenlose Darstellungsfehler bleiben niedrig priorisiert. Der
-Spielspaß entscheidet mit, nicht allein eine möglichst strenge Regelauslegung.
+Numerische Prüfungen und kurze Szenen zeigen keine langfristige erzählerische
+Qualität. Das Spielgefühl bleibt das entscheidende zusätzliche Kriterium.
+
+## 3. Danach: Vielfalt über mehrere Durchläufe
+
+- [ ] Impuls-Historie: verwendete Kombinationen lokal zunächst ausschließen,
+  Ausschöpfung behandeln und bewusste Wiederholung per Kennung erlauben.
+- [ ] Optionale Namens-/Kulturimpulse prüfen. Wiederholte Namen wie Varek, Jorek,
+  Dornfeld oder Graufurt nicht allein durch immer längere Verbotslisten behandeln.
+  Eine lokale Historie kennt nur vorgeschlagene oder zurückgemeldete Namen,
+  nicht automatisch sämtliche im Spielchat erfundenen Namen.
+- [ ] Dosierte Motivimpulse prüfen; kein verpflichtender Symbolkatalog und keine
+  fest vorgegebene Handlung. Wiederkehrende Fantasy-Motive sind nicht grundsätzlich Fehler.
+- [ ] Einzelne Impulsachsen festhalten bleibt mögliche spätere Komfortfunktion.
+
+## 4. Komfort, Einstieg und Veröffentlichung
+
+- [ ] Einmalige Willkommenseite: Generator und Spielprinzip kurz erklären;
+  genau ein Button **Start** führt in die Vorbereitung. Nur beim ersten Besuch
+  automatisch anzeigen, Wiedererkennung lokal merken.
+- [ ] Charakterablage für mehrere Figuren und hilfreiche Feldbeschreibungen.
+  Browser-Sidebar erst erwägen, falls der Spieltab nicht genügt.
+- [ ] Themes mit Hell-/Dunkelmodus und Farbvarianten; Blau/Gold als bisherige Grundlage.
+- [ ] Lokalisierung für Oberfläche, Hilfen und Übersicht; verbindliches Wörterbuch
+  für Attribute/Regelbegriffe. JSON-Schlüssel stabil halten. In 0.13 sind englische
+  Anzeigen reduziert, aber Übersetzungen noch nicht mit der UI vereinheitlicht.
+- [ ] Besserer Name sowie durchgängiges Symbol als Favicon und links im Kopfbereich
+  von Generator und Spielübersicht.
+- [ ] Eventuell Geld in **Währung** umbenennen; weiterhin als Vorschlag vorgemerkt.
+- [ ] Ungefragte Bilder beobachten: Textstandard ist bereits geregelt, wird vom
+  Spielchat aber nicht durchgehend eingehalten. Keine technische Sperre behaupten.
+
+Diese Punkte bleiben erhalten, sind aber keine Voraussetzung für die nächste
+spielerische Verbesserung. Keine zusätzlichen Einrichtungsrunden nur für Komfort.
+
+## 5. Weitere offene Erprobung
+
+- Mittel und lang mit größeren Bögen und brauchbarer Zwischenentwicklung.
+- Feste Gefährten, gemeinsame Entwicklung und eigenständiges Handeln.
+- Ressourcen/Erholung über längere Zeit, einschließlich Blutdurst und anderer
+  ausdrücklich vereinbarter besonderer Bedürfnisse; keine überraschenden Zähler.
+- Große Entwicklung, Transformationen und bewusst übermächtige Phasen.
+- Kontinuität von Wissen, Namen, Positionen, Zeit und Finanzen nach Spielauswirkung.
+- Selbstständige Folgeabenteuer, Erzähltempo und wiederkehrende Handlungen weiter
+  beobachten. Keine automatischen Rückschlüsse von einem einzelnen gelungenen Lauf.
 
 ## Versionsdokumente
+
+- [Solospiel, Waffen und Kampfablauf 0.14](solospiel-und-waffen-0.14.md)
 
 - [Folgeabenteuer, Ruhephasen und Weltpräsenz 0.13](fortsetzungen-0.13.md)
 - [Geführtes Layout und Fähigkeiten 0.12](layout-und-faehigkeiten-0.12.md)
