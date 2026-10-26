@@ -1,9 +1,13 @@
-# Roadmap nach Kenji und Deren
+# Entwicklungsroadmap des Prompt-Generators
 
-Stand: 25. Oktober 2026 · Aktuelle Regelbasis: 0.14.0 · Paket 0.14 umgesetzt, menschlicher Folgedurchlauf offen
+Stand: 26. Oktober 2026 · Aktuelle Regelbasis: 0.14.0 · Weitere Erprobung läuft, nächstes Entwicklungspaket noch nicht festgelegt
 
-Diese Roadmap ersetzt die bisherige Priorisierung. Der Abschnitt zu 0.14 dokumentiert die Umsetzung; die folgenden Abschnitte
-bleiben Planung. Frühere Implementierungen und Prüfungen stehen in den
+Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
+zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
+Abschnitt 2 dokumentiert die Implementierung von 0.14;
+abgehakte Einträge bedeuten keine garantierte Regelbefolgung im Spielchat.
+Abschnitt 3 priorisiert offene Aufgaben, noch ohne neue Regelentscheidungen oder
+Umsetzung. Frühere Implementierungen und Prüfungen stehen in den
 Versionsdokumenten und in Git. Menschliches Spielgefühl, kurze Szenenprüfungen und
 automatische Tests sind unterschiedliche Nachweise.
 
@@ -141,7 +145,143 @@ Keine ungeprüfte globale Erhöhung der Spieler-LP oder Abwertung sämtlicher Ge
 Numerische Prüfungen und kurze Szenen zeigen keine langfristige erzählerische
 Qualität. Das Spielgefühl bleibt das entscheidende zusätzliche Kriterium.
 
-## 3. Danach: Vielfalt über mehrere Durchläufe
+## 3. Aktuelle offene Aufgaben, priorisiert
+
+**Vorgehen:** Die aktuelle Erprobung wird zunächst ohne neue Generator- oder
+Regeländerungen fortgesetzt. Nach dem nächsten aussagekräftigen Stand werden
+Aufgaben gebündelt
+und das nächste Entwicklungspaket gemeinsam festgelegt. Diese Liste ist keine
+Freigabe für einen sofortigen Umbau. Funktionierende Beziehungen, Eigeninitiative,
+Feldzugsplanung und Fantasypräsenz bleiben ausdrücklich erhaltenswert.
+
+### Priorität 1: Spürbarer Fortschritt und verlässliches Kompetenzgefühl
+
+- [ ] **Schnelleren, relevanten Machtgewinn ausarbeiten.** Entwicklung soll sich
+  innerhalb einer gewöhnlichen, begrenzten Kampagne lohnen. Nicht voraussetzen,
+  dass jemand sehr lange spielt oder alle Attribute maximiert. Langsames Wachstum
+  ist kein Selbstzweck für das Balancing. Häufigkeit und Stärke der Gewinne
+  gemeinsam betrachten; Zahlenvergleich vor einer neuen verbindlichen Staffelung.
+- [ ] **Entwicklung an tatsächlichen Abschlüssen und Zwischenerfolgen auszahlen.**
+  Bereits der erste abgeschlossene Konflikt braucht eine bewusste Abrechnung.
+  Längere Operationen erhalten nutzbare Zwischenschritte, nicht erst am Gesamtende
+  eine kleine Erhöhung. Keine Belohnungsquote für jede Szene oder Wiederholung
+  desselben Erfolgs. Bestehende Regeln dafür sind noch nicht ausreichend verlässlich.
+- [ ] **Belohnungen nach praktischer Wirkung gestalten.** Neue Zauber, bessere
+  Anwendungen, Meisterschaften, Ressourcen, besondere Gegenstände und tatsächlicher
+  Einfluss sollen neue Wege eröffnen. Ein zusätzlicher Ressourcenpunkt kann passen,
+  ist aber nicht automatisch eine angemessene Hauptbelohnung für einen langen
+  Feldzug. Bei Kontakten und Wissenszugang den bereits nutzbaren Vorteil ausdrücklich
+  benennen. Verdiente Entwicklung und Lohn auseinanderhalten.
+- [ ] **Etabliertes Startniveau ausdrücken.** Anfänger und bereits mächtige Figuren
+  brauchen passende tatsächliche Fähigkeiten. Ein größerer Vorrat erhöht Ausdauer,
+  aber nicht die Wirkung des einzelnen Zaubers. Figurenidee, Angriffs-/Zauberwirkung,
+  verfügbare Optionen, Einfluss und Gegner gemeinsam abstimmen. Template, Validierung,
+  Editor, Startpaket und Plugin müssen mögliche Vereinbarungen widerspruchsfrei
+  darstellen; keine versteckte Abschwächung zu einem Anfänger. Noch keine neue
+  Stufenauswahl, Werteverteilung oder Änderung bestehender Grenzen beschlossen.
+- [ ] **Kompetenz bei Proben und Fehlschlägen erhalten.** Passende Talente nicht
+  künstlich von Bestandteilen ihres Einsatzes ausschließen; einfache Vorhaben nicht
+  durch viele Einzelproben künstlich unsicher machen. Profis dürfen scheitern,
+  ohne zur Slapstickfigur zu werden. Bestehende Folgen und echte Gefahr bleiben.
+- [ ] **Alle relevanten Kampfteilnehmer und Wirkungsdauern weiterführen.** Angriff,
+  Befehl, Rückzug, Wache oder begründetes Abwarten sichtbar halten, wenn es
+  die Lage beeinflusst. Verbündete ebenfalls eigenständig handeln lassen;
+  aktive Kontrolleffekte, ausstehende Züge, Bewegungen und Entfernungen konsistent abwickeln.
+- [ ] **Vorhandene Würfelregeln zuverlässig anwenden.** Spielerwürfe einschließlich
+  ihrer Schadenswürfel abwarten; NSC-Würfe nach vereinbarter Zuständigkeit offen
+  auflösen. Flächenangriffe müssen unterschiedliche Deckung pro Ziel beachten.
+  Fehlerkorrektur bedeutet nicht, automatisch jedem Metaeinwand recht zu geben.
+
+### Priorität 1: Erzählfreiheit und Abenteuerumfang erhalten
+
+- [ ] **Moralisch unterschiedliche Gegenspieler zulassen.** Eine eigennützige oder
+  böse Spielerfigur muss nicht durch noch bösere Gegner zur eigentlichen Retterin
+  erklärt werden. Ehrenhafte, gewöhnliche, grausame und widersprüchliche Menschen
+  können echte Gegeninteressen haben. Verbündete bleiben keine bloßen Bestätiger;
+  strategische Vertragstreue macht eine Figur nicht automatisch gut.
+- [ ] **Kurz als begrenzte Aufgabe verlässlich halten.** Den Abschluss eines
+  Konflikts von einem größeren Folgefeldzug unterscheiden; offene Kampagne verlangt
+  keine fortlaufende Hauptbedrohung. Eigene ausführliche Planung und bewusst gewählte
+  Fortsetzung respektieren, ohne kleine Zwischenschritte nachträglich als komplette
+  Kurzabenteuer zu deklarieren. Erkennbar machen, wenn ein freiwilliges Vorhaben
+  über den ursprünglich gewählten Umfang hinauswächst. Nicht laufenden Spielspaß
+  durch ein erzwungenes Ende abbrechen.
+
+### Priorität 2: Kampfgefühl und zufällige besondere Belohnungen entwerfen
+
+- [ ] **Kritische Treffer konkret prüfen.** Natürliche 20 und maximaler
+  Schadenswurf sollen sich besonders anfühlen. Verstärkten Schaden oder klar
+  begrenzte besondere Effekte vergleichen, einschließlich Folgen auf Gegnerseite.
+  Noch keine automatische Tötung, Schadensverdopplung oder weitere Probe festgelegt.
+  Ein zusätzlicher D%-Wurf ist eine offene Möglichkeit, keine Pflicht nach jeder 20.
+- [ ] **Optionale Beute-/Seltenheitsstufen mit D% entwerfen.** Gewöhnliche, seltene,
+  sehr seltene und legendäre Funde als Möglichkeit prüfen. Eine sehr niedrige Chance auf
+  legendäre Funde ist eine Designidee, noch keine beschlossene Tabelle.
+  Fundort, Gegner, Setting und Machtniveau begrenzen den passenden Inhalt; nicht
+  jedes Lager enthält potenziell dieselbe legendäre Waffe. Mächtige Figuren brauchen
+  auch passende Chancen auf entsprechend interessante Gewinne.
+- [ ] **Zufallsfunde ergänzen verlässliche Belohnungen.** Eine schlechte Zufallszahl
+  darf keinen bereits verdienten Fortschritt streichen. Gegenstand, Segen oder
+  Wissen nach seinen konkreten Möglichkeiten bewerten, nicht nur nach Farbe/Namen.
+  Keine Pflicht zu Ausrüstungsloot nach jeder Handlung und kein reines Beutegrinden.
+
+### Priorität 2: Generator und Figurenbogen, getrennt vom Regelumbau
+
+- [ ] **Waffenvorlage korrekt anzeigen.** Nach Übernahme nicht wieder standardmäßig
+  „Schwert“ zeigen. Sichtbare Auswahl und tatsächlicher Datenstand müssen
+  nachvollziehbar zusammenpassen.
+  Angepasste Profile nicht fälschlich als unveränderte Vorlage kennzeichnen.
+- [ ] **Fähigkeitsressourcen zu Fähigkeiten verschieben.** Im Editor Mana/Dunkle Macht
+  dort bearbeiten, Ausrüstung und Geld getrennt halten. Daten und Export nicht durch
+  eine reine UI-Umordnung verändern oder verlieren.
+- [ ] **Doppelte Figurenbeschreibung vermeiden.** Identität beschreibt die Figur;
+  bestätigter Hintergrund enthält zusätzliche etablierte Fakten statt einer fast
+  identischen Wiederholung, keine allgemeinen Weltregeln. Template und Feldhilfen
+  aufeinander abstimmen. Fehlende zusätzliche Fakten dürfen leer bleiben; keine
+  Vergangenheit zur Feldfüllung erfinden oder vorhandene Angaben still löschen.
+- [ ] **Versionen sichtbar und nachvollziehbar machen.** Generatorstand und erwartete
+  Regelversion klar anzeigen, Projekt-/Starttexte gemeinsam ausgeben und exportieren.
+  Alte kopierte Texte und Browsercache als mögliche Fehlerquellen berücksichtigen.
+  Tatsächlich geladenen Pluginstand nur als geprüft ausgeben, wenn er wirklich
+  bekannt ist; keine technische Versionssperre oder automatische Chatauslesung behaupten.
+
+Die JSON-Enum-Klarstellung für Waffen aus PR #25 ist bereits umgesetzt. Sie ist
+von der noch offenen Vorlagenanzeige zu unterscheiden.
+
+### Priorität 3: Offene Regelfrage zu Kampfunfähigkeit, Tod und Zurückhaltung
+
+- [ ] **„1 LP kampfunfähig, 0 LP tot“ später ergebnisoffen untersuchen.** Dahinter
+  steht der Wunsch nach bewusster Schadensbegrenzung und zusätzlichen taktischen
+  Entscheidungen, nicht nur nach einer anderen Anzeige. Das aktuelle 0-LP-Modell
+  bleibt bis zu einer ausdrücklichen Regelentscheidung bestehen.
+- [ ] **Gezielte und nichttödliche Angriffe gemeinsam gestalten.** Zum Beispiel
+  bewusster Angriff aufs Bein mit höherer Schwierigkeit oder eine andere passende
+  Methode, wenn die Figur jemanden weniger stark verletzen will. Wirkung, Risiko,
+  Absicht, Widerstand und vorhandene Fähigkeiten vorher klären. Ein Beintreffer ist
+  nicht automatisch eine Garantie auf ein harmloses Ergebnis; noch keine generellen
+  Zuschläge, Schadensgrenzen oder Ausschaltungsregeln beschlossen.
+- [ ] **Schaden über die Schwelle und Gegenwirkungen prüfen.** Treffer können 1 LP
+  überspringen. Nichttödliche Absicht, Überwältigung, Heilung/Stabilisierung, kritische
+  Treffer sowie Standard/Hardcore und NSC symmetrisch prüfen. Neue Mechaniken nicht
+  nebenbei in laufenden Kampagnen einführen.
+
+### Erprobung und Weg zur Beta
+
+- [ ] Laufende Erprobung nach Interesse fortsetzen; nächstes Paket aus weiterem Verlauf und
+  bisherigen Befunden gemeinsam ableiten. Keine feste Zahl an Testläufen und kein
+  Neustart nach jeder Änderung. Tests sollen konkrete offene Fragen beantworten.
+- [ ] Eine erste Beta darf bekannte Schwächen haben. Verständlicher Einstieg,
+  brauchbare Figuren, zuverlässige grundlegende Abläufe und anhaltender Spielreiz
+  wiegen schwerer als ein perfekter Symbolkatalog oder fehlerfreie Darstellung.
+- [ ] Kleine externe Testgruppe vorbereiten: unterschiedliche Erfahrungen und freie
+  Figuren-/Weltenwahl, Start möglichst ohne Begleitung, niedrige Rückmeldehürde.
+  Version/Startpaket, freiwillig geteilter Verlauf, Spielspaß, Korrekturbedarf und
+  Fortsetzungs-/Abbruchgrund festhalten; private Inhalte dürfen entfernt werden.
+- [ ] Vor Einladungen tatsächlichen Pluginzugang und benötigte Umgebung/Kosten
+  klären. Die private Testinstallation ist kein allgemeiner Zugang. Wiederkehrende
+  Befunde von Geschmack und einzelnen schwachen Läufen unterscheiden.
+
+## 4. Danach: Vielfalt über mehrere Durchläufe
 
 - [ ] Impuls-Historie: verwendete Kombinationen lokal zunächst ausschließen,
   Ausschöpfung behandeln und bewusste Wiederholung per Kennung erlauben.
@@ -153,7 +293,7 @@ Qualität. Das Spielgefühl bleibt das entscheidende zusätzliche Kriterium.
   fest vorgegebene Handlung. Wiederkehrende Fantasy-Motive sind nicht grundsätzlich Fehler.
 - [ ] Einzelne Impulsachsen festhalten bleibt mögliche spätere Komfortfunktion.
 
-## 4. Komfort, Einstieg und Veröffentlichung
+## 5. Komfort, Einstieg und Veröffentlichung
 
 - [ ] Einmalige Willkommenseite: Generator und Spielprinzip kurz erklären;
   genau ein Button **Start** führt in die Vorbereitung. Nur beim ersten Besuch
@@ -173,7 +313,7 @@ Qualität. Das Spielgefühl bleibt das entscheidende zusätzliche Kriterium.
 Diese Punkte bleiben erhalten, sind aber keine Voraussetzung für die nächste
 spielerische Verbesserung. Keine zusätzlichen Einrichtungsrunden nur für Komfort.
 
-## 5. Weitere offene Erprobung
+## 6. Weitere offene Erprobung
 
 - Mittel und lang mit größeren Bögen und brauchbarer Zwischenentwicklung.
 - Feste Gefährten, gemeinsame Entwicklung und eigenständiges Handeln.
