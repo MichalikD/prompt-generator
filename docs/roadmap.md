@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 26. Oktober 2026 · Aktuelle Regelbasis: 0.14.0 · Weitere Erprobung läuft, nächstes Entwicklungspaket noch nicht festgelegt
+Stand: 27. Oktober 2026 · Aktuelle Regelbasis: 0.14.0 · Weitere Erprobung läuft, nächstes Entwicklungspaket noch nicht festgelegt
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -149,10 +149,28 @@ Qualität. Das Spielgefühl bleibt das entscheidende zusätzliche Kriterium.
 
 **Vorgehen:** Die aktuelle Erprobung wird zunächst ohne neue Generator- oder
 Regeländerungen fortgesetzt. Nach dem nächsten aussagekräftigen Stand werden
-Aufgaben gebündelt
-und das nächste Entwicklungspaket gemeinsam festgelegt. Diese Liste ist keine
+Aufgaben gebündelt und das nächste Entwicklungspaket gemeinsam festgelegt. Diese Liste ist keine
 Freigabe für einen sofortigen Umbau. Funktionierende Beziehungen, Eigeninitiative,
 Feldzugsplanung und Fantasypräsenz bleiben ausdrücklich erhaltenswert.
+
+**Einordnung der weiteren Erprobung:** Längere Kontinuität, fortwirkende Absprachen,
+unterschiedliche NSC-Interessen und echte Fantasypräsenz tragen weiterhin.
+Einzelne korrigierte Wissens-/Erholungsfehler begründen derzeit keinen großen
+Gedächtnisumbau. Eine zeitweise menschlich geprägte Umgebung begründet für sich
+ebenfalls keine neue Speziesquote; vorhandene nichtmenschliche Gesellschaften und
+Magie bleiben relevant. Diese positiven Befunde sind keine allgemeine Garantie.
+
+| Rang | Schwerpunkt | Präzisierung aus der weiteren Erprobung |
+| --- | --- | --- |
+| 1 | Nutzbarer Fortschritt und Kompetenzgefühl | Nicht nur seltene Belohnungen: bereits verdienter Gewinn wird wiederholt zu Zugang, Forschung oder einer weiteren Aufgabe statt einer anwendbaren Verbesserung |
+| 1 | Erzähltempo und abgeschlossene Teilziele | Lange Texte und viele einzeln abgefragte Vorbereitungsschritte können auch nach Erfolgen bremsen; Vorsicht des Spielers bedeutet nicht automatisch kleinteilige Pflichtabwicklung |
+| 1 | Eigenständige Fraktionen und begrenzte Abenteuer | Auch die eigene Seite behält Ziele und moralische Grenzen; Freundschaft und einzelne Rettungen machen sie nicht automatisch wohlwollend. Kurzumfang bleibt offen |
+| 2 | Weltgeschehen und bestehende Bedienungs-/Regelaufgaben | Relevante Rückmeldungen delegierter Aufgaben rechtzeitig vermitteln; kritische Treffer, Zufallsbelohnungen und Generatoraufgaben bleiben erhalten |
+| 3 | Alternative Todes-/Ausschaltungsregeln | Bewusste Schadensbegrenzung weiterhin ergebnisoffen untersuchen, keine neue Regel vorwegnehmen |
+
+Die Reihenfolge ist eine Arbeitspriorisierung, keine Festlegung des nächsten
+Pakets. Neue Befunde präzisieren vorhandene Aufgaben; sie rechtfertigen nicht
+automatisch weitere Regeltexte, harte Textlimits oder einen kompletten Neubau.
 
 ### Priorität 1: Spürbarer Fortschritt und verlässliches Kompetenzgefühl
 
@@ -166,12 +184,24 @@ Feldzugsplanung und Fantasypräsenz bleiben ausdrücklich erhaltenswert.
   Längere Operationen erhalten nutzbare Zwischenschritte, nicht erst am Gesamtende
   eine kleine Erhöhung. Keine Belohnungsquote für jede Szene oder Wiederholung
   desselben Erfolgs. Bestehende Regeln dafür sind noch nicht ausreichend verlässlich.
+  Ausdrücklich abgeschlossene Einsätze müssen ohne Nachfrage des Spielers abgerechnet
+  werden. Ein angekündigter Gewinn bleibt diesem Erfolg zugeordnet und wird nicht
+  nachträglich von der Erledigung eines neuen Auftrags abhängig gemacht. Bewusst vom
+  Spieler aufgeschobene Entscheidungen bleiben davon getrennt.
 - [ ] **Belohnungen nach praktischer Wirkung gestalten.** Neue Zauber, bessere
   Anwendungen, Meisterschaften, Ressourcen, besondere Gegenstände und tatsächlicher
   Einfluss sollen neue Wege eröffnen. Ein zusätzlicher Ressourcenpunkt kann passen,
   ist aber nicht automatisch eine angemessene Hauptbelohnung für einen langen
   Feldzug. Bei Kontakten und Wissenszugang den bereits nutzbaren Vorteil ausdrücklich
   benennen. Verdiente Entwicklung und Lohn auseinanderhalten.
+  Bei Studienwerken und Archiven zwischen Zugang, Forschungsansatz und tatsächlich
+  anwendbarem Können unterscheiden. Ein Buch ohne nutzbare Wirkung ist zunächst eine
+  Lerngelegenheit, nicht automatisch eine vollständig ausgezahlte Machtbelohnung.
+  Gewollte Forschung kann bleiben; konkrete erreichbare Lernziele und vereinbarte
+  Zeit/Leistung sollen zu begrenzten neuen Anwendungen oder Verbesserungen führen,
+  statt wiederholt nur theoretische Notizen und neue Voraussetzungen zu erzeugen.
+  Einfluss, Vollmachten und Beziehungen als echte Gewinne erhalten, aber den
+  gewünschten magischen oder kämpferischen Fortschritt nicht dauerhaft damit ersetzen.
 - [ ] **Etabliertes Startniveau ausdrücken.** Anfänger und bereits mächtige Figuren
   brauchen passende tatsächliche Fähigkeiten. Ein größerer Vorrat erhöht Ausdauer,
   aber nicht die Wirkung des einzelnen Zaubers. Figurenidee, Angriffs-/Zauberwirkung,
@@ -191,6 +221,29 @@ Feldzugsplanung und Fantasypräsenz bleiben ausdrücklich erhaltenswert.
   ihrer Schadenswürfel abwarten; NSC-Würfe nach vereinbarter Zuständigkeit offen
   auflösen. Flächenangriffe müssen unterschiedliche Deckung pro Ziel beachten.
   Fehlerkorrektur bedeutet nicht, automatisch jedem Metaeinwand recht zu geben.
+  Bei ausgewählten Spielerwürfen unveränderte Rohwürfe statt selbst berechneter
+  Gesamtergebnisse verlangen und angekündigte Boni durch die Spielleitung addieren.
+  Unbemerkten Wechsel dieses Ablaufs auch bei längeren friedlichen Abschnitten
+  vermeiden; die neue Beobachtung verlangt kein weiteres Würfelsystem.
+
+### Priorität 1: Erzähltempo und erkennbare Teilabschlüsse
+
+- [ ] **Zusammenhängende Vorhaben zusammenhängend abwickeln.** Vereinbarte Vorbereitung,
+  Erklärungen, Durchführung und Routinekontrollen bis zur nächsten tatsächlichen
+  Entscheidung oder eigenständigen Gefahr zusammenfassen. Nicht jede Handbewegung,
+  Freigabe oder Wiederholung zu einer separaten Szene oder Probe machen. Bewusst
+  gewünschte Vorsicht respektieren, ohne sie in eine lange Pflichtfolge zu verwandeln.
+- [ ] **Erfolge in Ergebnisse überführen.** Erfolgreiche Untersuchung oder Vorbereitung
+  muss ihren tatsächlichen Nutzen behalten und ein erkennbares Teilziel abschließen.
+  Distinkte neue Risiken rechtfertigen neue Schritte; eine endlose Folge weiterer
+  Sicherungen, Prüfungen und Auswertungen ist kein Ersatz für Fortschritt. Begrenzte
+  Stabilisierung kann ein echter Erfolg sein, auch wenn vollständige Heilung später
+  folgt. Nächste Schritte und Abschlussbedingungen vorher soweit möglich klarhalten.
+- [ ] **Antwortlänge nach neuem Entscheidungsnutzen steuern.** Wiederholte Zustimmung,
+  Lob, bekannte Vertragsbedingungen und mehrere gleichlautende NSC-Kommentare raffen.
+  Begegnungen, Beziehungen und wichtige Wendepunkte dürfen Raum bekommen; keine
+  starre Wortgrenze. Ausdrücklich gewünschte Zeitraffung wirksam fortführen und bei
+  Routine selbstständig einsetzen, statt immer neue Aufforderungen zu benötigen.
 
 ### Priorität 1: Erzählfreiheit und Abenteuerumfang erhalten
 
@@ -199,6 +252,14 @@ Feldzugsplanung und Fantasypräsenz bleiben ausdrücklich erhaltenswert.
   erklärt werden. Ehrenhafte, gewöhnliche, grausame und widersprüchliche Menschen
   können echte Gegeninteressen haben. Verbündete bleiben keine bloßen Bestätiger;
   strategische Vertragstreue macht eine Figur nicht automatisch gut.
+  Das gilt ebenso für die eigene Fraktion und ihren Herrscher: Persönliches Vertrauen,
+  Humor und Fürsorge für einzelne Personen ersetzen nicht automatisch etablierte
+  Machtziele oder eine rücksichtslose Grundhaltung. Strategisches Retten und
+  Gefangennahme können eigennützig sein. Weder die Figur durch pauschales Lob zur
+  Heldin erklären noch freundliche Beziehungen oder eigenständig gewählte Güte
+  verhindern. Freiwillige Entwicklung aus Entscheidungen von automatischer moralischer
+  Angleichung der gesamten Umgebung unterscheiden; Konsequenzen grausamen Handelns
+  und echte Grenzen einzelner Verbündeter bestehen lassen.
 - [ ] **Kurz als begrenzte Aufgabe verlässlich halten.** Den Abschluss eines
   Konflikts von einem größeren Folgefeldzug unterscheiden; offene Kampagne verlangt
   keine fortlaufende Hauptbedrohung. Eigene ausführliche Planung und bewusst gewählte
@@ -247,6 +308,21 @@ Feldzugsplanung und Fantasypräsenz bleiben ausdrücklich erhaltenswert.
 
 Die JSON-Enum-Klarstellung für Waffen aus PR #25 ist bereits umgesetzt. Sie ist
 von der noch offenen Vorlagenanzeige zu unterscheiden.
+
+### Priorität 2: Rückmeldungen aus der eigenständig handelnden Welt
+
+- [ ] **Relevante Ergebnisse delegierter Aufgaben von selbst vermitteln.** Boten,
+  Berichte und beobachtbare Folgen zu geeigneten Zeitpunkten einbringen, wenn die
+  Figur sie plausibel erhalten kann. Fortschritt anderer Truppen, Kontakte oder
+  Kundschafter soll nicht erst auf ausdrückliche Nachfrage in die Handlung zurückkehren.
+  Keine tägliche Pflichtberichtsrunde, allwissende Echtzeitinformation oder automatische
+  Erkenntnis über jeden geheimen Plan behaupten.
+- [ ] **Größere Konflikte während lokaler Vorhaben fortführen.** Vergangene Zeit,
+  bekannte Fristen und tatsächlich gewonnene Verzögerungen beachten. Neuigkeiten
+  unterscheiden gesicherte Fakten und Einschätzungen; kein spontanes Zurücksetzen
+  einer Bedrohung oder künstlicher Alarm, nur um sie wieder wichtig zu machen.
+  Hintergrundentwicklungen so dosieren, dass sie Entscheidungen ermöglichen und
+  nicht jedes ruhige oder persönliche Vorhaben unterbrechen.
 
 ### Priorität 3: Offene Regelfrage zu Kampfunfähigkeit, Tod und Zurückhaltung
 
