@@ -16,6 +16,13 @@ export function weaponFromPreset(id){
  const preset=Object.hasOwn(weaponPresets,id)?weaponPresets[id]:null;if(!preset)throw new Error('Unbekannte Waffenvorlage.');
  const {label,...profile}=preset;return structuredClone(profile);
 }
+export function weaponPresetId(profile){
+ if(!profile)return '';
+ return Object.keys(weaponPresets).find(id=>{
+  const expected=weaponFromPreset(id),keys=Object.keys(expected);
+  return Object.keys(profile).length===keys.length&&keys.every(key=>profile[key]===expected[key]);
+ })??'';
+}
 export function weaponProfileText(profile,{english=false}={}){
  if(!profile)return '';
  const band=damageBands[profile.damage];if(!band)throw new Error('Unbekannte Schadensklasse.');

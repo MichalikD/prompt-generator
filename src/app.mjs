@@ -1,3 +1,4 @@
+import {showRelease} from './release.mjs';
 import {mountWorldEditor} from './world-editor.mjs';
 import {worldText} from './worlds.mjs';
 import {createProfile} from './profile.mjs';
@@ -12,6 +13,7 @@ import {groups,dice,defaults} from './generator.mjs';
 import {buildOutput,PLUGIN,worldForCharacter} from './outputs.mjs';
 import {setupSteps,stepForGroup,setupErrors} from './setup.mjs';
 const $=s=>document.querySelector(s);
+showRelease($('#release-info'),'Vorbereitung');
 const form=$('#options'),output=$('#prompt'),copy=$('#copy'),status=$('#status'),reset=$('#reset');
 const source=$('#character-source');
 const startMessage=$('#start-message'),copyStart=$('#copy-start'),startStatus=$('#start-status'),download=$('#download');
