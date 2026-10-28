@@ -1,13 +1,13 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 27. Oktober 2026 · Aktuelle Regelbasis: 0.14.0 · Weitere Erprobung läuft, nächstes Entwicklungspaket noch nicht festgelegt
+Stand: 28. Oktober 2026 · Aktuelle Regelbasis: 0.15.0 · Paket umgesetzt; längere Spielerprobung steht aus
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
-Abschnitt 2 dokumentiert die Implementierung von 0.14;
+Abschnitt 2 dokumentiert die Implementierung von 0.14 und den anschließenden Ausbau 0.15;
 abgehakte Einträge bedeuten keine garantierte Regelbefolgung im Spielchat.
-Abschnitt 3 priorisiert offene Aufgaben, noch ohne neue Regelentscheidungen oder
-Umsetzung. Frühere Implementierungen und Prüfungen stehen in den
+Abschnitt 3 erhält die Aufgaben und präzisiert ihre weitere Erprobung. Die Regeln
+aus 0.15 sind implementiert; offene spielerische Ziele gelten erst nach Erprobung als bestätigt. Frühere Implementierungen und Prüfungen stehen in den
 Versionsdokumenten und in Git. Menschliches Spielgefühl, kurze Szenenprüfungen und
 automatische Tests sind unterschiedliche Nachweise.
 
@@ -27,7 +27,7 @@ Auslaufen in Alltag. Ungereimtheiten waren für den Spieler meist verkraftbar;
 die Struktur der angebotenen Handlungsmöglichkeiten wiegt schwerer als folgenlose
 Darstellungsfehler. Private Kampagnenexporte werden nicht veröffentlicht.
 
-**Nächstes Ziel:** Eine einzelne Figur findet unterschiedliche, interessante
+**Weiterhin geltendes Spielziel:** Eine einzelne Figur findet unterschiedliche, interessante
 Herausforderungen mit erkennbaren Chancen. Kämpfen, Schleichen, Vorbereitung,
 Erkundung, Verhandeln und Ausweichen können tragfähige Entscheidungen sein.
 Offensives Handeln braucht eine nachvollziehbare Erfolgsaussicht und einen
@@ -147,11 +147,30 @@ Qualität. Das Spielgefühl bleibt das entscheidende zusätzliche Kriterium.
 
 ## 3. Aktuelle offene Aufgaben, priorisiert
 
-**Vorgehen:** Die aktuelle Erprobung wird zunächst ohne neue Generator- oder
-Regeländerungen fortgesetzt. Nach dem nächsten aussagekräftigen Stand werden
-Aufgaben gebündelt und das nächste Entwicklungspaket gemeinsam festgelegt. Diese Liste ist keine
-Freigabe für einen sofortigen Umbau. Funktionierende Beziehungen, Eigeninitiative,
+**Vorgehen:** Das Paket 0.15 verbindet erreichbare Abschlüsse, greifbaren Machtgewinn,
+straffere Abläufe und eigenständige Fraktionen mit unabhängigen Generatorverbesserungen.
+Danach folgt ein frei gewählter Lauf nach Interesse; kein weiterer langer Lauf
+ist vor diesem Paket nötig. Funktionierende Beziehungen, Eigeninitiative,
 Feldzugsplanung und Fantasypräsenz bleiben ausdrücklich erhaltenswert.
+
+**Umgesetzt in 0.15:**
+
+- [x] Erreichbare Auflösung bei Anfang und Folgeabenteuer; Erfolge verändern den
+  Konflikt und eröffnen einen entscheidenden Schritt statt endloser Pflichtvoraussetzungen.
+- [x] Nutzbare Fähigkeiten, stärkere Anwendungen, besondere Waffen/Gegenstandskräfte,
+  Ressourcen und Einfluss als konkrete Entwicklung; nicht nur langsame Attribute.
+- [x] Verdiente Entwicklung ohne Nachfrage abrechnen; Forschung kann anwendbares
+  Können ergeben, bereits verdiente Belohnung hängt nicht am nächsten Auftrag.
+- [x] Routine, Absprachen, Behandlung und delegierte Arbeit zusammenfassen; eigene
+  Fraktionen behalten etablierte Interessen und moralische Grenzen.
+- [x] Rohwürfe, verbleibende Kampfzüge, Effektende und symmetrische Erholung präzisieren.
+- [x] Waffenvorlagen-Anzeige, Ressourcenplatzierung, Hintergrundtemplate und
+  sichtbare Generator-/Ziel-Regelversion gemeinsam überarbeiten.
+
+Diese Haken bezeichnen geänderte Regeln und überprüfte Daten-/Bedienabläufe,
+keine bewiesene langfristige Erzählqualität. Die nachfolgenden offenen Regelnziele
+bleiben als Kriterien für den nächsten Lauf erhalten. Kritische Treffer,
+Zufalls-Seltenheit und alternative Todesregeln sind nicht Teil von 0.15.
 
 **Einordnung der weiteren Erprobung:** Längere Kontinuität, fortwirkende Absprachen,
 unterschiedliche NSC-Interessen und echte Fantasypräsenz tragen weiterhin.
@@ -162,15 +181,28 @@ Magie bleiben relevant. Diese positiven Befunde sind keine allgemeine Garantie.
 
 | Rang | Schwerpunkt | Präzisierung aus der weiteren Erprobung |
 | --- | --- | --- |
+| 1 | Erreichbare Abschlüsse und neue Abenteuer | Der bestehende Konflikt weitet sich nach Erfolgen wiederholt aus; eine offene Kampagne braucht abgeschlossene Bögen, nicht nur weitere Untersuchungen desselben Problems |
 | 1 | Nutzbarer Fortschritt und Kompetenzgefühl | Nicht nur seltene Belohnungen: bereits verdienter Gewinn wird wiederholt zu Zugang, Forschung oder einer weiteren Aufgabe statt einer anwendbaren Verbesserung |
 | 1 | Erzähltempo und abgeschlossene Teilziele | Lange Texte und viele einzeln abgefragte Vorbereitungsschritte können auch nach Erfolgen bremsen; Vorsicht des Spielers bedeutet nicht automatisch kleinteilige Pflichtabwicklung |
 | 1 | Eigenständige Fraktionen und begrenzte Abenteuer | Auch die eigene Seite behält Ziele und moralische Grenzen; Freundschaft und einzelne Rettungen machen sie nicht automatisch wohlwollend. Kurzumfang bleibt offen |
 | 2 | Weltgeschehen und bestehende Bedienungs-/Regelaufgaben | Relevante Rückmeldungen delegierter Aufgaben rechtzeitig vermitteln; kritische Treffer, Zufallsbelohnungen und Generatoraufgaben bleiben erhalten |
 | 3 | Alternative Todes-/Ausschaltungsregeln | Bewusste Schadensbegrenzung weiterhin ergebnisoffen untersuchen, keine neue Regel vorwegnehmen |
 
-Die Reihenfolge ist eine Arbeitspriorisierung, keine Festlegung des nächsten
-Pakets. Neue Befunde präzisieren vorhandene Aufgaben; sie rechtfertigen nicht
+Die Reihenfolge ist eine Arbeitspriorisierung für die weitere Erprobung nach 0.15. Neue Befunde präzisieren vorhandene Aufgaben; sie rechtfertigen nicht
 automatisch weitere Regeltexte, harte Textlimits oder einen kompletten Neubau.
+
+### Priorität 1: Konflikte entscheiden und Fortsetzung ermöglichen
+
+- [ ] **Erreichbare Abenteuerabschlüsse im längeren Spiel bestätigen.** Die Vorbereitung
+  von Anfang und Folgeabenteuer folgt demselben Auftrag. Erfolge verringern tatsächliche
+  Gegenwehr und ermöglichen eine entscheidende Handlung. Enthüllungen dürfen vertiefen,
+  aber nicht ständig neue Gefangene, Namen, Siegel oder übergeordnete Bedrohungen als
+  notwendige Vorstufe derselben Auflösung erzeugen. Fehlwürfe behalten ihre Folgen;
+  ein Finale muss weder siegreich noch als Krieg enden. Nicht jedes Geheimnis oder
+  jede Behandlung muss vor Abschluss geklärt sein. Freiwillig vergrößerte Ziele von
+  automatisch ausgedehnten Konflikten unterscheiden; nach dem Ende Raum für eine
+  neue Situation mit neuen Interessen geben. 0.15 enthält die Regelüberarbeitung,
+  ihre Zuverlässigkeit im längeren Verlauf ist noch zu prüfen.
 
 ### Priorität 1: Spürbarer Fortschritt und verlässliches Kompetenzgefühl
 
@@ -179,6 +211,10 @@ automatisch weitere Regeltexte, harte Textlimits oder einen kompletten Neubau.
   dass jemand sehr lange spielt oder alle Attribute maximiert. Langsames Wachstum
   ist kein Selbstzweck für das Balancing. Häufigkeit und Stärke der Gewinne
   gemeinsam betrachten; Zahlenvergleich vor einer neuen verbindlichen Staffelung.
+  0.15 ergänzt ausdrücklich neue Fähigkeiten, stärkere bestehende Anwendungen und
+  bessere Ausrüstung statt nur Attributspunkte. Ein Gewinn braucht keinen neuen
+  Nachteil, der ihn wieder aufhebt. Standardgegner bleiben gewöhnlich; neue passende
+  Gegner können stärker sein. Keine feste Stufenleiter oder Seltenheitstabelle eingeführt.
 - [ ] **Entwicklung an tatsächlichen Abschlüssen und Zwischenerfolgen auszahlen.**
   Bereits der erste abgeschlossene Konflikt braucht eine bewusste Abrechnung.
   Längere Operationen erhalten nutzbare Zwischenschritte, nicht erst am Gesamtende
@@ -288,19 +324,19 @@ automatisch weitere Regeltexte, harte Textlimits oder einen kompletten Neubau.
 
 ### Priorität 2: Generator und Figurenbogen, getrennt vom Regelumbau
 
-- [ ] **Waffenvorlage korrekt anzeigen.** Nach Übernahme nicht wieder standardmäßig
+- [x] **Waffenvorlage korrekt anzeigen.** Nach Übernahme nicht wieder standardmäßig
   „Schwert“ zeigen. Sichtbare Auswahl und tatsächlicher Datenstand müssen
   nachvollziehbar zusammenpassen.
   Angepasste Profile nicht fälschlich als unveränderte Vorlage kennzeichnen.
-- [ ] **Fähigkeitsressourcen zu Fähigkeiten verschieben.** Im Editor Mana/Dunkle Macht
+- [x] **Fähigkeitsressourcen zu Fähigkeiten verschieben.** Im Editor Mana/Dunkle Macht
   dort bearbeiten, Ausrüstung und Geld getrennt halten. Daten und Export nicht durch
   eine reine UI-Umordnung verändern oder verlieren.
-- [ ] **Doppelte Figurenbeschreibung vermeiden.** Identität beschreibt die Figur;
+- [x] **Doppelte Figurenbeschreibung vermeiden.** Identität beschreibt die Figur;
   bestätigter Hintergrund enthält zusätzliche etablierte Fakten statt einer fast
   identischen Wiederholung, keine allgemeinen Weltregeln. Template und Feldhilfen
   aufeinander abstimmen. Fehlende zusätzliche Fakten dürfen leer bleiben; keine
   Vergangenheit zur Feldfüllung erfinden oder vorhandene Angaben still löschen.
-- [ ] **Versionen sichtbar und nachvollziehbar machen.** Generatorstand und erwartete
+- [x] **Versionen sichtbar und nachvollziehbar machen.** Generatorstand und erwartete
   Regelversion klar anzeigen, Projekt-/Starttexte gemeinsam ausgeben und exportieren.
   Alte kopierte Texte und Browsercache als mögliche Fehlerquellen berücksichtigen.
   Tatsächlich geladenen Pluginstand nur als geprüft ausgeben, wenn er wirklich
@@ -343,8 +379,8 @@ von der noch offenen Vorlagenanzeige zu unterscheiden.
 
 ### Erprobung und Weg zur Beta
 
-- [ ] Laufende Erprobung nach Interesse fortsetzen; nächstes Paket aus weiterem Verlauf und
-  bisherigen Befunden gemeinsam ableiten. Keine feste Zahl an Testläufen und kein
+- [ ] Nach 0.15 eine frei gewählte Kampagne nach Interesse spielen; Ergebnisse zu
+  Abschluss, greifbarem Fortschritt, Tempo und neuen Situationen auswerten. Keine feste Zahl an Testläufen und kein
   Neustart nach jeder Änderung. Tests sollen konkrete offene Fragen beantworten.
 - [ ] Eine erste Beta darf bekannte Schwächen haben. Verständlicher Einstieg,
   brauchbare Figuren, zuverlässige grundlegende Abläufe und anhaltender Spielreiz
@@ -361,7 +397,10 @@ von der noch offenen Vorlagenanzeige zu unterscheiden.
 
 - [ ] Impuls-Historie: verwendete Kombinationen lokal zunächst ausschließen,
   Ausschöpfung behandeln und bewusste Wiederholung per Kennung erlauben.
-- [ ] Optionale Namens-/Kulturimpulse prüfen. Wiederholte Namen wie Varek, Jorek,
+- [ ] Optionale Namens-/Kulturimpulse prüfen. Die Wiederverwendung eines bedeutenden
+  Namens innerhalb derselben Kampagne (auch nach dem Tod des ersten Trägers) bleibt
+  als konkreter Befund erhalten; 0.15 fordert den Kontextabgleich, noch keine Historie.
+  Wiederholte Namen wie Varek, Jorek,
   Dornfeld oder Graufurt nicht allein durch immer längere Verbotslisten behandeln.
   Eine lokale Historie kennt nur vorgeschlagene oder zurückgemeldete Namen,
   nicht automatisch sämtliche im Spielchat erfundenen Namen.
@@ -397,10 +436,15 @@ spielerische Verbesserung. Keine zusätzlichen Einrichtungsrunden nur für Komfo
   ausdrücklich vereinbarter besonderer Bedürfnisse; keine überraschenden Zähler.
 - Große Entwicklung, Transformationen und bewusst übermächtige Phasen.
 - Kontinuität von Wissen, Namen, Positionen, Zeit und Finanzen nach Spielauswirkung.
+  Verletzungen brauchen fortschreitende Erholung nach den geltenden Regeln statt
+  nur wiederkehrender Erwähnung. Eine nach wenigen Tagen noch empfindliche Schulter
+  ist für sich kein Fehler; verbleibende Einschränkung und Erholung müssen passen.
 - Selbstständige Folgeabenteuer, Erzähltempo und wiederkehrende Handlungen weiter
   beobachten. Keine automatischen Rückschlüsse von einem einzelnen gelungenen Lauf.
 
 ## Versionsdokumente
+
+- [Abschlüsse, greifbarer Fortschritt und Generator 0.15](abschluesse-und-fortschritt-0.15.md)
 
 - [Solospiel, Waffen und Kampfablauf 0.14](solospiel-und-waffen-0.14.md)
 

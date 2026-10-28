@@ -1,4 +1,4 @@
-import {damageBands,emptyWeapon,weaponPresets,weaponFromPreset} from './weapons.mjs';
+import {damageBands,emptyWeapon,weaponPresets,weaponFromPreset,weaponPresetId} from './weapons.mjs';
 import {newCharacterDocument,validateCharacterDocument,parseCharacter,serializeCharacter,characterText,continueCharacter,characterTemplate,attributeLabels} from './character.mjs';
 import {characterMarkup} from './character-view.mjs';
 import {autoGrow,watchGrow,openDialog,downloadFile,copyText} from './ui.mjs';
@@ -8,7 +8,7 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
  const $=s=>root.querySelector(s);let doc=newCharacterDocument(),active='identity';
  const form=$('#character-fields');form.addEventListener('submit',e=>e.preventDefault());
  const names={identity:'Identität',values:'Werte & Talente',abilities:'Fähigkeiten',inventory:'Ausrüstung & Mittel',background:'Hintergrund',development:'Entwicklung'};
- const labels={name:'Name',range:'Reichweite',targets:'Ziele / Fläche',damage:'Schaden (ggf. „kein Schaden“)',effect:'Wirkung / Auflösung / Dauer',cost:'Kosten',limits:'Weitere Grenzen',description:'Beschreibung / Funktion',bonus:'Probenbonus',trigger:'Auslöser',mitigation:'Abmilderung',quantity:'Anzahl',slots:'Tragplätze je Stück',currency:'Währung',amount:'Betrag',current:'Aktuell',max:'Maximum',regeneration:'Regeneration',care:'Versorgung / Erholung',mechanical:'Vereinbarte Mechanik',milestone:'Meilenstein',change:'Änderung',benefit:'Konkreter Nutzen'};
+ const labels={name:'Name',range:'Reichweite',targets:'Ziele / Fläche',damage:'Schaden (ggf. „kein Schaden“)',effect:'Wirkung / Auflösung / Dauer',cost:'Kosten',limits:'Weitere Grenzen',description:'Beschreibung / Funktion / besondere Wirkung',bonus:'Probenbonus',trigger:'Auslöser',mitigation:'Abmilderung',quantity:'Anzahl',slots:'Tragplätze je Stück',currency:'Währung',amount:'Betrag',current:'Aktuell',max:'Maximum',regeneration:'Regeneration',care:'Versorgung / Erholung',mechanical:'Vereinbarte Mechanik',milestone:'Meilenstein',change:'Änderung',benefit:'Konkreter Nutzen / einsetzbare Wirkung'};
  function changed(){doc.confirmed=false;update();}
  function field(parent,path,label,type='text') {
   const wrap=document.createElement('div');wrap.className='character-field';
@@ -22,7 +22,7 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
   if(path[0]==='abilities'&&['range','targets','damage'].includes(key)&&!Object.hasOwn(object,key))input.placeholder='Bisher in Wirkung / Grenzen erfasst';
   if(path[0]==='abilities'&&key==='range')input.setAttribute('aria-description','Leer oder 0 bedeutet ohne Reichweitenbeschränkung. Berührung ausdrücklich eintragen.');
   if(path[0]==='needs'&&['trigger','effect','care'].includes(key))wrap.hidden=!doc.character.needs[path[1]].mechanical;
-  input.addEventListener('input',()=>{object[key]=type==='checkbox'?input.checked:type==='number'?(input.value===''?NaN:Number(input.value)):input.value;doc.confirmed=false;if(type==='checkbox')render();else update();});
+  input.addEventListener('input',()=>{object[key]=type==='checkbox'?input.checked:type==='number'?(input.value===''?NaN:Number(input.value)):input.value;doc.confirmed=false;if(path[0]==='inventory'&&path[2]==='weapon')syncWeaponPreset(path[1]);if(type==='checkbox')render();else update();});
   wrap.append(caption,input);parent.append(wrap);
  }
  function section(parent,title){const el=document.createElement('fieldset'),legend=document.createElement('legend');legend.textContent=title;el.append(legend);parent.append(el);return el;}
@@ -44,6 +44,11 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
   });
   const add=document.createElement('button');add.type='button';add.className='small';add.textContent=`+ ${title} hinzufügen`;add.addEventListener('click',()=>{rows.push(structuredClone(defaults));doc.confirmed=false;render();const target=form.querySelectorAll(`[data-area=${active}] details.character-row`);if(target.length)target[target.length-1].open=true;autoGrow(root);});box.append(add);return box;
  }
+ function syncWeaponPreset(index){
+  const preset=form.querySelector(`[data-weapon-preset="${index}"]`);if(!preset)return;
+  preset.value=weaponPresetId(doc.character.inventory[index].weapon);
+  preset.nextElementSibling.disabled=!preset.value;
+ }
  function weaponFields(entry,row,index){
   const toggle=document.createElement('button');toggle.type='button';toggle.className='small';toggle.textContent=row.weapon?'Waffenprofil entfernen':'+ Waffenprofil';toggle.setAttribute('aria-label',`${toggle.textContent} · ${row.name||index+1}`);
   toggle.addEventListener('click',()=>{if(row.weapon)delete row.weapon;else row.weapon=emptyWeapon();doc.confirmed=false;render();});entry.append(toggle);
@@ -51,11 +56,12 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
   const box=section(entry,'Waffenprofil');box.classList.add('field-grid');
   const help=document.createElement('p');help.className='field-help full-width';help.textContent='Vorlagen sind Vorschläge für neue Waffen. Übernehmen ersetzt nur das Waffenprofil, nicht Name, Funktion, Tragplätze oder Bonus. Bestätigte Eigenschaften nur nach Absprache ändern. Waffenreichweite immer ausdrücklich angeben; leer oder 0 bedeutet hier nicht unbegrenzt.';box.append(help);
   const choices=document.createElement('div');choices.className='actions full-width';
-  const preset=document.createElement('select');preset.setAttribute('aria-label','Waffenvorlage');
+  const preset=document.createElement('select');preset.setAttribute('aria-label','Waffenvorlage');preset.dataset.weaponPreset=String(index);
+  const custom=document.createElement('option');custom.value='';custom.textContent='Eigenes Profil · Vorlage wählen';preset.append(custom);
   for(const [id,w]of Object.entries(weaponPresets)){const option=document.createElement('option');option.value=id;option.textContent=w.label;preset.append(option);}
-  const apply=document.createElement('button');apply.type='button';apply.className='small';apply.textContent='Vorlage übernehmen';apply.addEventListener('click',()=>{row.weapon=weaponFromPreset(preset.value);doc.confirmed=false;render();});choices.append(preset,apply);box.append(choices);
+  const apply=document.createElement('button');apply.type='button';apply.className='small';apply.textContent='Vorlage übernehmen';apply.addEventListener('click',()=>{row.weapon=weaponFromPreset(preset.value);doc.confirmed=false;render();});choices.append(preset,apply);box.append(choices);preset.value=weaponPresetId(row.weapon);apply.disabled=!preset.value;preset.addEventListener('change',()=>{apply.disabled=!preset.value;});
   const wrap=document.createElement('div');wrap.className='character-field';const label=document.createElement('label');label.htmlFor=`weapon-damage-${index}`;label.textContent='Schadensklasse';const select=document.createElement('select');select.id=label.htmlFor;select.name=`inventory.${index}.weapon.damage`;
-  for(const [id,b]of Object.entries(damageBands)){const option=document.createElement('option');option.value=id;option.textContent=`${b.label} ${b.base} · W${b.die} nur wenn ausgewählt`;select.append(option);}select.value=row.weapon.damage;select.addEventListener('change',()=>{row.weapon.damage=select.value;changed();});wrap.append(label,select);box.append(wrap);
+  for(const [id,b]of Object.entries(damageBands)){const option=document.createElement('option');option.value=id;option.textContent=`${b.label} ${b.base} · W${b.die} nur wenn ausgewählt`;select.append(option);}select.value=row.weapon.damage;select.addEventListener('change',()=>{row.weapon.damage=select.value;syncWeaponPreset(index);changed();});wrap.append(label,select);box.append(wrap);
   for(const [key,label]of Object.entries({range:'Reichweite / wirksame Distanz',handling:'Handhabung / Platzbedarf',feature:'Besonderheit / Auflösung',limits:'Grenzen / Munition'}))field(box,['inventory',index,'weapon',key],label,'textarea');
  }
  function showArea(id){active=id;for(const p of form.children)p.hidden=p.dataset.area!==active;for(const b of root.querySelectorAll('[data-editor-tab]'))b.setAttribute('aria-selected',String(b.dataset.editorTab===active));autoGrow(root);}
@@ -79,9 +85,9 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
   const capacity=document.createElement('p');capacity.id='character-capacity';capacity.className='field-help';areas.inventory.append(capacity);
   list(areas.inventory,'Geld',['finances','funds'],{currency:'',amount:0},['amount']);
   const money=section(areas.inventory,'Geld und Vermögen');field(money,['finances','purchasingPower'],'Kaufkraft / Preisanker','textarea');field(money,['finances','assets'],'Weiteres Vermögen','textarea');
-  list(areas.inventory,'Fähigkeitsressource',['vitals','resources'],{name:'',current:3,max:3,effect:'',cost:'',regeneration:''},['current','max']);
+  list(areas.abilities,'Fähigkeitsressource',['vitals','resources'],{name:'',current:3,max:3,effect:'',cost:'',regeneration:''},['current','max']);
   list(areas.inventory,'Besonderes Bedürfnis',['needs'],{name:'',description:'',mechanical:false,trigger:'',effect:'',care:''});
-  const background=section(areas.background,'Hintergrund');for(const [key,label]of Object.entries({confirmed:'Bestätigte Fakten',open:'Bewusst offen',excluded:'Ausgeschlossene Zuschreibungen'}))field(background,['background',key],label,'textarea');
+  const background=section(areas.background,'Hintergrund');const backgroundHelp=document.createElement('p');backgroundHelp.className='field-help';backgroundHelp.textContent='Die Figurenbeschreibung gehört zur Identität. Hier nur zusätzliche bereits festgelegte Ereignisse, Beziehungen oder Herkunftsfakten eintragen. Ohne solche Angaben darf das Feld leer bleiben; keine Vergangenheit erfinden.';background.append(backgroundHelp);for(const [key,label]of Object.entries({confirmed:'Zusätzliche bestätigte Hintergrundfakten',open:'Bewusst offen',excluded:'Ausgeschlossene Zuschreibungen'}))field(background,['background',key],label,'textarea');
   if(areas.development)list(areas.development,'Entwicklung',['development'],{milestone:'',change:'',benefit:'',limits:''});
   $('#character-title').textContent=doc.kind==='start'?'Startbogen':'Laufender Bogen';
   $('#character-kind-help').textContent=doc.kind==='start'?'Start: vier Attribute −1 bis +3, Summe +5; zwei Talente, situative Schwäche, 10 LP und acht Tragplätze.':'Manuell gepflegter Stand. Der ursprüngliche Startbogen bleibt erhalten; Änderungen gelten im Spiel erst nach Absprache.';

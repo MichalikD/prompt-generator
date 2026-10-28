@@ -1,20 +1,26 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Vielfalt und tragfähiges Solospiel · 0.14.0
+## Aktuell: Abschlüsse und spürbarer Fortschritt · 0.15.0
 
-Begegnungen berücksichtigen die tatsächlichen Möglichkeiten einer einzelnen Figur
-und die Zahl gegnerischer Aktionen. Vorbereitung, Deckung, Unterstützung und
-Isolieren von Gegnern verändern die Lage; erfolgreiche Umwege bleiben erfolgreich.
-Kämpfe verlangen vollständige Formeln, sichtbare Gegner-LP und die gewählten
-Schadenswürfel vor dem Verbuchen von Schaden. Erkundung und Bergung können ohne
-Auftraggeber konkrete Entwicklung tragen.
+Eröffnungen und Folgeabenteuer erhalten denselben Auftrag: ein spielbarer Konflikt,
+entscheidende Herausforderungen und ein erreichbares Ergebnis. Erfolge verändern
+die Gegenseite und ermöglichen einen Abschluss, statt regelmäßig eine weitere
+Pflichtuntersuchung zur bisherigen Hauptbedrohung zu eröffnen. Kurz bleibt ein
+begrenztes Abenteuer; eine offene Kampagne kann danach etwas Neues beginnen.
 
-Neue Waffen erhalten auf Wunsch schlanke, anpassbare Profile für Schaden,
-Reichweite, Handhabung, Besonderheit und Grenzen. Vorlagen werden ausdrücklich
-übernommen; bestehende bestätigte Gegenstände bleiben unverändert. Dieselben
-Angaben erscheinen im Starttext, in der Spielübersicht und im gemeinsamen Export.
+Entwicklung wird ohne Erinnerung ausgezahlt. Neue Fähigkeiten, ausgebaute Kräfte,
+stärkere Waffen und Gegenstände mit einsetzbaren Fähigkeiten ergänzen Attribute,
+Ressourcen und Einfluss. Forschungszugang ersetzt kein bereits verdientes Können;
+gewöhnliche Gegner wachsen nicht automatisch mit. Routine und delegierte Arbeit
+können abgeschlossen werden, während Verbündete ihre eigenen Interessen behalten.
 
-[Änderungen, Zahlenvergleich und Prüfgrenzen](docs/solospiel-und-waffen-0.14.md)
+Der Generator zeigt seinen Stand und die erwartete Regelversion auch im Startpaket.
+Fähigkeitsressourcen stehen bei Fähigkeiten. Waffenvorlagen zeigen das tatsächliche
+Profil oder „Eigenes Profil“; Identität und zusätzliche Hintergrundfakten sind im
+Erstellungstemplate getrennt. Figurenformat und manuell gepflegte Spielübersicht
+nehmen konkrete Belohnungen bereits auf; kein automatischer Abgleich mit dem Chat.
+
+[Umfang, Fortschrittsbeispiele und Prüfgrenzen](docs/abschluesse-und-fortschritt-0.15.md)
 
 ## Generator und Spielübersicht · seit 0.12
 
@@ -37,7 +43,7 @@ Eine statische deutschsprachige Web-App ohne Anmeldung und ohne KI-Aufruf im Gen
 [Bedienung und Reichweitenregeln](docs/layout-und-faehigkeiten-0.12.md) ·
 [Aktuelle Roadmap](docs/roadmap.md)
 
-## Plugin-Regelbasis 0.14.0
+## Plugin-Regelbasis 0.15.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
