@@ -120,12 +120,21 @@ export function worldRules(world,{legacy=true}={}) {
 }
 
 function worldPresence(world) {
- if(world.template==='fantasy') return world.powers==='none'
-  ? 'Make the fantasy world concrete through its peoples, cultures, landscapes and unusual places while respecting the exclusion of supernatural powers.'
-  : 'Make fantasy present throughout the campaign: magical practices, nonhuman peoples, creatures and extraordinary places shape opportunities, institutions and dangers according to the effective specifications and explicit exclusions. A medieval era does not reduce this world to mundane village life. The character\'s starting abilities do not cap the powers or creatures that exist elsewhere.';
- if(world.template==='mythology') return world.powers==='none'
-  ? 'Let the selected mythology shape beliefs, cultures and places while respecting the exclusion of supernatural powers; do not turn belief into demonstrated divine intervention.'
-  : 'Let the selected mythology shape places, interests and extraordinary encounters in play; distinguish divine action, mortal knowledge and belief.';
- if(['limited','common','divine'].includes(world.powers)) return 'Supernatural powers are part of this selected world, including in later adventures. Give them concrete playable presence through fitting beings, places, practices, opportunities or dangers; do not leave them only as rumours or repeatedly explain them all away. Match the agreed prevalence and explicit world specifications, without a magic-encounter quota or automatic powers for the character.';
- return '';
+ const identities={
+ fantasy:'Make fantasy present throughout the campaign: magical practices, nonhuman peoples, creatures and extraordinary places shape opportunities, institutions and dangers according to the effective specifications and explicit exclusions. A medieval era does not reduce this world to mundane village life. The character’s starting abilities do not cap the powers or creatures that exist elsewhere.',
+ mythology:'Let the selected mythology shape places, interests and extraordinary encounters in play; divine rivalries, sacred obligations and mythic beings can create playable opportunities beyond historical scenery.',
+ cyberpunk:'Make technology, unequal access, surveillance, bodily augmentation and competing institutions create usable opportunities and consequences, not merely neon scenery.',
+ scifi:'Make space, unfamiliar environments, scientific discoveries and distinct societies affect choices; travel and technology have their established capabilities, not arbitrary obstacles.',
+ historical:'Make the selected period and region matter through institutions, customs, material conditions and competing interests; avoid treating every historical society as the same medieval village.',
+ modern:'Make contemporary institutions, communication, transport and social relationships affect available actions and consequences rather than importing feudal assumptions.',
+ western:'Make frontier distances, uncertain authority, community interests and firearms shape opportunities; do not reduce every journey to a wagon repair or toll dispute.',
+ japan:'Make the selected Japanese period, local communities, obligations and warrior houses shape choices without prescribing obedience, duels or a single plot.',
+ postapocalyptic:'Make the established collapse, ecology, surviving communities and uneven supplies consequential. Distinguish salvage from working transport; scarcity is not an obligation to repeat the same ambush.',
+ custom:'Derive distinctive playable opportunities from the supplied world instead of imposing another template.',
+ };
+ const presence=world.powers==='none'
+  ? 'Build compatible cultures, environments and institutions while respecting the exclusion of supernatural powers; do not turn belief into demonstrated divine intervention.'
+  : ['limited','common','divine'].includes(world.powers)?'Supernatural powers are part of this selected world. Give them concrete playable presence in later adventures as well as the opening, not only rumours. Match their agreed prevalence; distinguish actual effects, testimony and belief. No encounter quota or automatic powers for the hero.':'Apply the explicitly supplied power specifications without assuming supernatural effects.';
+ const identity=world.powers==='none'&&['fantasy','mythology'].includes(world.template)?'Let the selected world shape peoples, beliefs, landscapes and unusual places without supernatural events.':identities[world.template];
+ return identity+' '+presence+' Explicit world adaptations and exclusions override incompatible suggestions; develop circumstances, not a prescribed sequence.';
 }

@@ -66,6 +66,7 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
  }
  function showArea(id){active=id;for(const p of form.children)p.hidden=p.dataset.area!==active;for(const b of root.querySelectorAll('[data-editor-tab]'))b.setAttribute('aria-selected',String(b.dataset.editorTab===active));autoGrow(root);}
  function render(){
+  doc.character.progression??={xp:0,available:0};
   form.replaceChildren();$('.editor-tabs').replaceChildren();
   const areas={};for(const [id,name]of Object.entries(names)){
    if(id==='development'&&doc.kind!=='current')continue;
@@ -88,6 +89,7 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
   list(areas.abilities,'Fähigkeitsressource',['vitals','resources'],{name:'',current:3,max:3,effect:'',cost:'',regeneration:''},['current','max']);
   list(areas.inventory,'Besonderes Bedürfnis',['needs'],{name:'',description:'',mechanical:false,trigger:'',effect:'',care:''});
   const background=section(areas.background,'Hintergrund');const backgroundHelp=document.createElement('p');backgroundHelp.className='field-help';backgroundHelp.textContent='Die Figurenbeschreibung gehört zur Identität. Hier nur zusätzliche bereits festgelegte Ereignisse, Beziehungen oder Herkunftsfakten eintragen. Ohne solche Angaben darf das Feld leer bleiben; keine Vergangenheit erfinden.';background.append(backgroundHelp);for(const [key,label]of Object.entries({confirmed:'Zusätzliche bestätigte Hintergrundfakten',open:'Bewusst offen',excluded:'Ausgeschlossene Zuschreibungen'}))field(background,['background',key],label,'textarea');
+  if(areas.development){const exp=section(areas.development,'Erfahrung');field(exp,['progression','xp'],'EXP · Rest bis zur nächsten Verbesserung (0–1)','number');field(exp,['progression','available'],'Verfügbare Verbesserungen','number');}
   if(areas.development)list(areas.development,'Entwicklung',['development'],{milestone:'',change:'',benefit:'',limits:''});
   $('#character-title').textContent=doc.kind==='start'?'Startbogen':'Laufender Bogen';
   $('#character-kind-help').textContent=doc.kind==='start'?'Start: vier Attribute −1 bis +3, Summe +5; zwei Talente, situative Schwäche, 10 LP und acht Tragplätze.':'Manuell gepflegter Stand. Der ursprüngliche Startbogen bleibt erhalten; Änderungen gelten im Spiel erst nach Absprache.';

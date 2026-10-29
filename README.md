@@ -1,6 +1,16 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Abschlüsse und spürbarer Fortschritt · 0.15.0
+## Aktuell: EXP, unabhängige Beute und Weltpräsenz · 0.16.0
+
+Abgeschlossene bedeutende Ergebnisse bringen verbindlich 1–3 EXP, auch bei
+Niederlagen. Je 2 EXP wird sofort eine persönliche Verbesserung mit drei
+Auswahlmöglichkeiten angeboten. Beute, Geschenke und Lohn bleiben unabhängig.
+Training ist keine zusätzliche Freischaltpflicht. Bogen und Übersicht führen
+EXP-Rest und verfügbare Verbesserungen; keine automatische Chat-Synchronisierung.
+Alle zehn Weltvorlagen erhalten spielbare eigene Schwerpunkte. Die vorhandenen
+Kampfabläufe unterscheiden Spieler- und NSC-Würfe unmittelbar am Handlungsschritt.
+
+## Grundlage: Abschlüsse und spürbarer Fortschritt · 0.15.0
 
 Eröffnungen und Folgeabenteuer erhalten denselben Auftrag: ein spielbarer Konflikt,
 entscheidende Herausforderungen und ein erreichbares Ergebnis. Erfolge verändern
@@ -43,7 +53,7 @@ Eine statische deutschsprachige Web-App ohne Anmeldung und ohne KI-Aufruf im Gen
 [Bedienung und Reichweitenregeln](docs/layout-und-faehigkeiten-0.12.md) ·
 [Aktuelle Roadmap](docs/roadmap.md)
 
-## Plugin-Regelbasis 0.15.0
+## Plugin-Regelbasis 0.16.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,
@@ -370,3 +380,5 @@ Lösungen bleiben gültig, andere Vorgehensweisen müssen für die Figur tragfä
 Die Fassung baut auf den Abschlüssen und Übergängen aus 0.4.0 auf.
 
 [Bedienung, Annahmen, Prüfumfang und Rückkehrpunkt](docs/welten-und-kurzabenteuer-0.5.md).
+
+[EXP und Weltprofile 0.16](docs/exp-und-weltprofile-0.16.md)

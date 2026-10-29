@@ -21,6 +21,7 @@ export function characterReference(doc) {
   '## Schwächen und Verletzungen\n\n'+entries(c.weaknesses,w=>`${w.name}\nAuslöser: ${w.trigger}\nWirkung: ${w.effect}\nAbmilderung: ${w.mitigation||'Nicht festgelegt.'}`)+`\n\nVerletzungen: ${c.vitals.injuries||'Keine eingetragen.'}`,
   '## Ausrüstung\n\n'+entries(c.inventory,i=>`${i.name} ×${i.quantity} · ${i.slots} Plätze je Stück · Probenbonus +${i.bonus}\n${i.description}${i.weapon?"\n"+weaponProfileText(i.weapon):""}`),
   '## Geld\n\n'+entries(c.finances.funds,f=>`${f.amount} ${f.currency}`)+(c.finances.purchasingPower?'\n\n'+c.finances.purchasingPower:'')+(c.finances.assets?'\n\nWeiteres Vermögen: '+c.finances.assets:''),
+  `## Erfahrung\n\nEXP: ${c.progression?.xp??0}/2 · Verfügbare Verbesserungen: ${c.progression?.available??0}`,
   '## Entwicklung und Errungenschaften\n\n'+entries(c.development,d=>`${d.milestone}: ${d.change}\nNutzen: ${d.benefit}\nGrenzen: ${d.limits||'Nicht festgelegt.'}`),
   ...(c.needs?.length?['## Besondere Bedürfnisse\n\n'+entries(c.needs,n=>`${n.name}: ${n.description}`+(n.mechanical?`\nAuslöser: ${n.trigger}\nWirkung: ${n.effect}\nVersorgung: ${n.care}`:''))]:[]),
  ].join('\n\n');
