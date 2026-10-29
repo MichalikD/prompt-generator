@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 28. Oktober 2026 · Aktuelle Regelbasis: 0.15.0 · Paket umgesetzt; längere Spielerprobung steht aus
+Stand: 29. Oktober 2026 · Aktuelle Regelbasis: 0.16.0 · Paket umgesetzt; längere Spielerprobung steht aus
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -147,7 +147,32 @@ Qualität. Das Spielgefühl bleibt das entscheidende zusätzliche Kriterium.
 
 ## 3. Aktuelle offene Aufgaben, priorisiert
 
-**Vorgehen:** Das Paket 0.15 verbindet erreichbare Abschlüsse, greifbaren Machtgewinn,
+### Paket 0.16: Umsetzung nach Bestandsaufnahme und Spielerfahrungen
+
+- [x] Verbindliche 1/2/3 EXP für kleine/gewöhnliche/große abgeschlossene Ergebnisse,
+  auch bei Niederlage. Routine, einzelne Gegner und beliebige Wiederholung: 0.
+- [x] Je 2 EXP eine persönliche Verbesserung; Rest bleibt, Schwelle steigt nicht.
+  Drei unterschiedliche Optionen sofort anbieten, keine spätere Angebotsankündigung.
+- [x] Beute, Geschenke, Lohn und andere Weltgewinne unabhängig von EXP führen.
+  Die frühere Möglichkeit, damit persönliche Entwicklung zu ersetzen, ist abgelöst.
+- [x] EXP und verfügbare Verbesserungen in Bogen, Template, Editor, Übersicht und
+  Export führen; Startbogen erhalten. Keine automatische Chat-Synchronisierung.
+- [x] Angebotsmischung, Zusatznutzen gegenüber Grundhandlungen und freiwilliges
+  Lernen präzisieren; Training ist keine zusätzliche Pflicht vor verdienten Verbesserungen.
+- [x] Kampfzuständigkeiten direkt im vorhandenen Ablauf klären; keine neuen Werte.
+- [x] Alle zehn Weltvorlagen mit eigenen spielbaren Schwerpunkten und gemeinsamer
+  Präsenzregel abgleichen; Anpassungen, Ausschlüsse und freie Handlung bleiben gültig.
+- [ ] Lange Spielwirkung bestätigen: konkrete Beute und persönliches Wachstum,
+  selbstständig ausgeführte Kämpfe, unterschiedliche Weltpräsenz und echte Abschlüsse.
+
+Die folgenden Einträge bleiben als historische Befunde und Erprobungsziele erhalten.
+Wo sie Gegenstände als Ersatz für persönliche Entwicklung behandeln, gilt seit
+0.16 die Trennung von Weltgewinn und EXP. Haken belegen Umsetzung, nicht garantierte
+Modellbefolgung. Neutrale F-01/F-03/F-05 rechtfertigen keinen neuen Unterbau;
+F-02 bleibt Validierungsgrenze, F-04 wird durch Figurenübernahme ohne vorgetäuschte
+Kampagnenkontinuität abgegrenzt. Englische Steuertexte bleiben beabsichtigt.
+
+**Historischer Ausgangspunkt 0.15:** Das Paket 0.15 verbindet erreichbare Abschlüsse, greifbaren Machtgewinn,
 straffere Abläufe und eigenständige Fraktionen mit unabhängigen Generatorverbesserungen.
 Danach folgt ein frei gewählter Lauf nach Interesse; kein weiterer langer Lauf
 ist vor diesem Paket nötig. Funktionierende Beziehungen, Eigeninitiative,
@@ -457,3 +482,5 @@ spielerische Verbesserung. Keine zusätzlichen Einrichtungsrunden nur für Komfo
 - [Gemeinsamer Erzählauftrag 0.7](erzaehlauftrag-0.7.md)
 - [Stand nach Jack 0.6](spielbarer-prototyp-0.6.md)
 - [Weltvorlagen und Kurzabenteuer 0.5](welten-und-kurzabenteuer-0.5.md)
+
+[EXP und Weltprofile 0.16](exp-und-weltprofile-0.16.md)

@@ -50,3 +50,7 @@ For a requested JSON export, preserve the supplied schema/field names, distingui
 ## Weapon records
 
 For new weapons use the optional inventory `weapon` object: `damage` is light/ordinary/heavy, while `range`, `handling`, `feature` and `limits` are nonempty strings defining normal/maximum reach, hands/space, a useful distinction and its restriction. Keep general description, quantity, carrying slots and check bonus. A heavy weapon may need more carried slots; do not silently change them on an existing confirmed item. See Checks and Combat for damage dice and slim profile resolution. Do not duplicate contradictory numerical properties in prose, give every firearm identical use, or reinterpret old weapons solely from their names. A profile is an agreed proposal at creation, not an automatic replacement for confirmed equipment. A combat specialist can later learn a specified maneuver or improve effective power through agreed development; the one-action default and fixed talent +2 do not themselves grant extra attacks.
+
+## Experience state
+
+Track progression as {xp,available}: xp is the remainder 0 or 1 towards the fixed threshold 2; available counts unlocked unchosen personal improvements. Start at zero unless an explicit transferred current sheet states otherwise. Record accepted improvements in development and actual powers/items in their respective fields. Loot never consumes available improvements or EXP. A current sheet supplied for a new run transfers the figure, not memories of an absent campaign; exact campaign continuation requires a save.

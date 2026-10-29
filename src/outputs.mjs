@@ -37,7 +37,7 @@ export function buildPluginPackage(config = defaults, character=null) {
     languageDirective,
     `Generator version: ${GENERATOR_VERSION}. Expected rules version: ${PLUGIN.version}.`,
     `New solo run with "${PLUGIN.name}", rules version ${PLUGIN.version}.`,
-    'Read the GM skill and “Adventure and World” first; use the same conflict preparation for the opening and later adventures. Settle outcomes and usable development with “Development and Saves” at meaningful achievements and endings, without waiting for my reminder. Mention access problems only; begin without a loading report.',
+    'Read the GM skill and “Adventure and World” first; use the same conflict preparation for the opening and later adventures. Apply outcome EXP and independent world rewards with “Development and Saves”; immediately offer unlocked improvements. Mention access problems only; begin without a loading report.',
     'Apply the selected profile and confirmed sheet throughout this run. Explicit choices replace the plugin fallback values; world adaptations replace conflicting template suggestions.',
     pluginProfileText(profile, selected, groups),
     ...groups.filter(group=>!profileIds.includes(group.id) && !(character && group.id==='creation')).map(group => `${optionNames[group.id]}: ${pluginChoiceText(group.id,selected[group.id])}`),
