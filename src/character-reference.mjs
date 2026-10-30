@@ -11,6 +11,8 @@ export function characterReference(doc) {
   `# ${c.identity.name} · Spielübersicht`,
   `${doc.kind==='start'?'Startbogen':'Aktueller Bogen'} · ${doc.confirmed?'bestätigt':'Entwurf, noch nicht bestätigt'}`,
   'Statischer Stand aus dem Editor. Änderungen im Spielchat werden hier nicht automatisch übernommen. Diese Übersicht ersetzt weder den vollständigen Bogen noch einen Spielstand.',
+  '## Figur\n\n'+[c.identity.ancestry,c.identity.role,c.identity.pronouns,c.identity.description].filter(Boolean).join('\n\n'),
+  '## Hintergrund\n\n'+(Object.values(c.background).some(Boolean)?Object.entries({confirmed:'Bestätigt',open:'Offen',excluded:'Ausgeschlossen'}).filter(([key])=>c.background[key]).map(([key,label])=>`${label}: ${c.background[key]}`).join('\n\n'):'Keine zusätzlichen Angaben.'),
   `## Werte\n\nLP: ${c.vitals.hp}/${c.vitals.maxHp} · Gepäck: ${slots}/8\n`+
   Object.entries(attributeLabels).map(([key,label])=>`${label}: ${c.attributes[key]>=0?'+':''}${c.attributes[key]}`).join(' · '),
   `Grundverteidigung: 10 + Geschick (${c.attributes.dexterity>=0?'+':''}${c.attributes.dexterity}) = ${10+c.attributes.dexterity}, vor Rüstung. Passende Rüstung gibt +1; siehe ihre Beschreibung unten. Weitere vereinbarte Effekte beachten.`,

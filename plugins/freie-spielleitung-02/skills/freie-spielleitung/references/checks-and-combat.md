@@ -12,7 +12,7 @@ Resolve the whole declared action. Use multiple stages only if they involve dist
 
 ## Formula and dice
 
-D20 + attribute + one applicable talent (+2) + one equipment bonus (at most +2) ≥ DC: success.
+D20 + attribute + one applicable talent (starting +2; agreed advancement up to +5) + one equipment bonus (at most +2) ≥ DC: success.
 
 | DC | Difficulty |
 | --- | --- |

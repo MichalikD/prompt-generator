@@ -109,6 +109,7 @@ export function worldText(w,{legacy=false}={}) {
   legacy?choice(worldPlayerKinds,w.playerKind,'Figurenart').text:kinds[w.playerKind],
   w.description&&`World description (user specifications):\n${w.description}`,
   !legacy&&worldPresence(w),
+  !legacy&&'Technology governs ordinary communication, transport, tools and infrastructure. Supernatural powers do not silently modernize them; establish exceptional inventions and their availability explicitly. Custom world adaptations take priority.',
   legacy?'Explicit custom specifications replace conflicting template defaults. Preserve other compatible assumptions. Resolve contradictions between explicit specifications before play; never silently ignore one. A calendar date alone does not define technology.':'The effective specifications above define this world. User adaptations replace conflicting template suggestions. Clarify contradictions between explicit specifications before play.',
  ].filter(Boolean).join('\n\n');
 }

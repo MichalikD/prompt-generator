@@ -39,7 +39,7 @@ export function mountPlayDesk(root,host=window) {
   // Retain every rule-bearing field in the secondary sections without interpreting it.
   for(const part of reference.split('\n\n## ').slice(1)){
    const split=part.indexOf('\n'),title=part.slice(0,split),text=part.slice(split).trim();
-   if(title==='Fähigkeiten')continue;
+   if(['Fähigkeiten','Erfahrung','Entwicklung und Errungenschaften'].includes(title))continue;
    const details=node('details','','overview-section');details.open=title==='Talente';details.append(node('summary',title),node('div',text,'play-card-text'));view.append(details);
   }
  }

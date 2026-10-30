@@ -1,6 +1,19 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: EXP, unabhängige Beute und Weltpräsenz · 0.16.0
+## Aktuell: Abenteuergrenzen und Spieltempo · 0.17.0
+
+Umfang und Fortsetzung haben getrennte Aufgaben. Ein entschiedenes Ziel wird in
+derselben Antwort mit EXP und freigeschalteten Verbesserungen abgerechnet, auch
+wenn Hintergrundfragen offenbleiben. Standardantworten bleiben bei höchstens 250
+Wörtern, mit begrenzten Ausnahmen für entscheidende Szenen und vollständige Abrechnungen.
+Starttalente bleiben +2; spätere Verbesserungen erlauben +1 bis +5 oder Meisterschaften.
+Der Spieltab ergänzt Beschreibung und Hintergrund, während manuell gepflegte
+Fortschrittsdaten im Bogen/Export bleiben. Außergewöhnliche Technik wird als Ausnahme
+etabliert. Diese Regeln sind keine technische Garantie für das Verhalten des Spielchats.
+
+[Änderungen und Prüfgrenzen 0.17](docs/abenteuergrenzen-und-spieltempo-0.17.md)
+
+## Grundlage: EXP, unabhängige Beute und Weltpräsenz · 0.16.0
 
 Abgeschlossene bedeutende Ergebnisse bringen verbindlich 1–3 EXP, auch bei
 Niederlagen. Je 2 EXP wird sofort eine persönliche Verbesserung mit drei
@@ -53,7 +66,7 @@ Eine statische deutschsprachige Web-App ohne Anmeldung und ohne KI-Aufruf im Gen
 [Bedienung und Reichweitenregeln](docs/layout-und-faehigkeiten-0.12.md) ·
 [Aktuelle Roadmap](docs/roadmap.md)
 
-## Plugin-Regelbasis 0.16.0
+## Plugin-Regelbasis 0.17.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,

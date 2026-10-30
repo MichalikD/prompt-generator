@@ -25,7 +25,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: freie-spielleitung-02
-          path: dist/freie-spielleitung-02-0.16.0.zip
+          path: dist/freie-spielleitung-02-0.17.0.zip
           if-no-files-found: error
       - name: Statische Dateien vorbereiten
         run: |
