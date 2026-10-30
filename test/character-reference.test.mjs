@@ -17,7 +17,7 @@ test('Spielübersicht behält komplexe Fähigkeiten und Ressourcen vollständig 
  assert.ok(text.includes('3/8'));
  assert.ok(text.includes('nicht automatisch übernommen'));
  assert.ok(text.includes('13, vor Rüstung'));
- assert.ok(!text.includes(c.background.open));
+ assert.ok(text.includes(c.background.open));
 });
 
 test('Aktuelle Spielübersicht verwendet veränderte Werte, nicht den ursprünglichen Bogen',()=>{

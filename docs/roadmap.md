@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 29. Oktober 2026 · Aktuelle Regelbasis: 0.16.0 · Paket umgesetzt; längere Spielerprobung steht aus
+Stand: 30. Oktober 2026 · Aktuelle Regelbasis: 0.17.0 · Umsetzung nach weiterem menschlichem Durchlauf; neue Langzeitwirkung offen
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -147,6 +147,47 @@ Qualität. Das Spielgefühl bleibt das entscheidende zusätzliche Kriterium.
 
 ## 3. Aktuelle offene Aufgaben, priorisiert
 
+### Paket 0.17: Abenteuergrenzen, Abrechnung und Spieltempo
+
+Der weitere Durchlauf war spielerisch erfolgreich: Weltmischung, Tiere, Beziehungen,
+freie vorsichtige Lösungen und konkrete Verbesserungsangebote tragen. Ein größerer
+Konflikt erreicht ein echtes Ende; bei gewähltem Kurzumfang jedoch zu spät.
+EXP werden nach dem ersten Abschluss mehrfach nur auf Erinnerung gewährt und
+selbst am abschließenden Erfolg ausgelassen. Gute Angebote lösen deren Ausbleiben nicht.
+
+- [x] Umfang, Kampagnenstruktur, Ton und Schwerpunkt mit getrennten Zuständigkeiten
+  definieren. Kurz hat eine eigene Auflösung; offen oder verbunden vergrößert es nicht.
+  Eine bewusst größere Zielsetzung verlangt eine erkennbare Vereinbarung, keine
+  automatische Ableitung aus Neugier oder Hilfsbereitschaft.
+- [x] Zielausgang und EXP in derselben Antwort abrechnen, vor Folgehandlung oder Pause.
+  Bedeutsame Teilergebnisse und Niederlagen zählen unabhängig vom Gesamtbogen;
+  ein neues Finale bleibt vergütbar, ohne frühere Ergebnisse doppelt zu zählen.
+- [x] Standardantworten höchstens 250 Wörter, keine Zielwortzahl. Ausnahmen: notwendige
+  entscheidende Szene, umfangreiche Regelabrechnung oder ausdrücklich lange Antwort/Export.
+  Spielentscheidende Angaben bleiben vollständig. Wiederholungen und Kleinstfreigaben raffen.
+- [x] Starttalente +2; spätere persönliche Verbesserung wahlweise +1 bis maximal +5
+  oder Meisterschaft mit neuen Anwendungen. Regeln, Formel, Template, Prüfung und
+  aktueller Editor gemeinsam aktualisieren. Keine Stapelung oder zusätzlichen Angriffe.
+- [x] Spieltab zeigt Beschreibung und Hintergrund. Erfahrung/Entwicklung aus der normalen
+  Übersicht ausblenden, im Bogen, Bearbeitungsdialog, Kopie und Export erhalten.
+  Individuelle Waffenprofile als ausgefüllt und von Vorlagen abweichend erläutern.
+- [x] Gewöhnliche Technik und außergewöhnliche Erfindungen unterscheiden; übernatürliche
+  Kräfte modernisieren Infrastruktur und Kommunikation nicht automatisch.
+- [ ] Spielerprobung: mehrere selbstständige Abschlüsse samt unaufgeforderter EXP-Abrechnung,
+  flüssigere Dialoge und echte Kurzumfänge bestätigen. Vorhandene Erfolgserlebnisse erhalten.
+
+Diese Entscheidungen ersetzen ältere Festlegungen „Talent immer +2“ und „keine starre
+Wortgrenze“. Ältere Abschnitte dokumentieren den Entwicklungsweg, nicht parallele Regeln.
+Der Spieltab ist eine manuelle Nachschlagehilfe, keine automatisch aktuelle Fortschrittsanzeige.
+Numerisch bedeutet +1 Talent fünf Prozentpunkte bei einer noch offenen normalen W20-Probe;
++2 bis +5 ergeben höchstens 15 Punkte Unterschied, ohne Schaden oder Aktionen zu erhöhen.
+
+**Nächste Prioritäten:** zuerst die gemeinsame Abschluss-/EXP-Abwicklung und Länge prüfen;
+Angebotsstärke ist positiv, zusätzliche Belohnungstabellen derzeit nachgeordnet. Beschreibung
+und Hintergrund lösen einen belegten Bedarf. Namen/Kulturimpulse und die Möglichkeiten von
+Weltfreitext bleiben erhalten; keine verpflichtende Geografie oder neue Konfigurationsrunde.
+Technische Regel-/DOM-Prüfungen beweisen keine Modellbefolgung und keinen Langzeitspaß.
+
 ### Paket 0.16: Umsetzung nach Bestandsaufnahme und Spielerfahrungen
 
 - [x] Verbindliche 1/2/3 EXP für kleine/gewöhnliche/große abgeschlossene Ergebnisse,
@@ -162,7 +203,7 @@ Qualität. Das Spielgefühl bleibt das entscheidende zusätzliche Kriterium.
 - [x] Kampfzuständigkeiten direkt im vorhandenen Ablauf klären; keine neuen Werte.
 - [x] Alle zehn Weltvorlagen mit eigenen spielbaren Schwerpunkten und gemeinsamer
   Präsenzregel abgleichen; Anpassungen, Ausschlüsse und freie Handlung bleiben gültig.
-- [ ] Lange Spielwirkung bestätigen: konkrete Beute und persönliches Wachstum,
+- [ ] Lange Spielwirkung weiter bestätigen: konkrete Beute und persönliches Wachstum,
   selbstständig ausgeführte Kämpfe, unterschiedliche Weltpräsenz und echte Abschlüsse.
 
 Die folgenden Einträge bleiben als historische Befunde und Erprobungsziele erhalten.
@@ -484,3 +525,5 @@ spielerische Verbesserung. Keine zusätzlichen Einrichtungsrunden nur für Komfo
 - [Weltvorlagen und Kurzabenteuer 0.5](welten-und-kurzabenteuer-0.5.md)
 
 [EXP und Weltprofile 0.16](exp-und-weltprofile-0.16.md)
+
+[Abenteuergrenzen und Spieltempo 0.17](abenteuergrenzen-und-spieltempo-0.17.md)

@@ -15,13 +15,13 @@ const choices = {
     hardcore: 'Hardcore: the same world danger and consequences as Standard; a valid death permanently ends this run with no rewind. Saving does not bypass death. Correct GM errors.',
   },
   scope: {
-    short: 'Short: one self-contained conflict with a decisive challenge and a conclusive outcome. Resolve its central problem within this adventure; do not reveal it as merely a preliminary step in an unfinished larger threat. Keep stakes bounded from preparation onward; discoveries and victories must make an attainable resolution closer, not keep adding necessary preliminary tasks. Continuing play can bring a new independent adventure in the same world.',
+    short: 'Short: one self-contained conflict with a decisive challenge and a conclusive outcome. Resolve its central problem within this adventure; do not reveal it as merely a preliminary step in an unfinished larger threat. Treat scope as the current conflict, independently of campaign continuation, tone and focus. Keep stakes bounded from preparation onward; discoveries and victories must make an attainable resolution closer, not keep adding necessary preliminary tasks. Continuing play can bring a new independent adventure in the same world.',
     medium: 'Medium: a larger story arc with several connected turning points, relationships and lasting consequences, reaching a common ending. Turn successes into lasting changes and an opportunity to decide this conflict. Settle outcome EXP and independent world gains at meaningful intermediate achievements, while they can still be used in this arc, as well as at its conclusion; do not substitute extra checks for substance.',
     long: 'Extended: a substantial story arc with multiple developing sections, discoveries and long-term aims towards a reachable finale. Recognize meaningful intermediate achievements with outcome EXP and independent world gains throughout the story, not only at the final ending; successes change the opposition and bring that finale closer rather than continually revealing more prerequisites; no fixed scene or reward quota.',
   },
   continuation: {
     open: 'Open campaign: the same character and world can continue after each completed adventure, with consequences, relationships and earned development preserved. This is a continuation setting, not an instruction to invent an overarching main plot. Apply the selected adventure scope; settle each outcome and usable reward, then allow requested interludes before a new adventure. Leaving a concluded conflict does not require abandoning an unresolved main threat.',
-    linked: 'Linked campaign: after each resolved chapter, prepare the next chapter of the larger conflict towards a reachable overall finale. Preserve local outcomes.',
+    linked: 'Linked campaign: resolved adventures share recurring people and consequences and may contribute to an agreed overall finale. Each adventure retains its selected scope, local outcome and immediate EXP settlement.',
     single: 'Single adventure: finish with consequences and an epilogue. Begin another adventure only at my request.',
   },
 };

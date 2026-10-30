@@ -12,11 +12,12 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
  function changed(){doc.confirmed=false;update();}
  function field(parent,path,label,type='text') {
   const wrap=document.createElement('div');wrap.className='character-field';
-  if(path[0]==='talents'&&path.at(-1)==='bonus'){wrap.textContent='Talentbonus +2 · fest, nicht stapelbar';wrap.classList.add('field-help');parent.append(wrap);return;}
+  if(path[0]==='talents'&&path.at(-1)==='bonus'&&doc.kind==='start'){wrap.textContent='Starttalent +2 · nicht stapelbar';wrap.classList.add('field-help');parent.append(wrap);return;}
   const caption=document.createElement('label');caption.htmlFor='cf-'+path.join('-');caption.textContent=label;
   const input=document.createElement(type==='textarea'?'textarea':'input');input.id=caption.htmlFor;input.name=path.join('.');
   if(type==='textarea'){input.rows=1;input.dataset.grow='';}else input.type=type;
   if(type==='number')input.step=path.at(-1)==='amount'?'any':'1';
+  if(path[0]==='talents'&&path.at(-1)==='bonus'){input.min='2';input.max='5';caption.textContent='Talentbonus · 2 bis 5, nicht stapelbar';}
   const object=path.slice(0,-1).reduce((o,k)=>o[k],doc.character),key=path.at(-1),value=object[key];
   if(type==='checkbox')input.checked=value;else input.value=value??'';
   if(path[0]==='abilities'&&['range','targets','damage'].includes(key)&&!Object.hasOwn(object,key))input.placeholder='Bisher in Wirkung / Grenzen erfasst';
@@ -54,10 +55,10 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
   toggle.addEventListener('click',()=>{if(row.weapon)delete row.weapon;else row.weapon=emptyWeapon();doc.confirmed=false;render();});entry.append(toggle);
   if(!row.weapon)return;
   const box=section(entry,'Waffenprofil');box.classList.add('field-grid');
-  const help=document.createElement('p');help.className='field-help full-width';help.textContent='Vorlagen sind Vorschläge für neue Waffen. Übernehmen ersetzt nur das Waffenprofil, nicht Name, Funktion, Tragplätze oder Bonus. Bestätigte Eigenschaften nur nach Absprache ändern. Waffenreichweite immer ausdrücklich angeben; leer oder 0 bedeutet hier nicht unbegrenzt.';box.append(help);
+  const help=document.createElement('p');help.className='field-help full-width';help.textContent='Die Vorlagenauswahl erkennt nur wortgleiche Profile. Bei einem individuellen Profil gelten die unten eingetragenen Werte; fehlende Pflichtangaben werden beim Prüfen gemeldet. Vorlagen sind Vorschläge für neue Waffen. Übernehmen ersetzt nur das Waffenprofil, nicht Name, Funktion, Tragplätze oder Bonus. Bestätigte Eigenschaften nur nach Absprache ändern. Waffenreichweite immer ausdrücklich angeben; leer oder 0 bedeutet hier nicht unbegrenzt.';box.append(help);
   const choices=document.createElement('div');choices.className='actions full-width';
   const preset=document.createElement('select');preset.setAttribute('aria-label','Waffenvorlage');preset.dataset.weaponPreset=String(index);
-  const custom=document.createElement('option');custom.value='';custom.textContent='Eigenes Profil · Vorlage wählen';preset.append(custom);
+  const custom=document.createElement('option');custom.value='';custom.textContent='Individuelles Profil · Werte unten';preset.append(custom);
   for(const [id,w]of Object.entries(weaponPresets)){const option=document.createElement('option');option.value=id;option.textContent=w.label;preset.append(option);}
   const apply=document.createElement('button');apply.type='button';apply.className='small';apply.textContent='Vorlage übernehmen';apply.addEventListener('click',()=>{row.weapon=weaponFromPreset(preset.value);doc.confirmed=false;render();});choices.append(preset,apply);box.append(choices);preset.value=weaponPresetId(row.weapon);apply.disabled=!preset.value;preset.addEventListener('change',()=>{apply.disabled=!preset.value;});
   const wrap=document.createElement('div');wrap.className='character-field';const label=document.createElement('label');label.htmlFor=`weapon-damage-${index}`;label.textContent='Schadensklasse';const select=document.createElement('select');select.id=label.htmlFor;select.name=`inventory.${index}.weapon.damage`;
