@@ -1,6 +1,23 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Abenteuergrenzen und Spieltempo · 0.17.0
+## Aktuell: Abwicklung und kreative Vorbereitung · 0.18.0
+
+Kampfauflösung bündelt Angriff, ausgewählten Schadenswurf, LP und nächste Aktion;
+NSC-Würfe werden selbstständig abgeschlossen. Figurenrede bleibt frei von
+Regelzahlen. Fahrzeug-/Geschützwirkung wird vor dem Einsatz festgelegt.
+Abgeschlossene Ergebnisse erhalten EXP unabhängig von späterem Verkauf oder
+Behördenwegen; Eigentum, erwarteter Erlös und verfügbares Geld bleiben getrennt.
+
+Das Charaktertemplate macht aus einer kurzen Idee einen facettenreichen,
+prüfbaren Entwurf einschließlich passender Hintergrundvorschläge. Bewusst offene
+Angaben und bestätigte Bögen bleiben erhalten. Optionale Dialoge liefern außerdem
+KI-Templates für Welt und Crew. Weltentwürfe ergänzen die Weltvorgaben;
+Crewentwürfe bleiben eigenständig und können der Startnachricht hinzugefügt werden.
+Keine KI-Aufrufe im Generator und kein automatischer Chat-Abgleich.
+
+[Änderungen, Bedienung und Prüfgrenzen 0.18](docs/abwicklung-und-kreative-vorbereitung-0.18.md)
+
+## Grundlage: Abenteuergrenzen und Spieltempo · 0.17.0
 
 Umfang und Fortsetzung haben getrennte Aufgaben. Ein entschiedenes Ziel wird in
 derselben Antwort mit EXP und freigeschalteten Verbesserungen abgerechnet, auch
@@ -66,7 +83,7 @@ Eine statische deutschsprachige Web-App ohne Anmeldung und ohne KI-Aufruf im Gen
 [Bedienung und Reichweitenregeln](docs/layout-und-faehigkeiten-0.12.md) ·
 [Aktuelle Roadmap](docs/roadmap.md)
 
-## Plugin-Regelbasis 0.17.0
+## Plugin-Regelbasis 0.18.0
 
 Unter `plugins/freie-spielleitung-02/` liegt eine eigenständige, allgemeine
 Spielleitung mit vier ausführlichen Regelreferenzen. Sie verbessert Erzähltempo,

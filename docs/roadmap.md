@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 2. November 2026 · Aktuelle Regelbasis: 0.17.0 · Langer Durchlauf ausgewertet; Paket 0.18 vorgeschlagen, noch nicht beschlossen oder umgesetzt
+Stand: 2. November 2026 · Aktuelle Regelbasis: 0.18.0 · Paket A–C umgesetzt; Langzeitwirkung offen
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -172,9 +172,9 @@ von 0.17. Der letzte Export enthält den nächsten Einstieg doppelt; ohne weiter
 Belege wird daraus kein zusätzlicher Spielsystemfehler abgeleitet. Privat geteilte
 Kampagnen bleiben außerhalb des Repositorys.
 
-### Vorschlag 0.18: Verlässliche Abwicklung und kreative Vorbereitung
+### Paket 0.18: Verlässliche Abwicklung und kreative Vorbereitung
 
-Noch kein Umsetzungsauftrag. Die Kennungen erlauben eine andere Zusammenstellung.
+A–C sind beauftragt und implementiert. Die Kennungen D–O bleiben für weitere Priorisierungen erhalten.
 
 | Kennung | Priorität | Thema | Geplanter, begrenzter Umfang |
 | --- | --- | --- | --- |
@@ -184,12 +184,22 @@ Noch kein Umsetzungsauftrag. Die Kennungen erlauben eine andere Zusammenstellung
 | D | 2 | Kompakte Kontinuität | Zunächst ein kleiner Prototyp und klarer Pflege-/Abrufablauf für Figuren, Wissen, Aufenthalte, abgeschlossene Ergebnisse und offene Fragen. Keine versteckte Speicherung, kein behaupteter automatischer Chat-Abgleich und keine neue manuelle Pflichtliste pro Zug. Nutzen und Aufwand vor breitem Ausbau beurteilen. |
 | E | 2 | Vielfalt und Namensräume | Nachfolgende Abenteuer nach vorherrschenden Handlungen unterscheiden; Hilfe/Rettung um Gewinn, Rivalität und Entdeckung ergänzen. Optionale regionale/kulturelle Namenbasis und Abgleich bekannter Namen prüfen. Keine Verbotsliste, starre Rotation oder Garantie völliger Neuheit. |
 
-**Empfehlung für das nächste Paket: A + B + C.** A/B verbessern belegte
-Unzuverlässigkeiten, C ist ein separater Generatorausbau mit erkennbarem möglichen
-Nutzen. D bleibt zunächst Entwurf/kleiner Vergleich; E kann C teilweise über
-Weltbeschreibung/Namensraum vorbereiten, ist damit nicht erledigt. Wer Gedächtnis
-oder Vielfalt höher gewichtet, kann C durch D oder E ersetzen. Keine zwingende
-neue lange Kampagne zwischen diesen Teilaufgaben.
+**Umgesetzt in 0.18: A + B + C.**
+
+- [x] A: Einen vollständigen Angriffsschritt statt wiederholter Teilanweisungen;
+  NSC-Schaden selbstständig vor LP/Ergebnis abschließen. Regelwissen/Figurenrede
+  konkret trennen; Fahrzeug-/Geschützwirkung vor Einsatz festlegen.
+- [x] B: EXP am entschiedenen Ergebnis abrechnen, ohne auf Verkauf/Freigabe zu
+  warten; Eigentum, erwarteten Erlös und gezahlte Mittel unterscheiden.
+- [x] C: Kreative Hintergrund-/Persönlichkeitsvorschläge auch aus knappen Ideen;
+  explizit offene Bereiche bewahren, gesamten Entwurf prüfen. Optionale Welt- und
+  Crewtemplates mit bearbeitbarem Entwurf. Crew bleibt separat, ohne Pflicht zur
+  Integration in den Hauptbogen oder zur vollständigen Gruppe.
+
+[Umfang, Bedienung und Akzeptanzfälle 0.18](abwicklung-und-kreative-vorbereitung-0.18.md).
+D bleibt ein möglicher Kontinuitätsprototyp; E ist durch Weltdetails/Namenskonventionen
+vorbereitet, aber nicht umgesetzt. Die langen Durchläufe müssen die Wirkung noch
+bestätigen; technische Prüfungen belegen keine garantierte Modellbefolgung.
 
 **Vorgehen bei A/B:** zuerst die wirksamen Quellen und die betreffenden realen
 Szenen vergleichen; unklare, verstreute oder doppelte Anweisungen ersetzen. Erst

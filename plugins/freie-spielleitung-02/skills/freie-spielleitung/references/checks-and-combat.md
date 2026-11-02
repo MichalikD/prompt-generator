@@ -56,19 +56,30 @@ Use the fiction for a clear order; otherwise each participant rolls D20+Dexterit
 
 Keep a small working combat state in accessible context: round/order/current actor, positions, current/max HP, defense, attack formula, damage band, active effects and relevant ammunition/resources. In open display, put visible targets' current/max HP and defense before asking for a tactical choice, not only after the player has selected a small weak point. A known ordinary hit that can incapacitate must be recognizable from those values; hidden anatomy can remain hidden. Refresh changed values, not the whole rules explanation.
 
-Use this resolution gate for every actor: announce target + complete attribute/talent/equipment arithmetic + target defense + advantage/disadvantage and consequences; for the player obtain their raw attack roll and wait; for an NPC resolve its own attack without asking permission or requesting a player roll (label the first tool-free roll as simulated); determine hit; resolve selected damage dice before subtracting HP; update state; advance to the next actor. Do not abbreviate away the attribute or decide an NPC hit in prose. A failed attack deals no effective damage: a nearby shot may meet armor, cover or evasion rather than fly absurdly wide. Close range alone is not an automatic hit. Deliberately aiming at a small component needs a stated useful effect and difficulty before commitment; do not demand it for damage already possible with an ordinary attack.
+Resolve each attack in this order, for every actor:
+
+1. Announce target, complete attribute/talent/equipment formula, defense, advantage/disadvantage and foreseeable effects. Retain the selected damage category and die with that attack.
+2. Obtain the attack roll under the selected roller policy. In player-roll mode, request only the hero's raw dice and wait; resolve NPC and enemy dice yourself with the available-tool/simulation procedure. Never wait for permission or a player prompt to finish an NPC turn.
+3. Determine hit. A miss has no effective damage. On a hit, resolve that category's selected damage die under Optional Dice; use fixed damage only when its die is not selected. For NPCs resolve attack and damage in the same response; for player dice stop only where their raw roll is still needed.
+4. Show damage and HP subtraction, apply any resulting incapacity/effect, then advance through the remaining actors until the next unmade player decision. Do not declare a target defeated, give its last words or start the next turn while damage is outstanding.
+
+Do not abbreviate away the attribute or decide an NPC hit in prose. A nearby failed shot may meet armor, cover or evasion rather than fly absurdly wide; close range alone is not an automatic hit. Deliberately aiming at a small component needs a stated useful effect and difficulty before commitment; do not demand it for damage already possible with an ordinary attack.
 
 ### Resolve a turn
 
 Advance opponents and allies through their own turns. They pursue their tasks rather than waiting for another player preparation roll. A declared approach plus action can resolve in the same turn within its allowances. Only roll separately for an obstacle with distinct stakes. Opponents may move or block on their turns, but cannot indefinitely deny an established reachable position by narration alone.
 
-Attacks use the normal formula against target defense. Announce target, bonus, defense, preparation and foreseeable effects; obtain player raw rolls only for their character; resolve NPC rolls yourself. On a hit resolve damage through Optional Dice before showing remaining HP. No routine second defensive roll, free counterattack on a miss or extra attack from holding two weapons. A special protective action resolves its announced danger once rather than rolling again to undo that result. Assistance uses enabling, lower DC or advantage and costs a plausible action.
+Attacks follow the resolution gate above. No routine second defensive roll, free counterattack on a miss or extra attack from holding two weapons. A special protective action resolves its announced danger once rather than rolling again to undo that result. Assistance uses enabling, lower DC or advantage and costs a plausible action.
 
 Cover that obscures a reachable target normally gives disadvantage to the attack; a solid obstruction blocking line of effect prevents it. Do not invent a flat defense bonus. A body does not automatically provide safe cover or transfer a missed shot into an automatic hit on someone else. State any actual collateral risk before the roll. Choosing to guard or evade as the action gives disadvantage to attacks the character can perceive until their next turn; ordinary narration of trying to dodge is already represented by defense and grants no free extra roll. A different agreed ability takes priority.
 
 Retreat uses movement and, if chosen, the dash action. Do not add free opportunity attacks unless an agreed ability/rule provides them; enemies can pursue or attack on their normal turns. Resolve every attack still able to harm a target openly, including pursuit fire. Once range or cover makes harm impossible, describe ineffective fire without a roll. Establish mount/vehicle target values rather than using the rider's defense. Do not narrate another damaging attack after a check already resolved that danger.
 
 Base damage is light 2, ordinary 3, heavy 4 for both sides; agreed exceptional powers or item effects can differ. No unannounced critical multipliers.
+
+## Vehicles and mounted weapons
+
+A turret, siege engine or vehicle uses its own agreed weapon and target properties, not automatically the operator's personal weapon damage or defense. Before committing to the first consequential use, state the operator's fitting check and bonuses, target defense or task DC, reach, damage/effect scale, resources and the result of disabling or destroying the target. Use the normal attack/damage gate and selected category dice if the ordinary damage bands fit. If vehicle-scale damage does not fit, agree a compact separate resolution before rolling; do not silently invent hull percentages, free extra attacks or cinematic damage after the result. Keep vehicle damage distinct from passenger harm. A vehicle-specific deviation does not change personal combat rules.
 
 ## Incapacitation, injuries and recovery
 
