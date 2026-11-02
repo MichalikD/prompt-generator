@@ -1,3 +1,4 @@
+import {characterReviewError,crewReviewError} from './preparation-data.mjs';
 import {validateWorld} from './worlds.mjs';
 import {createProfile} from './profile.mjs';
 import {groups,selectOptions} from './generator.mjs';
@@ -16,11 +17,11 @@ export function setupErrors(step,config,character=null) {
  }
  if(step===2) {
   if(!['chat','prepared'].includes(config.characterSource))return ['Bitte auswählen, wo die Figur erstellt wird.'];
-  if(config.characterSource==='chat')return [];
+  if(config.characterSource==='chat'){try{const review=crewReviewError(config,null);return review?[review]:[];}catch(e){return [e.message];}}
   if(!character)return ['Bitte einen Bogen erstellen oder importieren.'];
   const errors=validateCharacterDocument(character);
   if(errors.length)return ['Bitte die markierten Angaben im Charakterbogen vervollständigen.',...errors];
-  return [];
+  try{const review=characterReviewError(config)||crewReviewError(config,character);return review?[review]:[];}catch(e){return [e.message];}
  }
  return [0,1,2].flatMap(i=>setupErrors(i,config,character));
 }

@@ -1,0 +1,14 @@
+{
+  "format": "open-game-master-world",
+  "version": 1,
+  "confirmed": false,
+  "world": {
+    "name": "Die Gezeiteninseln",
+    "premise": "Unabhängige Inselgemeinden teilen sich alte Handelsrouten.",
+    "society": "Lotsen, Gilden und lokale Räte ringen um Einfluss. Namen stammen aus mehreren Küstenkulturen.",
+    "features": "Vorindustrielle Schifffahrt; örtliche Gezeitenmagie beeinflusst die Seefahrt.",
+    "situation": "Neue Handelsrechte bieten Chancen und sorgen für Rivalität, ohne einen Krieg unvermeidlich zu machen.",
+    "factions": [{"name":"Der Lotsenrat","description":"Will sichere Durchfahrten und eigene Unabhängigkeit erhalten."}],
+    "places": [{"name":"Die Außeninseln","description":"Kleine Häfen zwischen Felsen und wandernden Sandbänken."}]
+  }
+}
