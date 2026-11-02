@@ -3,6 +3,7 @@ import {mountWorldEditor} from './world-editor.mjs';
 import {worldText} from './worlds.mjs';
 import {createProfile} from './profile.mjs';
 import {mountCharacterEditor} from './character-editor.mjs';
+import {mountPreparationTools} from './preparation-editor.mjs';
 import {openPlayTab} from './play-state.mjs';
 import {validateCharacterDocument} from './character.mjs';
 import {autoGrow,watchGrow} from './ui.mjs';
@@ -64,6 +65,7 @@ function configFromForm() {
   openingEnabled:form.querySelector('[name=openingEnabled][value=yes]').checked,
   openingSeed:form.querySelector('[name=openingSeed]').value};
 }
+const preparationTools=mountPreparationTools(form,{getConfig:configFromForm,getCharacter:()=>configFromForm().characterSource==='prepared'?(editor?.getDocument()??characterDoc):null,onChange:update});
 function clearOutput(message) {
  playReference.setDocument(null);
  $('#opening-output-guard').hidden=true;startMessage.hidden=false;
@@ -76,6 +78,7 @@ function summary(config) {
  rows.push(['Weltprofil',worldText(createProfile(config).world)]);
  if(config.wishes?.trim())rows.push(['Eigene Vorgaben',config.wishes.trim()]);
  rows.push(['Schwerpunkte',config.focus.map(id=>focuses.find(f=>f.id===id).label).join(', ')||'Situativ vielfältig']);
+  if(config.crewBrief?.trim())rows.push(['Crew','Eigenständiger Entwurf im Startpaket']);
  rows.push(['Zusatzwürfel',config.extras.map(id=>dice.find(d=>d.id===id).label).join(', ')||'Keine']);
  rows.push(['Ausgangsimpuls',currentOutput?.opening?`Aktiv · ${currentOutput.opening.seed} · Bausteine im Starttext`:'Ausgeschaltet']);
  if(config.characterSource==='prepared') {
@@ -167,6 +170,7 @@ form.addEventListener('change',event=>{
 });
 reset.disabled=false;reset.addEventListener('click',()=>{
  openingShown='';
+ preparationTools.reset();
  for(const input of form.querySelectorAll('input'))input.checked=defaults[input.name]===input.value;
  for(const field of form.querySelectorAll('textarea'))field.value='';
  for(const field of form.querySelectorAll('select'))field.value=field.name==='setting'?'fantasy':field.name==='worldSource'?'original':field.name==='worldPlayerKind'?'mortal':'';
