@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 2. November 2026 · Aktuelle Regelbasis: 0.18.0 · Paket A–C umgesetzt; Langzeitwirkung offen
+Stand: 2. November 2026 · Generator: 0.19.0 · Regelbasis: 0.18.0 · Strukturierte Vorbereitung umgesetzt; Spielwirkung offen
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -171,6 +171,23 @@ Diese Beobachtungen belegen weder perfekte Kontinuität noch garantierte Wirkung
 von 0.17. Der letzte Export enthält den nächsten Einstieg doppelt; ohne weitere
 Belege wird daraus kein zusätzlicher Spielsystemfehler abgeleitet. Privat geteilte
 Kampagnen bleiben außerhalb des Repositorys.
+
+### Generatorpaket 0.19: Strukturierte Vorbereitung und Abhängigkeiten
+
+- [x] Welt und Crew als klar definierte JSON-Entwürfe statt beliebigem Markdown.
+  Importprüfung, bearbeitbare Felder und JSON-Download; lesbare Starttexte aus
+  Daten, ohne Bildlinks oder mitkopierte Status-/Bearbeitungsblöcke.
+- [x] Welt und freie Zusatzvorgaben getrennt halten; erneute Übernahme ersetzt
+  den Weltentwurf, statt ihn anzuhängen. Fehlgeschlagener Import erhält Daten.
+- [x] Crewtemplate nur mit gültigem, für die aktuelle Welt übernommenem Bogen;
+  bei Erstellung im Spielchat gesperrt. Crew bleibt eigenständige optionale Hilfe.
+- [x] Bei Welt-/Figurenänderungen Entwürfe erhalten, aber betroffene Übernahmen
+  vor der Ausgabe erneut verlangen. Vorhandene Crew bleibt entfernbar.
+- [x] Generatorversion 0.19.0 und unveränderte Regelbasis 0.18.0 getrennt anzeigen.
+
+[Bedienung und Prüfgrenzen](strukturierte-vorbereitung-0.19.md). Dies ist eine
+Fortführung von C, kein neuer Regelumbau. Namensvielfalt, kreative Qualität und
+langfristiges Gedächtnis bleiben gesondert zu prüfen; D–O bleiben erhalten.
 
 ### Paket 0.18: Verlässliche Abwicklung und kreative Vorbereitung
 

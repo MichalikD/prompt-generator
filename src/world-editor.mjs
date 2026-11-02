@@ -33,6 +33,7 @@ export function mountWorldEditor(form) {
  clear.addEventListener('click',()=>{
   // Deliberate reset; switching a template never clears these fields.
   for(const el of details.querySelectorAll('textarea,select'))el.value=el.name==='worldPlayerKind'?'mortal':'';
+  form.dispatchEvent(new form.ownerDocument.defaultView.Event('world-draft-remove'));
   confirm.checked=false;form.dispatchEvent(new form.ownerDocument.defaultView.Event('change',{bubbles:true}));
  });details.append(clear);root.append(details);
  const warning=document.createElement('div');warning.className='world-warning';warning.setAttribute('role','status');
@@ -47,8 +48,8 @@ export function mountWorldEditor(form) {
   ref.hidden=config.worldSource!=='inspired'&&config.worldSource!=='canon';
   // Hidden reference values remain intact but are ignored for an original world.
   root.querySelector('[name=worldReference]').required=!ref.hidden;
-  root.querySelector('#world-label').textContent=config.setting==='custom'?'Eigene Welt beschreiben (erforderlich)':'Weitere Weltvorgaben (optional)';
-  root.querySelector('#world-description').required=config.setting==='custom';
+  root.querySelector('#world-label').textContent=config.setting==='custom'&&!config.worldDocument?'Eigene Welt beschreiben (erforderlich)':'Weitere Weltvorgaben (optional)';
+  root.querySelector('#world-description').required=config.setting==='custom'&&!config.worldDocument;
   if(config.setting==='custom')details.open=true;
   const t=worldTemplates.find(t=>t.id===config.setting);
   if(t)for(const f of worldFields)root.querySelector(`[name=${f.config}] option[value=""]`).textContent='Vorgabe: '+f.options.find(o=>o.id===t[f.key]).label;

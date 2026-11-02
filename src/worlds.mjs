@@ -1,3 +1,4 @@
+import {draftText,worldReviewError} from './preparation-data.mjs';
 // World assumptions are shared by setup, both output modes and character creation.
 export const worldSources = [
  {id:'original',label:'Eigenständige Welt',text:'Create an independent setting and cast within the effective world specifications; do not silently import a known fictional universe.'},
@@ -57,7 +58,7 @@ function choice(list,id,label) {const item=list.find(x=>x.id===id);if(!item)thro
 export function resolveWorld(config) {
  const template=choice(worldTemplates,config.setting,'Vorlage');
  const source=choice(worldSources,config.worldSource||'original','Grundlage');
- const world={template:template.id,source:source.id,reference:source.id==='original'?'':textField(config,'worldReference'),description:textField(config,'worldDescription'),society:textField(config,'worldSociety')||template.society,mythology:textField(config,'worldMythology')||(template.id==='mythology'?template.mythology:''),playerKind:config.worldPlayerKind||'mortal'};
+ const world={template:template.id,source:source.id,reference:source.id==='original'?'':textField(config,'worldReference'),description:[textField(config,'worldDescription'),config.worldDocument&&draftText(config.worldDocument,'world')].filter(Boolean).join('\n\n'),society:textField(config,'worldSociety')||template.society,mythology:textField(config,'worldMythology')||(template.id==='mythology'?template.mythology:''),playerKind:config.worldPlayerKind||'mortal'};
  choice(worldPlayerKinds,world.playerKind,'Figurenart');
  for(const f of worldFields)world[f.key]=choice(f.options,config[f.config]||template[f.key],f.label).id;
  if(template.id==='custom'&&!world.description)throw new Error('Bitte beschreibe deine eigene Welt. Ein kurzer Satz genügt.');
@@ -84,6 +85,7 @@ export function worldWarnings(w) {
 }
 export function validateWorld(config) {
  const world=resolveWorld(config);
+ const review=worldReviewError(config);if(review)throw new Error(review);
  if(world.mixed&&!world.mixConfirmed)throw new Error(world.warnings.join(' ')+' Bitte die bewusste Mischung bestätigen oder die Angaben ändern.');
  return world;
 }

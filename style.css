@@ -15,3 +15,6 @@ fieldset{min-width:0;margin:0;padding:0;border:0}legend{font-size:14px;color:var
 /* The play tab uses the wide screen for notes; the generator keeps its own width. */
 main#play-desk{max-width:1760px}.play-layout{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.play-notes{order:0}#desk-overview{order:1}.play-layout.character-first{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}.character-first .play-notes{order:1}.character-first #desk-overview{order:0}.play-notes textarea{min-height:620px;height:calc(100dvh - 300px)}.abilities-section>.ability-card{margin-top:14px}.ability-card>summary{font-weight:600}.ability-card>summary::before{content:'▸';color:var(--gold)}.ability-card[open]>summary::before{content:'▾'}.ability-card>summary>.ability-cost{margin-left:auto;font-weight:400}.resume-link [role=status]{display:block;margin-top:6px;color:var(--gold)}
 @media(max-width:850px){.play-layout,.play-layout.character-first{grid-template-columns:1fr}.play-notes,.character-first .play-notes{order:0}#desk-overview,.character-first #desk-overview{order:1}.play-notes textarea{min-height:320px;height:55dvh}#desk-swap{display:none}}
+
+/* Generated draft previews retain paragraphs without widening the dialog. */
+dialog [data-preview]{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;padding:12px;border:1px solid var(--line);border-radius:8px}

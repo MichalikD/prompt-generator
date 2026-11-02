@@ -6,6 +6,7 @@ import {mountCharacterEditor} from './character-editor.mjs';
 import {mountPreparationTools} from './preparation-editor.mjs';
 import {openPlayTab} from './play-state.mjs';
 import {validateCharacterDocument} from './character.mjs';
+import {worldKey} from './preparation-data.mjs';
 import {autoGrow,watchGrow} from './ui.mjs';
 import {mountOpeningEditor} from './opening-editor.mjs';
 import {focuses} from './profile.mjs';
@@ -65,7 +66,13 @@ function configFromForm() {
   openingEnabled:form.querySelector('[name=openingEnabled][value=yes]').checked,
   openingSeed:form.querySelector('[name=openingSeed]').value};
 }
-const preparationTools=mountPreparationTools(form,{getConfig:configFromForm,getCharacter:()=>configFromForm().characterSource==='prepared'?(editor?.getDocument()??characterDoc):null,onChange:update});
+const preparationTools=mountPreparationTools(form,{getConfig:configFromForm,getCharacter:()=>configFromForm().characterSource==='prepared'?(editor?.getDocument()??characterDoc):null,onChange:update,onAcceptCharacter:acceptCharacter});
+function acceptCharacter(){
+ const config=configFromForm(),errors=setupErrors(0,config);
+ if(errors.length)throw new Error(errors[0]);
+ const doc=editor?.getDocument();if(!doc||validateCharacterDocument(doc).length)throw new Error('Bitte zuerst einen gültigen Bogen vorbereiten.');
+ preparationTools.setCharacterWorld(worldKey(config));characterDoc=editor.acceptDocument();update();return characterDoc;
+}
 function clearOutput(message) {
  playReference.setDocument(null);
  $('#opening-output-guard').hidden=true;startMessage.hidden=false;
@@ -78,7 +85,7 @@ function summary(config) {
  rows.push(['Weltprofil',worldText(createProfile(config).world)]);
  if(config.wishes?.trim())rows.push(['Eigene Vorgaben',config.wishes.trim()]);
  rows.push(['Schwerpunkte',config.focus.map(id=>focuses.find(f=>f.id===id).label).join(', ')||'Situativ vielfältig']);
-  if(config.crewBrief?.trim())rows.push(['Crew','Eigenständiger Entwurf im Startpaket']);
+  if(config.crewDocument)rows.push(['Crew','Eigenständiger Entwurf im Startpaket']);
  rows.push(['Zusatzwürfel',config.extras.map(id=>dice.find(d=>d.id===id).label).join(', ')||'Keine']);
  rows.push(['Ausgangsimpuls',currentOutput?.opening?`Aktiv · ${currentOutput.opening.seed} · Bausteine im Starttext`:'Ausgeschaltet']);
  if(config.characterSource==='prepared') {
@@ -101,6 +108,7 @@ function update() {
    else editor.setWorld(world);
    characterDoc=editor.getDocument();
   }else if(editor&&!worldErrors.length)editor.setWorld(worldForCharacter(config));
+  preparationTools.update();
   worldEditor.update(config);
   openingEditor.update(config);
   for(const el of form.querySelectorAll('[data-step]'))el.hidden=Number(el.dataset.step)!==step||(el.dataset.group==='creation'&&prepared);
@@ -123,7 +131,7 @@ function update() {
   copy.textContent='Projektanweisungen kopieren';copyStart.textContent='Erste Chatnachricht kopieren';
   const errors=setupErrors(step,config,characterDoc);
   $('#setup-feedback').textContent=showErrors?errors.slice(0,4).join(' '):'';
-  $('#world-description').setAttribute('aria-invalid',String(showErrors&&config.setting==='custom'&&!config.worldDescription?.trim()));
+  $('#world-description').setAttribute('aria-invalid',String(showErrors&&config.setting==='custom'&&!config.worldDescription?.trim()&&!config.worldDocument));
   if(step!==3) {clearOutput('Die Starttexte erscheinen nach Abschluss der Vorbereitung.');return;}
   if(errors.length){clearOutput(errors[0]);$('#setup-feedback').textContent=errors.slice(0,4).join(' ');return;}
   currentOutput=buildOutput(config,'plugin',prepared?characterDoc:null);
@@ -151,7 +159,7 @@ function goTo(target) {
    const errors=setupErrors(i,config,characterDoc);
    if(errors.length){step=i;showErrors=true;update();if(i===0)worldEditor.focusError();return;}
   }
-  if(target===3&&config.characterSource==='prepared'){try{characterDoc=editor.acceptDocument();}catch(e){step=2;showErrors=true;update();return;}}
+  if(target===3&&config.characterSource==='prepared'){try{characterDoc=acceptCharacter();}catch(e){step=2;showErrors=true;update();return;}}
  }
  step=target;showErrors=false;update();
  $('#setup-position').setAttribute('tabindex','-1');$('#setup-position').focus({preventScroll:true});$('#setup-steps').scrollIntoView?.({block:'start'});

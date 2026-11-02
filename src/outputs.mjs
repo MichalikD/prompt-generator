@@ -1,3 +1,4 @@
+import {draftText,characterReviewError,crewReviewError} from './preparation-data.mjs';
 import { GENERATOR_VERSION, RULES_VERSION } from './release.mjs';
 import { languageDirective, pluginLocalizationPolicy, optionNames } from './language.mjs';
 import { characterText, validateCharacterDocument } from './character.mjs';
@@ -20,7 +21,8 @@ export const outputModes = [
 
 export function buildPluginPackage(config = defaults, character=null) {
   checkPrepared(config, character);
-  if(config.crewBrief!==undefined&&typeof config.crewBrief!=='string')throw new Error('Crewvorgaben müssen Text sein.');
+  if(config.crewBrief)throw new Error('Bitte die Crew als strukturiertes JSON neu importieren.');
+  const review=characterReviewError(config)||crewReviewError(config,character);if(review)throw new Error(review);
   const selected = selectOptions(config);
   const profile = createProfile(config);
   const opening = resolveOpening(config);
@@ -44,7 +46,7 @@ export function buildPluginPackage(config = defaults, character=null) {
     ...groups.filter(group=>!profileIds.includes(group.id) && !(character && group.id==='creation')).map(group => `${optionNames[group.id]}: ${pluginChoiceText(group.id,selected[group.id])}`),
     diceText(config) || 'Extra dice: none. Use fixed base damage; attribute checks remain D20.',
     openingText(opening),
-    config.crewBrief?.trim()&&`SEPARATE CREW SPECIFICATIONS\n${config.crewBrief.trim()}\n\nThese player-adopted crew facts supplement the world, not the main character sheet. Preserve each person's independent role, affiliation and starting whereabouts. Do not require every member to accompany the hero, override selected companion availability, or grant extra player actions. Clarify consequential conflicts with the profile or confirmed character before play.`,
+    config.crewDocument&&`SEPARATE CREW SPECIFICATIONS\n${draftText(config.crewDocument,'crew')}\n\nThese player-adopted crew facts supplement the world, not the main character sheet. Preserve each person's independent role, affiliation and starting whereabouts. Do not require every member to accompany the hero, override selected companion availability, or grant extra player actions. Clarify consequential conflicts with the profile or confirmed character before play.`,
     ...(character ? [characterText(character), 'Use this confirmed sheet as the starting state and begin the adventure according to the profile.'] : ['Follow the selected character creation method, confirm the draft, then begin the adventure. Ask only for information essential to starting.']),
   ].filter(Boolean).join('\n\n');
 

@@ -1,6 +1,22 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Abwicklung und kreative Vorbereitung · 0.18.0
+## Aktuell: Strukturierte Vorbereitung · Generator 0.19.0
+
+Welt- und Crewtemplates liefern jetzt JSON statt formatiertem Fließtext.
+Antworten lassen sich als Datei oder Text prüfen, in einzelnen Feldern bearbeiten
+und übernehmen. Der Generator erzeugt daraus einen einheitlichen Starttext ohne
+Bilder, Links oder Entwurfsanweisungen. Wiederholte Übernahme ersetzt den Entwurf.
+
+Die Reihenfolge ist verbindlich: Welt festlegen, Figur übernehmen, optional Crew
+vorbereiten. Welt- und Figurenänderungen erhalten vorhandene Entwürfe, verlangen
+aber vor der Ausgabe eine erneute Prüfung. Bei Figurenerstellung im Spielchat
+bleibt die vorherige Crewerstellung gesperrt. Ohne Crew bleibt die direkte
+Übernahme eines gültigen Bogens über „Weiter zur Ausgabe“ möglich.
+
+Das Plugin und die Spielregeln bleiben **0.18.0**.
+[Bedienung, Formate und Prüfgrenzen 0.19](docs/strukturierte-vorbereitung-0.19.md)
+
+## Grundlage: Abwicklung und kreative Vorbereitung · 0.18.0
 
 Kampfauflösung bündelt Angriff, ausgewählten Schadenswurf, LP und nächste Aktion;
 NSC-Würfe werden selbstständig abgeschlossen. Figurenrede bleibt frei von

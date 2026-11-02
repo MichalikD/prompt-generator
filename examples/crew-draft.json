@@ -1,0 +1,22 @@
+{
+  "format": "open-game-master-crew",
+  "version": 1,
+  "confirmed": false,
+  "crew": {
+    "name": "Eine alte Bekanntschaft",
+    "connection": "Eine Weggefährtin unterstützt die Hauptfigur gelegentlich.",
+    "base": "Kein gemeinsamer Stützpunkt.",
+    "members": [{
+      "name":"Rin",
+      "ancestry":"Mensch",
+      "role":"Lotsin mit Kenntnis der örtlichen Strömungen",
+      "personality":"Direkt, geduldig und neugierig",
+      "motive":"Eine eigene sichere Handelsroute erschließen",
+      "relationship":"Verlässliche Bekanntschaft aus gemeinsamen Reisen",
+      "boundary":"Setzt ihre Leute nicht ohne Grund aufs Spiel",
+      "affiliation":"Unabhängige Lotsen",
+      "whereabouts":"Im Hafen der Außeninseln",
+      "present":false
+    }]
+  }
+}
