@@ -101,7 +101,8 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
  function update(){
   const errors=validateCharacterDocument(doc);
   $('#character-errors').replaceChildren(...errors.map(message=>{const li=document.createElement('li');li.textContent=message;return li;}));
-  for(const id of ['character-accept','download-character-json'])$('#'+id).disabled=!!errors.length;
+  $('#character-accept').disabled=!!errors.length;
+  if(!running)$('#download-character-json').disabled=!!errors.length;
   $('#character-continue').hidden=doc.kind!=='start';$('#character-continue').disabled=!!errors.length;
   $('#character-capacity').textContent=`Gepäck: ${doc.character.inventory.reduce((n,i)=>n+i.quantity*i.slots,0)} / 8 Tragplätze. Geld und Fähigkeitsressourcen werden getrennt geführt.`;
   $('#character-status').textContent=errors.length?'Bitte unvollständige Angaben korrigieren.':worldLocked?'Bogen ist formal gültig. „Weiter zur Ausgabe“ übernimmt ihn.':running?'Änderungen mit „Übernehmen“ im Dialog abschließen.':'Bogen ist formal gültig und kann übernommen werden.';
@@ -111,10 +112,10 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
  $('#character-accept').addEventListener('click',acceptDocument);
  $('#character-continue').addEventListener('click',()=>{if(!validateCharacterDocument(doc).length){doc.confirmed=true;doc=continueCharacter(doc);render();}});
  $('#character-new').addEventListener('click',()=>{if(!window.confirm('Bogen ersetzen? Vorher bei Bedarf als JSON sichern.'))return;doc=newCharacterDocument();render();});
- const templateDialog=$('#character-template-dialog'),importDialog=$('#character-import-dialog');
- $('#open-template').addEventListener('click',()=>openDialog(templateDialog));$('#open-import').addEventListener('click',()=>openDialog(importDialog));
- for(const dialog of [templateDialog,importDialog])dialog.querySelector('[data-close]').addEventListener('click',()=>dialog.close());
- function importText(text){try{const next=parseCharacter(text);if(!window.confirm('Den Bogen durch den geprüften Import ersetzen?'))return;doc=next;render();$('#import-status').textContent='Import erfolgreich.';importDialog.close();}catch(e){$('#import-status').textContent=e.message;}}
+ const templateDialog=$('#character-template-dialog');
+ $('#open-template').addEventListener('click',()=>openDialog(templateDialog));
+ templateDialog.querySelector('[data-close]').addEventListener('click',()=>templateDialog.close());
+ function importText(text){try{const next=parseCharacter(text);if(!window.confirm('Den Bogen durch den geprüften Import ersetzen?'))return;doc=next;render();$('#import-status').textContent='Import erfolgreich.';templateDialog.close();}catch(e){$('#import-status').textContent=e.message;}}
  $('#import-character').addEventListener('click',()=>importText($('#character-import').value));
  $('#character-file').addEventListener('change',async()=>{const file=$('#character-file').files[0];if(!file)return;try{if(file.size>1000000)throw new Error('Bitte eine JSON-Datei bis 1 MB verwenden.');importText(await file.text());}catch(e){$('#import-status').textContent=e.message;}finally{$('#character-file').value='';}});
  $('#download-character-json').addEventListener('click',()=>{if(!validateCharacterDocument(doc).length)downloadFile(serializeCharacter(doc),'charakterbogen.json','application/json');});
@@ -124,7 +125,7 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
  $('#copy-template').addEventListener('click',()=>copyText($('#character-template').value,$('#template-status'),$('#character-template')));
  $('#character-world').value=world;$('#character-world').readOnly=worldLocked;template();
  if(worldLocked||running)$('.editor-accept').hidden=true;
- if(running){$('.editor-toolbar').hidden=true;templateDialog.remove();importDialog.remove();}
+ if(running){$('.editor-toolbar').hidden=true;templateDialog.remove();}
  watchGrow(root);render();
  return {resetDraftImpulse(){impulse?.reset();},getDocument:()=>structuredClone(doc),acceptDocument,setDocument(value){doc=parseCharacter(JSON.stringify(value));render();},setWorld(value){if($('#character-world').value===value)return;$('#character-world').value=value;template();doc.confirmed=false;update();},refresh(){autoGrow(root);}};
 }

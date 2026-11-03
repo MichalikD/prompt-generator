@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 3. November 2026 · Generator: 0.20.0 · Regelbasis: 0.18.0 · Entwurfsimpulse umgesetzt; kreative Wirkung offen
+Stand: 3. November 2026 · Generator: 0.21.0 · Regelbasis: 0.19.0
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -171,6 +171,16 @@ Diese Beobachtungen belegen weder perfekte Kontinuität noch garantierte Wirkung
 von 0.17. Der letzte Export enthält den nächsten Einstieg doppelt; ohne weitere
 Belege wird daraus kein zusätzlicher Spielsystemfehler abgeleitet. Privat geteilte
 Kampagnen bleiben außerhalb des Repositorys.
+
+### Paket 0.21: Auftragsvielfalt und Figurendialog
+
+- [x] Bei offenen Übergängen Ziele und entscheidende Handlungen der letzten zwei
+  Unternehmungen vergleichen. Wenn der naheliegende Anschluss das Muster wiederholt,
+  zwei plausible Richtungen erwägen und eine spielerisch andere Gelegenheit vorbereiten.
+- [x] KI-Template, JSON-Import und Bogendownload der Figur in einem Dialog bündeln.
+- [ ] Im Spiel mit unveränderter Welt und Figur beobachten, ob der nächste Auftrag
+  andere Entscheidungen verlangt. Der A/B-Vergleich von 0.20 zeigte Impulswirkung
+  in Details, aber wiederkehrende Welt- und Crewgerüste; er maß keine Auftragsvielfalt.
 
 ### Generatorpaket 0.20: Vielfalt in der Vorbereitung
 
