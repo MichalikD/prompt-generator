@@ -1,6 +1,15 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Entwurfsimpulse · Generator 0.20.0
+## Aktuell: Auftragsvielfalt und Figurendialog · Generator 0.21.0
+
+Bei offenen Übergängen vergleicht die Spielleitung die letzten Unternehmungen
+nach Zielen und entscheidenden Handlungen. Wiederholt sich das Muster, bereitet
+sie eine spielerisch andere Gelegenheit vor. Die Regelbasis ist 0.19.0.
+
+Unter **Figur vorbereiten** stehen KI-Template, JSON-Import und Bogendownload in
+einem Dialog. Die Bearbeitung bleibt auf der Figurenseite.
+
+## Grundlage: Entwurfsimpulse · Generator 0.20.0
 
 In den KI-Templates für Welt, Figur und Crew lässt sich je ein Impuls zuschalten,
 ansehen und neu auslosen. Er regt offene Details an; eigene Vorgaben haben Vorrang.
