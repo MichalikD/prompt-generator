@@ -1,6 +1,13 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Strukturierte Vorbereitung · Generator 0.19.0
+## Aktuell: Entwurfsimpulse · Generator 0.20.0
+
+In den KI-Templates für Welt, Figur und Crew lässt sich je ein Impuls zuschalten,
+ansehen und neu auslosen. Er regt offene Details an; eigene Vorgaben haben Vorrang.
+Der Impuls erscheint nur im jeweiligen Template. Ausgeloste Entwürfe prüfst und
+übernimmst du wie bisher. Spielregeln und Startimpuls bleiben unverändert.
+
+## Grundlage: Strukturierte Vorbereitung · Generator 0.19.0
 
 Welt- und Crewtemplates liefern jetzt JSON statt formatiertem Fließtext.
 Antworten lassen sich als Datei oder Text prüfen, in einzelnen Feldern bearbeiten

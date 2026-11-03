@@ -1,3 +1,4 @@
+import {randomUint32} from './random.mjs';
 import {validateWorld} from './worlds.mjs';
 
 export const OPENING_CATALOG = 1;
@@ -40,8 +41,7 @@ function readText(config,key) {
 // The seed is a portable 32-bit random identifier, not a promise of AI determinism.
 export function newOpeningSeed() {
  if(!globalThis.crypto?.getRandomValues)throw new Error('Zufall ist hier nicht verfügbar. Bitte eine gültige Kennung eingeben.');
- const words=new Uint32Array(1);globalThis.crypto.getRandomValues(words);
- return `ogm${OPENING_CATALOG}-${words[0].toString(16).padStart(8,'0')}`;
+ return `ogm${OPENING_CATALOG}-${randomUint32().toString(16).padStart(8,'0')}`;
 }
 function hash(text) {
  let n=2166136261;for(let i=0;i<text.length;i++)n=Math.imul(n^text.charCodeAt(i),16777619);return n>>>0;

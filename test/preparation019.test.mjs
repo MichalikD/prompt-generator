@@ -1,3 +1,5 @@
+import {characterTemplate} from '../src/character.mjs';
+import {drawDraftImpulse,draftImpulseText} from '../src/draft-impulses.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -73,4 +75,23 @@ test('structured own world can satisfy world foundation; unadopted and stale imp
  config.worldDraftBasis=worldBaseKey(config);assert.throws(()=>validateWorld(config),/übernehmen/);
  world.confirmed=true;config.worldDocument=JSON.stringify(world);assert.equal(validateWorld(config).description.includes(world.world.name),true);
  config.worldDocument=JSON.stringify({...world,world:{...world.world,name:'Anderer Name'}});assert.ok(characterReviewError({...config,characterSource:'prepared',characterWorld:worldKey({...config,worldDocument:JSON.stringify(world)})}));
+});
+
+test('draft impulses affect only their own optional template and preserve its schema',()=>{
+ const {hero,config}=setup();
+ const before=buildOutput(config,'plugin',hero);
+ for(const [kind,render] of [
+  ['world',id=>worldDraftTemplate(config,'Eine feste Idee.',id)],
+  ['character',id=>characterTemplate('Eine feste Idee.',worldForCharacter(config),id)],
+  ['crew',id=>crewDraftTemplate(config,'Eine feste Idee.',hero,id)],
+ ]){
+  const first=drawDraftImpulse(kind),next=drawDraftImpulse(kind,first.id);
+  assert.notEqual(next.id,first.id);
+  assert.ok(!render().includes('OPTIONAL DRAFT IMPULSE'));
+  assert.ok(render(first.id).includes(draftImpulseText(kind,first.id)));
+  assert.ok(render(next.id).includes(next.text));
+  assert.ok(render(first.id).includes('Eine feste Idee.'));
+  assert.deepEqual(templateJSON(render(first.id)),templateJSON(render()));
+ }
+ assert.deepEqual(buildOutput(config,'plugin',hero),before);
 });
