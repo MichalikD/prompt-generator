@@ -1,3 +1,4 @@
+import {mountDraftImpulse} from './draft-impulse-editor.mjs';
 import {worldDraftTemplate,crewDraftTemplate} from './preparation.mjs';
 import {draftDefinitions,newDraft,newDraftEntry,parseDraft,validateDraft,draftText,worldBaseKey,worldKey,crewKey,worldReviewError,characterReviewError,crewReviewError,crewPrerequisite} from './preparation-data.mjs';
 import {validateWorld} from './worlds.mjs';
@@ -52,8 +53,9 @@ export function mountPreparationTools(form,{getConfig,getCharacter,onChange,onAc
    }
    validate();
   }
+  const impulse=mountDraftImpulse(template.closest('details'),kind,refresh);
   function refresh(){
-   try{template.value=isWorld?worldDraftTemplate(getConfig(),idea.value):crewDraftTemplate(getConfig(),idea.value,getCharacter());status.textContent='';}catch(e){template.value='';status.textContent=e.message;}
+   try{template.value=isWorld?worldDraftTemplate(getConfig(),idea.value,impulse.id):crewDraftTemplate(getConfig(),idea.value,getCharacter(),impulse.id);status.textContent='';}catch(e){template.value='';status.textContent=e.message;}
    $('[data-copy-template]').disabled=!template.value;validate();
   }
   function importText(text){try{const next=parseDraft(text,kind);next.confirmed=false;model=next;render();$('[data-edit-panel]').open=true;$('[data-import-panel]').open=false;status.textContent='JSON geladen. Felder prüfen und übernehmen.';}catch(e){status.textContent=e.message+' Vorhandene Eingaben bleiben erhalten.';}}
@@ -67,7 +69,7 @@ export function mountPreparationTools(form,{getConfig,getCharacter,onChange,onAc
    try{const next=parseDraft(model,kind);if(!isWorld&&crewProblem())throw new Error(crewProblem());next.confirmed=true;hidden[kind+'Document'].value=JSON.stringify(next);hidden[kind+'DraftBasis'].value=isWorld?worldBaseKey(getConfig()):crewKey(getConfig(),getCharacter());model=next;onChange();dialog.close();}catch(e){status.textContent=e.message;}
   });
   $('[data-remove]').addEventListener('click',()=>{remove(kind);status.textContent='Aus dem Startpaket entfernt. Der Entwurf bleibt bearbeitbar.';});
-  tools[kind]={dialog,open,state,refresh,reset(){model=newDraft(kind);idea.value=template.value=result.value=status.textContent=state.textContent='';render();dialog.close();}};render();
+  tools[kind]={dialog,open,state,refresh,reset(){model=newDraft(kind);impulse.reset();idea.value=template.value=result.value=status.textContent=state.textContent='';render();dialog.close();}};render();
  }
  form.addEventListener('world-draft-remove',()=>remove('world'));
  return {

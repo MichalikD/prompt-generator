@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 2. November 2026 · Generator: 0.19.0 · Regelbasis: 0.18.0 · Strukturierte Vorbereitung umgesetzt; Spielwirkung offen
+Stand: 3. November 2026 · Generator: 0.20.0 · Regelbasis: 0.18.0 · Entwurfsimpulse umgesetzt; kreative Wirkung offen
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -172,6 +172,19 @@ von 0.17. Der letzte Export enthält den nächsten Einstieg doppelt; ohne weiter
 Belege wird daraus kein zusätzlicher Spielsystemfehler abgeleitet. Privat geteilte
 Kampagnen bleiben außerhalb des Repositorys.
 
+### Generatorpaket 0.20: Vielfalt in der Vorbereitung
+
+Vielfalt hat Priorität 1. Persönliche Bindungen können neue Spielanlässe schaffen,
+während ähnliche Aufträge trotz verschiedener Ausgangslagen wiederkehren können.
+
+- [x] Je ein optionaler Entwurfsimpuls für Welt, Figur und Crew, sichtbar und neu
+  auslosbar. Er wirkt nur im jeweiligen KI-Template; bestätigte Fakten und eigene
+  Vorgaben bleiben maßgeblich.
+- [ ] Zwei Impulse mit gleicher Ausgangsidee vergleichen: Ändern sich Machtquellen,
+  Bindungen oder Handlungsmöglichkeiten? Andere Namen allein genügen nicht.
+- [ ] Auftragsvielfalt separat prüfen. Startimpuls und Abenteuerlogik bleiben für
+  den Vergleich unverändert. Bedienungsangleichung und Kampfoptionen bleiben eigene Aufgaben.
+
 ### Generatorpaket 0.19: Strukturierte Vorbereitung und Abhängigkeiten
 
 - [x] Welt und Crew als klar definierte JSON-Entwürfe statt beliebigem Markdown.
@@ -199,7 +212,7 @@ A–C sind beauftragt und implementiert. Die Kennungen D–O bleiben für weiter
 | B | 1 | Abschluss, EXP und nutzbare Gewinne | Selbstständige Aufträge und Expeditionen abrechnen, sobald das relevante Ergebnis entschieden ist; Verkauf, Behörden und nächste Mission dürfen EXP nicht blockieren. Erfolgreiche Rettung, verlorener Konflikt und offenes Gesamtziel getrennt behandeln; keine Doppelvergabe. Umfangs-/Fortsetzungsvertrag an vorhandenen Szenen prüfen statt erneut parallele Definitionen hinzuzufügen. |
 | C | 2, als unabhängiger Ausbau empfohlen | Charakter-, Welt- und Crewentwürfe | Kopierbare KI-Templates: gewünschte Kompetenz wirksam darstellen; gewöhnliche Aktionen nicht als besondere Fähigkeiten verkaufen. Weltentwurf ergänzt Institutionen, Konfliktlage, Grenzen und Eigenheiten ohne festes Abenteuer. Optionales Team mit Rollen, Beziehungen, Zuständigkeiten und Zugehörigkeit; keine vollständigen Zahlenbögen für jede Nebenfigur und keine Crewpflicht. Entwürfe manuell prüfbar/bearbeitbar; keine API-Anbindung nötig. |
 | D | 2 | Kompakte Kontinuität | Zunächst ein kleiner Prototyp und klarer Pflege-/Abrufablauf für Figuren, Wissen, Aufenthalte, abgeschlossene Ergebnisse und offene Fragen. Keine versteckte Speicherung, kein behaupteter automatischer Chat-Abgleich und keine neue manuelle Pflichtliste pro Zug. Nutzen und Aufwand vor breitem Ausbau beurteilen. |
-| E | 2 | Vielfalt und Namensräume | Nachfolgende Abenteuer nach vorherrschenden Handlungen unterscheiden; Hilfe/Rettung um Gewinn, Rivalität und Entdeckung ergänzen. Optionale regionale/kulturelle Namenbasis und Abgleich bekannter Namen prüfen. Keine Verbotsliste, starre Rotation oder Garantie völliger Neuheit. |
+| E | 1 | Vielfalt und Namensräume | Nachfolgende Abenteuer nach vorherrschenden Handlungen unterscheiden; Hilfe/Rettung um Gewinn, Rivalität und Entdeckung ergänzen. Optionale regionale/kulturelle Namenbasis und Abgleich bekannter Namen prüfen. Keine Verbotsliste, starre Rotation oder Garantie völliger Neuheit. |
 
 **Umgesetzt in 0.18: A + B + C.**
 

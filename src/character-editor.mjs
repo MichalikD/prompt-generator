@@ -1,3 +1,4 @@
+import {mountDraftImpulse} from './draft-impulse-editor.mjs';
 import {damageBands,emptyWeapon,weaponPresets,weaponFromPreset,weaponPresetId} from './weapons.mjs';
 import {newCharacterDocument,validateCharacterDocument,parseCharacter,serializeCharacter,characterText,continueCharacter,characterTemplate,attributeLabels} from './character.mjs';
 import {characterMarkup} from './character-view.mjs';
@@ -117,12 +118,13 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
  $('#import-character').addEventListener('click',()=>importText($('#character-import').value));
  $('#character-file').addEventListener('change',async()=>{const file=$('#character-file').files[0];if(!file)return;try{if(file.size>1000000)throw new Error('Bitte eine JSON-Datei bis 1 MB verwenden.');importText(await file.text());}catch(e){$('#import-status').textContent=e.message;}finally{$('#character-file').value='';}});
  $('#download-character-json').addEventListener('click',()=>{if(!validateCharacterDocument(doc).length)downloadFile(serializeCharacter(doc),'charakterbogen.json','application/json');});
- function template(){$('#character-template').value=characterTemplate($('#character-idea').value,$('#character-world').value);autoGrow(templateDialog);}
+ const impulse=running?null:mountDraftImpulse($('#character-template').closest('details'),'character',template);
+ function template(){$('#character-template').value=characterTemplate($('#character-idea').value,$('#character-world').value,impulse?.id);autoGrow(templateDialog);}
  for(const id of ['character-idea','character-world'])$('#'+id).addEventListener('input',template);
  $('#copy-template').addEventListener('click',()=>copyText($('#character-template').value,$('#template-status'),$('#character-template')));
  $('#character-world').value=world;$('#character-world').readOnly=worldLocked;template();
  if(worldLocked||running)$('.editor-accept').hidden=true;
  if(running){$('.editor-toolbar').hidden=true;templateDialog.remove();importDialog.remove();}
  watchGrow(root);render();
- return {getDocument:()=>structuredClone(doc),acceptDocument,setDocument(value){doc=parseCharacter(JSON.stringify(value));render();},setWorld(value){if($('#character-world').value===value)return;$('#character-world').value=value;template();doc.confirmed=false;update();},refresh(){autoGrow(root);}};
+ return {resetDraftImpulse(){impulse?.reset();},getDocument:()=>structuredClone(doc),acceptDocument,setDocument(value){doc=parseCharacter(JSON.stringify(value));render();},setWorld(value){if($('#character-world').value===value)return;$('#character-world').value=value;template();doc.confirmed=false;update();},refresh(){autoGrow(root);}};
 }

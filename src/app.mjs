@@ -178,7 +178,7 @@ form.addEventListener('change',event=>{
 });
 reset.disabled=false;reset.addEventListener('click',()=>{
  openingShown='';
- preparationTools.reset();
+ preparationTools.reset();editor?.resetDraftImpulse();
  for(const input of form.querySelectorAll('input'))input.checked=defaults[input.name]===input.value;
  for(const field of form.querySelectorAll('textarea'))field.value='';
  for(const field of form.querySelectorAll('select'))field.value=field.name==='setting'?'fantasy':field.name==='worldSource'?'original':field.name==='worldPlayerKind'?'mortal':'';

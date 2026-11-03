@@ -1,3 +1,4 @@
+import {draftImpulseText} from './draft-impulses.mjs';
 import {damageBands, weaponProfileText} from './weapons.mjs';
 import { languageDirective, pluginLocalizationPolicy, ruleAttributes } from './language.mjs';
 export const CHARACTER_VERSION = 3;
@@ -154,7 +155,7 @@ export function characterText(doc) {
   ...(doc.kind==='current'?[doc.startCharacter?'ORIGINAL STARTING SHEET\n'+characterText({...newCharacterDocument(),confirmed:true,character:doc.startCharacter}):'Original starting sheet unavailable; do not invent starting values.']:[]),
  ].join('\n\n');
 }
-export function characterTemplate(idea='',world='') {
+export function characterTemplate(idea='',world='',impulse) {
  const example=newCharacterDocument();
  example.character.identity.name='Name';example.character.identity.description='Character description';
  example.character.talents=[{name:'Talent 1',description:'Useful domain matching the talent name',bonus:2},{name:'Talent 2',description:'Different useful domain',bonus:2}];
@@ -167,6 +168,7 @@ export function characterTemplate(idea='',world='') {
   languageDirective, pluginLocalizationPolicy,
   `JSON FORMAT: schema keys AND fixed code values remain in English, even when language is German or another language. Translate descriptive text only. In inventory[].weapon.damage use exactly one string from ${JSON.stringify(Object.keys(damageBands))}. These are machine-readable codes, not visible rule labels: never translate them or append numbers, dice, units or explanations. Use "light" for base damage 2, "ordinary" for 3 and "heavy" for 4. Write "damage":"heavy", never "damage":"schwer", "damage":"heavy 4", "damage":"W8" or "damage":4. Ability damage remains descriptive text; this enum applies only to weapon.damage. Preserve format/kind codes and boolean values as shown in the JSON template.`,
   'Create a starting sheet for a free D20 roleplaying game from my idea. Do not start the story. Return one JSON object, no Markdown or extra fields, matching the template. If an essential contradiction requires agreement first, ask one focused question instead of producing incompatible JSON. Keep format, version, kind and confirmed unchanged. No API or tools required.',
+  ...(impulse?[draftImpulseText('character',impulse)]:[]),
   `CHARACTER IDEA\n${idea.trim()||'[Insert your character idea]'}`,
   `WORLD SPECIFICATIONS\n${world.trim()||'[Insert the world specifications from the adventure profile]'}`,
   'Expand even a one- or two-sentence idea into a rounded, distinctive playable character, not just a mechanically valid sheet. Preserve all supplied facts. Invent coherent missing background and personality as proposals: connect a few meaningful past experiences, a relationship, a current desire or tension and a recognizable personal manner to the concept and world. These are useful possibilities, not a mandatory checklist, tragic past, secret destiny or scripted character arc. identity.description expresses identity and personality; background.confirmed holds additional proposed events, relationships or origin facts, without repeating the description. Because confirmed:false applies to the entire draft, these additions become established only when the player approves it. Do not leave background empty merely because my short idea supplied none. Explicitly open areas stay open; explicit exclusions stay excluded. Do not impose extra mechanical weaknesses, future decisions or feelings. background.open lists intentionally unresolved areas, not every omitted detail; background.excluded contains only exclusions I explicitly requested; otherwise empty. Fill missing values and equipment without job stereotypes. Ask only about essential contradictions instead of turning missing creative detail into a questionnaire.',
