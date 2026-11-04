@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 3. November 2026 · Generator: 0.21.0 · Regelbasis: 0.19.0
+Stand: 4. November 2026 · Generator: 0.22.0 · Regelbasis: 0.19.0
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -171,6 +171,25 @@ Diese Beobachtungen belegen weder perfekte Kontinuität noch garantierte Wirkung
 von 0.17. Der letzte Export enthält den nächsten Einstieg doppelt; ohne weitere
 Belege wird daraus kein zusätzlicher Spielsystemfehler abgeleitet. Privat geteilte
 Kampagnen bleiben außerhalb des Repositorys.
+
+### Paket 0.22: Optionale Entwurfsauswahl
+
+- [x] Welt-, Figuren- und Crew-Template bieten unabhängig eine optionale Auswahl
+  aus fünf kurzen Grundlagen; nach der Auswahl im externen KI-Chat folgt erst das
+  vollständige JSON. Direkter Einzelentwurf bleibt Standard.
+- [x] Gemeinsames zweistufiges Verfahren, abgeleitet von Verbalized Sampling:
+  Wahrscheinlichkeitsschätzungen sind unkalibriert, keine Qualitätsbewertung und
+  gelangen nicht in das endgültige JSON oder Startpaket.
+- [x] Eigene Angaben, offene/explizit ausgeschlossene Bereiche und die Kette
+  Welt → Figur → optionale Crew erhalten; Zufallsimpulse bleiben unabhängig nutzbar.
+- [x] Bestehende JSON-Schemas und Plugin-Regeln unverändert; Schalter im jeweiligen
+  Vorbereitungsdialog, kein zusätzlicher Generator-Schritt.
+- [ ] Figuren- und Crew-Auswahl spielerisch erproben. Ein Weltversuch lieferte
+  fünf als kreativer empfundene Grundlagen (Interesse 5/7/8/5/4); die ausgewählte
+  Grundlage blieb in der Ausarbeitung erhalten. Das isoliert weder die Wirkung
+  der Wahrscheinlichkeitsangaben noch belegt es bessere Abenteuerfortsetzungen.
+- [ ] Fortsetzungen weiterhin getrennt prüfen; bekannte Motive, Namen und Zahlen
+  bleiben Beobachtungen. Keine Garantie, dass Auswahl automatisch Vielfalt erzeugt.
 
 ### Paket 0.21: Auftragsvielfalt und Figurendialog
 

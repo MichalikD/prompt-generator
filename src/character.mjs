@@ -1,3 +1,4 @@
+import {withDraftSelection} from './draft-selection.mjs';
 import {draftImpulseText} from './draft-impulses.mjs';
 import {damageBands, weaponProfileText} from './weapons.mjs';
 import { languageDirective, pluginLocalizationPolicy, ruleAttributes } from './language.mjs';
@@ -155,7 +156,7 @@ export function characterText(doc) {
   ...(doc.kind==='current'?[doc.startCharacter?'ORIGINAL STARTING SHEET\n'+characterText({...newCharacterDocument(),confirmed:true,character:doc.startCharacter}):'Original starting sheet unavailable; do not invent starting values.']:[]),
  ].join('\n\n');
 }
-export function characterTemplate(idea='',world='',impulse) {
+export function characterTemplate(idea='',world='',impulse,options={}) {
  const example=newCharacterDocument();
  example.character.identity.name='Name';example.character.identity.description='Character description';
  example.character.talents=[{name:'Talent 1',description:'Useful domain matching the talent name',bonus:2},{name:'Talent 2',description:'Different useful domain',bonus:2}];
@@ -164,7 +165,7 @@ export function characterTemplate(idea='',world='',impulse) {
   {name:'Example weapon',quantity:1,slots:1,bonus:0,description:'General function; replace or remove to fit the character and world.',weapon:{damage:'ordinary',range:'Melee 1–2 m.',handling:'One hand; room to swing.',feature:'Usable with one free hand for holding an object, not an extra action.',limits:'No ranged attack or additional attack from a second weapon.'}},
   {name:'Example non-weapon tool',quantity:1,slots:1,bonus:0,description:'A useful ordinary tool; replace or remove to fit the idea. No weapon object.'},
  ];
- return [
+ return withDraftSelection([
   languageDirective, pluginLocalizationPolicy,
   `JSON FORMAT: schema keys AND fixed code values remain in English, even when language is German or another language. Translate descriptive text only. In inventory[].weapon.damage use exactly one string from ${JSON.stringify(Object.keys(damageBands))}. These are machine-readable codes, not visible rule labels: never translate them or append numbers, dice, units or explanations. Use "light" for base damage 2, "ordinary" for 3 and "heavy" for 4. Write "damage":"heavy", never "damage":"schwer", "damage":"heavy 4", "damage":"W8" or "damage":4. Ability damage remains descriptive text; this enum applies only to weapon.damage. Preserve format/kind codes and boolean values as shown in the JSON template.`,
   'Create a starting sheet for a free D20 roleplaying game from my idea. Do not start the story. Return one JSON object, no Markdown or extra fields, matching the template. If an essential contradiction requires agreement first, ask one focused question instead of producing incompatible JSON. Keep format, version, kind and confirmed unchanged. No API or tools required.',
@@ -185,5 +186,5 @@ export function characterTemplate(idea='',world='',impulse) {
   'Default HP recovery is the same for players, companions and enemies: +2 after a safe uninterrupted one-hour short rest once between full rests; full after a safe eight-hour rest. At 0 HP a living creature needs stabilization before resting; 0 alone does not mean death. Do not add lasting injury penalties or different NPC recovery. Lasting injuries require a separately agreed mechanic before play.',
   'Stay within the existing rules: use disadvantage or a concrete situational limitation for weaknesses, not invented flat penalty types. Equipment bonus applies only to checks, not armor. Appropriate light armor provides +1 defense, recorded clearly in its description with bonus:0. State weapon base damage using light 2, ordinary 3 or heavy 4 where relevant. Use the same damage defaults for spells. Two weapons alone give no extra attack; exceptional powers need explicitly defined resolution before confirmation. Define powers and costs before play, not after their first use.',
   'JSON TEMPLATE (replace or remove example inventory entries to match the idea; they demonstrate a weapon with a profile and an ordinary item without one, not mandatory equipment. Add entries only to the described lists. Before returning, check every weapon.damage against the exact code list above):',JSON.stringify(example,null,2),
- ].join('\n\n');
+ ].join('\n\n'),'character',options);
 }
