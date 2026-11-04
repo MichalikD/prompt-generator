@@ -1,6 +1,25 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Auftragsvielfalt und Figurendialog · Generator 0.21.0
+## Aktuell: Mehrere Entwürfe zur Auswahl · Generator 0.22.0
+
+In den Vorbereitungsdialogen für **Welt, Figur und Crew** lässt sich unabhängig
+**Mehrere Vorschläge zur Auswahl** aktivieren. Das exportierte Template fordert
+zuerst fünf kurze Grundlagen mit unkalibrierten Wahrscheinlichkeitsschätzungen an.
+Du wählst im externen KI-Chat eine aus oder passt sie an. Erst dann entsteht das
+vollständige JSON für den bestehenden Import. Ohne Haken entsteht direkt ein Entwurf.
+Die Auswahl findet im KI-Chat statt; der Generator führt keine KI-Anfragen aus.
+
+Eigene Vorgaben, offene Hintergrundbereiche und die übernommenen Grundlagen bleiben
+verbindlich. Welt → Figur → optionale Crew gilt weiterhin. Der Entwurfsimpuls ist
+unabhängig zuschaltbar; beide Optionen sind zunächst aus und werden beim Zurücksetzen
+gelöscht. Während der Vorbereitung bleibt die jeweilige Auswahl beim Schließen und
+Wiederöffnen des Dialogs erhalten; sie ist keine browserübergreifende Speicherung.
+Das Verfahren adaptiert [Verbalized Sampling](https://arxiv.org/abs/2510.01171).
+Ein erster Weltversuch wurde als kreativer bewertet; ein Gewinn für Figuren, Crew
+oder lange Abenteuerfortsetzungen ist noch nicht nachgewiesen. Die Pluginregeln
+bleiben bei 0.19.0.
+
+## Grundlage: Auftragsvielfalt und Figurendialog · Generator 0.21.0
 
 Bei offenen Übergängen vergleicht die Spielleitung die letzten Unternehmungen
 nach Zielen und entscheidenden Handlungen. Wiederholt sich das Muster, bereitet
