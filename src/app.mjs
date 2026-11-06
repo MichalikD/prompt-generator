@@ -1,3 +1,4 @@
+import {playContextFromConfig} from './play-context.mjs';
 import {showRelease} from './release.mjs';
 import {mountWorldEditor} from './world-editor.mjs';
 import {worldText} from './worlds.mjs';
@@ -23,12 +24,12 @@ let currentOutput=null,revision=0,editor=null,characterDoc=null,updating=false,s
 let openingShown='';
 let playDocument=null;
 const playReference={setDocument(doc){playDocument=doc;$('#play-character-reference').hidden=!doc;}};
-$('#open-play-tab').addEventListener('click',()=>{if(!playDocument)return;try{openPlayTab(playDocument);}catch(e){$('#play-open-status').textContent=e.message;}});
+$('#open-play-tab').addEventListener('click',()=>{if(!playDocument)return;try{openPlayTab(playDocument,window,playContextFromConfig(configFromForm()));}catch(e){$('#play-open-status').textContent=e.message;}});
 $('#play-desk-link a').addEventListener('click',event=>{
  event.preventDefault();
  try {
   const doc=editor?.getDocument()??characterDoc;
-  if(doc&&!validateCharacterDocument(doc).length)openPlayTab(doc);
+  if(doc&&!validateCharacterDocument(doc).length)openPlayTab(doc,window,playContextFromConfig(configFromForm()));
   else {const child=window.open('./play.html','_blank');if(!child)throw new Error('Spieltab blockiert. Pop-up erlauben und erneut öffnen.');child.opener=null;}
   $('#play-desk-status').textContent='';
  }catch(e){$('#play-desk-status').textContent=e.message;}

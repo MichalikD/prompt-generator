@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 4. November 2026 · Generator: 0.22.0 · Regelbasis: 0.19.0
+Stand: 6. November 2026 · Generator: 0.23.0 · Regelbasis: 0.20.0
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -172,6 +172,43 @@ von 0.17. Der letzte Export enthält den nächsten Einstieg doppelt; ohne weiter
 Belege wird daraus kein zusätzlicher Spielsystemfehler abgeleitet. Privat geteilte
 Kampagnen bleiben außerhalb des Repositorys.
 
+### Paket 0.23: Konfliktablauf, kurze Abenteuer und Spieltab
+
+Der letzte längere Spieltest wurde als Erfolg bewertet: unterschiedliche Aufgaben,
+Beziehungen, klare Abschlüsse und spürbare Entwicklung tragen. Gemeinsamkeiten in
+Motiven sind allein kein Vielfaltfehler. Kostenlose anschauliche Demonstrationen
+und ein hypothetischer Dialogvorschlag wurden nicht als störend bewertet und
+begründen keine gesonderte Korrektur. Das Paket erhält diese Stärken.
+
+- [x] A – Gesprächsabsicht vor dem Wurf klären. Bei bereits erklärtem Angebot nur
+  eine tatsächlich verbleibende Unsicherheit würfeln; keine Wiederholung der Rede
+  und keine Probe auf die Annahme des eigenen, akzeptablen NSC-Angebots.
+- [x] A – Kampf beim Übergang etablieren, gegnerische Angriffe gegen Verteidigung
+  abwickeln; vollständige Attribute, sichtbare LP, Verbündetenzüge und aktive
+  Wirkungen der bestehenden Regeln gemeinsam führen. Keine neue Paradenmechanik.
+- [x] A – Bei Illusionen und Kontrolle die praktische Wirkung und ihr Ende vor der
+  Auflösung bestimmen. Keine automatische Betäubung, kein zusätzlicher Spielerangriff;
+  ein erzählter Erfolg darf nicht in derselben betroffenen Handlung folgenlos werden.
+- [x] B – Kurzumfang erhält Substanz durch Entdeckung und Entscheidungen statt bloß
+  einen Schalter. Keine Mindestzahl von Szenen, Pflichtnebenhandlung oder Verlängerung
+  einer bereits gelungenen Lösung. Rätselhinweise vor der Lösung zugänglich machen;
+  fachliche Untersuchung klar von einer durch den Spieler lösbaren Aufgabe trennen.
+- [x] C – Eigenständige folgenreiche Rettungen und abgeschlossene Gefahren abrechnen,
+  ohne jeden Gegner oder Reparaturversuch einzeln zu vergüten. Wissensquellen von NSC
+  erhalten; Vermutungen nicht unbemerkt zu Fakten über unbemerkte Vorgänge machen.
+- [x] D – Welt, optionale Crew und manuell ergänzte Begleiter in den Spieltab übernehmen,
+  bearbeiten, kopieren und gemeinsam mit Figur/Notizen exportieren und speichern.
+  Speicheroptionen oben; Schließwarnung für nicht gesicherte oder offene Änderungen.
+- [ ] Modellbefolgung im nächsten passenden Spiel beobachten: keine Abwehrwürfe statt
+  Gegnerangriffen, keine fehlenden LP/Boni, sinnvoll fortwirkende Täuschung und keine
+  zusätzliche Probe auf einen bereits ausgehandelten Handel.
+- [ ] Entdeckungstiefe und EXP außerhalb ausdrücklich benannter Abenteuerabschlüsse
+  weiterhin prüfen. Technische Tests beweisen keine zuverlässige Modellbefolgung.
+
+Keine neue kritische Trefferregel, Beutetabelle, EXP-Schwelle oder Fähigkeiten-
+verstärkung. Die optionale Entwurfsauswahl bleibt erhalten. Ein kompletter
+Gedächtnisumbau bleibt außerhalb dieses Pakets.
+
 ### Paket 0.22: Optionale Entwurfsauswahl
 
 - [x] Welt-, Figuren- und Crew-Template bieten unabhängig eine optionale Auswahl
@@ -184,7 +221,7 @@ Kampagnen bleiben außerhalb des Repositorys.
   Welt → Figur → optionale Crew erhalten; Zufallsimpulse bleiben unabhängig nutzbar.
 - [x] Bestehende JSON-Schemas und Plugin-Regeln unverändert; Schalter im jeweiligen
   Vorbereitungsdialog, kein zusätzlicher Generator-Schritt.
-- [ ] Figuren- und Crew-Auswahl spielerisch erproben. Ein Weltversuch lieferte
+- [ ] Weitere Figuren- und Crew-Auswahl spielerisch erproben. Ein erster längerer Lauf mit der neuen Vorbereitung wurde als unterhaltsam und ausreichend vielfältig bewertet; eine separat vorbereitete Crew war dabei nicht nötig. Ein Weltversuch lieferte
   fünf als kreativer empfundene Grundlagen (Interesse 5/7/8/5/4); die ausgewählte
   Grundlage blieb in der Ausarbeitung erhalten. Das isoliert weder die Wirkung
   der Wahrscheinlichkeitsangaben noch belegt es bessere Abenteuerfortsetzungen.
