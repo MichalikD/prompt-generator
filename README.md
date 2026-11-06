@@ -1,6 +1,28 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Mehrere Entwürfe zur Auswahl · Generator 0.22.0
+## Aktuell: Konfliktablauf und vollständiger Spieltab · Generator 0.23.0
+
+Die Regelbasis **0.20.0** klärt den Wechsel zwischen Gespräch und Würfelanforderung,
+den Übergang in Kämpfe und die tatsächliche Wirkung von Täuschungen. Gegner greifen
+mit ihren eigenen Würfen gegen Verteidigung an; sichtbare LP und vollständige Boni
+bleiben verbindlich. Kurze Abenteuer dürfen Entdeckungen und nachvollziehbare Rätsel
+enthalten, ohne zu einer endlosen Hauptgeschichte zu werden. Abgeschlossene
+folgenreiche Ergebnisse erhalten ihre EXP unabhängig von Überschriften und Beute.
+
+Der Spieltab übernimmt beim Öffnen aus dem Generator auch Welt- und optionale
+Crewangaben. Unter **Welt und Begleiter aktualisieren** lassen sich späteres Wissen
+und weitere Bekanntschaften manuell ergänzen. Diese Texte bleiben bei Bogenänderungen
+erhalten und gehören zum gemeinsamen Export, Kopieren und Gerätestand. Es gibt keine
+automatische Übernahme aus dem Spielchat und keine Ermittlung von Begleitern aus Freitext.
+
+**Speicheroptionen** stehen oben. Beim Schließen oder Neuladen warnt der Browser,
+wenn der aktuelle Stand noch nicht exportiert oder auf dem Gerät gespeichert wurde,
+auch bei noch nicht übernommenen Änderungen im geöffneten Bearbeitungsdialog.
+Kopieren allein gilt nicht als Sicherung. Der Browser bestimmt Darstellung und
+Verfügbarkeit der Schließwarnung; sie ersetzt keinen Export. Nach erneutem Laden
+kann eine frühere Exportbestätigung fehlen – ein aktueller Gerätestand wird erkannt.
+
+## Grundlage: Mehrere Entwürfe zur Auswahl · Generator 0.22.0
 
 In den Vorbereitungsdialogen für **Welt, Figur und Crew** lässt sich unabhängig
 **Mehrere Vorschläge zur Auswahl** aktivieren. Das exportierte Template fordert
