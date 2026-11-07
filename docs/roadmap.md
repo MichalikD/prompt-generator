@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 6. November 2026 · Generator: 0.23.0 · Regelbasis: 0.20.0
+Stand: 7. November 2026 · Generator: 0.23.0 · Regelbasis: 0.20.0
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -171,6 +171,102 @@ Diese Beobachtungen belegen weder perfekte Kontinuität noch garantierte Wirkung
 von 0.17. Der letzte Export enthält den nächsten Einstieg doppelt; ohne weitere
 Belege wird daraus kein zusätzlicher Spielsystemfehler abgeleitet. Privat geteilte
 Kampagnen bleiben außerhalb des Repositorys.
+
+### Laufende Erprobung 0.23: gesammelte Befunde, noch nicht priorisiert
+
+Zwischenstand vom 7. November 2026. Der Spieler bewertet den laufenden Durchgang
+als einen der spaßigsten bisherigen Läufe und setzt ihn fort. Seine Notizen suchen
+gezielt nach Problemen; ihre Anzahl ist keine negative Gesamtbewertung. Mindestens
+ein weiterer Auszug folgt. Diese Sammlung legt weder ein neues Entwicklungspaket
+noch dessen Reihenfolge fest. Bestehende Aufgaben bleiben erhalten; nach den weiteren
+Auszügen werden Überschneidungen, Prioritäten und Umfang gemeinsam abgeglichen.
+Private Exporte, Namen und konkrete Kampagnenszenen bleiben außerhalb des Repositorys.
+
+**Erhaltungsziele und bereits funktionierende Abläufe**
+
+- Settinggerechter Slang, Humor, Beziehungen, eigenständige Ziele und wiederkehrende
+  Kontakte tragen den Spielspaß. Die optionale Crew hat einen tatsächlichen Nutzen.
+- Abgeschlossene Aufträge, gewünschter Alltag und neue Gelegenheiten gehen ineinander
+  über. Auch verlorene Herausforderungen bringen Erfahrung und unmittelbare Auswahl.
+- Geld, erreichbare Käufe und nutzbare Implantatverbesserungen machen Entwicklung
+  greifbar. Ein Rückkampf gegen einen bestehenden Gegner macht gewonnene Stärke spürbar.
+- Der Wechsel von Instant auf mittleren Denkaufwand geht laut Spieler mit längeren
+  Wartezeiten und gefühlt besseren Antworten einher. Modellmodus, Setting, Figur und
+  Vorbereitung sind hier nicht isoliert; keine eindeutige Ursache oder Garantie ableiten.
+
+**Kampf, Fähigkeiten und Erstellungstemplate – zur späteren Einordnung**
+
+- [ ] Vorgeschlagene Fähigkeiten und Verbesserungen mit normalen Handlungen,
+  vorhandenen Waffen und anderen Fähigkeiten vergleichen. Eine als Verbesserung
+  angebotene Bewegung bis 10 m mit anschließendem normalen Nahkampfangriff entspricht
+  bereits Bewegung plus Aktion; eine Rastbegrenzung erzeugt allein keinen Vorteil.
+- [ ] Redundante Startfähigkeiten prüfen: Ein schwächerer Implantatschlag eröffnet
+  gegenüber einer vorhandenen Schlagwaffe kaum neue Wege. Waffenlose Verfügbarkeit
+  kann ein bewusster Vorteil sein, muss aber den tatsächlichen Nutzen erkennen lassen.
+  Keine pauschale Verstärkung aller Manöver oder Verpflichtung zu Kampffähigkeiten.
+- [ ] Reaktionsunterstützung an die tatsächliche Kampfauflösung anschließen: Ein
+  kostenpflichtiger Bonus auf eine Probe hilft nicht, wenn Angriffe gegen eine feste
+  Verteidigung aufgelöst werden und diese Probe nicht stattfindet. Schutzaktion und
+  Implantatwirkung auseinanderhalten. Die Aktivierung wechselte zudem von einer
+  Nutzung innerhalb der eigenen Aktion zu einer vollständigen Aktion; bestätigte
+  Funktionen dürfen nicht still geändert werden. Noch keine Ersatzmechanik festgelegt.
+- [ ] Taktisches Wissen und gelungene Manöver auf ihren praktischen Effekt prüfen:
+  Ein umgeworfener Gegner steht unmittelbar auf und greift unverändert an; eine
+  beschädigte Beinfunktion verringert Bewegung, verändert den engen Nahkampf aber
+  kaum. Wirkung, Kosten, Zugfolge und Dauer gemeinsam beurteilen; nicht automatisch
+  einen verlorenen Gegnerzug oder kostenlose Zusatzeffekte einführen.
+- [ ] Überraschungsangriff und gezieltes Ausschalten vor dem Wurf unterscheiden.
+  Ein ausdrücklich beschriebener voller Hammertreffer am ungeschützten Kopf und
+  anschließendes weitgehend normales Weiterkämpfen passen erzählerisch schlecht
+  zusammen. Keine allgemeine Regel für automatische Bewusstlosigkeit nach Kopftreffern;
+  erwartete Wirkung und Auflösung vor dem Einsatz klären.
+- [ ] Tragplätze im Erstellungstemplate mit der vorhandenen Inventarregel abgleichen:
+  Gewöhnliche Waffen wurden wiederholt mit zwei Plätzen erzeugt und vom Spieler auf
+  einen korrigiert. Tatsächliche Sperrigkeit berücksichtigen, keine pauschale Änderung
+  für jede Maschinenpistole, jedes Schwert oder jeden Stab.
+- [ ] Wiederholtes Regelwissen in NSC-Dialogen trotz vorhandener Trennung untersuchen.
+  Explizite Lebenspunktzahlen sind ein belegter Fehler. Eine Aussage über verbesserten
+  Straßenkampf ist sprachlich nicht allein regelwidrig; der direkte Bezug auf eine
+  unsichtbare Verbesserungswahl ist der relevante Wissenssprung. Beobachtbare Stärke,
+  Verletzungen und reale Implantatfunktionen dürfen Figuren weiterhin einschätzen.
+
+**Abenteuerumfang, Belohnungen und soziales Umfeld – Beobachtungen**
+
+- [ ] Kurzumfang verlässlich halten: Eine später abgeschlossene Ermittlung wuchs über
+  viele Beteiligte und mehrere Tage. Der Spieler hatte trotzdem Spaß; daraus weder
+  endlos offene Handlung noch den Wunsch nach längeren Pflichtabenteuern ableiten.
+- [ ] Sehr kurze, gut bezahlte Aufträge und unterschiedliche Aufwände vergleichen.
+  Eine vernünftige friedliche Lösung darf kurz bleiben. Der Eindruck eines Auftrags
+  hauptsächlich zur Finanzierung eines gewünschten Kaufs ist eine Spielerbeobachtung,
+  keine nachgewiesene Erzeugungsabsicht. Nicht nachträglich künstlich erschweren.
+- [ ] Ähnliche Aufhänger wie zurückgehaltene Teile beobachten, ohne damit allein
+  fehlende Vielfalt zu behaupten. Eigene Ziele und lohnende Entwicklung erhalten.
+- [ ] Rolle der Organisation neben den gelungenen persönlichen Kontakten beobachten.
+  Der Spieler empfindet sie teilweise als wenig präsent; je nach Struktur kann das
+  passen. Kein beschlossener Bedarf für zusätzliche Fraktionsverwaltung.
+
+**Generator und Spieltab – konkrete Bedienungswünsche**
+
+- [ ] Entwurfsimpulse für Welt, Figur und Crew analog zum Startimpuls standardmäßig
+  verdecken und bei Bedarf einsehbar machen. Die fünf auswählbaren Vorschläge sind
+  davon zu unterscheiden und bleiben zur Auswahl sichtbar.
+- [ ] Startimpuls von den Spielvorgaben auf die erste Seite unter Welt verschieben.
+- [ ] Wahrscheinlichkeitsangaben der Vorschläge verständlich darstellen: 0,06 bedeutet
+  6 Prozent, jedoch nur als unkalibrierte Modellschätzung der Antwortwahrscheinlichkeit,
+  nicht als Qualitätswertung oder Erfolgschance. Geeignete Erläuterung prüfen.
+- [ ] Crew-Erstellung nach der Figurenbearbeitung erreichbar platzieren, ohne den
+  Abhängigkeitsablauf Welt → Figur → optionale Crew aufzuheben. Unnötiges Zurückscrollen
+  vor dem Weitergehen vermeiden.
+- [ ] Spieltab-Bereiche zunächst eingeklappt anzeigen und ihre Reihenfolge von oben
+  nach unten veränderbar machen; Darstellung und Speicherung der Reihenfolge klären.
+- [ ] Speicheroptionen dauerhaft sichtbar statt in einem aufklappbaren Bereich halten.
+- [ ] Nach dem Hinzufügen von Ausrüstung oder Fähigkeiten den neuen Eintrag öffnen
+  statt des obersten bestehenden. Gemeldetes Verhalten noch gezielt reproduzieren.
+
+**Korrigierter Befund:** Fehlende Gegner-LP sind in diesem Durchgang kein offener
+Fehler: Der Export enthält sie bereits vor dem ersten Angriff und führt sie weiter.
+Der Spieler hat die Angabe übersehen und den Punkt ausdrücklich zurückgenommen.
+Die allgemeine Beobachtung zuverlässiger LP-Anzeigen in anderen Läufen bleibt erhalten.
 
 ### Paket 0.23: Konfliktablauf, kurze Abenteuer und Spieltab
 
