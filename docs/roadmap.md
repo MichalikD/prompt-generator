@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 7. November 2026 · Generator: 0.23.0 · Regelbasis: 0.20.0
+Stand: 14. November 2026 · Generator: 0.24.0 · Regelbasis: 0.20.0
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -172,6 +172,93 @@ von 0.17. Der letzte Export enthält den nächsten Einstieg doppelt; ohne weiter
 Belege wird daraus kein zusätzlicher Spielsystemfehler abgeleitet. Privat geteilte
 Kampagnen bleiben außerhalb des Repositorys.
 
+### Paket 0.24: Bestehende Kampagnen fortsetzen und Bedienung verbessern
+
+**Beschlossen und umgesetzt:** Generator und Spieltab ausbauen; Regelbasis und
+installiertes Plugin bleiben bei 0.20.0. Keine Änderungen an Kampfbalancing,
+Schaden, Waffenwirkungen, EXP, Ressourcen oder bestätigten Figuren. Ein bestehender
+Durchlauf kann mit seinen bisherigen Vereinbarungen fortgesetzt werden. Erst ein
+späteres Paket behandelt das Spielgeschehen und die offenen Regelentscheidungen.
+
+- [x] Eigenen Bereich **Kampagne fortsetzen** mit kopierbarem/herunterladbarem
+  Savepoint-Template für einen separaten KI-Chat bereitstellen. Keine KI-Anfrage
+  im Generator und kein automatischer Upload privater Kampagnendaten.
+- [x] **Der vollständige Markdown-Chatexport ist maßgeblich.** Startbogen/Startpaket,
+  manuell gepflegter Spieltab und ältere Saves dienen nur zur Prüfung und Ergänzung.
+  Spätere bestätigte Änderungen im Verlauf nicht durch ältere Werte überschreiben.
+- [x] Template verlangt ehrliche Prüfabdeckung, abschnittsweise Prüfung großer
+  Exporte bei Bedarf, Quellenstellen, Abgleich von Korrekturen und Unterscheidung
+  zwischen Angebot, Kauf, Leihgabe, Forschung und tatsächlich erlangtem Können.
+  Widersprüche und fehlende Angaben kennzeichnen; nicht plausibel hinzuerfinden.
+- [x] Eigenständigen Speicherstand, getrennten Prüfbericht und kopierbare erste
+  Fortsetzungsnachricht anfordern. Letzte offene Spieleraktion, Würfe, Zugfolge,
+  verbrauchte Anwendungen und Effektende erhalten. Keine automatische Fortschreibung
+  oder Übernahme einer neueren Regelversion. Genaue Fortsetzung nicht versprechen,
+  wenn wesentliche Informationen fehlen. Spieler prüft entscheidende Unklarheiten.
+- [x] Gerätebasierte Kampagnenablage: benannte Vorbereitung samt unverändertem
+  Startpaket und letztem ausdrücklich gespeichertem Spieltab laden. Vorbereitung
+  separat unter aktueller Generatorversion bearbeiten; Originalpaket bewahren.
+  Neue Kampagnen getrennt anlegen, Ablage exportieren/importieren und Einträge
+  gezielt entfernen. Keine automatische Speicherung des Spielchats behaupten.
+- [x] Spieltab um bearbeitbare, datierte Sitzungsnotizen ergänzen: aktuellen Text
+  als neuen eingeklappten Abschnitt ablegen. Aktuelle Notizen, Sitzungen, Kontext,
+  Kampfnotizen und Abschnittsreihenfolge gemeinsam sichern/exportieren/importieren.
+- [x] Attribute, LP, Ressourcen, Gepäck und manuell bestätigte Verteidigung oben
+  sichtbar halten. Angriffe/Gesamtboni samt Herkunft und Bedingungen manuell
+  bearbeiten; keine zweite automatische Regelberechnung aus Freitext einführen.
+- [x] Abschnitte einschließlich Fähigkeiten zunächst einklappen, mit zugänglichen
+  Auf-/Ab-Schaltflächen umordnen; doppelte Rollenbeschreibung im Kopf entfernen.
+  Speicheroptionen dauerhaft sichtbar oben halten.
+- [x] Neue Ausrüstung/Fähigkeit gezielt öffnen statt ersten bestehenden Eintrag;
+  lange Listen prüfen. Entwurfsimpulse verdecken, Startimpuls zur Welt verschieben,
+  Crew-Erstellung nach dem Bogen platzieren und Modellschätzungen als verständliche
+  Prozentwerte mit Hinweis auf fehlende Kalibrierung erklären.
+- [ ] Fortsetzungsablauf mit einem echten vollständigen Export erproben; Ergebnis
+  gegen Quellen und bekannte bestätigte Regeln prüfen, insbesondere Identitäten,
+  aktuelle Werte, offene Spieleraktion und fehlende ältere Angaben.
+
+**Speichergrenzen:** Geräteablage ist kein externes Gedächtnis. Browserdaten können
+verloren gehen; unabhängige Dateien bleiben notwendig. Der Spieltab wird manuell
+gepflegt. Eine künftige externe Speicher-/Abrufanbindung ist eine gesonderte
+Architekturentscheidung und kein Bestandteil von 0.24.
+
+### Gesamtergebnis des langen Durchlaufs und offene Folgearbeit
+
+Stand 14. November 2026; ergänzt die ersten Zwischenbefunde unten. Der Lauf gilt
+als sehr erfolgreich: Eigenmotivation, passende Sprache, Beziehungen, nutzbare
+Aufrüstung, Einkommen/Eigentum und freiwillige Fortsetzung tragen über längere
+Zeit. Persönliche Notizen suchen gezielt Probleme und sind keine negative
+Gesamtbewertung. Wiederkehrende Kontakte, Entwicklung auch nach Niederlagen,
+Delegation und gewünschte Ruhe bleiben Erhaltungsziele. Der Wechsel des Denkmodus
+ist nicht isoliert getestet; den Erfolg keinem einzelnen Faktor zuschreiben.
+
+Die folgenden Punkte werden **erst nach dem Fortsetzungspaket priorisiert**.
+Sie präzisieren bestehende Themen A/B/D/E/F/G/J/N statt parallele neue Regelwerke
+zu verlangen. Implementierte Regeln und langfristige Modellbefolgung trennen.
+
+| Thema | Zusammengeführter offener Befund / nächster Prüfauftrag |
+| --- | --- |
+| Verlässlicher Kampfablauf (A) | Gewählte Schadenswürfel, sichtbare LP, alle NSC-Züge und deren Schaden weiterhin ohne Spieleraufforderung abschließen. Ein rechnerischer Treffer darf nicht nachträglich durch Deckung aufgehoben werden: fehlende Schusslinie oder partielle Deckung vorher klären. |
+| Wirkung von Taktik (A/G) | Umwerfen, beschädigte Antriebe, erkanntes Angriffsmuster und Vorbereitung müssen konkrete Folgen haben. Kosten, Dauer und Zugfolge gemeinsam prüfen; kein pauschaler Anspruch auf kostenlose Effekte oder verlorene Gegnerzüge. Ein gelungener Angriff kann auch tatsächlich Annäherung verhindern; positive Fälle erhalten. |
+| Fähigkeiten und Grundhandlungen (C/F/G) | Redundante Startkräfte, Verbesserungen identisch zur normalen Bewegung plus Angriff und kostenpflichtige Reaktionsboni ohne passende Probe vermeiden. Bestätigte Aktivierung nicht still von Teilhandlung zu voller Aktion ändern. Nicht bloß mehr Ressourcenvorrat anbieten, wenn dessen Nutzen fehlt. |
+| Überraschung / Überwältigen (G/L) | Lautloses Festsetzen gelingt bereits; normale Schadensangriffe können mehrere Treffer benötigen. Handlungsabsicht vor der Auflösung klären. Volle Kopftreffer nicht unplausibel folgenlos schildern; keine beschlossene automatische Ausschaltung oder neue Todesregel. |
+| Waffen und Stärke (F/G) | Pistole, automatische Waffe und andere Profile brauchen nutzbare Unterschiede. Mehr Verbrauch bei gleicher Wirkung ist kein zusätzlicher Vorteil. Kraft erhöht bislang Trefferchance, nicht einzelnen Schaden; Änderung gemeinsam mit Balancing und bestehenden Fähigkeiten beurteilen, nicht ungeprüft auf jeden Treffer addieren. |
+| Würfelauswahl und Saves (A/D) | Ursprünglicher Start enthält W8, späterer Save nennt nur W4/W6 und festen schweren Schaden. Explizite Ausnahmen von verlorenen Einstellungen unterscheiden; Rekonstruktion darf einen Regelverlust nicht still als Vereinbarung festschreiben. |
+| Fortschritt (B/F) | Viele unmittelbare Abschlüsse und greifbare Käufe funktionieren; später wieder vergessene EXP. Angebote ausreichend mischen und nach Zusatznutzen beurteilen. Große Forschungs-/Umbauprojekte brauchen erreichbare nutzbare Ergebnisse statt dauerhaft nur bezahlter Voraussetzungen. Keine globale EP-Erhöhung aus diesem Befund ableiten. |
+| Vielfalt / Umfang (E) | Abwechslungsreiche Starts reichen nicht für dauerhaft verschiedene Folgeaufgaben. Bergung, zurückgehaltene Lieferung, Vertragsstreit und Konvoi mit Sperre/Schützen/Rückzug wiederholen sich. Kurz bleibt trotz offener Kampagne begrenzt; freiwillige Vertiefung von automatischer Ausweitung trennen. |
+| Fraktionen / Beziehungen (E/J) | Freundschaft und Wärme erhalten, ohne Rang, Machtziele und Grenzen einer Gang dauerhaft zu ersetzen. Brutale Erpressung nicht routinemäßig in eine vernünftige Alt-Forderung umdeuten; Verhandlung bleibt möglich. Kein Pflichtkampf und keine Rückkampfpflicht für Rivalen. |
+| Wissen / Identitäten (D/E) | Wiederholte LP-, Würfel- und Aktionskenntnis in Figurenrede trotz Erinnerungen; gelegentlich unbekannte Namen und falscher Sprecher. Dopplungen innerhalb derselben Kampagne beeinträchtigen Zuordnung stärker als typische Namen zwischen Durchläufen. Quellenwissen und echte Identitäten erhalten, keine bloßen Verbotslisten. |
+| Ressourcen (J) | Alltagskäufe und normale Munition sind auf Dauer mühsam und inkonsistent. Abstrakte Versorgung gegen relevante Knappheit abgrenzen; keine überraschend leeren Magazine. Blutdurst, Mana und besondere Munition bleiben getrennt zu erproben. Noch keine Regeländerung beschlossen. |
+| Regelbefolgung / Tempo (A/N) | Erinnerungsaufruf korreliert mit kürzeren Antworten, schützt aber nicht zuverlässig Figurenwissen, EXP und Zugfolge. 250 Wörter, nicht Zeichen. Keine garantierte dauerhafte Aktivierung oder Ursache aus dem Verlauf behaupten; vorhandene Texte vor neuen Zusatzregeln prüfen. |
+| Langzeitkontinuität (D/J) | Großer Erfolg bei Beziehungen/Projekten, dennoch verlorene Schwäche, Inventarteile, Finanzen und Namenszuordnung. Regelmäßige überprüfbare Saves können helfen; keine perfekte Wiederherstellung durch Projektgedächtnis versprechen. Externe Speicherung später optional auf Aufwand/Nutzen prüfen. |
+
+**Weiter erhalten:** starke Startfiguren, Transformationen, kritische Treffer,
+D%-Seltenheit, alternative Todes-/Nichttödlichkeitsregeln, Impuls-/Namens-/Motivhilfen,
+weitere Weltvorlagen, mittel/lang, besonderes Ressourcen- und Gefährtenspiel,
+Willkommenseite, Themes, Lokalisierung, Name/Icon, externe Beta-Tests und vergleichende
+Auswertung starker Kampagnen. Die bisherigen Detailabschnitte bleiben dafür bestehen.
+Keine Anhebung dieser Themen zu Voraussetzungen für die Fortsetzung von 0.24.
+
 ### Laufende Erprobung 0.23: gesammelte Befunde, noch nicht priorisiert
 
 Zwischenstand vom 7. November 2026. Der Spieler bewertet den laufenden Durchgang
@@ -247,21 +334,22 @@ Private Exporte, Namen und konkrete Kampagnenszenen bleiben außerhalb des Repos
 
 **Generator und Spieltab – konkrete Bedienungswünsche**
 
-- [ ] Entwurfsimpulse für Welt, Figur und Crew analog zum Startimpuls standardmäßig
+- [x] Entwurfsimpulse für Welt, Figur und Crew analog zum Startimpuls standardmäßig
   verdecken und bei Bedarf einsehbar machen. Die fünf auswählbaren Vorschläge sind
   davon zu unterscheiden und bleiben zur Auswahl sichtbar.
-- [ ] Startimpuls von den Spielvorgaben auf die erste Seite unter Welt verschieben.
-- [ ] Wahrscheinlichkeitsangaben der Vorschläge verständlich darstellen: 0,06 bedeutet
+- [x] Startimpuls von den Spielvorgaben auf die erste Seite unter Welt verschieben.
+- [x] Wahrscheinlichkeitsangaben der Vorschläge verständlich darstellen: 0,06 bedeutet
   6 Prozent, jedoch nur als unkalibrierte Modellschätzung der Antwortwahrscheinlichkeit,
   nicht als Qualitätswertung oder Erfolgschance. Geeignete Erläuterung prüfen.
-- [ ] Crew-Erstellung nach der Figurenbearbeitung erreichbar platzieren, ohne den
+- [x] Crew-Erstellung nach der Figurenbearbeitung erreichbar platzieren, ohne den
   Abhängigkeitsablauf Welt → Figur → optionale Crew aufzuheben. Unnötiges Zurückscrollen
   vor dem Weitergehen vermeiden.
-- [ ] Spieltab-Bereiche zunächst eingeklappt anzeigen und ihre Reihenfolge von oben
+- [x] Spieltab-Bereiche zunächst eingeklappt anzeigen und ihre Reihenfolge von oben
   nach unten veränderbar machen; Darstellung und Speicherung der Reihenfolge klären.
-- [ ] Speicheroptionen dauerhaft sichtbar statt in einem aufklappbaren Bereich halten.
-- [ ] Nach dem Hinzufügen von Ausrüstung oder Fähigkeiten den neuen Eintrag öffnen
-  statt des obersten bestehenden. Gemeldetes Verhalten noch gezielt reproduzieren.
+- [x] Speicheroptionen dauerhaft sichtbar statt in einem aufklappbaren Bereich halten.
+- [x] Nach dem Hinzufügen von Ausrüstung oder Fähigkeiten den neuen Eintrag öffnen
+  statt des obersten bestehenden. In 0.24 mit langen Listen geprüft; vorhandene
+  auf-/zugeklappte Einträge bei anderen Bearbeitungsschritten erhalten.
 
 **Korrigierter Befund:** Fehlende Gegner-LP sind in diesem Durchgang kein offener
 Fehler: Der Export enthält sie bereits vor dem ersten Angriff und führt sie weiter.

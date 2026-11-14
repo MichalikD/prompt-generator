@@ -7,7 +7,7 @@ import {autoGrow,watchGrow,openDialog,downloadFile,copyText} from './ui.mjs';
 
 export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=false,running=false}={}) {
  root.innerHTML=characterMarkup;
- const $=s=>root.querySelector(s);let doc=newCharacterDocument(),active='identity';
+ const $=s=>root.querySelector(s);let doc=newCharacterDocument(),active='identity',rowOpen=new Map(),focusRow=null;
  const form=$('#character-fields');form.addEventListener('submit',e=>e.preventDefault());
  const names={identity:'Identität',values:'Werte & Talente',abilities:'Fähigkeiten',inventory:'Ausrüstung & Mittel',background:'Hintergrund',development:'Entwicklung'};
  const labels={name:'Name',range:'Reichweite',targets:'Ziele / Fläche',damage:'Schaden (ggf. „kein Schaden“)',effect:'Wirkung / Auflösung / Dauer',cost:'Kosten',limits:'Weitere Grenzen',description:'Beschreibung / Funktion / besondere Wirkung',bonus:'Probenbonus',trigger:'Auslöser',mitigation:'Abmilderung',quantity:'Anzahl',slots:'Tragplätze je Stück',currency:'Währung',amount:'Betrag',current:'Aktuell',max:'Maximum',regeneration:'Regeneration',care:'Versorgung / Erholung',mechanical:'Vereinbarte Mechanik',milestone:'Meilenstein',change:'Änderung',benefit:'Konkreter Nutzen / einsetzbare Wirkung'};
@@ -32,7 +32,7 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
  function list(parent,title,path,defaults,numbers=[]) {
   const box=section(parent,title),rows=path.reduce((o,k)=>o[k],doc.character);
   rows.forEach((row,index)=>{
-   const entry=document.createElement('details');entry.className='character-row';entry.open=index===0;
+   const entry=document.createElement('details');entry.className='character-row';entry.dataset.rowKey=[...path,index].join('.');entry.open=focusRow?entry.dataset.rowKey===focusRow:(rowOpen.get(entry.dataset.rowKey)??index===0);
    const summary=document.createElement('summary');summary.textContent=row.name||`${title} ${index+1}`;entry.append(summary);
    const actions=document.createElement('div');actions.className='actions row-actions';const remove=document.createElement('button');remove.type='button';remove.className='danger small';remove.textContent='Entfernen';remove.setAttribute('aria-label',`${title} ${index+1} entfernen`);remove.addEventListener('click',()=>{rows.splice(index,1);doc.confirmed=false;render();});actions.append(remove);entry.append(actions);
    const fields=document.createElement('div');fields.className='field-grid';
@@ -45,7 +45,7 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
    if(path[0]==='inventory')weaponFields(entry,row,index);
    box.append(entry);
   });
-  const add=document.createElement('button');add.type='button';add.className='small';add.textContent=`+ ${title} hinzufügen`;add.addEventListener('click',()=>{rows.push(structuredClone(defaults));doc.confirmed=false;render();const target=form.querySelectorAll(`[data-area=${active}] details.character-row`);if(target.length)target[target.length-1].open=true;autoGrow(root);});box.append(add);return box;
+  const add=document.createElement('button');add.type='button';add.className='small';add.textContent=`+ ${title} hinzufügen`;add.addEventListener('click',()=>{rows.push(structuredClone(defaults));doc.confirmed=false;render([...path,rows.length-1].join('.'));});box.append(add);return box;
  }
  function syncWeaponPreset(index){
   const preset=form.querySelector(`[data-weapon-preset="${index}"]`);if(!preset)return;
@@ -68,7 +68,8 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
   for(const [key,label]of Object.entries({range:'Reichweite / wirksame Distanz',handling:'Handhabung / Platzbedarf',feature:'Besonderheit / Auflösung',limits:'Grenzen / Munition'}))field(box,['inventory',index,'weapon',key],label,'textarea');
  }
  function showArea(id){active=id;for(const p of form.children)p.hidden=p.dataset.area!==active;for(const b of root.querySelectorAll('[data-editor-tab]'))b.setAttribute('aria-selected',String(b.dataset.editorTab===active));autoGrow(root);}
- function render(){
+ function render(target=null){
+  rowOpen=new Map([...form.querySelectorAll('[data-row-key]')].map(el=>[el.dataset.rowKey,el.open]));focusRow=target;
   doc.character.progression??={xp:0,available:0};
   form.replaceChildren();$('.editor-tabs').replaceChildren();
   const areas={};for(const [id,name]of Object.entries(names)){
@@ -98,6 +99,8 @@ export function mountCharacterEditor(root,{onChange=()=>{},world='',worldLocked=
   $('#character-kind-help').textContent=doc.kind==='start'?'Start: vier Attribute −1 bis +3, Summe +5; zwei Talente, situative Schwäche, 10 LP und acht Tragplätze.':'Manuell gepflegter Stand. Der ursprüngliche Startbogen bleibt erhalten; Änderungen gelten im Spiel erst nach Absprache.';
   $('#character-original-panel').hidden=doc.kind!=='current';$('#character-original').value=doc.startCharacter?characterText({...newCharacterDocument(),character:doc.startCharacter,confirmed:true}):'Kein ursprünglicher Startbogen vorhanden.';
   if(!areas[active])active='identity';showArea(active);update();
+  if(target)requestAnimationFrame(()=>{const entry=[...form.querySelectorAll('[data-row-key]')].find(el=>el.dataset.rowKey===target);if(entry){autoGrow(root);entry.scrollIntoView?.({block:'nearest'});entry.querySelector('input,textarea')?.focus({preventScroll:true});}});
+  focusRow=null;
  }
  function update(){
   const errors=validateCharacterDocument(doc);
