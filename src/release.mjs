@@ -1,5 +1,5 @@
 // Generator release and expected rules are separate from the character schema.
-export const GENERATOR_VERSION = '0.23.0';
+export const GENERATOR_VERSION = '0.24.0';
 export const RULES_VERSION = '0.20.0';
 export function showRelease(element, context) {
  if(!element)return;

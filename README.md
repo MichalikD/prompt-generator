@@ -1,6 +1,31 @@
 # Abenteuer · Prompt-Generator
 
-## Aktuell: Konfliktablauf und vollständiger Spieltab · Generator 0.23.0
+## Aktuell: Kampagnen fortsetzen und Spieltab-Komfort · Generator 0.24.0
+
+Die Regelbasis bleibt unverändert bei **0.20.0**. Bestehende Kampagnen behalten ihre
+bestätigten Werte, Fähigkeiten und Vereinbarungen.
+
+- **Kampagne fortsetzen:** kopierbares Template für einen separaten KI-Chat. Den
+  vollständigen Markdown-Chatexport dort anhängen; Startbogen/Startpaket, Spieltab
+  und ältere Saves ergänzen nur. Der Chatexport ist maßgeblich. Das Ergebnis umfasst
+  eigenständigen Speicherstand, Prüfbericht und erste Fortsetzungsnachricht.
+- **Meine Kampagnen:** Vorbereitungen mit Original-Startpaket und letztem ausdrücklich
+  gespeichertem Spieltab lokal ablegen. Alte Pakete unverändert öffnen oder ihre
+  Vorbereitung unter der aktuellen Generatorversion bearbeiten. Ablage zusätzlich
+  als JSON sichern; sie enthält keine Chats und ersetzt keinen vollständigen Save.
+- **Spieltab:** Sitzungsnotizen ablegen/bearbeiten, Abschnitte einklappen/umordnen,
+  Attribute und Status oben sehen. Bestätigte Kampfwerte manuell ergänzen. Beim
+  Speichern wird eine zugehörige abgelegte Kampagne aktualisiert; ein Export enthält
+  Bogen, Welt/Crew, Notizen, Kampfnotizen und Reihenfolge zusammen.
+- Impulse in der Vorbereitung sind verdeckt; der Startimpuls steht unter Welt.
+  Die optionale Crew folgt dem Figureneditor. Fünf Vorschläge erklären ihre
+  unkalibrierten Prozent-Schätzungen; diese bewerten keine Spielqualität.
+
+Keine automatische Chat-Synchronisierung, neue Spielregel, externe Speicherung oder
+KI-Anfrage im Generator. Siehe [Roadmap](docs/roadmap.md) für das Paket und die danach
+zu priorisierenden Spielthemen.
+
+## Vorheriger Stand: Konfliktablauf und vollständiger Spieltab · Generator 0.23.0
 
 Die Regelbasis **0.20.0** klärt den Wechsel zwischen Gespräch und Würfelanforderung,
 den Übergang in Kämpfe und die tatsächliche Wirkung von Täuschungen. Gegner greifen

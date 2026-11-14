@@ -1,11 +1,13 @@
 import {playContextFromConfig} from './play-context.mjs';
+import {mountCampaignLibrary} from './campaign-editor.mjs';
+import {readCampaigns,newCampaignId} from './campaigns.mjs';
 import {showRelease} from './release.mjs';
 import {mountWorldEditor} from './world-editor.mjs';
 import {worldText} from './worlds.mjs';
 import {createProfile} from './profile.mjs';
 import {mountCharacterEditor} from './character-editor.mjs';
 import {mountPreparationTools} from './preparation-editor.mjs';
-import {openPlayTab} from './play-state.mjs';
+import {openPlayTab,openPlayStateTab} from './play-state.mjs';
 import {validateCharacterDocument} from './character.mjs';
 import {worldKey} from './preparation-data.mjs';
 import {autoGrow,watchGrow} from './ui.mjs';
@@ -23,13 +25,19 @@ const startMessage=$('#start-message'),copyStart=$('#copy-start'),startStatus=$(
 let currentOutput=null,revision=0,editor=null,characterDoc=null,updating=false,step=0,showErrors=false;
 let openingShown='';
 let playDocument=null;
+let campaignId='';
+function openCurrentPlay(doc){
+ if(!campaignId)campaignId=newCampaignId();
+ let saved=null;try{saved=readCampaigns(window.localStorage).campaigns.find(c=>c.id===campaignId);}catch{}
+ if(saved?.playState)openPlayStateTab(saved.playState);else openPlayTab(doc,window,playContextFromConfig(configFromForm()),campaignId?{campaignId}:{});
+}
 const playReference={setDocument(doc){playDocument=doc;$('#play-character-reference').hidden=!doc;}};
-$('#open-play-tab').addEventListener('click',()=>{if(!playDocument)return;try{openPlayTab(playDocument,window,playContextFromConfig(configFromForm()));}catch(e){$('#play-open-status').textContent=e.message;}});
+$('#open-play-tab').addEventListener('click',()=>{if(!playDocument)return;try{openCurrentPlay(playDocument);}catch(e){$('#play-open-status').textContent=e.message;}});
 $('#play-desk-link a').addEventListener('click',event=>{
  event.preventDefault();
  try {
   const doc=editor?.getDocument()??characterDoc;
-  if(doc&&!validateCharacterDocument(doc).length)openPlayTab(doc,window,playContextFromConfig(configFromForm()));
+  if(doc&&!validateCharacterDocument(doc).length)openCurrentPlay(doc);
   else {const child=window.open('./play.html','_blank');if(!child)throw new Error('Spieltab blockiert. Pop-up erlauben und erneut öffnen.');child.opener=null;}
   $('#play-desk-status').textContent='';
  }catch(e){$('#play-desk-status').textContent=e.message;}
@@ -68,6 +76,25 @@ function configFromForm() {
   openingSeed:form.querySelector('[name=openingSeed]').value};
 }
 const preparationTools=mountPreparationTools(form,{getConfig:configFromForm,getCharacter:()=>configFromForm().characterSource==='prepared'?(editor?.getDocument()??characterDoc):null,onChange:update,onAcceptCharacter:acceptCharacter});
+$('#prepared-character').append(preparationTools.crewRow);
+const campaignLibrary=mountCampaignLibrary({getCurrent:()=>outputReady()?{id:campaignId,config:configFromForm(),document:configFromForm().characterSource==='prepared'?characterDoc:null,output:currentOutput}:null,
+ onSaved(id){campaignId=id;},onRestore(entry){
+  updating=true;
+  try{
+   for(const field of form.querySelectorAll('input[name],textarea[name],select[name]')){
+    const value=entry.config[field.name];
+    if(field.type==='checkbox'||field.type==='radio')field.checked=Array.isArray(value)?value.includes(field.value):field.type==='checkbox'&&field.name==='worldMixConfirmed'?value==='yes':field.name==='openingEnabled'?(value?'yes':'no')===field.value:String(value??'')===field.value;
+    else field.value=value??'';
+   }
+   for(const input of source.querySelectorAll('input'))input.checked=input.value===(entry.config.characterSource??'prepared');
+   const config=configFromForm();
+   if(entry.document){if(!editor)editor=mountCharacterEditor($('#character-editor'),{world:worldForCharacter(config),worldLocked:true,onChange:doc=>{characterDoc=doc;update();}});editor.setWorld(worldForCharacter(config));editor.setDocument(entry.document);characterDoc=editor.getDocument();}
+   preparationTools.restore();campaignId=entry.id;openingShown='';
+  }finally{updating=false;}
+  goTo(0);
+ }});
+$('#campaign-library').addEventListener('click',()=>campaignLibrary.open());
+for(const [id,asNew]of [['save-campaign',false],['save-new-campaign',true]])$('#'+id).addEventListener('click',()=>{try{const saved=campaignLibrary.save(asNew);if(saved)$('#campaign-status').textContent='Kampagne auf diesem Gerät gespeichert. Den Spieltab nach Änderungen zusätzlich dort speichern; die Ablage für eine unabhängige Sicherung exportieren.';}catch(e){$('#campaign-status').textContent=e.message;}});
 function acceptCharacter(){
  const config=configFromForm(),errors=setupErrors(0,config);
  if(errors.length)throw new Error(errors[0]);
@@ -77,7 +104,7 @@ function acceptCharacter(){
 function clearOutput(message) {
  playReference.setDocument(null);
  $('#opening-output-guard').hidden=true;startMessage.hidden=false;
- currentOutput=null;output.value=startMessage.value='';copy.disabled=copyStart.disabled=download.disabled=true;
+ currentOutput=null;output.value=startMessage.value='';copy.disabled=copyStart.disabled=download.disabled=true;$('#save-campaign').disabled=$('#save-new-campaign').disabled=true;
  output.placeholder=message;startMessage.placeholder=message;status.textContent=message;
 
 }
@@ -147,7 +174,7 @@ function update() {
   $('#plugin-starter').hidden=!currentOutput.startMessage;
   $('#starter-help').textContent=prepared?'Profil und bestätigter Bogen sind enthalten. Sende diese Nachricht vollständig; den Bogen nicht zusätzlich senden.':'Das Profil ist enthalten. Deine Figur wird anschließend im Spielchat erstellt.';
 
-  copy.disabled=false;copyStart.disabled=!startMessage.value;download.disabled=false;
+  copy.disabled=false;copyStart.disabled=!startMessage.value;download.disabled=false;$('#save-campaign').disabled=$('#save-new-campaign').disabled=false;
   status.textContent='In die Anweisungen eines neuen Projekts einfügen.';
   startStatus.textContent=openingKey?'Der vollständige Starttext kann ohne Aufdecken kopiert werden.':'Danach in einem Chat dieses Projekts senden.';
  }catch(error){clearOutput(error.message);$('#setup-feedback').textContent=error.message;}
@@ -178,6 +205,7 @@ form.addEventListener('change',event=>{
  update();
 });
 reset.disabled=false;reset.addEventListener('click',()=>{
+ campaignId='';$('#campaign-status').textContent='';
  openingShown='';
  preparationTools.reset();editor?.resetDraftImpulse();
  for(const input of form.querySelectorAll('input'))input.checked=defaults[input.name]===input.value;

@@ -71,15 +71,17 @@ export function mountPreparationTools(form,{getConfig,getCharacter,onChange,onAc
    try{const next=parseDraft(model,kind);if(!isWorld&&crewProblem())throw new Error(crewProblem());next.confirmed=true;hidden[kind+'Document'].value=JSON.stringify(next);hidden[kind+'DraftBasis'].value=isWorld?worldBaseKey(getConfig()):crewKey(getConfig(),getCharacter());model=next;onChange();dialog.close();}catch(e){status.textContent=e.message;}
   });
   $('[data-remove]').addEventListener('click',()=>{remove(kind);status.textContent='Aus dem Startpaket entfernt. Der Entwurf bleibt bearbeitbar.';});
-  tools[kind]={dialog,open,state,refresh,reset(){model=newDraft(kind);impulse.reset();selection.reset();idea.value=template.value=result.value=status.textContent=state.textContent='';render();dialog.close();}};render();
+  tools[kind]={dialog,open,state,row,refresh,restore(){const value=hidden[kind+'Document'].value;model=value?parseDraft(value,kind):newDraft(kind);render();},reset(){model=newDraft(kind);impulse.reset();selection.reset();idea.value=template.value=result.value=status.textContent=state.textContent='';render();dialog.close();}};render();
  }
  form.addEventListener('world-draft-remove',()=>remove('world'));
  return {
+  crewRow:tools.crew.row,
+  restore(){for(const t of Object.values(tools))t.restore();},
   setCharacterWorld(key){hidden.characterWorld.value=key;},
   update(){
    const config=getConfig(),doc=getCharacter();
    try{tools.world.state.textContent=worldReviewError(config)||(config.worldDocument?'Weltentwurf übernommen':'');}catch(e){tools.world.state.textContent=e.message;}
-   const accept=form.querySelector('#accept-prepared-character');
+   const accept=tools.crew.row.querySelector('#accept-prepared-character');
    const valid=doc&&!validateCharacterDocument(doc).length&&!worldProblem();
    let accepted=false;try{accepted=valid&&doc.confirmed&&config.characterWorld===worldKey(config);}catch{}
    accept.hidden=config.characterSource!=='prepared';accept.disabled=!valid||accepted;accept.textContent=accepted?'Bogen übernommen':'Bogen übernehmen';
