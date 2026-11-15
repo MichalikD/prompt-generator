@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 14. November 2026 · Generator: 0.24.0 · Regelbasis: 0.20.0
+Stand: 15. November 2026 · Generator: 0.24.0 · Regelbasis: 0.20.0
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -213,14 +213,115 @@ späteres Paket behandelt das Spielgeschehen und die offenen Regelentscheidungen
   lange Listen prüfen. Entwurfsimpulse verdecken, Startimpuls zur Welt verschieben,
   Crew-Erstellung nach dem Bogen platzieren und Modellschätzungen als verständliche
   Prozentwerte mit Hinweis auf fehlende Kalibrierung erklären.
-- [ ] Fortsetzungsablauf mit einem echten vollständigen Export erproben; Ergebnis
-  gegen Quellen und bekannte bestätigte Regeln prüfen, insbesondere Identitäten,
-  aktuelle Werte, offene Spieleraktion und fehlende ältere Angaben.
+- [x] Erste praktische Fortsetzung aus einem echten vollständigen Export erprobt:
+  rekonstruierter Speicherstand als Text in neuem Chat übernommen; richtiger
+  Anschluss, Geld, Beziehungen und laufende Projekte grundsätzlich erhalten.
+  Dies bestätigt den Einstieg, nicht lückenlose Rekonstruktion oder Regelbefolgung.
+- [ ] Weitere Fortsetzung auf Quellenverluste prüfen: Orte, Identitäten,
+  Fähigkeiten, verbindliche Ausrüstungswerte und offene Begleiterentwicklung.
+  Bereits im rekonstruierten Save enthaltene Fehler von späterem Vergessen trennen.
 
 **Speichergrenzen:** Geräteablage ist kein externes Gedächtnis. Browserdaten können
 verloren gehen; unabhängige Dateien bleiben notwendig. Der Spieltab wird manuell
 gepflegt. Eine künftige externe Speicher-/Abrufanbindung ist eine gesonderte
 Architekturentscheidung und kein Bestandteil von 0.24.
+
+### Ergänzung nach der Fortsetzung: offene Aufgaben, noch kein neues Paket
+
+Stand 15. November 2026. Der Spieler setzt den erfolgreichen Durchlauf fort.
+Die folgenden Befunde ergänzen die bestehenden Aufgaben; sie ändern weder Regeln
+noch bestätigte Figuren. Paketumfang und Reihenfolge werden nach weiterer
+Spielerfahrung gemeinsam festgelegt. Private Exporte und konkrete Figuren- oder
+Handlungsangaben werden nicht veröffentlicht.
+
+**Erhalten und als Vergleich nutzen:** Persönliche Revanche, tatsächlich fertig
+gestellte besondere Ausrüstung, erreichbare Käufe und langfristige Beziehungen
+tragen weiterhin. Gewünschte Ruhephasen und delegierte Projekte funktionieren.
+Ein späterer Teamwettkampf bietet trotz transparenter temporärer Schadensbegrenzung
+mehr interessante Entscheidungen als ein enges Einzelduell: Zielreihenfolge,
+Arbeitsteilung, Deckung, Bewegung und ein Vorteil beim Wechsel von Nah- zu Fernkampf
+haben konkrete Folgen. Das ursprüngliche Leistungsprofil wird danach wiederhergestellt,
+ohne verbrauchte Rastfähigkeiten automatisch aufzufüllen. Diese Stärken bewahren.
+
+**Generator und Spieltab – nächste QoL-Prüfpunkte**
+
+- [ ] Fortsetzung ohne Dateiupload im Spielchat ausdrücklich unterstützen:
+  rekonstruierten Markdown-Save optional im Generator einlesen und mit der
+  Fortsetzungsanweisung als Klartext kopieren. Plugin-Auswahl und Einfügen per
+  Strg+Umschalt+V erklären; keine garantierte Umgehung von Kontolimits oder
+  automatischer Dateiumwandlung des Zielclients versprechen.
+- [ ] Optional zusätzlich zum lesbaren Save einen aktuellen Spieltab-Export
+  im bestehenden Schema erzeugen lassen. Unsicherheiten sichtbar erhalten;
+  fehlende Werte nicht als null oder volle Ressourcen erfinden. Vorschau und
+  bewusste Übernahme statt automatischem Überschreiben. Keine verlässliche
+  Synchronisierung allein durch Freitext-Parsing behaupten.
+- [ ] Separaten Bereich für bestätigte Kampfwerte vereinfachen: Verteidigung
+  steht bereits dauerhaft oben. Vor Entfernung prüfen, wo vorhandene manuelle
+  Angriffsboni und Zustände sinnvoll bleiben; gespeicherte Daten nicht verlieren.
+- [ ] Drag-and-drop zum Umordnen der Spieltab-Abschnitte ergänzen, insbesondere
+  für lange Listen. Pfeile beziehungsweise gleichwertige Tastaturbedienung
+  erhalten und dieselbe gespeicherte Reihenfolge verwenden.
+
+**Spielgeschehen – bestehende Themen genauer gefasst**
+
+- [ ] **Taktische Wirkung (A/G):** Trainingsabläufe und enge Einzelduelle zeigen
+  weiterhin unklare Folgen von Umwerfen und Positionierung. Vor der Entscheidung
+  Kosten, Dauer und gegnerische Anschlussmöglichkeiten verständlich machen.
+  Mehrere Ziele, Deckung und Waffenwechsel aus dem gelungenen Teamkampf als
+  Gegenbeispiele nutzen; kein pauschaler Umbau oder kostenlose Zusatzeffekte für
+  jeden gezielten Treffer. Auch redundanten Ressourcenverbrauch prüfen: Eine
+  Reaktion mit Nachteil bringt neben bereits wirksamer Deckung keinen Zusatznutzen.
+- [ ] **Spürbare Stärke (F):** Anspruchsvolle Wettbewerbe und freiwillige
+  Leistungsbegrenzungen dürfen vorkommen. Außerhalb davon auch Gelegenheiten
+  bieten, in denen frühere Gefahren sichtbar leichter geworden sind. Die
+  Beobachtung belegt keine automatische Gegneranpassung; nicht alle Aufgaben
+  erleichtern und den gelungenen begrenzten Wettkampf nicht nachträglich entwerten.
+- [ ] **Fähigkeitenportfolio (C/F/G):** Bestehende Techniken öfter erweitern oder
+  klar erkennbare bessere Versionen anbieten statt ausschließlich neue Einmaleffekte
+  anzusammeln. Breites Portfolio bleibt zulässig und macht bereits Spaß. Nachfolger,
+  Ergänzung und Ersatz unterscheiden; bestätigte Wirkungen nicht ungefragt streichen.
+  Neue Angebote mit Grundhandlungen und der gesamten aktuellen Figur vergleichen.
+- [ ] **Welt und Konfliktauswahl (E/J):** Düsterer Ton darf nicht nur Kulisse und
+  Wortwahl bleiben. Wiederholte rechtliche Vermittlung trotz kampforientierter
+  Fraktionsrolle prüfen. Ernsthafte Gewalt, Ausbeutung, Verrat und andere passende
+  erwachsene Themen dürfen Teil einer solchen Welt sein, ohne Themenpflicht,
+  erzwungenen Kampf oder explizite Darstellung. Warme Beziehungen erhalten, ohne
+  Machtinteressen, illegale Geschäfte und echte Unvereinbarkeit zu verdrängen.
+  Friedliche Spielentscheidungen sind kein Auftrag, ausschließlich friedlich
+  sinnvoll lösbare Aufträge anzubieten. Nachträgliche NSC-Erklärungen für die
+  bisherige Auftragsauswahl nicht als Beweis einer ursprünglich geplanten Ursache werten.
+- [ ] **Optionales Inhaltsprofil prüfen (E/M):** Ton, zugelassene Themen und
+  Darstellungsintensität getrennt betrachten. Eine Altersauswahl ist eine Idee,
+  noch kein beschlossener Modus oder offizielle Altersfreigabe. Keine zusätzlichen
+  Felder einführen, bevor ihr Nutzen gegenüber klarerem vorhandenen Wording geprüft ist.
+- [ ] **EXP und praktische Belohnungen (B/F):** Ein ausdrücklich abgeschlossener
+  und bezahlter Auftrag bleibt erneut bis zur Erinnerung ohne EXP. Fehlende
+  Abschlussklarheit ist damit nicht die einzige Ursache. Selbstständig gewährte
+  Turnierentwicklung und die Begeisterung über endlich nutzbare Ausrüstung erhalten.
+  Technische Testberichte nicht mit einem spielerischen Zusatznutzen gleichsetzen.
+- [ ] **Produkttests und Würfe (A/F):** Einzelner misslungener Schuss wird zur
+  Aussage über technische Reichweitengrenzen. Figurenleistung, Zufall, technische
+  Zuverlässigkeit und zugesagte Produktwerte auseinanderhalten; noch keine neue
+  Herstellungsmechanik oder automatische Verbesserung beschlossen.
+- [ ] **Kontinuität und vorhandene Regeln (A/D/E):** Waffenprojekt wird zeitweise
+  als Implantat behandelt; frühere Spezifikation und zugesagte Sensorreichweite
+  werden trotz vorhandener Angaben nicht wiedergefunden. Gegner-LP fehlen bis
+  zur Nachfrage, später funktionieren vollständige Kampfübersichten. NSC nennen
+  wieder Verteidigungszahlen. Vorhandene Angaben verlässlicher nutzen, statt dieselbe
+  Regel mehrfach zu ergänzen. Namensmuster zwischen Läufen von echten
+  Identitätskollisionen innerhalb derselben Kampagne unterscheiden.
+- [ ] **Plugin und Darstellung (A/N):** Meldung über fehlendes Plugin, bewusster
+  Neuaufruf und anschließend sichtbare Aufrufsymbole dokumentieren. Daraus weder
+  dauerhafte Aktivierung noch eine Ursache für spätere Fehler ableiten; fehlende
+  Symbole nach Neuladen beweisen keine Deaktivierung. Unmittelbar kürzer empfundene
+  Antworten bleiben später nicht durchgehend kurz. Tabellen/Meta getrennt vom
+  Erzähltext beurteilen. Unaufgeforderte Bilder bleiben ein bekannter Nebenpunkt.
+
+**Weiter offen:** Leises Ausschalten/Alarm, Waffenunterschiede, Kraft/Schaden und
+Zusatzwürfel, abstrakte Alltagsversorgung gegenüber besonderen Ressourcen,
+Namenszuordnung und längere Forschungs-/Lieferketten bleiben aus den früheren
+Abschnitten bestehen. Kein weiterer Pflichtdurchlauf und keine vorzeitige
+Regeländerung für die laufende Kampagne werden daraus abgeleitet.
 
 ### Gesamtergebnis des langen Durchlaufs und offene Folgearbeit
 
