@@ -1,1023 +1,159 @@
-# Entwicklungsroadmap des Prompt-Generators
-
-Stand: 16. November 2026 · Generator: 0.24.0 · Regelbasis: 0.20.0
-
-Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
-zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
-Abschnitt 2 dokumentiert die Implementierung von 0.14 und den anschließenden Ausbau 0.15;
-abgehakte Einträge bedeuten keine garantierte Regelbefolgung im Spielchat.
-Abschnitt 3 erhält die Aufgaben und präzisiert ihre weitere Erprobung. Die Regeln
-aus 0.15 sind implementiert; offene spielerische Ziele gelten erst nach Erprobung als bestätigt. Frühere Implementierungen und Prüfungen stehen in den
-Versionsdokumenten und in Git. Menschliches Spielgefühl, kurze Szenenprüfungen und
-automatische Tests sind unterschiedliche Nachweise.
-
-## 1. Ausgangspunkt und Ziel
-
-Der Stand ist spielbar. Der erzählerische Unterbau und der geführte Generator
-bleiben Grundlage; es geht um einen zusammenhängenden Ausbau, nicht um einen Neustart.
-
-| Durchlauf | Was trägt | Verbleibende Grenze |
-| --- | --- | --- |
-| Impuls-Einstiege und Fortsetzungen | Fünf Starts: 6 / 8,5 / 7 / 9 / 8; zwei interessante Fortsetzungen, besondere Gaben und brauchbare Übergänge | Wiederkehrende Motive; beliebig lange Vielfalt nicht bewiesen |
-| Kenji | Vom Spieler ausdrücklich als Erfolg bewertet; kurze Abschlüsse, Besatzung als Bezugspunkt, emotionale Beziehungen und selbst eingebrachte Gedichte | Wiederholte Vermittlung, wenig spielbare Magie und später zu kleinteiliger Alltag |
-| Deren | Keine schlechte Kampagne, aber weniger Spaß als Kenji; HELIOS als starker Fund mit eigenständig entwickeltem Geschäft und nutzbarem Eigentum; Szene mit Marek ermöglicht offensives Handeln | Zeitweise eintönig; Gruppen bewaffneter Gegner machen Umwege vernünftiger als Beteiligung; Kampfregeln fehlerhaft angewandt, Fortschritt verspätet ausgegeben |
-
-Derens Ende ist ein bewusst gewählter Erfolg mit Einkommen, kein erzwungenes
-Auslaufen in Alltag. Ungereimtheiten waren für den Spieler meist verkraftbar;
-die Struktur der angebotenen Handlungsmöglichkeiten wiegt schwerer als folgenlose
-Darstellungsfehler. Private Kampagnenexporte werden nicht veröffentlicht.
-
-**Weiterhin geltendes Spielziel:** Eine einzelne Figur findet unterschiedliche, interessante
-Herausforderungen mit erkennbaren Chancen. Kämpfen, Schleichen, Vorbereitung,
-Erkundung, Verhandeln und Ausweichen können tragfähige Entscheidungen sein.
-Offensives Handeln braucht eine nachvollziehbare Erfolgsaussicht und einen
-möglichen Gewinn. Eine theoretische Angriffsmöglichkeit genügt nicht.
-
-## 2. Umgesetztes Paket 0.14: Vielfalt und tragfähiges Solospiel
-
-### A. Begegnungen und Machtentwicklung
-
-- [x] Begegnungen an tatsächlichen Möglichkeiten der einzelnen Figur ausrichten,
-  ohne jede Begegnung fair zu machen oder alle Gegner automatisch abzuschwächen.
-- [x] Unterschiedliche spielbare Kerne anbieten: begrenzte Bergung, Verfolgung,
-  gefährliche Entdeckung, einzelne Bedrohung, Umweltproblem, Wettbewerb oder
-  persönliches Vorhaben; nicht immer mehrere Bewaffnete oder ein zu schlichtender Streit.
-- [x] Bewaffnete Gruppen dürfen getrennte Positionen, Abläufe, Aufgaben und
-  Verwundbarkeiten haben. Beobachtung, Deckung, Überraschung, Unterstützung und
-  das Isolieren von Gegnern verändern das Kräfteverhältnis tatsächlich.
-- [x] Unterstützung wie durch Marek ermöglichen, ohne einen dauerhaften Gefährten
-  zur Voraussetzung jeder kämpferischen Handlung zu machen.
-- [x] Erfolgreiches Umgehen beendet die betreffende Gefahr. Kein Verschieben
-  derselben Sperre auf den Umweg und keine Bestrafung vernünftigen Ausweichens.
-  Andere eigenständige Entwicklungen bleiben möglich.
-- [x] Gewünschte Stärke der Figur und Zahl gegnerischer Aktionen gemeinsam prüfen.
-  Ein erfahrener Kampfspezialist soll mehrere gewöhnliche Gegner bewältigen können,
-  wo seine Fähigkeiten und die Situation das tragen. Keine Garantie auf Sieg
-  gegen beliebige Gruppen und keine pauschalen freien Mehrfachangriffe für alle.
-- [x] Erhaltene Macht eröffnet später neue Wege: frühere Bedrohungen dürfen leichter
-  werden. Gegner nicht automatisch mitsteigern, um jeden Fortschritt auszugleichen.
-- [x] Fauna als wirkenden Teil passender Welten berücksichtigen: auch harmlose Tiere,
-  Spuren, Nahrung, Begleiter und gefährliche Wesen. Keine Tier- oder Monsterquote.
-  Fahrbereite Technik und ihre Verfügbarkeit am gewählten Endzeitbild ausrichten;
-  vorhandene Wracks sind nicht gleich billige, allgemein verfügbare Mobilität.
-
-### B. Kampf und Würfel verlässlich abwickeln
-
-- [x] Attribut, ein passendes Talent und ein zulässiger Ausrüstungsbonus vollständig
-  berechnen; im Deren-Lauf fehlte bei Schüssen wiederholt Geschick.
-- [x] Sichtbare Gegnerwerte, insbesondere aktuelle/maximale LP, vor der relevanten
-  Entscheidung zeigen. Schaden und verbleibende LP nachvollziehbar weiterführen.
-- [x] Gegner und Verbündete mit ihren tatsächlichen Aktionen und ausgewählten
-  offenen Würfen auflösen. Kein erzählerisch festgelegter Gegentreffer als Ersatz.
-- [x] Auswahl der Schadenswürfel verbindlich anwenden: bei passender Kategorie
-  nach einem Treffer den gewählten Würfel anfordern, ohne vorzeitig festen Schaden
-  zu verbuchen. Symmetrisch für Spieler, NSC, Waffen und Kräfte.
-- [x] Zusatzwürfel für Funde/Ereignisse/Chancen bei passendem Anlass verwenden,
-  ohne alle gewählten Würfel in jedes Abenteuer zu zwingen.
-- [x] Grund-SG 8/11/14/17/20 von Zielverteidigung unterscheiden. Zwischenwerte
-  als erkennbare begründete Abwandlungen erklären, nicht still neu erfinden.
-- [x] Deckung, Vorbereitung, Überraschung und Zugfolge widerspruchsfrei halten;
-  einen plausiblen Überraschungsauftakt nicht durch unnötige neue Regeln entwerten.
-- [x] Fehlschläge eines Angriffs als fehlenden wirksamen Treffer beschreiben:
-  Ausweichen, Deckung oder Panzerung können dazu gehören, nicht nur völliges
-  Danebenschießen. Kurze Entfernung allein garantiert keinen wirksamen Treffer.
-
-### C. Waffen mit tatsächlichen Unterschieden
-
-- [x] Schlanke Profile mit Schadensklasse/Würfel, brauchbarer Reichweite,
-  Handhabung/Platzbedarf und relevanter Besonderheit samt Einschränkung festlegen.
-- [x] Pistole, Schrotflinte, Gewehr und automatische Waffe anhand konkreter
-  Situationen unterscheiden; dieselbe Grundlage muss Nahkampf- und Fantasywaffen tragen.
-- [x] Stärken und Grenzen vor einem relevanten Einsatz erkennbar machen.
-  Keine willkürlichen situativen Boni oder neuen Ausnahmearten nach einem Wurf.
-- [x] Erstellungstemplate, bestätigter Bogen, Inventar/Spielübersicht und
-  Pluginregeln gemeinsam abgleichen. Keine stillen neuen Eigenschaften für
-  bereits bestätigte Waffen und keine überladene Waffensimulation.
-
-### D. Erkundung und Entwicklung
-
-- [x] Erreichte Meilensteine eindeutig abwickeln: konkrete Wahl anbieten,
-  bereits verdienten praktischen Vorteil benennen oder erklären, warum noch
-  kein Meilenstein vorliegt. Nicht nur undefinierten Fortschritt vermerken.
-- [x] Erkundung, riskante Bergung, neue Zugänge, Wissen und selbst entwickelte
-  Vorhaben gleichwertig zu Aufträgen und Kämpfen beurteilen.
-- [x] Bereits gewährte und auf Wunsch aufgeschobene Entwicklung auseinanderhalten;
-  später keine überraschende Ansammlung ohne nachvollziehbare Zuordnung.
-- [x] Die Stärke von HELIOS erhalten: vielseitig nutzbare Funde, Eigentum,
-  Einkommen, Kontakte und neue Handlungsmöglichkeiten als praktische Entwicklung.
-  Kein Pflichtverkauf, keine automatisch folgende Hauptquest und keine Verdoppelung
-  derselben Belohnung. Geld und Entwicklung bleiben unterscheidbar.
-- [x] Verbesserungen über reine Zahlen hinaus nutzbar machen; vorhandene Talente
-  nicht unter neuem Namen erneut verkaufen. Attributwahl und besondere Machtentwicklung
-  bleiben möglich, Talentbonus bleibt nach bisheriger Grundlage +2.
-
-### Entscheidungen der Umsetzung
-
-Das Paket umfasst Plugin, ausgewählte Generatorvorgaben, Erstellungstemplate und
-betroffene Bogen-/Übersichtsangaben zusammen. Layout-Ausbau bleibt getrennt.
-
-Die bestehende D20-Angriffsprobe und die gewählten Schadenswürfel sind zunächst die
-Vergleichsbasis. Ein eigenes Trefferqualitätsmodell mit möglichem Schaden 0 bleibt
-eine offene Designfrage. Es wird nicht still eingeführt, um fehlerhafte Berechnung
-oder fehlende Gegnerwerte zu kompensieren.
-
-Die numerische Prüfung und ihre Annahmen stehen in
-[Solospiel und Waffen 0.14](solospiel-und-waffen-0.14.md). Geprüft wurden: Attribut und Talent, Trefferchancen,
-Schaden, gegnerische LP, Anzahl der Aktionen, Unterstützung und Vorbereitung.
-Die Grundwerte bleiben erhalten. Niederhalten ist eine ausdrücklich gewählte
-Waffeneigenschaft oder gelernte Technik, kein freier Mehrfachangriff.
-Keine ungeprüfte globale Erhöhung der Spieler-LP oder Abwertung sämtlicher Gegner.
-
-### Woran wir das Paket beurteilen
-
-1. Korrekte Berechnungen und ausgewählte Schadenswürfel funktionieren im ganzen
-   Kampf, einschließlich gegnerischer Züge und angezeigter LP.
-2. An vorhandenen Stellen aus Deren kurze Varianten prüfen: ein einzelner Gegner,
-   eine Gruppe ohne Vorbereitung, vorbereiteter Angriff mit Unterstützung sowie
-   eine stärkere Figur gegen mehrere gewöhnliche Gegner. Kein gewünschter Sieg
-   oder Musterweg wird den unabhängigen Szenenprüfungen vorgegeben.
-3. Gefahr und Chancen bleiben erkennbar. Vorbereitung verändert die tatsächliche
-   Lage; Ausweichen führt nicht zur wiederholten gleichen Sperre. Erkundung kann
-   ohne Auftraggeber einen greifbaren Erfolg und Entwicklung tragen.
-4. Erst danach ein frei gewählter menschlicher Durchlauf nach Interesse. Keine
-   vorgeschriebene Stundenzahl, keine Kampagne nach jeder Einzelkorrektur.
-
-Numerische Prüfungen und kurze Szenen zeigen keine langfristige erzählerische
-Qualität. Das Spielgefühl bleibt das entscheidende zusätzliche Kriterium.
-
-## 3. Aktuelle offene Aufgaben, priorisiert
-
-### Aktuelle Einordnung nach dem langen Durchlauf unter 0.17
-
-Der Stand trägt längeren Spielspaß. Erhaltungsziele sind Gruppenbeziehungen mit
-unterschiedlichen Rollen, Humor, Eigeninitiative, gewünschte Ruhephasen, Delegation
-an kompetente Figuren sowie lebendige Welten. Eine Crew ist eine mögliche Stärke,
-keine Pflicht für gute Abenteuer. Solospiel und die bisherige Spielerfreiheit bleiben.
-
-| Thema | Befund | Folgerung |
-| --- | --- | --- |
-| Tempo | Im ersten Export grob Median 204 Wörter, im nächsten neuen Abschnitt 220; vorheriger Vergleichsabschnitt etwa 350 | 250-Wörter-Standard zunächst beibehalten; Wiederholung beobachten, keine weitere globale Verschärfung |
-| Übergänge | Missionen, bewusst gespielter Alltag und erneuter Aufbruch funktionieren | Gewünschten Alltag nicht als Cozy-Fehler behandeln; Übergänge sind nicht mehr der erste Umbauauftrag |
-| EXP | Mehrfach selbstständig vergeben; ein anderer entschiedener Konflikt bleibt ohne EXP, ein späterer Abschluss wird erst im Intermezzo abgerechnet | Vergabe verbessert, weiterhin nicht zuverlässig; bestätigter Handlungsabschluss und Abrechnung gemeinsam prüfen |
-| Umfang | Echte Abschlüsse vorhanden, Bergung erweitert sich erneut zu Rettung und größerem politischen Konflikt | Keine automatische Gleichsetzung mit endloser Kampagne; begrenzte Ziele gegenüber freiwilliger Erweiterung prüfen |
-| Kampf | Schadenswürfel werden nach korrektem Anfang vergessen; NSC-Schaden nach Erinnerung teilweise erst nachgetragen | Vorhandenen Ablauf vereinfachen und an realen Entscheidungspunkten prüfen, kein neues Grundsystem |
-| Figurenwissen | Dialog benennt LP beziehungsweise den Abstand zur Probenschwelle | Bekannte Regel-/Fiktionsgrenze lokal im Ausgabeablauf untersuchen |
-| Kontinuität | Bekannte Figur wird vergessen; Zugehörigkeit und Ortswechsel nicht immer bewahrt | Kleine Figurenübersicht mit Beziehung, Wissen, Schiff/Fraktion und letztem Ort als begrenzten Ansatz prüfen |
-| Vielfalt | Rettungsnotruf, möglicher Hinterhalt, beschädigte Technik und Wrackfeld kehren wieder | Ziele, Entscheidungen und Widerstand vergleichen; keine neuen Pflichtquoten oder bloßen Namenswechsel |
-| Funde | Wertvolle Bergung vorhanden, praktischer Geldgewinn bleibt teils hinter Verkauf/Freigabe offen | Eigentum, nutzbare Wirkung, erwarteter Erlös und tatsächlich ausgezahlte Mittel unterscheiden |
-| Kreative Vorbereitung | Besondere Figurenideen und konkrete Weltangaben liefern oft gute Ansatzpunkte; Team funktioniert auch improvisiert | Freiwillige KI-Entwürfe anbieten, Nutzen als Hypothese prüfen; keine fertige Geschichte erzwingen |
-
-Diese Beobachtungen belegen weder perfekte Kontinuität noch garantierte Wirkung
-von 0.17. Der letzte Export enthält den nächsten Einstieg doppelt; ohne weitere
-Belege wird daraus kein zusätzlicher Spielsystemfehler abgeleitet. Privat geteilte
-Kampagnen bleiben außerhalb des Repositorys.
-
-### Paket 0.24: Bestehende Kampagnen fortsetzen und Bedienung verbessern
-
-**Beschlossen und umgesetzt:** Generator und Spieltab ausbauen; Regelbasis und
-installiertes Plugin bleiben bei 0.20.0. Keine Änderungen an Kampfbalancing,
-Schaden, Waffenwirkungen, EXP, Ressourcen oder bestätigten Figuren. Ein bestehender
-Durchlauf kann mit seinen bisherigen Vereinbarungen fortgesetzt werden. Erst ein
-späteres Paket behandelt das Spielgeschehen und die offenen Regelentscheidungen.
-
-- [x] Eigenen Bereich **Kampagne fortsetzen** mit kopierbarem/herunterladbarem
-  Savepoint-Template für einen separaten KI-Chat bereitstellen. Keine KI-Anfrage
-  im Generator und kein automatischer Upload privater Kampagnendaten.
-- [x] **Der vollständige Markdown-Chatexport ist maßgeblich.** Startbogen/Startpaket,
-  manuell gepflegter Spieltab und ältere Saves dienen nur zur Prüfung und Ergänzung.
-  Spätere bestätigte Änderungen im Verlauf nicht durch ältere Werte überschreiben.
-- [x] Template verlangt ehrliche Prüfabdeckung, abschnittsweise Prüfung großer
-  Exporte bei Bedarf, Quellenstellen, Abgleich von Korrekturen und Unterscheidung
-  zwischen Angebot, Kauf, Leihgabe, Forschung und tatsächlich erlangtem Können.
-  Widersprüche und fehlende Angaben kennzeichnen; nicht plausibel hinzuerfinden.
-- [x] Eigenständigen Speicherstand, getrennten Prüfbericht und kopierbare erste
-  Fortsetzungsnachricht anfordern. Letzte offene Spieleraktion, Würfe, Zugfolge,
-  verbrauchte Anwendungen und Effektende erhalten. Keine automatische Fortschreibung
-  oder Übernahme einer neueren Regelversion. Genaue Fortsetzung nicht versprechen,
-  wenn wesentliche Informationen fehlen. Spieler prüft entscheidende Unklarheiten.
-- [x] Gerätebasierte Kampagnenablage: benannte Vorbereitung samt unverändertem
-  Startpaket und letztem ausdrücklich gespeichertem Spieltab laden. Vorbereitung
-  separat unter aktueller Generatorversion bearbeiten; Originalpaket bewahren.
-  Neue Kampagnen getrennt anlegen, Ablage exportieren/importieren und Einträge
-  gezielt entfernen. Keine automatische Speicherung des Spielchats behaupten.
-- [x] Spieltab um bearbeitbare, datierte Sitzungsnotizen ergänzen: aktuellen Text
-  als neuen eingeklappten Abschnitt ablegen. Aktuelle Notizen, Sitzungen, Kontext,
-  Kampfnotizen und Abschnittsreihenfolge gemeinsam sichern/exportieren/importieren.
-- [x] Attribute, LP, Ressourcen, Gepäck und manuell bestätigte Verteidigung oben
-  sichtbar halten. Angriffe/Gesamtboni samt Herkunft und Bedingungen manuell
-  bearbeiten; keine zweite automatische Regelberechnung aus Freitext einführen.
-- [x] Abschnitte einschließlich Fähigkeiten zunächst einklappen, mit zugänglichen
-  Auf-/Ab-Schaltflächen umordnen; doppelte Rollenbeschreibung im Kopf entfernen.
-  Speicheroptionen dauerhaft sichtbar oben halten.
-- [x] Neue Ausrüstung/Fähigkeit gezielt öffnen statt ersten bestehenden Eintrag;
-  lange Listen prüfen. Entwurfsimpulse verdecken, Startimpuls zur Welt verschieben,
-  Crew-Erstellung nach dem Bogen platzieren und Modellschätzungen als verständliche
-  Prozentwerte mit Hinweis auf fehlende Kalibrierung erklären.
-- [x] Erste praktische Fortsetzung aus einem echten vollständigen Export erprobt:
-  rekonstruierter Speicherstand als Text in neuem Chat übernommen; richtiger
-  Anschluss, Geld, Beziehungen und laufende Projekte grundsätzlich erhalten.
-  Dies bestätigt den Einstieg, nicht lückenlose Rekonstruktion oder Regelbefolgung.
-- [ ] Weitere Fortsetzung auf Quellenverluste prüfen: Orte, Identitäten,
-  Fähigkeiten, verbindliche Ausrüstungswerte und offene Begleiterentwicklung.
-  Bereits im rekonstruierten Save enthaltene Fehler von späterem Vergessen trennen.
-
-**Speichergrenzen:** Geräteablage ist kein externes Gedächtnis. Browserdaten können
-verloren gehen; unabhängige Dateien bleiben notwendig. Der Spieltab wird manuell
-gepflegt. Eine künftige externe Speicher-/Abrufanbindung ist eine gesonderte
-Architekturentscheidung und kein Bestandteil von 0.24.
-
-### Ergänzung nach der Fortsetzung: offene Aufgaben, noch kein neues Paket
-
-Stand 15. November 2026. Der Spieler setzt den erfolgreichen Durchlauf fort.
-Die folgenden Befunde ergänzen die bestehenden Aufgaben; sie ändern weder Regeln
-noch bestätigte Figuren. Paketumfang und Reihenfolge werden nach weiterer
-Spielerfahrung gemeinsam festgelegt. Private Exporte und konkrete Figuren- oder
-Handlungsangaben werden nicht veröffentlicht.
-
-**Erhalten und als Vergleich nutzen:** Persönliche Revanche, tatsächlich fertig
-gestellte besondere Ausrüstung, erreichbare Käufe und langfristige Beziehungen
-tragen weiterhin. Gewünschte Ruhephasen und delegierte Projekte funktionieren.
-Ein späterer Teamwettkampf bietet trotz transparenter temporärer Schadensbegrenzung
-mehr interessante Entscheidungen als ein enges Einzelduell: Zielreihenfolge,
-Arbeitsteilung, Deckung, Bewegung und ein Vorteil beim Wechsel von Nah- zu Fernkampf
-haben konkrete Folgen. Das ursprüngliche Leistungsprofil wird danach wiederhergestellt,
-ohne verbrauchte Rastfähigkeiten automatisch aufzufüllen. Diese Stärken bewahren.
-
-**Generator und Spieltab – nächste QoL-Prüfpunkte**
-
-- [ ] Fortsetzung ohne Dateiupload im Spielchat ausdrücklich unterstützen:
-  rekonstruierten Markdown-Save optional im Generator einlesen und mit der
-  Fortsetzungsanweisung als Klartext kopieren. Plugin-Auswahl und Einfügen per
-  Strg+Umschalt+V erklären; keine garantierte Umgehung von Kontolimits oder
-  automatischer Dateiumwandlung des Zielclients versprechen.
-- [ ] Optional zusätzlich zum lesbaren Save einen aktuellen Spieltab-Export
-  im bestehenden Schema erzeugen lassen. Unsicherheiten sichtbar erhalten;
-  fehlende Werte nicht als null oder volle Ressourcen erfinden. Vorschau und
-  bewusste Übernahme statt automatischem Überschreiben. Keine verlässliche
-  Synchronisierung allein durch Freitext-Parsing behaupten.
-- [ ] Separaten Bereich für bestätigte Kampfwerte vereinfachen: Verteidigung
-  steht bereits dauerhaft oben. Vor Entfernung prüfen, wo vorhandene manuelle
-  Angriffsboni und Zustände sinnvoll bleiben; gespeicherte Daten nicht verlieren.
-- [ ] Drag-and-drop zum Umordnen der Spieltab-Abschnitte ergänzen, insbesondere
-  für lange Listen. Pfeile beziehungsweise gleichwertige Tastaturbedienung
-  erhalten und dieselbe gespeicherte Reihenfolge verwenden.
-
-**Spielgeschehen – bestehende Themen genauer gefasst**
-
-- [ ] **Taktische Wirkung (A/G):** Trainingsabläufe und enge Einzelduelle zeigen
-  weiterhin unklare Folgen von Umwerfen und Positionierung. Vor der Entscheidung
-  Kosten, Dauer und gegnerische Anschlussmöglichkeiten verständlich machen.
-  Mehrere Ziele, Deckung und Waffenwechsel aus dem gelungenen Teamkampf als
-  Gegenbeispiele nutzen; kein pauschaler Umbau oder kostenlose Zusatzeffekte für
-  jeden gezielten Treffer. Auch redundanten Ressourcenverbrauch prüfen: Eine
-  Reaktion mit Nachteil bringt neben bereits wirksamer Deckung keinen Zusatznutzen.
-- [ ] **Spürbare Stärke (F):** Anspruchsvolle Wettbewerbe und freiwillige
-  Leistungsbegrenzungen dürfen vorkommen. Außerhalb davon auch Gelegenheiten
-  bieten, in denen frühere Gefahren sichtbar leichter geworden sind. Die
-  Beobachtung belegt keine automatische Gegneranpassung; nicht alle Aufgaben
-  erleichtern und den gelungenen begrenzten Wettkampf nicht nachträglich entwerten.
-- [ ] **Fähigkeitenportfolio (C/F/G):** Bestehende Techniken öfter erweitern oder
-  klar erkennbare bessere Versionen anbieten statt ausschließlich neue Einmaleffekte
-  anzusammeln. Breites Portfolio bleibt zulässig und macht bereits Spaß. Nachfolger,
-  Ergänzung und Ersatz unterscheiden; bestätigte Wirkungen nicht ungefragt streichen.
-  Neue Angebote mit Grundhandlungen und der gesamten aktuellen Figur vergleichen.
-- [ ] **Welt und Konfliktauswahl (E/J):** Düsterer Ton darf nicht nur Kulisse und
-  Wortwahl bleiben. Wiederholte rechtliche Vermittlung trotz kampforientierter
-  Fraktionsrolle prüfen. Ernsthafte Gewalt, Ausbeutung, Verrat und andere passende
-  erwachsene Themen dürfen Teil einer solchen Welt sein, ohne Themenpflicht,
-  erzwungenen Kampf oder explizite Darstellung. Warme Beziehungen erhalten, ohne
-  Machtinteressen, illegale Geschäfte und echte Unvereinbarkeit zu verdrängen.
-  Friedliche Spielentscheidungen sind kein Auftrag, ausschließlich friedlich
-  sinnvoll lösbare Aufträge anzubieten. Nachträgliche NSC-Erklärungen für die
-  bisherige Auftragsauswahl nicht als Beweis einer ursprünglich geplanten Ursache werten.
-- [ ] **Entwicklung zwischen Aufträgen (E/J):** Unterschiedliche Einzelaufträge
-  können trotzdem dieselbe Schleife bilden: Information, begrenzter Einsatz,
-  Einigung, Rückkehr, neue Anfrage. Prüfen, ob etablierte Gegner und Fraktionen
-  eigene Ziele tatsächlich verfolgen und dadurch Einfluss, Revier, Beziehungen
-  oder Handlungsmöglichkeiten verändern. Ermittlungsberichte und angekündigte
-  Bedrohungen allein sind kein erlebter Weltfortschritt. Kompetente Delegation
-  erhalten, ohne alle relevanten Folgen bei einem NSC zu parken. Bewusste Ruhe
-  und sinnvolle Verhandlungen nicht bestrafen. Kurze Abenteuer bleiben begrenzt;
-  gemeinsame Weltfolgen verlangen weder eine endlose Pflicht-Hauptquest noch
-  einen Angriff bei jeder Pause. Ausreichend ist eine Welt, deren bestehende
-  Interessen gelegentlich eine konkrete Entscheidung oder Initiative eröffnen,
-  ohne dass der Spieler die nächste Eskalation selbst erfinden muss.
-- [ ] **Optionales Inhaltsprofil prüfen (E/M):** Ton, zugelassene Themen und
-  Darstellungsintensität getrennt betrachten. Eine Altersauswahl ist eine Idee,
-  noch kein beschlossener Modus oder offizielle Altersfreigabe. Keine zusätzlichen
-  Felder einführen, bevor ihr Nutzen gegenüber klarerem vorhandenen Wording geprüft ist.
-- [ ] **EXP und praktische Belohnungen (B/F):** Ein ausdrücklich abgeschlossener
-  und bezahlter Auftrag bleibt erneut bis zur Erinnerung ohne EXP. Fehlende
-  Abschlussklarheit ist damit nicht die einzige Ursache. Selbstständig gewährte
-  Turnierentwicklung und die Begeisterung über endlich nutzbare Ausrüstung erhalten.
-  Technische Testberichte nicht mit einem spielerischen Zusatznutzen gleichsetzen.
-- [ ] **Nachvollziehbare Vergütung (B/J):** Honorare anhand von Auftraggeber,
-  Nutzen, Risiko, Personal, Dauer und Verhandlungsposition plausibel einordnen,
-  mit bestehenden Geld-/Kaufpreisankern abgleichen und vorab Anteil sowie
-  Zahlungszeitpunkt klären. Interne Gangprämie, externes Honorar, eigene Beute
-  und zurückgeholtes Fraktionsvermögen unterscheiden. Eine niedrigere interne
-  Prämie wurde vom Spieler ausdrücklich akzeptiert; unterschiedliche Beträge
-  sind nicht automatisch Rechenfehler. Keine feste Risikotariftabelle oder
-  automatische gleiche Entlohnung für jeden Auftrag daraus ableiten.
-- [ ] **Produkttests und Würfe (A/F):** Einzelner misslungener Schuss wird zur
-  Aussage über technische Reichweitengrenzen. Figurenleistung, Zufall, technische
-  Zuverlässigkeit und zugesagte Produktwerte auseinanderhalten; noch keine neue
-  Herstellungsmechanik oder automatische Verbesserung beschlossen.
-- [ ] **Kontinuität und vorhandene Regeln (A/D/E):** Waffenprojekt wird zeitweise
-  als Implantat behandelt; frühere Spezifikation und zugesagte Sensorreichweite
-  werden trotz vorhandener Angaben nicht wiedergefunden. Gegner-LP fehlen bis
-  zur Nachfrage, später funktionieren vollständige Kampfübersichten. NSC nennen
-  wieder Verteidigungszahlen. Vorhandene Angaben verlässlicher nutzen, statt dieselbe
-  Regel mehrfach zu ergänzen. Namensmuster zwischen Läufen von echten
-  Identitätskollisionen innerhalb derselben Kampagne unterscheiden.
-- [ ] **Plugin und Darstellung (A/N):** Meldung über fehlendes Plugin, bewusster
-  Neuaufruf und anschließend sichtbare Aufrufsymbole dokumentieren. Daraus weder
-  dauerhafte Aktivierung noch eine Ursache für spätere Fehler ableiten; fehlende
-  Symbole nach Neuladen beweisen keine Deaktivierung. Unmittelbar kürzer empfundene
-  Antworten bleiben später nicht durchgehend kurz. Tabellen/Meta getrennt vom
-  Erzähltext beurteilen. Unaufgeforderte Bilder bleiben ein bekannter Nebenpunkt.
-
-**Weiter offen:** Leises Ausschalten/Alarm, Waffenunterschiede, Kraft/Schaden und
-Zusatzwürfel, abstrakte Alltagsversorgung gegenüber besonderen Ressourcen,
-Namenszuordnung und längere Forschungs-/Lieferketten bleiben aus den früheren
-Abschnitten bestehen. Kein weiterer Pflichtdurchlauf und keine vorzeitige
-Regeländerung für die laufende Kampagne werden daraus abgeleitet.
-Die Fortsetzung vom 16. November präzisiert insbesondere Weltentwicklung und
-Vergütung. Begrenzte gewaltsame Gegenwehr und selbstständig gewährte EXP kommen
-bereits vor; der offene Punkt ist deshalb nicht ein völliges Fehlen von Kampf
-oder Abschluss, sondern das Zusammenspiel der einzelnen Ergebnisse über längere Zeit.
-
-### Gesamtergebnis des langen Durchlaufs und offene Folgearbeit
-
-Stand 14. November 2026; ergänzt die ersten Zwischenbefunde unten. Der Lauf gilt
-als sehr erfolgreich: Eigenmotivation, passende Sprache, Beziehungen, nutzbare
-Aufrüstung, Einkommen/Eigentum und freiwillige Fortsetzung tragen über längere
-Zeit. Persönliche Notizen suchen gezielt Probleme und sind keine negative
-Gesamtbewertung. Wiederkehrende Kontakte, Entwicklung auch nach Niederlagen,
-Delegation und gewünschte Ruhe bleiben Erhaltungsziele. Der Wechsel des Denkmodus
-ist nicht isoliert getestet; den Erfolg keinem einzelnen Faktor zuschreiben.
-
-Die folgenden Punkte werden **erst nach dem Fortsetzungspaket priorisiert**.
-Sie präzisieren bestehende Themen A/B/D/E/F/G/J/N statt parallele neue Regelwerke
-zu verlangen. Implementierte Regeln und langfristige Modellbefolgung trennen.
-
-| Thema | Zusammengeführter offener Befund / nächster Prüfauftrag |
-| --- | --- |
-| Verlässlicher Kampfablauf (A) | Gewählte Schadenswürfel, sichtbare LP, alle NSC-Züge und deren Schaden weiterhin ohne Spieleraufforderung abschließen. Ein rechnerischer Treffer darf nicht nachträglich durch Deckung aufgehoben werden: fehlende Schusslinie oder partielle Deckung vorher klären. |
-| Wirkung von Taktik (A/G) | Umwerfen, beschädigte Antriebe, erkanntes Angriffsmuster und Vorbereitung müssen konkrete Folgen haben. Kosten, Dauer und Zugfolge gemeinsam prüfen; kein pauschaler Anspruch auf kostenlose Effekte oder verlorene Gegnerzüge. Ein gelungener Angriff kann auch tatsächlich Annäherung verhindern; positive Fälle erhalten. |
-| Fähigkeiten und Grundhandlungen (C/F/G) | Redundante Startkräfte, Verbesserungen identisch zur normalen Bewegung plus Angriff und kostenpflichtige Reaktionsboni ohne passende Probe vermeiden. Bestätigte Aktivierung nicht still von Teilhandlung zu voller Aktion ändern. Nicht bloß mehr Ressourcenvorrat anbieten, wenn dessen Nutzen fehlt. |
-| Überraschung / Überwältigen (G/L) | Lautloses Festsetzen gelingt bereits; normale Schadensangriffe können mehrere Treffer benötigen. Handlungsabsicht vor der Auflösung klären. Volle Kopftreffer nicht unplausibel folgenlos schildern; keine beschlossene automatische Ausschaltung oder neue Todesregel. |
-| Waffen und Stärke (F/G) | Pistole, automatische Waffe und andere Profile brauchen nutzbare Unterschiede. Mehr Verbrauch bei gleicher Wirkung ist kein zusätzlicher Vorteil. Kraft erhöht bislang Trefferchance, nicht einzelnen Schaden; Änderung gemeinsam mit Balancing und bestehenden Fähigkeiten beurteilen, nicht ungeprüft auf jeden Treffer addieren. |
-| Würfelauswahl und Saves (A/D) | Ursprünglicher Start enthält W8, späterer Save nennt nur W4/W6 und festen schweren Schaden. Explizite Ausnahmen von verlorenen Einstellungen unterscheiden; Rekonstruktion darf einen Regelverlust nicht still als Vereinbarung festschreiben. |
-| Fortschritt (B/F) | Viele unmittelbare Abschlüsse und greifbare Käufe funktionieren; später wieder vergessene EXP. Angebote ausreichend mischen und nach Zusatznutzen beurteilen. Große Forschungs-/Umbauprojekte brauchen erreichbare nutzbare Ergebnisse statt dauerhaft nur bezahlter Voraussetzungen. Keine globale EP-Erhöhung aus diesem Befund ableiten. |
-| Vielfalt / Umfang (E) | Abwechslungsreiche Starts reichen nicht für dauerhaft verschiedene Folgeaufgaben. Bergung, zurückgehaltene Lieferung, Vertragsstreit und Konvoi mit Sperre/Schützen/Rückzug wiederholen sich. Kurz bleibt trotz offener Kampagne begrenzt; freiwillige Vertiefung von automatischer Ausweitung trennen. |
-| Fraktionen / Beziehungen (E/J) | Freundschaft und Wärme erhalten, ohne Rang, Machtziele und Grenzen einer Gang dauerhaft zu ersetzen. Brutale Erpressung nicht routinemäßig in eine vernünftige Alt-Forderung umdeuten; Verhandlung bleibt möglich. Kein Pflichtkampf und keine Rückkampfpflicht für Rivalen. |
-| Wissen / Identitäten (D/E) | Wiederholte LP-, Würfel- und Aktionskenntnis in Figurenrede trotz Erinnerungen; gelegentlich unbekannte Namen und falscher Sprecher. Dopplungen innerhalb derselben Kampagne beeinträchtigen Zuordnung stärker als typische Namen zwischen Durchläufen. Quellenwissen und echte Identitäten erhalten, keine bloßen Verbotslisten. |
-| Ressourcen (J) | Alltagskäufe und normale Munition sind auf Dauer mühsam und inkonsistent. Abstrakte Versorgung gegen relevante Knappheit abgrenzen; keine überraschend leeren Magazine. Blutdurst, Mana und besondere Munition bleiben getrennt zu erproben. Noch keine Regeländerung beschlossen. |
-| Regelbefolgung / Tempo (A/N) | Erinnerungsaufruf korreliert mit kürzeren Antworten, schützt aber nicht zuverlässig Figurenwissen, EXP und Zugfolge. 250 Wörter, nicht Zeichen. Keine garantierte dauerhafte Aktivierung oder Ursache aus dem Verlauf behaupten; vorhandene Texte vor neuen Zusatzregeln prüfen. |
-| Langzeitkontinuität (D/J) | Großer Erfolg bei Beziehungen/Projekten, dennoch verlorene Schwäche, Inventarteile, Finanzen und Namenszuordnung. Regelmäßige überprüfbare Saves können helfen; keine perfekte Wiederherstellung durch Projektgedächtnis versprechen. Externe Speicherung später optional auf Aufwand/Nutzen prüfen. |
-
-**Weiter erhalten:** starke Startfiguren, Transformationen, kritische Treffer,
-D%-Seltenheit, alternative Todes-/Nichttödlichkeitsregeln, Impuls-/Namens-/Motivhilfen,
-weitere Weltvorlagen, mittel/lang, besonderes Ressourcen- und Gefährtenspiel,
-Willkommenseite, Themes, Lokalisierung, Name/Icon, externe Beta-Tests und vergleichende
-Auswertung starker Kampagnen. Die bisherigen Detailabschnitte bleiben dafür bestehen.
-Keine Anhebung dieser Themen zu Voraussetzungen für die Fortsetzung von 0.24.
-
-### Laufende Erprobung 0.23: gesammelte Befunde, noch nicht priorisiert
-
-Zwischenstand vom 7. November 2026. Der Spieler bewertet den laufenden Durchgang
-als einen der spaßigsten bisherigen Läufe und setzt ihn fort. Seine Notizen suchen
-gezielt nach Problemen; ihre Anzahl ist keine negative Gesamtbewertung. Mindestens
-ein weiterer Auszug folgt. Diese Sammlung legt weder ein neues Entwicklungspaket
-noch dessen Reihenfolge fest. Bestehende Aufgaben bleiben erhalten; nach den weiteren
-Auszügen werden Überschneidungen, Prioritäten und Umfang gemeinsam abgeglichen.
-Private Exporte, Namen und konkrete Kampagnenszenen bleiben außerhalb des Repositorys.
-
-**Erhaltungsziele und bereits funktionierende Abläufe**
-
-- Settinggerechter Slang, Humor, Beziehungen, eigenständige Ziele und wiederkehrende
-  Kontakte tragen den Spielspaß. Die optionale Crew hat einen tatsächlichen Nutzen.
-- Abgeschlossene Aufträge, gewünschter Alltag und neue Gelegenheiten gehen ineinander
-  über. Auch verlorene Herausforderungen bringen Erfahrung und unmittelbare Auswahl.
-- Geld, erreichbare Käufe und nutzbare Implantatverbesserungen machen Entwicklung
-  greifbar. Ein Rückkampf gegen einen bestehenden Gegner macht gewonnene Stärke spürbar.
-- Der Wechsel von Instant auf mittleren Denkaufwand geht laut Spieler mit längeren
-  Wartezeiten und gefühlt besseren Antworten einher. Modellmodus, Setting, Figur und
-  Vorbereitung sind hier nicht isoliert; keine eindeutige Ursache oder Garantie ableiten.
-
-**Kampf, Fähigkeiten und Erstellungstemplate – zur späteren Einordnung**
-
-- [ ] Vorgeschlagene Fähigkeiten und Verbesserungen mit normalen Handlungen,
-  vorhandenen Waffen und anderen Fähigkeiten vergleichen. Eine als Verbesserung
-  angebotene Bewegung bis 10 m mit anschließendem normalen Nahkampfangriff entspricht
-  bereits Bewegung plus Aktion; eine Rastbegrenzung erzeugt allein keinen Vorteil.
-- [ ] Redundante Startfähigkeiten prüfen: Ein schwächerer Implantatschlag eröffnet
-  gegenüber einer vorhandenen Schlagwaffe kaum neue Wege. Waffenlose Verfügbarkeit
-  kann ein bewusster Vorteil sein, muss aber den tatsächlichen Nutzen erkennen lassen.
-  Keine pauschale Verstärkung aller Manöver oder Verpflichtung zu Kampffähigkeiten.
-- [ ] Reaktionsunterstützung an die tatsächliche Kampfauflösung anschließen: Ein
-  kostenpflichtiger Bonus auf eine Probe hilft nicht, wenn Angriffe gegen eine feste
-  Verteidigung aufgelöst werden und diese Probe nicht stattfindet. Schutzaktion und
-  Implantatwirkung auseinanderhalten. Die Aktivierung wechselte zudem von einer
-  Nutzung innerhalb der eigenen Aktion zu einer vollständigen Aktion; bestätigte
-  Funktionen dürfen nicht still geändert werden. Noch keine Ersatzmechanik festgelegt.
-- [ ] Taktisches Wissen und gelungene Manöver auf ihren praktischen Effekt prüfen:
-  Ein umgeworfener Gegner steht unmittelbar auf und greift unverändert an; eine
-  beschädigte Beinfunktion verringert Bewegung, verändert den engen Nahkampf aber
-  kaum. Wirkung, Kosten, Zugfolge und Dauer gemeinsam beurteilen; nicht automatisch
-  einen verlorenen Gegnerzug oder kostenlose Zusatzeffekte einführen.
-- [ ] Überraschungsangriff und gezieltes Ausschalten vor dem Wurf unterscheiden.
-  Ein ausdrücklich beschriebener voller Hammertreffer am ungeschützten Kopf und
-  anschließendes weitgehend normales Weiterkämpfen passen erzählerisch schlecht
-  zusammen. Keine allgemeine Regel für automatische Bewusstlosigkeit nach Kopftreffern;
-  erwartete Wirkung und Auflösung vor dem Einsatz klären.
-- [ ] Tragplätze im Erstellungstemplate mit der vorhandenen Inventarregel abgleichen:
-  Gewöhnliche Waffen wurden wiederholt mit zwei Plätzen erzeugt und vom Spieler auf
-  einen korrigiert. Tatsächliche Sperrigkeit berücksichtigen, keine pauschale Änderung
-  für jede Maschinenpistole, jedes Schwert oder jeden Stab.
-- [ ] Wiederholtes Regelwissen in NSC-Dialogen trotz vorhandener Trennung untersuchen.
-  Explizite Lebenspunktzahlen sind ein belegter Fehler. Eine Aussage über verbesserten
-  Straßenkampf ist sprachlich nicht allein regelwidrig; der direkte Bezug auf eine
-  unsichtbare Verbesserungswahl ist der relevante Wissenssprung. Beobachtbare Stärke,
-  Verletzungen und reale Implantatfunktionen dürfen Figuren weiterhin einschätzen.
-
-**Abenteuerumfang, Belohnungen und soziales Umfeld – Beobachtungen**
-
-- [ ] Kurzumfang verlässlich halten: Eine später abgeschlossene Ermittlung wuchs über
-  viele Beteiligte und mehrere Tage. Der Spieler hatte trotzdem Spaß; daraus weder
-  endlos offene Handlung noch den Wunsch nach längeren Pflichtabenteuern ableiten.
-- [ ] Sehr kurze, gut bezahlte Aufträge und unterschiedliche Aufwände vergleichen.
-  Eine vernünftige friedliche Lösung darf kurz bleiben. Der Eindruck eines Auftrags
-  hauptsächlich zur Finanzierung eines gewünschten Kaufs ist eine Spielerbeobachtung,
-  keine nachgewiesene Erzeugungsabsicht. Nicht nachträglich künstlich erschweren.
-- [ ] Ähnliche Aufhänger wie zurückgehaltene Teile beobachten, ohne damit allein
-  fehlende Vielfalt zu behaupten. Eigene Ziele und lohnende Entwicklung erhalten.
-- [ ] Rolle der Organisation neben den gelungenen persönlichen Kontakten beobachten.
-  Der Spieler empfindet sie teilweise als wenig präsent; je nach Struktur kann das
-  passen. Kein beschlossener Bedarf für zusätzliche Fraktionsverwaltung.
-
-**Generator und Spieltab – konkrete Bedienungswünsche**
-
-- [x] Entwurfsimpulse für Welt, Figur und Crew analog zum Startimpuls standardmäßig
-  verdecken und bei Bedarf einsehbar machen. Die fünf auswählbaren Vorschläge sind
-  davon zu unterscheiden und bleiben zur Auswahl sichtbar.
-- [x] Startimpuls von den Spielvorgaben auf die erste Seite unter Welt verschieben.
-- [x] Wahrscheinlichkeitsangaben der Vorschläge verständlich darstellen: 0,06 bedeutet
-  6 Prozent, jedoch nur als unkalibrierte Modellschätzung der Antwortwahrscheinlichkeit,
-  nicht als Qualitätswertung oder Erfolgschance. Geeignete Erläuterung prüfen.
-- [x] Crew-Erstellung nach der Figurenbearbeitung erreichbar platzieren, ohne den
-  Abhängigkeitsablauf Welt → Figur → optionale Crew aufzuheben. Unnötiges Zurückscrollen
-  vor dem Weitergehen vermeiden.
-- [x] Spieltab-Bereiche zunächst eingeklappt anzeigen und ihre Reihenfolge von oben
-  nach unten veränderbar machen; Darstellung und Speicherung der Reihenfolge klären.
-- [x] Speicheroptionen dauerhaft sichtbar statt in einem aufklappbaren Bereich halten.
-- [x] Nach dem Hinzufügen von Ausrüstung oder Fähigkeiten den neuen Eintrag öffnen
-  statt des obersten bestehenden. In 0.24 mit langen Listen geprüft; vorhandene
-  auf-/zugeklappte Einträge bei anderen Bearbeitungsschritten erhalten.
-
-**Korrigierter Befund:** Fehlende Gegner-LP sind in diesem Durchgang kein offener
-Fehler: Der Export enthält sie bereits vor dem ersten Angriff und führt sie weiter.
-Der Spieler hat die Angabe übersehen und den Punkt ausdrücklich zurückgenommen.
-Die allgemeine Beobachtung zuverlässiger LP-Anzeigen in anderen Läufen bleibt erhalten.
-
-### Paket 0.23: Konfliktablauf, kurze Abenteuer und Spieltab
-
-Der letzte längere Spieltest wurde als Erfolg bewertet: unterschiedliche Aufgaben,
-Beziehungen, klare Abschlüsse und spürbare Entwicklung tragen. Gemeinsamkeiten in
-Motiven sind allein kein Vielfaltfehler. Kostenlose anschauliche Demonstrationen
-und ein hypothetischer Dialogvorschlag wurden nicht als störend bewertet und
-begründen keine gesonderte Korrektur. Das Paket erhält diese Stärken.
-
-- [x] A – Gesprächsabsicht vor dem Wurf klären. Bei bereits erklärtem Angebot nur
-  eine tatsächlich verbleibende Unsicherheit würfeln; keine Wiederholung der Rede
-  und keine Probe auf die Annahme des eigenen, akzeptablen NSC-Angebots.
-- [x] A – Kampf beim Übergang etablieren, gegnerische Angriffe gegen Verteidigung
-  abwickeln; vollständige Attribute, sichtbare LP, Verbündetenzüge und aktive
-  Wirkungen der bestehenden Regeln gemeinsam führen. Keine neue Paradenmechanik.
-- [x] A – Bei Illusionen und Kontrolle die praktische Wirkung und ihr Ende vor der
-  Auflösung bestimmen. Keine automatische Betäubung, kein zusätzlicher Spielerangriff;
-  ein erzählter Erfolg darf nicht in derselben betroffenen Handlung folgenlos werden.
-- [x] B – Kurzumfang erhält Substanz durch Entdeckung und Entscheidungen statt bloß
-  einen Schalter. Keine Mindestzahl von Szenen, Pflichtnebenhandlung oder Verlängerung
-  einer bereits gelungenen Lösung. Rätselhinweise vor der Lösung zugänglich machen;
-  fachliche Untersuchung klar von einer durch den Spieler lösbaren Aufgabe trennen.
-- [x] C – Eigenständige folgenreiche Rettungen und abgeschlossene Gefahren abrechnen,
-  ohne jeden Gegner oder Reparaturversuch einzeln zu vergüten. Wissensquellen von NSC
-  erhalten; Vermutungen nicht unbemerkt zu Fakten über unbemerkte Vorgänge machen.
-- [x] D – Welt, optionale Crew und manuell ergänzte Begleiter in den Spieltab übernehmen,
-  bearbeiten, kopieren und gemeinsam mit Figur/Notizen exportieren und speichern.
-  Speicheroptionen oben; Schließwarnung für nicht gesicherte oder offene Änderungen.
-- [ ] Modellbefolgung im nächsten passenden Spiel beobachten: keine Abwehrwürfe statt
-  Gegnerangriffen, keine fehlenden LP/Boni, sinnvoll fortwirkende Täuschung und keine
-  zusätzliche Probe auf einen bereits ausgehandelten Handel.
-- [ ] Entdeckungstiefe und EXP außerhalb ausdrücklich benannter Abenteuerabschlüsse
-  weiterhin prüfen. Technische Tests beweisen keine zuverlässige Modellbefolgung.
-
-Keine neue kritische Trefferregel, Beutetabelle, EXP-Schwelle oder Fähigkeiten-
-verstärkung. Die optionale Entwurfsauswahl bleibt erhalten. Ein kompletter
-Gedächtnisumbau bleibt außerhalb dieses Pakets.
-
-### Paket 0.22: Optionale Entwurfsauswahl
-
-- [x] Welt-, Figuren- und Crew-Template bieten unabhängig eine optionale Auswahl
-  aus fünf kurzen Grundlagen; nach der Auswahl im externen KI-Chat folgt erst das
-  vollständige JSON. Direkter Einzelentwurf bleibt Standard.
-- [x] Gemeinsames zweistufiges Verfahren, abgeleitet von Verbalized Sampling:
-  Wahrscheinlichkeitsschätzungen sind unkalibriert, keine Qualitätsbewertung und
-  gelangen nicht in das endgültige JSON oder Startpaket.
-- [x] Eigene Angaben, offene/explizit ausgeschlossene Bereiche und die Kette
-  Welt → Figur → optionale Crew erhalten; Zufallsimpulse bleiben unabhängig nutzbar.
-- [x] Bestehende JSON-Schemas und Plugin-Regeln unverändert; Schalter im jeweiligen
-  Vorbereitungsdialog, kein zusätzlicher Generator-Schritt.
-- [ ] Weitere Figuren- und Crew-Auswahl spielerisch erproben. Ein erster längerer Lauf mit der neuen Vorbereitung wurde als unterhaltsam und ausreichend vielfältig bewertet; eine separat vorbereitete Crew war dabei nicht nötig. Ein Weltversuch lieferte
-  fünf als kreativer empfundene Grundlagen (Interesse 5/7/8/5/4); die ausgewählte
-  Grundlage blieb in der Ausarbeitung erhalten. Das isoliert weder die Wirkung
-  der Wahrscheinlichkeitsangaben noch belegt es bessere Abenteuerfortsetzungen.
-- [ ] Fortsetzungen weiterhin getrennt prüfen; bekannte Motive, Namen und Zahlen
-  bleiben Beobachtungen. Keine Garantie, dass Auswahl automatisch Vielfalt erzeugt.
-
-### Paket 0.21: Auftragsvielfalt und Figurendialog
-
-- [x] Bei offenen Übergängen Ziele und entscheidende Handlungen der letzten zwei
-  Unternehmungen vergleichen. Wenn der naheliegende Anschluss das Muster wiederholt,
-  zwei plausible Richtungen erwägen und eine spielerisch andere Gelegenheit vorbereiten.
-- [x] KI-Template, JSON-Import und Bogendownload der Figur in einem Dialog bündeln.
-- [ ] Im Spiel mit unveränderter Welt und Figur beobachten, ob der nächste Auftrag
-  andere Entscheidungen verlangt. Der A/B-Vergleich von 0.20 zeigte Impulswirkung
-  in Details, aber wiederkehrende Welt- und Crewgerüste; er maß keine Auftragsvielfalt.
-
-### Generatorpaket 0.20: Vielfalt in der Vorbereitung
-
-Vielfalt hat Priorität 1. Persönliche Bindungen können neue Spielanlässe schaffen,
-während ähnliche Aufträge trotz verschiedener Ausgangslagen wiederkehren können.
-
-- [x] Je ein optionaler Entwurfsimpuls für Welt, Figur und Crew, sichtbar und neu
-  auslosbar. Er wirkt nur im jeweiligen KI-Template; bestätigte Fakten und eigene
-  Vorgaben bleiben maßgeblich.
-- [ ] Zwei Impulse mit gleicher Ausgangsidee vergleichen: Ändern sich Machtquellen,
-  Bindungen oder Handlungsmöglichkeiten? Andere Namen allein genügen nicht.
-- [ ] Auftragsvielfalt separat prüfen. Startimpuls und Abenteuerlogik bleiben für
-  den Vergleich unverändert. Bedienungsangleichung und Kampfoptionen bleiben eigene Aufgaben.
-
-### Generatorpaket 0.19: Strukturierte Vorbereitung und Abhängigkeiten
-
-- [x] Welt und Crew als klar definierte JSON-Entwürfe statt beliebigem Markdown.
-  Importprüfung, bearbeitbare Felder und JSON-Download; lesbare Starttexte aus
-  Daten, ohne Bildlinks oder mitkopierte Status-/Bearbeitungsblöcke.
-- [x] Welt und freie Zusatzvorgaben getrennt halten; erneute Übernahme ersetzt
-  den Weltentwurf, statt ihn anzuhängen. Fehlgeschlagener Import erhält Daten.
-- [x] Crewtemplate nur mit gültigem, für die aktuelle Welt übernommenem Bogen;
-  bei Erstellung im Spielchat gesperrt. Crew bleibt eigenständige optionale Hilfe.
-- [x] Bei Welt-/Figurenänderungen Entwürfe erhalten, aber betroffene Übernahmen
-  vor der Ausgabe erneut verlangen. Vorhandene Crew bleibt entfernbar.
-- [x] Generatorversion 0.19.0 und unveränderte Regelbasis 0.18.0 getrennt anzeigen.
-
-[Bedienung und Prüfgrenzen](strukturierte-vorbereitung-0.19.md). Dies ist eine
-Fortführung von C, kein neuer Regelumbau. Namensvielfalt, kreative Qualität und
-langfristiges Gedächtnis bleiben gesondert zu prüfen; D–O bleiben erhalten.
-
-### Paket 0.18: Verlässliche Abwicklung und kreative Vorbereitung
-
-A–C sind beauftragt und implementiert. Die Kennungen D–O bleiben für weitere Priorisierungen erhalten.
-
-| Kennung | Priorität | Thema | Geplanter, begrenzter Umfang |
-| --- | --- | --- | --- |
-| A | 1 | Kampf und Figurenwissen | Angriff, gewählter Schadenswurf, Zuständigkeit, LP und nächste Aktion als ein vollständiger Ablauf; offene NSC-Würfe selbstständig abschließen. Regelzahlen bleiben außerhalb von Figurenrede. Bei Fahrzeugen/Geschützen vor dem Einsatz passende Wirkung und Auflösung vereinbaren, ohne großes Raumkampfsystem. |
-| B | 1 | Abschluss, EXP und nutzbare Gewinne | Selbstständige Aufträge und Expeditionen abrechnen, sobald das relevante Ergebnis entschieden ist; Verkauf, Behörden und nächste Mission dürfen EXP nicht blockieren. Erfolgreiche Rettung, verlorener Konflikt und offenes Gesamtziel getrennt behandeln; keine Doppelvergabe. Umfangs-/Fortsetzungsvertrag an vorhandenen Szenen prüfen statt erneut parallele Definitionen hinzuzufügen. |
-| C | 2, als unabhängiger Ausbau empfohlen | Charakter-, Welt- und Crewentwürfe | Kopierbare KI-Templates: gewünschte Kompetenz wirksam darstellen; gewöhnliche Aktionen nicht als besondere Fähigkeiten verkaufen. Weltentwurf ergänzt Institutionen, Konfliktlage, Grenzen und Eigenheiten ohne festes Abenteuer. Optionales Team mit Rollen, Beziehungen, Zuständigkeiten und Zugehörigkeit; keine vollständigen Zahlenbögen für jede Nebenfigur und keine Crewpflicht. Entwürfe manuell prüfbar/bearbeitbar; keine API-Anbindung nötig. |
-| D | 2 | Kompakte Kontinuität | Zunächst ein kleiner Prototyp und klarer Pflege-/Abrufablauf für Figuren, Wissen, Aufenthalte, abgeschlossene Ergebnisse und offene Fragen. Keine versteckte Speicherung, kein behaupteter automatischer Chat-Abgleich und keine neue manuelle Pflichtliste pro Zug. Nutzen und Aufwand vor breitem Ausbau beurteilen. |
-| E | 1 | Vielfalt und Namensräume | Nachfolgende Abenteuer nach vorherrschenden Handlungen unterscheiden; Hilfe/Rettung um Gewinn, Rivalität und Entdeckung ergänzen. Optionale regionale/kulturelle Namenbasis und Abgleich bekannter Namen prüfen. Keine Verbotsliste, starre Rotation oder Garantie völliger Neuheit. |
-
-**Umgesetzt in 0.18: A + B + C.**
-
-- [x] A: Einen vollständigen Angriffsschritt statt wiederholter Teilanweisungen;
-  NSC-Schaden selbstständig vor LP/Ergebnis abschließen. Regelwissen/Figurenrede
-  konkret trennen; Fahrzeug-/Geschützwirkung vor Einsatz festlegen.
-- [x] B: EXP am entschiedenen Ergebnis abrechnen, ohne auf Verkauf/Freigabe zu
-  warten; Eigentum, erwarteten Erlös und gezahlte Mittel unterscheiden.
-- [x] C: Kreative Hintergrund-/Persönlichkeitsvorschläge auch aus knappen Ideen;
-  explizit offene Bereiche bewahren, gesamten Entwurf prüfen. Optionale Welt- und
-  Crewtemplates mit bearbeitbarem Entwurf. Crew bleibt separat, ohne Pflicht zur
-  Integration in den Hauptbogen oder zur vollständigen Gruppe.
-
-[Umfang, Bedienung und Akzeptanzfälle 0.18](abwicklung-und-kreative-vorbereitung-0.18.md).
-D bleibt ein möglicher Kontinuitätsprototyp; E ist durch Weltdetails/Namenskonventionen
-vorbereitet, aber nicht umgesetzt. Die langen Durchläufe müssen die Wirkung noch
-bestätigen; technische Prüfungen belegen keine garantierte Modellbefolgung.
-
-**Vorgehen bei A/B:** zuerst die wirksamen Quellen und die betreffenden realen
-Szenen vergleichen; unklare, verstreute oder doppelte Anweisungen ersetzen. Erst
-eine belegte Lücke ergänzen. Grund-SG, D20-Trefferprobe, EXP-Schwelle, vorhandene
-Belohnungsauswahl und Überraschungsauftakt zunächst erhalten. Vier Meter Entfernung
-und ein erster Angriff begründen keinen automatischen zusätzlichen Würfelvorteil.
-Globale Verstärkung, sofortiger Tod oder neue kritische Regeln sind getrennte Entwürfe.
-
-**Akzeptanzkriterien:** vollständiger Kampf über mehrere Runden mit Verbündeten
-und gewählten Schadenswürfeln; keine Würfelwerte in NSC-Dialog; selbstständige
-Abrechnung von Auftragsabschluss, Expedition und folgenreichem Teilergebnis vor
-Ruhephase/Weiterreise. C muss mit den ausgewählten Weltangaben zusammenpassen,
-keine bestätigte Figur überschreiben und eine offene Handlung erlauben. Technische
-Tests prüfen Daten/Übergaben; Modellbefolgung benötigt beobachtete Antworten.
-
-### Weitere offene Themen: Auswahl für eine andere Priorisierung
-
-| Kennung | Priorität | Erhaltene Aufgaben und Grenzen |
-| --- | --- | --- |
-| F | 2 | Etablierte starke Startfiguren und große Entwicklung: passende Macht, Ressourcen, Handlungsoptionen; später Transformationen/übermächtige Phasen. Noch keine neue Werte- oder Stufenauswahl beschlossen. |
-| G | 2 | Kampfgefühl: kritische Treffer, natürliche 20 plus maximaler Schaden, gezielte/nichttödliche Angriffe und mögliches Trefferqualitätsmodell. Zahlen und Auswirkungen auf beide Seiten zuerst vergleichen. |
-| H | 2 | Optionale D%-Beute/Seltenheit und besondere direkt nutzbare Ausrüstung; keine Ersatzvergütung für EXP, kein Pflichtloot oder beliebiges legendäres Objekt an jedem Ort. |
-| I | 2 | Namen-/Kulturimpulse, Motivimpulse, lokale Impulshistorie mit Ausschluss bereits verwendeter Kombinationen und bewusst erlaubter Wiederholung; einzelne Achsen festhalten. Lokale Historie kennt den Chat nicht automatisch. |
-| J | 2, Erprobung | Mittel/lang, feste Gefährten und deren Entwicklung; Ressourcen/Erholung einschließlich Blutdurst/Mana; Moral und eigenständige Interessen eigener wie fremder Fraktionen; Rückmeldungen delegierter Vorhaben und fortlaufende Zeit/Verletzungen/Finanzen. Gute Delegation in einem Lauf ist noch kein Nachweis für alle Fälle. |
-| K | 2, Beta-Vorbereitung | Kleine externe Testgruppe, tatsächlicher Pluginzugang/Umgebung/Kosten, kurzer Einstieg und niedrige Rückmeldehürde; Version, Spaß, Korrekturen und Fortsetzungsgrund erfassen. Kein perfektes System und keine feste Zahl weiterer Solotests erforderlich. |
-| L | 3 | Alternative Ausschaltung/Tod: 1 LP kampfunfähig, 0 tot; Schwellenüberschreitung, Stabilisierung, Nichttödlichkeit und Rewind symmetrisch prüfen. Bestehende Regel bleibt bis Entscheidung. |
-| M | Komfort | Einmalige Willkommenseite mit einem Startbutton, Charakterablage, Feldhilfen, Themes/Hell-Dunkel, Lokalisierung/Wörterbuch, durchgängiger Name und Icon sowie mögliche Umbenennung Geld → Währung. |
-| N | Beobachten | Ungefragte Bilder, wiederholte Zahlen-/Symbolmotive, wiederholtes Lob und Spielerwortlaut. Tempo und gewünschte Ruhe bewahren; einzelne harmlose Darstellungsfehler nicht unnötig priorisieren. |
-| O | Spätere Querschnittsauswertung | Vorhandene starke Kampagnen gemeinsam vergleichen, spätestens bei etwa zehn nach Wunsch des Spielers. Unterschiede in Version, Konfiguration und Spielerinteresse berücksichtigen; keine direkte Kausalität aus Erfolgsfällen ableiten. |
-
-Die folgenden Detailabschnitte erhalten Begründungen, historische Entscheidungen
-und offene Prüfziele. Für die aktuelle Reihenfolge gelten die Tabellen A–O;
-ältere Prioritätsüberschriften und Implementierungshaken sind keine weitere
-parallele Paketplanung. Kein bestehender Punkt wird durch bloßes Umgruppieren erledigt.
-
-### Paket 0.17: Abenteuergrenzen, Abrechnung und Spieltempo
-
-Der weitere Durchlauf war spielerisch erfolgreich: Weltmischung, Tiere, Beziehungen,
-freie vorsichtige Lösungen und konkrete Verbesserungsangebote tragen. Ein größerer
-Konflikt erreicht ein echtes Ende; bei gewähltem Kurzumfang jedoch zu spät.
-EXP werden nach dem ersten Abschluss mehrfach nur auf Erinnerung gewährt und
-selbst am abschließenden Erfolg ausgelassen. Gute Angebote lösen deren Ausbleiben nicht.
-
-- [x] Umfang, Kampagnenstruktur, Ton und Schwerpunkt mit getrennten Zuständigkeiten
-  definieren. Kurz hat eine eigene Auflösung; offen oder verbunden vergrößert es nicht.
-  Eine bewusst größere Zielsetzung verlangt eine erkennbare Vereinbarung, keine
-  automatische Ableitung aus Neugier oder Hilfsbereitschaft.
-- [x] Zielausgang und EXP in derselben Antwort abrechnen, vor Folgehandlung oder Pause.
-  Bedeutsame Teilergebnisse und Niederlagen zählen unabhängig vom Gesamtbogen;
-  ein neues Finale bleibt vergütbar, ohne frühere Ergebnisse doppelt zu zählen.
-- [x] Standardantworten höchstens 250 Wörter, keine Zielwortzahl. Ausnahmen: notwendige
-  entscheidende Szene, umfangreiche Regelabrechnung oder ausdrücklich lange Antwort/Export.
-  Spielentscheidende Angaben bleiben vollständig. Wiederholungen und Kleinstfreigaben raffen.
-- [x] Starttalente +2; spätere persönliche Verbesserung wahlweise +1 bis maximal +5
-  oder Meisterschaft mit neuen Anwendungen. Regeln, Formel, Template, Prüfung und
-  aktueller Editor gemeinsam aktualisieren. Keine Stapelung oder zusätzlichen Angriffe.
-- [x] Spieltab zeigt Beschreibung und Hintergrund. Erfahrung/Entwicklung aus der normalen
-  Übersicht ausblenden, im Bogen, Bearbeitungsdialog, Kopie und Export erhalten.
-  Individuelle Waffenprofile als ausgefüllt und von Vorlagen abweichend erläutern.
-- [x] Gewöhnliche Technik und außergewöhnliche Erfindungen unterscheiden; übernatürliche
-  Kräfte modernisieren Infrastruktur und Kommunikation nicht automatisch.
-- [ ] Spielerprobung: mehrere selbstständige Abschlüsse samt unaufgeforderter EXP-Abrechnung,
-  flüssigere Dialoge und echte Kurzumfänge bestätigen. Vorhandene Erfolgserlebnisse erhalten.
-
-Diese Entscheidungen ersetzen ältere Festlegungen „Talent immer +2“ und „keine starre
-Wortgrenze“. Ältere Abschnitte dokumentieren den Entwicklungsweg, nicht parallele Regeln.
-Der Spieltab ist eine manuelle Nachschlagehilfe, keine automatisch aktuelle Fortschrittsanzeige.
-Numerisch bedeutet +1 Talent fünf Prozentpunkte bei einer noch offenen normalen W20-Probe;
-+2 bis +5 ergeben höchstens 15 Punkte Unterschied, ohne Schaden oder Aktionen zu erhöhen.
-
-**Nächste Prioritäten:** zuerst die gemeinsame Abschluss-/EXP-Abwicklung und Länge prüfen;
-Angebotsstärke ist positiv, zusätzliche Belohnungstabellen derzeit nachgeordnet. Beschreibung
-und Hintergrund lösen einen belegten Bedarf. Namen/Kulturimpulse und die Möglichkeiten von
-Weltfreitext bleiben erhalten; keine verpflichtende Geografie oder neue Konfigurationsrunde.
-Technische Regel-/DOM-Prüfungen beweisen keine Modellbefolgung und keinen Langzeitspaß.
-
-### Paket 0.16: Umsetzung nach Bestandsaufnahme und Spielerfahrungen
-
-- [x] Verbindliche 1/2/3 EXP für kleine/gewöhnliche/große abgeschlossene Ergebnisse,
-  auch bei Niederlage. Routine, einzelne Gegner und beliebige Wiederholung: 0.
-- [x] Je 2 EXP eine persönliche Verbesserung; Rest bleibt, Schwelle steigt nicht.
-  Drei unterschiedliche Optionen sofort anbieten, keine spätere Angebotsankündigung.
-- [x] Beute, Geschenke, Lohn und andere Weltgewinne unabhängig von EXP führen.
-  Die frühere Möglichkeit, damit persönliche Entwicklung zu ersetzen, ist abgelöst.
-- [x] EXP und verfügbare Verbesserungen in Bogen, Template, Editor, Übersicht und
-  Export führen; Startbogen erhalten. Keine automatische Chat-Synchronisierung.
-- [x] Angebotsmischung, Zusatznutzen gegenüber Grundhandlungen und freiwilliges
-  Lernen präzisieren; Training ist keine zusätzliche Pflicht vor verdienten Verbesserungen.
-- [x] Kampfzuständigkeiten direkt im vorhandenen Ablauf klären; keine neuen Werte.
-- [x] Alle zehn Weltvorlagen mit eigenen spielbaren Schwerpunkten und gemeinsamer
-  Präsenzregel abgleichen; Anpassungen, Ausschlüsse und freie Handlung bleiben gültig.
-- [ ] Lange Spielwirkung weiter bestätigen: konkrete Beute und persönliches Wachstum,
-  selbstständig ausgeführte Kämpfe, unterschiedliche Weltpräsenz und echte Abschlüsse.
-
-Die folgenden Einträge bleiben als historische Befunde und Erprobungsziele erhalten.
-Wo sie Gegenstände als Ersatz für persönliche Entwicklung behandeln, gilt seit
-0.16 die Trennung von Weltgewinn und EXP. Haken belegen Umsetzung, nicht garantierte
-Modellbefolgung. Neutrale F-01/F-03/F-05 rechtfertigen keinen neuen Unterbau;
-F-02 bleibt Validierungsgrenze, F-04 wird durch Figurenübernahme ohne vorgetäuschte
-Kampagnenkontinuität abgegrenzt. Englische Steuertexte bleiben beabsichtigt.
-
-**Historischer Ausgangspunkt 0.15:** Das Paket 0.15 verbindet erreichbare Abschlüsse, greifbaren Machtgewinn,
-straffere Abläufe und eigenständige Fraktionen mit unabhängigen Generatorverbesserungen.
-Danach folgt ein frei gewählter Lauf nach Interesse; kein weiterer langer Lauf
-ist vor diesem Paket nötig. Funktionierende Beziehungen, Eigeninitiative,
-Feldzugsplanung und Fantasypräsenz bleiben ausdrücklich erhaltenswert.
-
-**Umgesetzt in 0.15:**
-
-- [x] Erreichbare Auflösung bei Anfang und Folgeabenteuer; Erfolge verändern den
-  Konflikt und eröffnen einen entscheidenden Schritt statt endloser Pflichtvoraussetzungen.
-- [x] Nutzbare Fähigkeiten, stärkere Anwendungen, besondere Waffen/Gegenstandskräfte,
-  Ressourcen und Einfluss als konkrete Entwicklung; nicht nur langsame Attribute.
-- [x] Verdiente Entwicklung ohne Nachfrage abrechnen; Forschung kann anwendbares
-  Können ergeben, bereits verdiente Belohnung hängt nicht am nächsten Auftrag.
-- [x] Routine, Absprachen, Behandlung und delegierte Arbeit zusammenfassen; eigene
-  Fraktionen behalten etablierte Interessen und moralische Grenzen.
-- [x] Rohwürfe, verbleibende Kampfzüge, Effektende und symmetrische Erholung präzisieren.
-- [x] Waffenvorlagen-Anzeige, Ressourcenplatzierung, Hintergrundtemplate und
-  sichtbare Generator-/Ziel-Regelversion gemeinsam überarbeiten.
-
-Diese Haken bezeichnen geänderte Regeln und überprüfte Daten-/Bedienabläufe,
-keine bewiesene langfristige Erzählqualität. Die nachfolgenden offenen Regelnziele
-bleiben als Kriterien für den nächsten Lauf erhalten. Kritische Treffer,
-Zufalls-Seltenheit und alternative Todesregeln sind nicht Teil von 0.15.
-
-**Einordnung der weiteren Erprobung:** Längere Kontinuität, fortwirkende Absprachen,
-unterschiedliche NSC-Interessen und echte Fantasypräsenz tragen weiterhin.
-Einzelne korrigierte Wissens-/Erholungsfehler begründen derzeit keinen großen
-Gedächtnisumbau. Eine zeitweise menschlich geprägte Umgebung begründet für sich
-ebenfalls keine neue Speziesquote; vorhandene nichtmenschliche Gesellschaften und
-Magie bleiben relevant. Diese positiven Befunde sind keine allgemeine Garantie.
-
-| Rang | Schwerpunkt | Präzisierung aus der weiteren Erprobung |
-| --- | --- | --- |
-| 1 | Erreichbare Abschlüsse und neue Abenteuer | Der bestehende Konflikt weitet sich nach Erfolgen wiederholt aus; eine offene Kampagne braucht abgeschlossene Bögen, nicht nur weitere Untersuchungen desselben Problems |
-| 1 | Nutzbarer Fortschritt und Kompetenzgefühl | Nicht nur seltene Belohnungen: bereits verdienter Gewinn wird wiederholt zu Zugang, Forschung oder einer weiteren Aufgabe statt einer anwendbaren Verbesserung |
-| 1 | Erzähltempo und abgeschlossene Teilziele | Lange Texte und viele einzeln abgefragte Vorbereitungsschritte können auch nach Erfolgen bremsen; Vorsicht des Spielers bedeutet nicht automatisch kleinteilige Pflichtabwicklung |
-| 1 | Eigenständige Fraktionen und begrenzte Abenteuer | Auch die eigene Seite behält Ziele und moralische Grenzen; Freundschaft und einzelne Rettungen machen sie nicht automatisch wohlwollend. Kurzumfang bleibt offen |
-| 2 | Weltgeschehen und bestehende Bedienungs-/Regelaufgaben | Relevante Rückmeldungen delegierter Aufgaben rechtzeitig vermitteln; kritische Treffer, Zufallsbelohnungen und Generatoraufgaben bleiben erhalten |
-| 3 | Alternative Todes-/Ausschaltungsregeln | Bewusste Schadensbegrenzung weiterhin ergebnisoffen untersuchen, keine neue Regel vorwegnehmen |
-
-Die Reihenfolge ist eine Arbeitspriorisierung für die weitere Erprobung nach 0.15. Neue Befunde präzisieren vorhandene Aufgaben; sie rechtfertigen nicht
-automatisch weitere Regeltexte, harte Textlimits oder einen kompletten Neubau.
-
-### Priorität 1: Konflikte entscheiden und Fortsetzung ermöglichen
-
-- [ ] **Erreichbare Abenteuerabschlüsse im längeren Spiel bestätigen.** Die Vorbereitung
-  von Anfang und Folgeabenteuer folgt demselben Auftrag. Erfolge verringern tatsächliche
-  Gegenwehr und ermöglichen eine entscheidende Handlung. Enthüllungen dürfen vertiefen,
-  aber nicht ständig neue Gefangene, Namen, Siegel oder übergeordnete Bedrohungen als
-  notwendige Vorstufe derselben Auflösung erzeugen. Fehlwürfe behalten ihre Folgen;
-  ein Finale muss weder siegreich noch als Krieg enden. Nicht jedes Geheimnis oder
-  jede Behandlung muss vor Abschluss geklärt sein. Freiwillig vergrößerte Ziele von
-  automatisch ausgedehnten Konflikten unterscheiden; nach dem Ende Raum für eine
-  neue Situation mit neuen Interessen geben. 0.15 enthält die Regelüberarbeitung,
-  ihre Zuverlässigkeit im längeren Verlauf ist noch zu prüfen.
-
-### Priorität 1: Spürbarer Fortschritt und verlässliches Kompetenzgefühl
-
-- [ ] **Schnelleren, relevanten Machtgewinn ausarbeiten.** Entwicklung soll sich
-  innerhalb einer gewöhnlichen, begrenzten Kampagne lohnen. Nicht voraussetzen,
-  dass jemand sehr lange spielt oder alle Attribute maximiert. Langsames Wachstum
-  ist kein Selbstzweck für das Balancing. Häufigkeit und Stärke der Gewinne
-  gemeinsam betrachten; Zahlenvergleich vor einer neuen verbindlichen Staffelung.
-  0.15 ergänzt ausdrücklich neue Fähigkeiten, stärkere bestehende Anwendungen und
-  bessere Ausrüstung statt nur Attributspunkte. Ein Gewinn braucht keinen neuen
-  Nachteil, der ihn wieder aufhebt. Standardgegner bleiben gewöhnlich; neue passende
-  Gegner können stärker sein. Keine feste Stufenleiter oder Seltenheitstabelle eingeführt.
-- [ ] **Entwicklung an tatsächlichen Abschlüssen und Zwischenerfolgen auszahlen.**
-  Bereits der erste abgeschlossene Konflikt braucht eine bewusste Abrechnung.
-  Längere Operationen erhalten nutzbare Zwischenschritte, nicht erst am Gesamtende
-  eine kleine Erhöhung. Keine Belohnungsquote für jede Szene oder Wiederholung
-  desselben Erfolgs. Bestehende Regeln dafür sind noch nicht ausreichend verlässlich.
-  Ausdrücklich abgeschlossene Einsätze müssen ohne Nachfrage des Spielers abgerechnet
-  werden. Ein angekündigter Gewinn bleibt diesem Erfolg zugeordnet und wird nicht
-  nachträglich von der Erledigung eines neuen Auftrags abhängig gemacht. Bewusst vom
-  Spieler aufgeschobene Entscheidungen bleiben davon getrennt.
-- [ ] **Belohnungen nach praktischer Wirkung gestalten.** Neue Zauber, bessere
-  Anwendungen, Meisterschaften, Ressourcen, besondere Gegenstände und tatsächlicher
-  Einfluss sollen neue Wege eröffnen. Ein zusätzlicher Ressourcenpunkt kann passen,
-  ist aber nicht automatisch eine angemessene Hauptbelohnung für einen langen
-  Feldzug. Bei Kontakten und Wissenszugang den bereits nutzbaren Vorteil ausdrücklich
-  benennen. Verdiente Entwicklung und Lohn auseinanderhalten.
-  Bei Studienwerken und Archiven zwischen Zugang, Forschungsansatz und tatsächlich
-  anwendbarem Können unterscheiden. Ein Buch ohne nutzbare Wirkung ist zunächst eine
-  Lerngelegenheit, nicht automatisch eine vollständig ausgezahlte Machtbelohnung.
-  Gewollte Forschung kann bleiben; konkrete erreichbare Lernziele und vereinbarte
-  Zeit/Leistung sollen zu begrenzten neuen Anwendungen oder Verbesserungen führen,
-  statt wiederholt nur theoretische Notizen und neue Voraussetzungen zu erzeugen.
-  Einfluss, Vollmachten und Beziehungen als echte Gewinne erhalten, aber den
-  gewünschten magischen oder kämpferischen Fortschritt nicht dauerhaft damit ersetzen.
-- [ ] **Etabliertes Startniveau ausdrücken.** Anfänger und bereits mächtige Figuren
-  brauchen passende tatsächliche Fähigkeiten. Ein größerer Vorrat erhöht Ausdauer,
-  aber nicht die Wirkung des einzelnen Zaubers. Figurenidee, Angriffs-/Zauberwirkung,
-  verfügbare Optionen, Einfluss und Gegner gemeinsam abstimmen. Template, Validierung,
-  Editor, Startpaket und Plugin müssen mögliche Vereinbarungen widerspruchsfrei
-  darstellen; keine versteckte Abschwächung zu einem Anfänger. Noch keine neue
-  Stufenauswahl, Werteverteilung oder Änderung bestehender Grenzen beschlossen.
-- [ ] **Kompetenz bei Proben und Fehlschlägen erhalten.** Passende Talente nicht
-  künstlich von Bestandteilen ihres Einsatzes ausschließen; einfache Vorhaben nicht
-  durch viele Einzelproben künstlich unsicher machen. Profis dürfen scheitern,
-  ohne zur Slapstickfigur zu werden. Bestehende Folgen und echte Gefahr bleiben.
-- [ ] **Alle relevanten Kampfteilnehmer und Wirkungsdauern weiterführen.** Angriff,
-  Befehl, Rückzug, Wache oder begründetes Abwarten sichtbar halten, wenn es
-  die Lage beeinflusst. Verbündete ebenfalls eigenständig handeln lassen;
-  aktive Kontrolleffekte, ausstehende Züge, Bewegungen und Entfernungen konsistent abwickeln.
-- [ ] **Vorhandene Würfelregeln zuverlässig anwenden.** Spielerwürfe einschließlich
-  ihrer Schadenswürfel abwarten; NSC-Würfe nach vereinbarter Zuständigkeit offen
-  auflösen. Flächenangriffe müssen unterschiedliche Deckung pro Ziel beachten.
-  Fehlerkorrektur bedeutet nicht, automatisch jedem Metaeinwand recht zu geben.
-  Bei ausgewählten Spielerwürfen unveränderte Rohwürfe statt selbst berechneter
-  Gesamtergebnisse verlangen und angekündigte Boni durch die Spielleitung addieren.
-  Unbemerkten Wechsel dieses Ablaufs auch bei längeren friedlichen Abschnitten
-  vermeiden; die neue Beobachtung verlangt kein weiteres Würfelsystem.
-
-### Priorität 1: Erzähltempo und erkennbare Teilabschlüsse
-
-- [ ] **Zusammenhängende Vorhaben zusammenhängend abwickeln.** Vereinbarte Vorbereitung,
-  Erklärungen, Durchführung und Routinekontrollen bis zur nächsten tatsächlichen
-  Entscheidung oder eigenständigen Gefahr zusammenfassen. Nicht jede Handbewegung,
-  Freigabe oder Wiederholung zu einer separaten Szene oder Probe machen. Bewusst
-  gewünschte Vorsicht respektieren, ohne sie in eine lange Pflichtfolge zu verwandeln.
-- [ ] **Erfolge in Ergebnisse überführen.** Erfolgreiche Untersuchung oder Vorbereitung
-  muss ihren tatsächlichen Nutzen behalten und ein erkennbares Teilziel abschließen.
-  Distinkte neue Risiken rechtfertigen neue Schritte; eine endlose Folge weiterer
-  Sicherungen, Prüfungen und Auswertungen ist kein Ersatz für Fortschritt. Begrenzte
-  Stabilisierung kann ein echter Erfolg sein, auch wenn vollständige Heilung später
-  folgt. Nächste Schritte und Abschlussbedingungen vorher soweit möglich klarhalten.
-- [ ] **Antwortlänge nach neuem Entscheidungsnutzen steuern.** Wiederholte Zustimmung,
-  Lob, bekannte Vertragsbedingungen und mehrere gleichlautende NSC-Kommentare raffen.
-  Begegnungen, Beziehungen und wichtige Wendepunkte dürfen nach den
-  Ausnahmen von 0.17 Raum bekommen; normale Antworten bleiben bei höchstens 250 Wörtern. Ausdrücklich gewünschte Zeitraffung wirksam fortführen und bei
-  Routine selbstständig einsetzen, statt immer neue Aufforderungen zu benötigen.
-
-### Priorität 1: Erzählfreiheit und Abenteuerumfang erhalten
-
-- [ ] **Moralisch unterschiedliche Gegenspieler zulassen.** Eine eigennützige oder
-  böse Spielerfigur muss nicht durch noch bösere Gegner zur eigentlichen Retterin
-  erklärt werden. Ehrenhafte, gewöhnliche, grausame und widersprüchliche Menschen
-  können echte Gegeninteressen haben. Verbündete bleiben keine bloßen Bestätiger;
-  strategische Vertragstreue macht eine Figur nicht automatisch gut.
-  Das gilt ebenso für die eigene Fraktion und ihren Herrscher: Persönliches Vertrauen,
-  Humor und Fürsorge für einzelne Personen ersetzen nicht automatisch etablierte
-  Machtziele oder eine rücksichtslose Grundhaltung. Strategisches Retten und
-  Gefangennahme können eigennützig sein. Weder die Figur durch pauschales Lob zur
-  Heldin erklären noch freundliche Beziehungen oder eigenständig gewählte Güte
-  verhindern. Freiwillige Entwicklung aus Entscheidungen von automatischer moralischer
-  Angleichung der gesamten Umgebung unterscheiden; Konsequenzen grausamen Handelns
-  und echte Grenzen einzelner Verbündeter bestehen lassen.
-- [ ] **Kurz als begrenzte Aufgabe verlässlich halten.** Den Abschluss eines
-  Konflikts von einem größeren Folgefeldzug unterscheiden; offene Kampagne verlangt
-  keine fortlaufende Hauptbedrohung. Eigene ausführliche Planung und bewusst gewählte
-  Fortsetzung respektieren, ohne kleine Zwischenschritte nachträglich als komplette
-  Kurzabenteuer zu deklarieren. Erkennbar machen, wenn ein freiwilliges Vorhaben
-  über den ursprünglich gewählten Umfang hinauswächst. Nicht laufenden Spielspaß
-  durch ein erzwungenes Ende abbrechen.
-
-### Priorität 2: Kampfgefühl und zufällige besondere Belohnungen entwerfen
-
-- [ ] **Kritische Treffer konkret prüfen.** Natürliche 20 und maximaler
-  Schadenswurf sollen sich besonders anfühlen. Verstärkten Schaden oder klar
-  begrenzte besondere Effekte vergleichen, einschließlich Folgen auf Gegnerseite.
-  Noch keine automatische Tötung, Schadensverdopplung oder weitere Probe festgelegt.
-  Ein zusätzlicher D%-Wurf ist eine offene Möglichkeit, keine Pflicht nach jeder 20.
-- [ ] **Optionale Beute-/Seltenheitsstufen mit D% entwerfen.** Gewöhnliche, seltene,
-  sehr seltene und legendäre Funde als Möglichkeit prüfen. Eine sehr niedrige Chance auf
-  legendäre Funde ist eine Designidee, noch keine beschlossene Tabelle.
-  Fundort, Gegner, Setting und Machtniveau begrenzen den passenden Inhalt; nicht
-  jedes Lager enthält potenziell dieselbe legendäre Waffe. Mächtige Figuren brauchen
-  auch passende Chancen auf entsprechend interessante Gewinne.
-- [ ] **Zufallsfunde ergänzen verlässliche Belohnungen.** Eine schlechte Zufallszahl
-  darf keinen bereits verdienten Fortschritt streichen. Gegenstand, Segen oder
-  Wissen nach seinen konkreten Möglichkeiten bewerten, nicht nur nach Farbe/Namen.
-  Keine Pflicht zu Ausrüstungsloot nach jeder Handlung und kein reines Beutegrinden.
-
-### Priorität 2: Generator und Figurenbogen, getrennt vom Regelumbau
-
-- [x] **Waffenvorlage korrekt anzeigen.** Nach Übernahme nicht wieder standardmäßig
-  „Schwert“ zeigen. Sichtbare Auswahl und tatsächlicher Datenstand müssen
-  nachvollziehbar zusammenpassen.
-  Angepasste Profile nicht fälschlich als unveränderte Vorlage kennzeichnen.
-- [x] **Fähigkeitsressourcen zu Fähigkeiten verschieben.** Im Editor Mana/Dunkle Macht
-  dort bearbeiten, Ausrüstung und Geld getrennt halten. Daten und Export nicht durch
-  eine reine UI-Umordnung verändern oder verlieren.
-- [x] **Doppelte Figurenbeschreibung vermeiden.** Identität beschreibt die Figur;
-  bestätigter Hintergrund enthält zusätzliche etablierte Fakten statt einer fast
-  identischen Wiederholung, keine allgemeinen Weltregeln. Template und Feldhilfen
-  aufeinander abstimmen. Fehlende zusätzliche Fakten dürfen leer bleiben; keine
-  Vergangenheit zur Feldfüllung erfinden oder vorhandene Angaben still löschen.
-- [x] **Versionen sichtbar und nachvollziehbar machen.** Generatorstand und erwartete
-  Regelversion klar anzeigen, Projekt-/Starttexte gemeinsam ausgeben und exportieren.
-  Alte kopierte Texte und Browsercache als mögliche Fehlerquellen berücksichtigen.
-  Tatsächlich geladenen Pluginstand nur als geprüft ausgeben, wenn er wirklich
-  bekannt ist; keine technische Versionssperre oder automatische Chatauslesung behaupten.
-
-Die JSON-Enum-Klarstellung für Waffen aus PR #25 und die spätere Korrektur der
-Vorlagenanzeige sind umgesetzt; angepasste Profile bleiben absichtlich individuell.
-
-### Priorität 2: Rückmeldungen aus der eigenständig handelnden Welt
-
-- [ ] **Relevante Ergebnisse delegierter Aufgaben von selbst vermitteln.** Boten,
-  Berichte und beobachtbare Folgen zu geeigneten Zeitpunkten einbringen, wenn die
-  Figur sie plausibel erhalten kann. Fortschritt anderer Truppen, Kontakte oder
-  Kundschafter soll nicht erst auf ausdrückliche Nachfrage in die Handlung zurückkehren.
-  Keine tägliche Pflichtberichtsrunde, allwissende Echtzeitinformation oder automatische
-  Erkenntnis über jeden geheimen Plan behaupten.
-- [ ] **Größere Konflikte während lokaler Vorhaben fortführen.** Vergangene Zeit,
-  bekannte Fristen und tatsächlich gewonnene Verzögerungen beachten. Neuigkeiten
-  unterscheiden gesicherte Fakten und Einschätzungen; kein spontanes Zurücksetzen
-  einer Bedrohung oder künstlicher Alarm, nur um sie wieder wichtig zu machen.
-  Hintergrundentwicklungen so dosieren, dass sie Entscheidungen ermöglichen und
-  nicht jedes ruhige oder persönliche Vorhaben unterbrechen.
-
-### Priorität 3: Offene Regelfrage zu Kampfunfähigkeit, Tod und Zurückhaltung
-
-- [ ] **„1 LP kampfunfähig, 0 LP tot“ später ergebnisoffen untersuchen.** Dahinter
-  steht der Wunsch nach bewusster Schadensbegrenzung und zusätzlichen taktischen
-  Entscheidungen, nicht nur nach einer anderen Anzeige. Das aktuelle 0-LP-Modell
-  bleibt bis zu einer ausdrücklichen Regelentscheidung bestehen.
-- [ ] **Gezielte und nichttödliche Angriffe gemeinsam gestalten.** Zum Beispiel
-  bewusster Angriff aufs Bein mit höherer Schwierigkeit oder eine andere passende
-  Methode, wenn die Figur jemanden weniger stark verletzen will. Wirkung, Risiko,
-  Absicht, Widerstand und vorhandene Fähigkeiten vorher klären. Ein Beintreffer ist
-  nicht automatisch eine Garantie auf ein harmloses Ergebnis; noch keine generellen
-  Zuschläge, Schadensgrenzen oder Ausschaltungsregeln beschlossen.
-- [ ] **Schaden über die Schwelle und Gegenwirkungen prüfen.** Treffer können 1 LP
-  überspringen. Nichttödliche Absicht, Überwältigung, Heilung/Stabilisierung, kritische
-  Treffer sowie Standard/Hardcore und NSC symmetrisch prüfen. Neue Mechaniken nicht
-  nebenbei in laufenden Kampagnen einführen.
-
-### Erprobung und Weg zur Beta
-
-- [x] Nach 0.15 frei gewählte Kampagnen nach Interesse gespielt und ausgewertet. Weitere
-  Erprobung bleibt gezielt an offene Fragen gebunden. Ergebnisse zu
-  Abschluss, greifbarem Fortschritt, Tempo und neuen Situationen auswerten. Keine feste Zahl an Testläufen und kein
-  Neustart nach jeder Änderung. Tests sollen konkrete offene Fragen beantworten.
-- [ ] Eine erste Beta darf bekannte Schwächen haben. Verständlicher Einstieg,
-  brauchbare Figuren, zuverlässige grundlegende Abläufe und anhaltender Spielreiz
-  wiegen schwerer als ein perfekter Symbolkatalog oder fehlerfreie Darstellung.
-- [ ] Kleine externe Testgruppe vorbereiten: unterschiedliche Erfahrungen und freie
-  Figuren-/Weltenwahl, Start möglichst ohne Begleitung, niedrige Rückmeldehürde.
-  Version/Startpaket, freiwillig geteilter Verlauf, Spielspaß, Korrekturbedarf und
-  Fortsetzungs-/Abbruchgrund festhalten; private Inhalte dürfen entfernt werden.
-- [ ] Vor Einladungen tatsächlichen Pluginzugang und benötigte Umgebung/Kosten
-  klären. Die private Testinstallation ist kein allgemeiner Zugang. Wiederkehrende
-  Befunde von Geschmack und einzelnen schwachen Läufen unterscheiden.
-
-## 4. Danach: Vielfalt über mehrere Durchläufe
-
-- [ ] Impuls-Historie: verwendete Kombinationen lokal zunächst ausschließen,
-  Ausschöpfung behandeln und bewusste Wiederholung per Kennung erlauben.
-- [ ] Optionale Namens-/Kulturimpulse prüfen. Die Wiederverwendung eines bedeutenden
-  Namens innerhalb derselben Kampagne (auch nach dem Tod des ersten Trägers) bleibt
-  als konkreter Befund erhalten; 0.15 fordert den Kontextabgleich, noch keine Historie.
-  Wiederholte Namen wie Varek, Jorek,
-  Dornfeld oder Graufurt nicht allein durch immer längere Verbotslisten behandeln.
-  Eine lokale Historie kennt nur vorgeschlagene oder zurückgemeldete Namen,
-  nicht automatisch sämtliche im Spielchat erfundenen Namen.
-- [ ] Dosierte Motivimpulse prüfen; kein verpflichtender Symbolkatalog und keine
-  fest vorgegebene Handlung. Wiederkehrende Fantasy-Motive sind nicht grundsätzlich Fehler.
-- [ ] Einzelne Impulsachsen festhalten bleibt mögliche spätere Komfortfunktion.
-
-## 5. Komfort, Einstieg und Veröffentlichung
-
-- [ ] Einmalige Willkommenseite: Generator und Spielprinzip kurz erklären;
-  genau ein Button **Start** führt in die Vorbereitung. Nur beim ersten Besuch
-  automatisch anzeigen, Wiedererkennung lokal merken.
-- [ ] Charakterablage für mehrere Figuren und hilfreiche Feldbeschreibungen.
-  Browser-Sidebar erst erwägen, falls der Spieltab nicht genügt.
-- [ ] Themes mit Hell-/Dunkelmodus und Farbvarianten; Blau/Gold als bisherige Grundlage.
-- [ ] Lokalisierung für Oberfläche, Hilfen und Übersicht; verbindliches Wörterbuch
-  für Attribute/Regelbegriffe. JSON-Schlüssel stabil halten. In 0.13 sind englische
-  Anzeigen reduziert, aber Übersetzungen noch nicht mit der UI vereinheitlicht.
-- [ ] Besserer Name sowie durchgängiges Symbol als Favicon und links im Kopfbereich
-  von Generator und Spielübersicht.
-- [ ] Eventuell Geld in **Währung** umbenennen; weiterhin als Vorschlag vorgemerkt.
-- [ ] Ungefragte Bilder beobachten: Textstandard ist bereits geregelt, wird vom
-  Spielchat aber nicht durchgehend eingehalten. Keine technische Sperre behaupten.
-
-Diese Punkte bleiben erhalten, sind aber keine Voraussetzung für die nächste
-spielerische Verbesserung. Keine zusätzlichen Einrichtungsrunden nur für Komfort.
-
-## 6. Weitere offene Erprobung
-
-- Mittel und lang mit größeren Bögen und brauchbarer Zwischenentwicklung.
-- Feste Gefährten, gemeinsame Entwicklung und eigenständiges Handeln.
-- Ressourcen/Erholung über längere Zeit, einschließlich Blutdurst und anderer
-  ausdrücklich vereinbarter besonderer Bedürfnisse; keine überraschenden Zähler.
-- Große Entwicklung, Transformationen und bewusst übermächtige Phasen.
-- Kontinuität von Wissen, Namen, Positionen, Zeit und Finanzen nach Spielauswirkung.
-  Verletzungen brauchen fortschreitende Erholung nach den geltenden Regeln statt
-  nur wiederkehrender Erwähnung. Eine nach wenigen Tagen noch empfindliche Schulter
-  ist für sich kein Fehler; verbleibende Einschränkung und Erholung müssen passen.
-- Selbstständige Folgeabenteuer, Erzähltempo und wiederkehrende Handlungen weiter
-  beobachten. Keine automatischen Rückschlüsse von einem einzelnen gelungenen Lauf.
-
-## Versionsdokumente
-
-- [Abschlüsse, greifbarer Fortschritt und Generator 0.15](abschluesse-und-fortschritt-0.15.md)
-
-- [Solospiel, Waffen und Kampfablauf 0.14](solospiel-und-waffen-0.14.md)
-
-- [Folgeabenteuer, Ruhephasen und Weltpräsenz 0.13](fortsetzungen-0.13.md)
-- [Geführtes Layout und Fähigkeiten 0.12](layout-und-faehigkeiten-0.12.md)
-- [Umfang, Fortschritt und Spieltab 0.11](umfang-fortschritt-spieltab-0.11.md)
-- [Ausgangsimpulse und Wissensgrenzen 0.10](ausgangsimpulse-0.10.md)
-- [Kampf, Erholung und Übersicht 0.9](kampf-und-erholung-0.9.md)
-- [Weltinitiative und wirksame Kräfte 0.8](weltinitiative-0.8.md)
-- [Gemeinsamer Erzählauftrag 0.7](erzaehlauftrag-0.7.md)
-- [Stand nach Jack 0.6](spielbarer-prototyp-0.6.md)
-- [Weltvorlagen und Kurzabenteuer 0.5](welten-und-kurzabenteuer-0.5.md)
-
-[EXP und Weltprofile 0.16](exp-und-weltprofile-0.16.md)
-
-[Abenteuergrenzen und Spieltempo 0.17](abenteuergrenzen-und-spieltempo-0.17.md)
+# Roadmap – offene Aufgaben und Entscheidungen
+
+Stand: 16. November 2026 · Generator 0.24.0 · Regelbasis 0.20.0
+
+Nur offene Arbeit. Die Gruppen zeigen Dringlichkeit, keine freigegebenen Pakete.
+Umfang und Reihenfolge wählen wir gemeinsam; ein weiterer Spieltest ist keine Voraussetzung.
+
+[Changelog](../CHANGELOG.md) · [Erprobung und Erhaltungsziele](erprobung.md) ·
+[Historische Roadmap](roadmap-archiv-bis-0.24.md)
+
+## 1. Spielerische Schwerpunkte für die nächste Paketplanung
+
+- [ ] **R01 · Weltentwicklung zwischen Abenteuern.** Fraktionen verfolgen Interessen
+  und verändern Einfluss, Revier, Beziehungen oder Chancen. Delegation darf Folgen
+  nicht dauerhaft bei einem NSC parken. **Ziel:** Eine bekannte Entwicklung erzeugt
+  ohne vorgegebenen Spielerplot eine neue Lage. Kurze Abenteuer bleiben abgeschlossen;
+  keine endlose Pflicht-Hauptquest oder Krise bei jeder Ruhephase.
+- [ ] **R02 · Konfliktvielfalt und Ton.** Folgeaufgaben nach Zielen und entscheidenden
+  Handlungen variieren; Gewinn, Rivalität und Entdeckung neben Hilfe/Rettung ermöglichen.
+  Eigene und fremde Fraktionen behalten Machtziele und moralische Grenzen; eine böse
+  Figur wird nicht automatisch zur Retterin. **Ziel:** Unterschiedliche sinnvolle Wege
+  einschließlich Kampf, Täuschung oder Flucht; Verhandlung bleibt möglich. Düsternis
+  nicht auf Wortwahl reduzieren, keine Themenquote oder erzwungene Grausamkeit.
+- [ ] **R03 · Taktische Wirkung.** Umwerfen, Stellung, Vorbereitung, erkannte Muster,
+  Kontrolle und beschädigte Antriebe mit Aktionskosten, Dauer und gegnerischem
+  Anschlusszug beurteilen. **Ziel:** Nutzen und Risiko vor der Wahl verständlich und
+  nach Erfolg wirksam. Enges Duell mit Team-/Deckungsgefecht vergleichen; keine
+  pauschalen Gratisangriffe, Zusatzeffekte oder automatisch verlorenen Gegnerzüge.
+- [ ] **R04 · Vollständiger Kampf- und Probenablauf.** Rohwürfe, zuständige Person,
+  vollständige Boni, Gegner-LP, Verbündetenzüge, ausgewählte Schadenswürfel, Bewegung
+  und Effektende führen. Fahrzeug-/Geschütz-/Flächenwirkung vorher klären.
+  **Ziel:** Mehrere Runden ohne Nachfordern; Deckung und Schusslinie vor dem Wurf
+  berücksichtigen, Treffer nicht nachträglich verwerfen. Einfache Vorhaben nicht
+  zerlegen und Fehlschläge kompetenter Figuren plausibel erzählen.
+- [ ] **R05 · Fähigkeiten und Aufrüstung.** Angebote mit Grundhandlungen und dem
+  ganzen aktuellen Bogen vergleichen. Reaktionsboni müssen zur tatsächlichen
+  Auflösung passen; vorhandene Deckung darf bezahlte Effekte nicht unbemerkt entwerten.
+  **Ziel:** Neue Anwendungen oder erkennbare Verbesserungen statt schlechterer
+  Doppelungen; auch bestehende Techniken ausbauen/ersetzen können, ohne bestätigte
+  Wirkungen ungefragt zu verlieren. Breite Portfolios bleiben erlaubt.
+- [ ] **R06 · Spürbare Stärke und Startniveau.** Fähigkeiten, Wirkung, Ressourcen,
+  Einfluss und Gegner an gewünschte Kompetenz anschließen. **Ziel:** Fortschritt
+  eröffnet Wege und macht frühere Gefahren gelegentlich leichter; nicht nur mehr
+  Vorrat oder stets passende stärkere Gegner. Keine versteckte Abschwächung etablierter
+  Figuren. Schnelleren Machtgewinn bei Bedarf numerisch prüfen; neue Stufen oder
+  globale Verstärkung sind nicht beschlossen.
+- [ ] **R07 · Abschluss und EXP.** Entschiedene Ergebnisse, Erkundung und folgenreiche
+  Niederlagen ohne Nachfrage abrechnen; Rest-EXP, sofortige Auswahl und offene
+  Entscheidungen führen. **Ziel:** Abschluss und Abrechnung gemeinsam, unabhängig von
+  Verkauf/Freigabe/offenem Gesamtbogen; keine Doppelvergabe. Klarer Abschluss allein
+  behebt beobachtetes Vergessen nicht. Bestehendes EXP-Modell zunächst beibehalten.
+- [ ] **R08 · Umfang und Tempo.** Umfang, Kampagnenstruktur, Ton und Schwerpunkt
+  dürfen einander nicht aushebeln. **Ziel:** Begrenzte Konflikte mit Substanz und
+  Abschluss, größere Bögen mit Zwischenentwicklung; freiwillige Vertiefung vereinbaren.
+  Routine, Freigaben, Lob und Spielerwortlaut raffen; 250-Wörter-Standard mit vorhandenen
+  Ausnahmen anwenden, keine Kleinstschrittpflicht und kein erzwungenes Ende bei Spielspaß.
+
+## 2. Vertiefung und offene Regelentscheidungen
+
+- [ ] **R09 · Überraschung und Überwältigen.** Heimliches Festsetzen, Schadensangriff
+  und nichttödliche Absicht vor Einsatz unterscheiden. **Ziel:** Plausible Wirkung
+  und Alarmrisiko; kein voller Kopftreffer mit unpassend folgenlosem Weiterkämpfen.
+  Keine allgemeine automatische Ausschaltung.
+- [ ] **R10 · Waffen, Schaden und kritische Treffer.** Tatsächliche Waffenunterschiede
+  statt mehr Verbrauch bei gleicher Wirkung prüfen. Kraftbeitrag, Trefferqualität
+  einschließlich Schaden 0 sowie natürliche 20/maximalen Schadenswurf vergleichen.
+  **Ziel:** Erkennbare Stärken/Grenzen, symmetrisch für Spieler und NSC geprüft.
+  Keine beschlossene Schadensverdopplung, automatische Tötung oder D%-Pflicht.
+- [ ] **R11 · Belohnungen und Forschung.** Ausrüstung, Kräfte, Wissen, Ressourcen
+  und Einfluss nach praktischem Nutzen mischen; verdienten Fortschritt nicht hinter
+  Pflichttraining oder neue Voraussetzungen legen. **Ziel:** Erreichbare nutzbare
+  Ergebnisse. Bei Produkttests Figurenleistung/Zufall von technischer Zuverlässigkeit
+  und verbindlichen Produktwerten trennen.
+- [ ] **R12 · Vergütung und Versorgung.** Auftraggeber, Nutzen, Aufwand, Risiko,
+  Personal und Kaufpreisanker plausibel verbinden. Interne Prämie, Kundenhonorar,
+  Beute und Fraktionsvermögen trennen; Anteil/Zahlungszeitpunkt vorher klären.
+  Normale Mahlzeiten/Munition gegebenenfalls abstrahieren, relevante Knappheit behalten.
+  **Ziel:** Nachvollziehbare Beträge ohne starre Tarife oder überraschend leere
+  Magazine. Blutdurst, Mana und besondere Munition gesondert erproben.
+- [ ] **R13 · Wissen und Kontinuität.** Kleine Hilfe für Identitäten, Wissen, Orte,
+  Zugehörigkeit, Absprachen, Zeit, Verletzungen und getrennte Finanzen prüfen.
+  **Ziel:** Verbindliche Angaben bleiben nutzbar, Figurenrede kennt keine Regelzahlen,
+  Identitäten werden nicht still verschmolzen. Externe Speicherung ist eine offene
+  Aufwand-/Nutzenentscheidung, keine garantierte Chat-Synchronisierung.
+- [ ] **R14 · Namen, Motive und Impulshistorie.** Kultur-/Namensimpulse, dosierte
+  Motivimpulse und lokale Historie verwendeter Kombinationen prüfen; Ausschöpfung,
+  bewusste Wiederholung per Kennung und Festhalten einzelner Achsen berücksichtigen.
+  **Ziel:** Vielfalt ohne Verbotslisten, Symbolpflicht oder fertigen Plot. Browserdaten
+  kennen im Spielchat erfundene Namen nicht automatisch.
+- [ ] **R15 · Tod und Schadensbegrenzung.** „1 LP kampfunfähig, 0 tot“ einschließlich
+  übersprungener Schwellen, Stabilisierung, Nichttödlichkeit, Rewind/Hardcore und
+  kritischer Treffer später symmetrisch prüfen. **Ziel:** Verständliche Entscheidungen
+  über Zurückhaltung. Bis Entscheidung gilt das bestehende Modell.
+- [ ] **R16 · Inhaltsprofil.** Prüfen, ob klareres Wording genügt oder freiwillige
+  Themen-/Darstellungsoptionen nötig sind. **Ziel:** Ton, erwachsene Themen und
+  explizite Darstellung unterscheiden; keine behauptete offizielle Altersfreigabe
+  oder zusätzliche Felder ohne belegten Nutzen.
+- [ ] **R17 · Optionale Zufallsbeute.** D%-Seltenheit und direkt nutzbare besondere
+  Funde abhängig von Ort, Setting und Machtniveau entwerfen. **Ziel:** Zusätzliche
+  Chancen ohne Pflichtloot, Beutegrinden oder Ersatz bereits verdienter EXP.
+  Tabelle und Wahrscheinlichkeiten sind noch nicht beschlossen.
+
+## 3. Generator und Spieltab – unabhängig umsetzbare Aufgaben
+
+- [ ] **R18 · Klartext-Fortsetzung.** Rekonstruierten Markdown-Save optional einlesen
+  und mit Fortsetzungsanweisung kopieren. **Ziel:** Upload im Spielchat nicht voraussetzen,
+  Plugin-Auswahl/Strg+Umschalt+V erklären; keine Umgehung von Kontolimits versprechen.
+- [ ] **R19 · Aktuellen Spieltab angleichen.** Optional schemafähigen Spieltab-Export
+  neben lesbarem Save anfordern. **Ziel:** Vorschau, markierte Unsicherheiten und
+  bewusste Übernahme; fehlende Werte nicht als 0/voll erfinden. Startbogen erhalten;
+  Freitext-Parsing nicht als verlässliche Synchronisierung ausgeben.
+- [ ] **R20 · Spieltab vereinfachen.** Doppelten Kampfwertbereich neben fester
+  Verteidigungsanzeige prüfen; manuelle Angriffsboni/Zustände sinnvoll erhalten.
+  Drag-and-drop zusätzlich zu Tastatur-/Pfeilbedienung. **Ziel:** Dieselbe gespeicherte
+  Reihenfolge verwenden und vorhandene Exportdaten nicht verlieren.
+- [ ] **R21 · Vorbereitung nachschärfen.** Tragplätze an tatsächlicher Sperrigkeit
+  ausrichten; Fähigkeiten vollständig und zur Welt passend definieren.
+  **Ziel:** Weniger Nachbesserung des Startbogens. Semantische Freitextgrenzen offenlegen;
+  Wirkung/Kosten zwischen Template, Editor, Starttext und Plugin konsistent halten.
+  Weitere Weltvorlagen nach spielbaren Eigenheiten prüfen; die Fantasy-Überarbeitung
+  ist kein Nachweis gleicher Qualität aller Szenarien. Freitext bleibt nutzbar.
+- [ ] **R22 · Einstieg, Ablage und Hilfen.** Einmalige Willkommenseite mit genau
+  einem Startbutton, mehrere gespeicherte Figuren und bessere Feldhilfen prüfen.
+  **Ziel:** Selbstständiger Einstieg ohne zusätzliche Einrichtungsrunden;
+  bestehende Kampagnenablage nicht duplizieren, Sidebar nur bei belegtem Bedarf.
+- [ ] **R23 · Gestaltung und Lokalisierung.** Hell-/Dunkelmodus, Farbvarianten,
+  gemeinsames Regelwörterbuch, übersetzte Oberfläche/Hilfen/Übersicht und konsistenten
+  Namen/Icon für Generator/Spieltab ausarbeiten. Geld → Währung bleibt Vorschlag.
+  **Ziel:** Einheitliche verständliche Anzeigen bei stabilen JSON-Codes.
+
+## 4. Erprobung und Beta-Vorbereitung
+
+- [ ] **R24 · Gezielte Variantenprüfung.** Mittel/lang samt Zwischenentwicklung,
+  feste Gefährten mit eigener Entwicklung, besondere Ressourcen/Erholung und
+  Transformationen/übermächtige Phasen prüfen. Figuren-/Crew-Entwurfsauswahl und
+  Impulse getrennt von Auftragsvielfalt bewerten. **Ziel:** Konkrete Fragen mit
+  vorhandenen Szenen und freiwilligen Läufen beantworten, keine feste Testzahl.
+- [ ] **R25 · Fortsetzung und Pluginverhalten.** Rekonstruktionsfehler von späterem
+  Vergessen trennen; Regelversion, Ausnahmen, Würfelauswahl und offene Begleiterentwicklung
+  erhalten. Aufrufsymbole, Neuladen, Textlänge, Bilder und wiederholte Motive beobachten.
+  **Ziel:** Ehrliche Abdeckung, keine behauptete dauerhafte Aktivierung oder perfekte
+  Wiederherstellung; Ursache vor Zusatzregeln klären. Harmlose Darstellungsfehler
+  nicht unnötig priorisieren.
+- [ ] **R26 · Externe Beta.** Pluginzugang, Umgebung und Kosten vor Einladungen
+  klären; kurzen Einstieg und freiwillige Rückmeldung zu Version, Spaß, Korrekturen
+  und Fortsetzungs-/Abbruchgrund vorbereiten. **Ziel:** Unterschiedliche Spieler testen
+  selbstständig; bekannte Schwächen sind zulässig, perfekte Darstellung und Prüfung
+  aller Kombinationen keine Voraussetzung.
+- [ ] **R27 · Kampagnenvergleich.** Starke vorhandene Verläufe gesammelt auswerten,
+  auf Wunsch ungefähr ab zehn Beispielen. **Ziel:** Version, Konfiguration,
+  Spielerinteresse und wiederkehrende Muster unterscheiden; keine Kausalität aus
+  einzelnen Erfolgsfällen ableiten. Private Exporte bleiben außerhalb des Repositorys.
+
+## Pflege
+
+Erledigte Änderungen ins Changelog, Testerkenntnisse in die Erprobungsübersicht.
+Offene Punkte hier präzisieren statt unter neuen Versionen wiederholen. Umsetzung
+beweist keine langfristige Modellbefolgung. Frühere Kennungen A–O bleiben im Archiv;
+R01–R27 sind die gemeinsame Referenz für die nächste Paketentscheidung.

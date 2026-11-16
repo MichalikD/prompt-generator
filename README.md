@@ -1,5 +1,8 @@
 # Abenteuer · Prompt-Generator
 
+[Offene Roadmap](docs/roadmap.md) · [Changelog](CHANGELOG.md) ·
+[Erprobung und Erhaltungsziele](docs/erprobung.md)
+
 ## Aktuell: Kampagnen fortsetzen und Spieltab-Komfort · Generator 0.24.0
 
 Die Regelbasis bleibt unverändert bei **0.20.0**. Bestehende Kampagnen behalten ihre
@@ -22,8 +25,8 @@ bestätigten Werte, Fähigkeiten und Vereinbarungen.
   unkalibrierten Prozent-Schätzungen; diese bewerten keine Spielqualität.
 
 Keine automatische Chat-Synchronisierung, neue Spielregel, externe Speicherung oder
-KI-Anfrage im Generator. Siehe [Roadmap](docs/roadmap.md) für das Paket und die danach
-zu priorisierenden Spielthemen.
+KI-Anfrage im Generator. Umgesetzte Pakete stehen im [Changelog](CHANGELOG.md),
+noch offene Aufgaben und Entscheidungen in der [Roadmap](docs/roadmap.md).
 
 ## Vorheriger Stand: Konfliktablauf und vollständiger Spieltab · Generator 0.23.0
 
