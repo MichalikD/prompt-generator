@@ -1,6 +1,6 @@
 # Entwicklungsroadmap des Prompt-Generators
 
-Stand: 15. November 2026 · Generator: 0.24.0 · Regelbasis: 0.20.0
+Stand: 16. November 2026 · Generator: 0.24.0 · Regelbasis: 0.20.0
 
 Diese Roadmap führt die bisherigen Aufgaben und aktuelle Entwicklungsanforderungen
 zusammen. Neue Einträge enthalten keine privaten Kampagnenszenen oder Figurenangaben.
@@ -290,6 +290,18 @@ ohne verbrauchte Rastfähigkeiten automatisch aufzufüllen. Diese Stärken bewah
   Friedliche Spielentscheidungen sind kein Auftrag, ausschließlich friedlich
   sinnvoll lösbare Aufträge anzubieten. Nachträgliche NSC-Erklärungen für die
   bisherige Auftragsauswahl nicht als Beweis einer ursprünglich geplanten Ursache werten.
+- [ ] **Entwicklung zwischen Aufträgen (E/J):** Unterschiedliche Einzelaufträge
+  können trotzdem dieselbe Schleife bilden: Information, begrenzter Einsatz,
+  Einigung, Rückkehr, neue Anfrage. Prüfen, ob etablierte Gegner und Fraktionen
+  eigene Ziele tatsächlich verfolgen und dadurch Einfluss, Revier, Beziehungen
+  oder Handlungsmöglichkeiten verändern. Ermittlungsberichte und angekündigte
+  Bedrohungen allein sind kein erlebter Weltfortschritt. Kompetente Delegation
+  erhalten, ohne alle relevanten Folgen bei einem NSC zu parken. Bewusste Ruhe
+  und sinnvolle Verhandlungen nicht bestrafen. Kurze Abenteuer bleiben begrenzt;
+  gemeinsame Weltfolgen verlangen weder eine endlose Pflicht-Hauptquest noch
+  einen Angriff bei jeder Pause. Ausreichend ist eine Welt, deren bestehende
+  Interessen gelegentlich eine konkrete Entscheidung oder Initiative eröffnen,
+  ohne dass der Spieler die nächste Eskalation selbst erfinden muss.
 - [ ] **Optionales Inhaltsprofil prüfen (E/M):** Ton, zugelassene Themen und
   Darstellungsintensität getrennt betrachten. Eine Altersauswahl ist eine Idee,
   noch kein beschlossener Modus oder offizielle Altersfreigabe. Keine zusätzlichen
@@ -299,6 +311,14 @@ ohne verbrauchte Rastfähigkeiten automatisch aufzufüllen. Diese Stärken bewah
   Abschlussklarheit ist damit nicht die einzige Ursache. Selbstständig gewährte
   Turnierentwicklung und die Begeisterung über endlich nutzbare Ausrüstung erhalten.
   Technische Testberichte nicht mit einem spielerischen Zusatznutzen gleichsetzen.
+- [ ] **Nachvollziehbare Vergütung (B/J):** Honorare anhand von Auftraggeber,
+  Nutzen, Risiko, Personal, Dauer und Verhandlungsposition plausibel einordnen,
+  mit bestehenden Geld-/Kaufpreisankern abgleichen und vorab Anteil sowie
+  Zahlungszeitpunkt klären. Interne Gangprämie, externes Honorar, eigene Beute
+  und zurückgeholtes Fraktionsvermögen unterscheiden. Eine niedrigere interne
+  Prämie wurde vom Spieler ausdrücklich akzeptiert; unterschiedliche Beträge
+  sind nicht automatisch Rechenfehler. Keine feste Risikotariftabelle oder
+  automatische gleiche Entlohnung für jeden Auftrag daraus ableiten.
 - [ ] **Produkttests und Würfe (A/F):** Einzelner misslungener Schuss wird zur
   Aussage über technische Reichweitengrenzen. Figurenleistung, Zufall, technische
   Zuverlässigkeit und zugesagte Produktwerte auseinanderhalten; noch keine neue
@@ -322,6 +342,10 @@ Zusatzwürfel, abstrakte Alltagsversorgung gegenüber besonderen Ressourcen,
 Namenszuordnung und längere Forschungs-/Lieferketten bleiben aus den früheren
 Abschnitten bestehen. Kein weiterer Pflichtdurchlauf und keine vorzeitige
 Regeländerung für die laufende Kampagne werden daraus abgeleitet.
+Die Fortsetzung vom 16. November präzisiert insbesondere Weltentwicklung und
+Vergütung. Begrenzte gewaltsame Gegenwehr und selbstständig gewährte EXP kommen
+bereits vor; der offene Punkt ist deshalb nicht ein völliges Fehlen von Kampf
+oder Abschluss, sondern das Zusammenspiel der einzelnen Ergebnisse über längere Zeit.
 
 ### Gesamtergebnis des langen Durchlaufs und offene Folgearbeit
 
