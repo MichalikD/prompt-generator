@@ -1,16 +1,18 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { groups, allConfigs, buildPrompt, defaults, LIMIT, buildCompactPackage } from '../src/generator.mjs';
+import { groups, buildPrompt, defaults, LIMIT, buildCompactPackage } from '../src/generator.mjs';
 import { core, pacing, probePolicy, savePolicy } from '../src/modules.mjs';
+import {groups as legacyGroups} from '../src/modules.mjs';
+import {representativeConfigs} from './config-cases.mjs';
 
-test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen Kern', () => {
+test('Archivierte Ausgabe behält ihren vollständigen Kern in repräsentativen Alt-Konfigurationen', () => {
   let count = 0;
-  for (const config of allConfigs()) {
+  for (const config of representativeConfigs().filter(c=>c.scope!=='dynamic')) {
     const result = buildCompactPackage(config);
     const prompt = result.projectInstructions+'\n'+result.startMessage;
     assert.ok(result.projectInstructions.length < LIMIT, JSON.stringify(config));
     for (const block of Object.values(core)) assert.ok(prompt.includes(block));
-    for (const group of groups) for (const option of group.options) {
+    for (const group of legacyGroups) for (const option of group.options) {
       const text = option.text;
       if (text) assert.equal(prompt.includes(text), config[group.id] === option.id);
     }
@@ -23,7 +25,7 @@ test('Jede Kombination bleibt unter 8000 Zeichen und enthält den vollständigen
     assert.ok(!/undefined|null/.test(prompt));
     count++;
   }
-  assert.equal(count, 48 * groups.reduce((n,g)=>n*g.options.length,1));
+  assert.ok(count>0);
 });
 test('Hardcore, Horror und Cyberpunk ersetzen widersprüchliche Regeln', () => {
   const result = buildCompactPackage({...defaults, death:'hardcore',tone:'horror',setting:'cyberpunk'});

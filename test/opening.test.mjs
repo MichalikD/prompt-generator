@@ -18,9 +18,9 @@ test('Ausgeschaltet bleibt der freie Start unverändert; Kennungen sind keine im
 });
 
 test('Kennung und Vorgaben erzeugen reproduzierbare zwei Bausteine ohne Handlungsvorgabe',()=>{
- const before=JSON.stringify(config),a=resolveOpening(config);
- assert.deepEqual(resolveOpening({...config}),a);
- assert.deepEqual(resolveOpening({...config,worldMixConfirmed:true}),a);
+ const fixed={...config,scope:'short'},before=JSON.stringify(config),a=resolveOpening(fixed);
+ assert.deepEqual(resolveOpening({...fixed}),a);
+ assert.deepEqual(resolveOpening({...fixed,worldMixConfirmed:true}),a);
  assert.equal(a.environment.id,'sea');assert.equal(a.situation.id,'captive');
  const text=openingText(a);
  for(const phrase of ['Environment:','Starting situation:','not world facts','the confirmed character','no fixed objective','secrets yourself'])assert.ok(text.includes(phrase),phrase);

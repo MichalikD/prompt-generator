@@ -1,27 +1,38 @@
 import {worldRules} from './worlds.mjs';
 import { languageDirective, localizationPolicy } from './language.mjs';
 import { createProfile, profileText } from './profile.mjs';
-import { groups, core, dice, pacing, probePolicy, savePolicy } from './modules.mjs';
-export { groups, dice };
+import { groups as legacyGroups, core, dice, pacing, probePolicy, savePolicy } from './modules.mjs';
+export { dice };
+// Active choices are separate from the archived output's unchanged modules.
+export const groups = legacyGroups.flatMap(group => {
+ if(group.id==='scope')return [{...group,options:[{id:'dynamic',label:'Dynamisch',text:'Dynamic: vary the length of each conflict according to its substance and player decisions, with a reachable ending and no artificial extension.',tooltip:'Kurze und längere Abenteuer nach Inhalt und Entscheidungen. Jedes hat ein erreichbares Ende; Erfolge führen näher zum Abschluss, nicht zu immer neuen Voraussetzungen.'},...group.options]}];
+ if(group.id==='tone')return [group,{id:'depiction',label:'Darstellung der Welt',options:[
+  {id:'clear',label:'Deutlich',text:'Clear: concrete injuries, physical consequences and adult settings, without dwelling on graphic detail.',tooltip:'Konkrete Verletzungen und erwachsene Milieus offen beschreiben. Verändert weder Gefahr noch Spielregeln.'},
+  {id:'restrained',label:'Zurückhaltend',text:'Restrained: acknowledge injury, death and adult themes without detailed bodily depiction.',tooltip:'Geschehen erkennbar machen, körperliche Details zurücknehmen. Keine automatisch harmlose Welt.'},
+  {id:'graphic',label:'Drastisch',text:'Graphic: explicit violence, decay and bodily detail where the actual events and setting support them.',tooltip:'Passende Ereignisse können explizit dargestellt werden, auch außerhalb von Kämpfen. Keine Pflicht zu Gewalt oder geänderte Schadensregeln.'},
+ ]}];
+ return [group];
+});
 // UTF-16 length is conservative for supplementary Unicode characters.
 export const LIMIT = 8000;
 export const defaults = { ...Object.fromEntries(groups.map(g => [g.id, g.options[0].id])), roller: 'player', setting: 'fantasy' };
-export function selectOptions(config) {
+export function selectOptions(config, {legacy=false}={}) {
   if (config.players !== undefined && config.players !== 'solo') throw new Error('Der Generator unterstützt derzeit nur eine Spielerfigur. Koop wurde entfernt.');
   const selected = {};
-  for (const g of groups) {
-    const option = g.options.find(o => o.id === config[g.id]);
+  for (const g of legacy?legacyGroups:groups) {
+    const option = g.options.find(o => o.id === (config[g.id]??(g.id==='depiction'?'clear':undefined)));
     if (!option) throw new Error(`Ungültige Einstellung: ${g.id}`);
     selected[g.id] = option;
   }
-  createProfile(config);
+  createProfile(config,{legacy});
   diceText(config); // Gleiche Validierung für beide Ausgaben.
   return selected;
 }
 export function buildCompactPackage(config = defaults, {prepared=false}={}) {
-  const options = selectOptions(config);
-  const profile = createProfile(config);
-  const narrative = profileText(profile, options, groups);
+  config={...config,scope:config.scope==='dynamic'?'short':config.scope};
+  const options = selectOptions(config,{legacy:true});
+  const profile = createProfile(config,{legacy:true});
+  const narrative = profileText(profile, options, legacyGroups);
   const selected = Object.fromEntries(Object.entries(options).map(([key, option]) => [key, option.text]));
   const rules = core;
   const sections = [

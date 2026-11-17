@@ -1,6 +1,6 @@
 # Roadmap – offene Aufgaben und Entscheidungen
 
-Stand: 16. November 2026 · Generator 0.24.0 · Regelbasis 0.20.0
+Stand: 17. November 2026 · Generator 0.25.0 · Regelbasis 0.21.0
 
 Nur offene Arbeit. Die Gruppen zeigen Dringlichkeit, keine freigegebenen Pakete.
 Umfang und Reihenfolge wählen wir gemeinsam; ein weiterer Spieltest ist keine Voraussetzung.
@@ -10,28 +10,31 @@ Umfang und Reihenfolge wählen wir gemeinsam; ein weiterer Spieltest ist keine V
 
 ## 1. Spielerische Schwerpunkte für die nächste Paketplanung
 
-- [ ] **R01 · Weltentwicklung zwischen Abenteuern.** Fraktionen verfolgen Interessen
-  und verändern Einfluss, Revier, Beziehungen oder Chancen. Delegation darf Folgen
-  nicht dauerhaft bei einem NSC parken. **Ziel:** Eine bekannte Entwicklung erzeugt
-  ohne vorgegebenen Spielerplot eine neue Lage. Kurze Abenteuer bleiben abgeschlossen;
-  keine endlose Pflicht-Hauptquest oder Krise bei jeder Ruhephase.
-- [ ] **R02 · Konfliktvielfalt und Ton.** Folgeaufgaben nach Zielen und entscheidenden
-  Handlungen variieren; Gewinn, Rivalität und Entdeckung neben Hilfe/Rettung ermöglichen.
-  Eigene und fremde Fraktionen behalten Machtziele und moralische Grenzen; eine böse
-  Figur wird nicht automatisch zur Retterin. **Ziel:** Unterschiedliche sinnvolle Wege
-  einschließlich Kampf, Täuschung oder Flucht; Verhandlung bleibt möglich. Düsternis
-  nicht auf Wortwahl reduzieren, keine Themenquote oder erzwungene Grausamkeit.
-- [ ] **R03 · Taktische Wirkung.** Umwerfen, Stellung, Vorbereitung, erkannte Muster,
-  Kontrolle und beschädigte Antriebe mit Aktionskosten, Dauer und gegnerischem
-  Anschlusszug beurteilen. **Ziel:** Nutzen und Risiko vor der Wahl verständlich und
-  nach Erfolg wirksam. Enges Duell mit Team-/Deckungsgefecht vergleichen; keine
-  pauschalen Gratisangriffe, Zusatzeffekte oder automatisch verlorenen Gegnerzüge.
-- [ ] **R04 · Vollständiger Kampf- und Probenablauf.** Rohwürfe, zuständige Person,
-  vollständige Boni, Gegner-LP, Verbündetenzüge, ausgewählte Schadenswürfel, Bewegung
-  und Effektende führen. Fahrzeug-/Geschütz-/Flächenwirkung vorher klären.
-  **Ziel:** Mehrere Runden ohne Nachfordern; Deckung und Schusslinie vor dem Wurf
-  berücksichtigen, Treffer nicht nachträglich verwerfen. Einfache Vorhaben nicht
-  zerlegen und Fehlschläge kompetenter Figuren plausibel erzählen.
+- [ ] **R01 · Sichtbare Weltentwicklung erproben.** Die 0.21-Regel zu tatsächlichen
+  Folgen von Einfluss, Revier, Beziehungen und Delegation im längeren Spiel prüfen.
+  **Ziel:** Veränderte Möglichkeiten statt bloßer Berichte oder neuer Namen;
+  keine Rücknahme gültiger Erfolge oder automatische Krise nach Ruhe.
+
+- [ ] **R02 · Vielfalt und Rollentreue im Verlauf.** Unter der klareren Trennung
+  von Ton, Darstellung und Umfang prüfen, ob eigene/fremde Fraktionen ihre Interessen
+  behalten und Folgekonflikte andere Tätigkeiten ermöglichen. **Ziel:** Kampf,
+  Täuschung, Gewinn und Entdeckung neben Hilfe; friedliche Lösungen und passende
+  Wärme/Humor bewahren. Kein erzwungener Gesinnungswechsel oder Themenquote.
+
+- [ ] **R03 · K1 vertieft erproben.** Grundkern im menschlichen Duell-/Teamtest
+  als taktischer und besser bewertet. Halten, Schieben, Entwaffnen, Bereitschaft,
+  Kriechen und Waffenpaarungen sind noch nicht hinreichend erprobt. **Ziel:**
+  Nützliche Wahlmöglichkeiten ohne dominante Gratislösung oder unnötige Komplexität.
+  Erkannte Muster und beschädigte Antriebe bei besonderen Gegnern gesondert betrachten.
+  Kein zusätzlicher einfacher Kampfmodus beschlossen; Schaden bleibt W4/W6/W8 wie gewählt.
+
+- [ ] **R04 · Kampfablauf unter längerer Belastung.** K1-Aktionsübersicht und
+  Reaktionsangebote sind umgesetzt; tatsächliche Befolgung neben Rohwürfen,
+  vollständigen Boni, HP, Verbündeten, Schadenswürfeln und Effektende prüfen.
+  Fahrzeug-/Geschütz-/Flächenwirkung weiter gesondert beachten. **Ziel:** Mehrere
+  Runden ohne Nachfordern und ohne nachträglich veränderte Treffer/Schusslinien.
+  Einfache Vorhaben nicht zerlegen; Fehlschläge kompetenter Figuren plausibel erzählen.
+
 - [ ] **R05 · Fähigkeiten und Aufrüstung.** Angebote mit Grundhandlungen und dem
   ganzen aktuellen Bogen vergleichen. Reaktionsboni müssen zur tatsächlichen
   Auflösung passen; vorhandene Deckung darf bezahlte Effekte nicht unbemerkt entwerten.
@@ -49,11 +52,11 @@ Umfang und Reihenfolge wählen wir gemeinsam; ein weiterer Spieltest ist keine V
   Entscheidungen führen. **Ziel:** Abschluss und Abrechnung gemeinsam, unabhängig von
   Verkauf/Freigabe/offenem Gesamtbogen; keine Doppelvergabe. Klarer Abschluss allein
   behebt beobachtetes Vergessen nicht. Bestehendes EXP-Modell zunächst beibehalten.
-- [ ] **R08 · Umfang und Tempo.** Umfang, Kampagnenstruktur, Ton und Schwerpunkt
-  dürfen einander nicht aushebeln. **Ziel:** Begrenzte Konflikte mit Substanz und
-  Abschluss, größere Bögen mit Zwischenentwicklung; freiwillige Vertiefung vereinbaren.
-  Routine, Freigaben, Lob und Spielerwortlaut raffen; 250-Wörter-Standard mit vorhandenen
-  Ausnahmen anwenden, keine Kleinstschrittpflicht und kein erzwungenes Ende bei Spielspaß.
+- [ ] **R08 · Dynamischen Umfang und Tempo erproben.** Dynamisch ist jetzt
+  Standard; kurze und längere Konflikte müssen sich tatsächlich unterscheiden und
+  jeweils einen erreichbaren Abschluss behalten. Feste Umfänge und Kampagnenstruktur
+  dürfen einander weiter nicht aushebeln. **Ziel:** Genug erlebte Substanz, kein
+  künstliches Verlängern, nutzbare Zwischenentwicklung und knappe Abwicklung.
 
 ## 2. Vertiefung und offene Regelentscheidungen
 
@@ -91,10 +94,7 @@ Umfang und Reihenfolge wählen wir gemeinsam; ein weiterer Spieltest ist keine V
   übersprungener Schwellen, Stabilisierung, Nichttödlichkeit, Rewind/Hardcore und
   kritischer Treffer später symmetrisch prüfen. **Ziel:** Verständliche Entscheidungen
   über Zurückhaltung. Bis Entscheidung gilt das bestehende Modell.
-- [ ] **R16 · Inhaltsprofil.** Prüfen, ob klareres Wording genügt oder freiwillige
-  Themen-/Darstellungsoptionen nötig sind. **Ziel:** Ton, erwachsene Themen und
-  explizite Darstellung unterscheiden; keine behauptete offizielle Altersfreigabe
-  oder zusätzliche Felder ohne belegten Nutzen.
+
 - [ ] **R17 · Optionale Zufallsbeute.** D%-Seltenheit und direkt nutzbare besondere
   Funde abhängig von Ort, Setting und Machtniveau entwerfen. **Ziel:** Zusätzliche
   Chancen ohne Pflichtloot, Beutegrinden oder Ersatz bereits verdienter EXP.
@@ -130,7 +130,7 @@ Umfang und Reihenfolge wählen wir gemeinsam; ein weiterer Spieltest ist keine V
 
 ## 4. Erprobung und Beta-Vorbereitung
 
-- [ ] **R24 · Gezielte Variantenprüfung.** Mittel/lang samt Zwischenentwicklung,
+- [ ] **R24 · Gezielte Variantenprüfung.** Dynamisch sowie Mittel/lang samt Zwischenentwicklung,
   feste Gefährten mit eigener Entwicklung, besondere Ressourcen/Erholung und
   Transformationen/übermächtige Phasen prüfen. Figuren-/Crew-Entwurfsauswahl und
   Impulse getrennt von Auftragsvielfalt bewerten. **Ziel:** Konkrete Fragen mit
@@ -146,14 +146,10 @@ Umfang und Reihenfolge wählen wir gemeinsam; ein weiterer Spieltest ist keine V
   und Fortsetzungs-/Abbruchgrund vorbereiten. **Ziel:** Unterschiedliche Spieler testen
   selbstständig; bekannte Schwächen sind zulässig, perfekte Darstellung und Prüfung
   aller Kombinationen keine Voraussetzung.
-- [ ] **R27 · Kampagnenvergleich.** Starke vorhandene Verläufe gesammelt auswerten,
-  auf Wunsch ungefähr ab zehn Beispielen. **Ziel:** Version, Konfiguration,
-  Spielerinteresse und wiederkehrende Muster unterscheiden; keine Kausalität aus
-  einzelnen Erfolgsfällen ableiten. Private Exporte bleiben außerhalb des Repositorys.
 
 ## Pflege
 
 Erledigte Änderungen ins Changelog, Testerkenntnisse in die Erprobungsübersicht.
 Offene Punkte hier präzisieren statt unter neuen Versionen wiederholen. Umsetzung
 beweist keine langfristige Modellbefolgung. Frühere Kennungen A–O bleiben im Archiv;
-R01–R27 sind die gemeinsame Referenz für die nächste Paketentscheidung.
+Die verbleibenden R-Kennungen bleiben stabil; erledigte Punkte werden nicht neu nummeriert.

@@ -1,10 +1,10 @@
-import { allConfigs, buildCompactPackage } from '../src/generator.mjs';
-let count = 0, min = Infinity, max = 0, largest, external = 0;
-for (const c of allConfigs()) {
-  const output = buildCompactPackage(c);
-  const n = output.projectInstructions.length;
-  count++; if(output.profileExternal) external++;
-  min = Math.min(min, n);
-  if (n > max) { max = n; largest = c; }
+import {buildOutput} from '../src/outputs.mjs';
+import {representativeConfigs} from './config-cases.mjs';
+const cases=representativeConfigs();
+let maxStartLength=0;
+for(const config of cases){
+ const result=buildOutput(config);
+ if(/undefined/.test(result.startMessage))throw new Error('Unvollständiger Starttext');
+ maxStartLength=Math.max(maxStartLength,result.startMessage.length);
 }
-console.log(JSON.stringify({ combinations: count, min, max, reserve: 8000 - max, externalProfiles:external, largest }, null, 2));
+console.log(JSON.stringify({cases:cases.length,coverage:'Every active option, every option pair and every valid extra-dice combination; not exhaustive campaign behaviour.',maxStartLength},null,2));

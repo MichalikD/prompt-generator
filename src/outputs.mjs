@@ -3,7 +3,7 @@ import { GENERATOR_VERSION, RULES_VERSION } from './release.mjs';
 import { languageDirective, pluginLocalizationPolicy, optionNames } from './language.mjs';
 import { characterText, validateCharacterDocument } from './character.mjs';
 import { createProfile, profileIds } from './profile.mjs';
-import { pluginProfileText, pluginChoiceText } from './plugin-profile.mjs';
+import { pluginProfileText, pluginChoiceText, presentationContext } from './plugin-profile.mjs';
 import { buildCompactPackage, defaults, groups, selectOptions, diceText } from './generator.mjs';
 import {worldText,worldRules} from './worlds.mjs';
 import {openingEnabled,resolveOpening,openingText} from './opening.mjs';
@@ -30,7 +30,7 @@ export function buildPluginPackage(config = defaults, character=null) {
     languageDirective, pluginLocalizationPolicy,
     `Generator version: ${GENERATOR_VERSION}. Expected rules version: ${PLUGIN.version}.`,
     `This project contains one solo RPG run with the explicitly selected plugin "${PLUGIN.name}", rules version ${PLUGIN.version}.`,
-    'Use its GM instructions and references together with my confirmed setting and play options from the first message. Apply that tone; player control of their character does not prevent the world or opponents from initiating consequential action.',
+    'Use its GM instructions and references together with my confirmed setting and play options from the first message. Apply tone, world depiction and adventure scope as separate choices; player control of their character does not prevent the world or opponents from initiating consequential action.',
     'I control my character; you control the world and consequences. Preserve confirmed facts, the starting sheet and agreed deviations. Adopt another rules version only at my explicit request.',
     'New chat = new run unless I provide a save. Never claim unavailable memory, storage or file access.',
     'If the plugin or a required reference is inaccessible, say so before applying dependent rules.',
@@ -77,7 +77,7 @@ function checkPrepared(config, character) {
 export function worldForCharacter(config=defaults) {
  selectOptions(config);
  const world=createProfile(config).world;
- return [worldText(world),worldRules(world,{legacy:false}), config.wishes?.trim() && 'User wishes and exclusions: '+config.wishes.trim()].filter(Boolean).join('\n\n');
+ return [worldText(world),worldRules(world,{legacy:false}),presentationContext(config), config.wishes?.trim() && 'User wishes and exclusions: '+config.wishes.trim()].filter(Boolean).join('\n\n');
 }
 export function buildOutput(config = defaults, mode = 'plugin', character=null) {
   if (!outputModes.some(option => option.id === mode)) throw new Error('Ungültiger Ausgabemodus');

@@ -18,11 +18,13 @@ test('Eigene Welt ist erforderlich; Presets erlauben dieselbe optionale Ergänzu
  }
 });
 
-test('Umfang und Verlauf sind unabhängig; beide Modi erhalten identische Profile',()=>{
+test('Umfang und Verlauf sind unabhängig; gemeinsame Welt-/Umfangsvorgaben bleiben erhalten',()=>{
  for(const scope of ['short','medium','long']) for(const continuation of ['single','linked','open']) {
   const config={...defaults,scope,continuation,focus:['social','action'],wishes:'Keine Amnesie.',worldDescription:'Die Küste ist vereist.'};
   const a=buildOutput(config,'compact'), b=buildOutput(config,'plugin');
-  assert.deepEqual(a.profile,b.profile);
+  const {depiction,...shared}=b.profile;
+  assert.equal(depiction,'clear');
+  assert.deepEqual(a.profile,shared);
   for(const o of [a,b]) {
    const text=combined(o);
    assert.ok(text.includes('Keine Amnesie.'));

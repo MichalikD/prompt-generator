@@ -1,7 +1,7 @@
 import { optionNames } from './language.mjs';
 import {validateWorld,worldText} from './worlds.mjs';
 // Gemeinsame Profildaten; der kompakte Ausgabetext bleibt auf Stand 0.5.
-export const profileIds = ['setting', 'tone', 'scope', 'continuation'];
+export const profileIds = ['setting', 'tone', 'depiction', 'scope', 'continuation'];
 export const focuses = [
  {id:'discovery', label:'Entdeckung', tooltip:'Neue Orte, Zusammenhänge und Möglichkeiten entdecken.', text:'Discover new places, connections and possibilities.'},
  {id:'mystery', label:'Ermittlung und Rätsel', tooltip:'Nachvollziehbare Spuren und verlässliche Rätsel untersuchen.', text:'Investigate coherent clues and reliable puzzles.'},
@@ -10,13 +10,14 @@ export const focuses = [
 ];
 export const narrativePolicy = 'Give me a credible stake, useful contribution and consequential choice; an unexplained detail alone is not a hook. My job does not define every adventure. Unknown history may emerge consistently; confirmed facts and exclusions bind. My feelings, speech and choices remain mine. NPCs pursue their interests; cooperation can help without erasing real conflicts. Focus shapes challenges, not tone: social play need not become Cozy. Vary challenges, including suitable combat. Short means one goal and decisive challenge; close it before opening follow-up goals. Medium allows connected turning points, not extra checks. Vary objectives, opposition and solutions beyond repairs, disputed ownership and reasonable misunderstandings. Some opponents keep incompatible aims despite good arguments; combat, stealth or flight must be viable for this character when appropriate. Successful negotiation remains valid. Use culture, discovery and open personal history as well as practical jobs; no mandatory personal destiny. Close achieved, failed or abandoned goals; unresolved background questions need not delay closure or earned development. In ongoing campaigns, compress requested routine to the next playable situation, not another idle day or repeated invitation. Bring an opportunity I can plausibly engage with; do not require me to invent it or become a specialist. Respect refusal, explicit downtime, pauses and single-adventure endings. No images or image tools unless requested.';
 
-export function createProfile(config) {
+export function createProfile(config,{legacy=false}={}) {
  const world=validateWorld(config);
  const worldDescription=world.description;
  const wishes = readText(config.wishes, 'Eigene Vorgaben');
  const focus = config.focus ?? [];
  if (!Array.isArray(focus) || focus.length > 2 || new Set(focus).size !== focus.length || focus.some(id=>!focuses.some(f=>f.id===id))) throw new Error('Bitte höchstens zwei unterschiedliche Spielschwerpunkte wählen.');
- return {version:2, world, ...Object.fromEntries(profileIds.map(id=>[id,config[id]])), worldDescription, wishes, focus:[...focus]};
+ if(!legacy&&!['restrained','clear','graphic'].includes(config.depiction??'clear'))throw new Error('Ungültige Darstellung der Welt.');
+ return {version:2, world, ...Object.fromEntries(profileIds.filter(id=>!legacy||id!=='depiction').map(id=>[id,id==='depiction'?(config[id]??'clear'):config[id]])), worldDescription, wishes, focus:[...focus]};
 }
 function readText(value, label) {
  if (value === undefined) return '';

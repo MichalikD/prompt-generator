@@ -78,7 +78,9 @@ test('Alle strukturierten Weltmischungen bleiben ausgebbar; göttliche Figuren o
   const config={...longest,setting:t.id,worldEra:era.id,worldTechnology:technology.id,worldPowers:powers.id,worldPlayerKind:playerKind,worldMixConfirmed:true,worldDescription:'Eigene Angaben zu den bewusst gewählten Entwicklungsständen und Kräften.'};
   if(powers.id==='none'&&playerKind!=='mortal') {for(const mode of modes)assert.throws(()=>buildOutput(config,mode),/widerspricht/);continue;}
   const a=buildOutput(config,'compact'),b=buildOutput(config,'plugin');
-  assert.ok(a.projectInstructions.length<LIMIT);assert.deepEqual(a.profile,b.profile);
+  const {depiction,...shared}=b.profile;
+  assert.equal(depiction,'clear');
+  assert.ok(a.projectInstructions.length<LIMIT);assert.deepEqual(a.profile,shared);
   assert.equal(a.profile.world.era,era.id);assert.equal(a.profile.world.technology,technology.id);assert.equal(a.profile.world.powers,powers.id);count++;
  }
  assert.equal(count,6370);
