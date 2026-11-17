@@ -1,13 +1,14 @@
 import {optionNames} from '../src/language.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { allConfigs, buildPrompt, defaults, groups, LIMIT, diceText } from '../src/generator.mjs';
+import { buildPrompt, defaults, groups, LIMIT, diceText } from '../src/generator.mjs';
 import { buildOutput, buildPluginPackage, outputModes, PLUGIN } from '../src/outputs.mjs';
 import { pluginChoiceText } from '../src/plugin-profile.mjs';
+import {representativeConfigs} from './config-cases.mjs';
 
-test('Beide Ausgaben verwenden in jeder Kombination dieselbe gültige Auswahl', () => {
+test('Startpakete erhalten jede Auswahl, Optionspaare und Würfelkombinationen', () => {
   let count = 0;
-  for (const config of allConfigs()) {
+  for (const config of representativeConfigs()) {
     const result = buildPluginPackage(config);
     assert.ok(result.projectInstructions.length < LIMIT);
     assert.ok(result.startMessage.includes(PLUGIN.version));
@@ -23,7 +24,7 @@ test('Beide Ausgaben verwenden in jeder Kombination dieselbe gültige Auswahl', 
     assert.ok(result.startMessage.includes(extras || 'Extra dice: none.'));
     count++;
   }
-  assert.equal(count,48 * groups.reduce((n,g)=>n*g.options.length,1));
+  assert.equal(count,representativeConfigs().length);
 });
 
 test('Moduswechsel verändert keine Einstellungen und erhält den kompakten Prompt', () => {

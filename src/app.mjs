@@ -57,7 +57,7 @@ function addChoices(group,multi=false) {
   const input=document.createElement('input');input.type=multi?'checkbox':'radio';input.name=group.id;input.value=option.id;
   input.checked=!multi&&defaults[group.id]===option.id;
   const span=document.createElement('span');span.textContent=option.label;label.append(input,span);
-  const tips={scope:{short:'Ein eigenständiger Konflikt mit abschließendem Ergebnis, kein Auftakt einer größeren Hauptbedrohung.',medium:'Ein größerer Handlungsbogen mit verbundenen Wendepunkten und nutzbarer Zwischenentwicklung.',long:'Ein ausgedehnter Handlungsbogen mit mehreren Abschnitten, Entwicklung im Verlauf und erreichbarem Finale.'},continuation:{open:'Weitere Abenteuer mit derselben Figur und Welt. Keine automatische übergeordnete Hauptgeschichte.',linked:'Wiederkehrende Verbindungen. Bei kurz eigenständige Konflikte; bei mittel/lang ein größerer Bogen mit Gesamtfinale.'}};
+  const tips={scope:{dynamic:'Kurze und längere Konflikte je nach Inhalt und Entscheidungen. Jedes Abenteuer behält ein erreichbares Ende; keine künstliche Verlängerung.',short:'Ein eigenständiger Konflikt mit abschließendem Ergebnis, kein Auftakt einer größeren Hauptbedrohung.',medium:'Ein größerer Handlungsbogen mit verbundenen Wendepunkten und nutzbarer Zwischenentwicklung.',long:'Ein ausgedehnter Handlungsbogen mit mehreren Abschnitten, Entwicklung im Verlauf und erreichbarem Finale.'},continuation:{open:'Weitere Abenteuer mit derselben Figur und Welt. Keine automatische übergeordnete Hauptgeschichte.',linked:'Wiederkehrende Verbindungen. Bei kurz eigenständige Konflikte; dynamisch sowie mittel/lang erlauben verbundene Bögen mit erreichbarem Gesamtfinale.'}};
   wrap.append(label,infoButton({...option,tooltip:tips[group.id]?.[option.id]??option.tooltip}));row.append(wrap);
  }
  field.append(row);form.append(field);
@@ -82,7 +82,7 @@ const campaignLibrary=mountCampaignLibrary({getCurrent:()=>outputReady()?{id:cam
   updating=true;
   try{
    for(const field of form.querySelectorAll('input[name],textarea[name],select[name]')){
-    const value=entry.config[field.name];
+    const value=entry.config[field.name]??defaults[field.name];
     if(field.type==='checkbox'||field.type==='radio')field.checked=Array.isArray(value)?value.includes(field.value):field.type==='checkbox'&&field.name==='worldMixConfirmed'?value==='yes':field.name==='openingEnabled'?(value?'yes':'no')===field.value:String(value??'')===field.value;
     else field.value=value??'';
    }

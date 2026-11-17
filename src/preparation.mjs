@@ -3,6 +3,7 @@ import {draftImpulseText} from './draft-impulses.mjs';
 import {languageDirective,pluginLocalizationPolicy} from './language.mjs';
 import {resolveWorld,worldText,worldRules,validateWorld} from './worlds.mjs';
 import {groups} from './generator.mjs';
+import {presentationContext} from './plugin-profile.mjs';
 import {newDraft,newDraftEntry,parseDraft,crewPrerequisite} from './preparation-data.mjs';
 
 // Drafting may precede a complete world. Placeholders here never enter the actual
@@ -11,7 +12,7 @@ function worldContext(config) {
  const world=resolveWorld({...config,
   worldDescription:config.worldDescription?.trim()||'[No additional description supplied; propose compatible details.]',
   worldReference:config.worldReference?.trim()||'[Reference missing: ask for the intended work/universe before using its canon.]'});
- return [worldText(world),worldRules(world,{legacy:false}),config.wishes?.trim()&&`Player wishes and exclusions: ${config.wishes.trim()}`].filter(Boolean).join('\n\n');
+ return [worldText(world),worldRules(world,{legacy:false}),presentationContext(config),config.wishes?.trim()&&`Player wishes and exclusions: ${config.wishes.trim()}`].filter(Boolean).join('\n\n');
 }
 export function worldDraftTemplate(config,idea='',impulse,options={}) {
  const example=newDraft('world');Object.assign(example.world,{name:'World name',premise:'Core premise',society:'Culture, society and naming conventions',features:'Effective technology, powers and limits',situation:'Current competing interests and opportunities'});example.world.factions=[{name:'Faction name',description:'Interests and influence'}];example.world.places=[{name:'Place name',description:'Distinctive place and possibilities'}];

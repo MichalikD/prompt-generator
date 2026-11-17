@@ -1,6 +1,6 @@
 # Erprobung und Erhaltungsziele
 
-Stand: 16. November 2026. Ergänzt das [Changelog](../CHANGELOG.md);
+Stand: 17. November 2026. Ergänzt das [Changelog](../CHANGELOG.md);
 offene Aufgaben stehen ausschließlich in der [Roadmap](roadmap.md).
 Ausführliche frühere Einordnungen bleiben im [Archiv](roadmap-archiv-bis-0.24.md).
 Keine zweite Aufgabenliste oder verbindliche Spielregelquelle.
@@ -32,6 +32,29 @@ Bindung an die erarbeitete Figur und der Wunsch, sie möglicherweise später wie
 aufzugreifen, sind positive Spielergebnisse. Das Ende ist weder Figurentod noch
 Beweis eines abgeschlossenen Hauptbogens. Für die weitere Entwicklung ist kein
 erneuter langer Lauf derselben Figur vorausgesetzt.
+
+## Kampagnenvergleich und K1
+
+Zehn als gelungen ausgewählte Kampagnen wurden über Vergleichskarten ausgewertet;
+Vesper vollständig, andere in unterschiedlich großen Stichproben (etwa 5,5–40,7 %).
+Die Auswahl belegt keine allgemeine Erfolgsquote und Versionsunterschiede keine
+Kausalität. Besonders tragfähig: persönlich reizvolle Figuren, handlungswirksame
+Weltbesonderheiten, gemeinsam gewachsene Beziehungen und praktisch nutzbarer Fortschritt.
+Interesse kann trotz dieser Stärken sinken, wenn zentrale Figurenmöglichkeiten
+ungenutzt bleiben, die Rolle moralisch verflacht, Abschlüsse endlos verschoben oder
+vor ausreichender Entfaltung erreicht werden. Ruhe und friedliche Lösungen sind
+belegte positive Gegenbeispiele, keine grundsätzlich zu vermeidenden Tätigkeiten.
+
+Der isolierte K1-Test umfasst zwei unbewaffnete Duelle und einen Teamkampf mit
+Deckung. Der Spieler bewertet die Kämpfe als taktischer und insgesamt besser.
+Verteidigen/Gegenstoß, wirksames Umwerfen mit Aufstehaktion und die Angriffsstile
+veränderten Entscheidungen. Nicht jedes Manöver wurde benutzt oder musste benutzt
+werden. Ein Gegenstoß-Angebot wurde erst nach Nachfrage nachgeholt; die kurze
+Aktionsübersicht soll Möglichkeiten erinnerbar halten, ohne jedes Mal Regeln zu
+wiederholen. Zwei Duelle mit unterschiedlichen Siegern sind kein Balancenachweis.
+Teil-/Volldeckung und Geometrie wurden nicht vollständig streng geprüft; Halten,
+Schieben, Entwaffnen, Bereitschaft und weitere Sonderfälle bleiben offen. Private
+Exporte bleiben außerhalb der Repo; die neutralen K1-Testdaten liegen unter docs/tests.
 
 ## Bei Änderungen bewahren
 
@@ -73,6 +96,13 @@ Zahlenprüfungen. Für 0.24 wurden bestehende Tests, neue Persistenztests, Synta
 Paketprüfung und DOM-Smokes ausgeführt. Eine echte visuelle Browserprüfung war
 in dieser Umgebung blockiert; DOM-Prüfung ersetzt sie nicht.
 
-Diese Dokumentationsbereinigung verändert weder die Anwendung noch das Plugin.
-Sie beweist keine neue Spielqualität. Neue Beobachtungen ergänzen diese Übersicht;
+Für 0.25/0.21 bestehen 105 automatisierte Tests, 355 repräsentative aktive
+Options-/Optionspaar-/Würfelkonfigurationen und die Ton/Darstellung/Umfang/Verlauf-
+Matrix mit bestätigtem Bogen. Pluginquelle und reproduzierbares Paket wurden geprüft.
+Zwei DOM-Smokes prüfen neue Standardwerte, Auswahl und Archivwiederherstellung sowie
+Welt→Figur→Crew, Import/Export, Entwurfsdialoge und Ausgabe. Das sind keine visuellen
+Browserprüfungen und kein neuer Langzeit-Spieltest der veröffentlichten Regeln.
+
+Die Umsetzung von 0.25/0.21 folgt diesen Erkenntnissen. Sie beweist weder langfristige
+Modellbefolgung noch die Balance aller Manöver. Neue Beobachtungen ergänzen diese Übersicht;
 nur daraus abgeleitete offene Arbeit wird in der Roadmap präzisiert.

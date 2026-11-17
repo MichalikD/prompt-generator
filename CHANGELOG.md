@@ -6,6 +6,28 @@ abweichen. Diese Übersicht dokumentiert Änderungen, keine garantierte Modellbe
 Für frühere Details bleiben die Versionsdokumente und das
 [Roadmap-Archiv](docs/roadmap-archiv-bis-0.24.md) erhalten.
 
+## Generator 0.25.0 · Regelbasis 0.21.0
+
+- K1-Kampfkern: normal / kontrolliert (−2 Angriff, Gleichgewicht stören) / riskant
+  (+2 Angriff, −2 eigene Verteidigung); keine Änderung der Schadensbänder oder Würfel.
+- Eine Reaktion pro eigenem Zugzyklus für Gelegenheitsangriff, vorbereitete Aktion
+  oder bestätigte Technik; konkrete Kosten und Wirkungen für körperliche Manöver,
+  Aufstehen als Aktion, richtungsabhängige Teil-/Volldeckung.
+- Kurze Aktionsübersicht vor der eigenen Wahl, Reaktionen am Auslöser anbieten,
+  Verbündete und Gegner bis zur nächsten Spielerentscheidung abwickeln.
+- Dynamischer Abenteuerumfang als Standard: unterschiedlich lange Konflikte mit
+  erreichbarem Ende, nutzbarer Zwischenentwicklung und ohne künstliche Verlängerung.
+  Feste Umfangswahlen bleiben erhalten; offene Kampagne bedeutet kein endloser Konflikt.
+- Weltweite Darstellung Zurückhaltend / Deutlich / Drastisch unabhängig von Atmosphäre,
+  Schadensregeln und tatsächlicher Verletzung. Deutlich ist Standard. Ton bleibt
+  situationsgerecht, Humor kein globaler Auftrag; Fraktionen behalten ihre Interessen.
+- Ergebnisse verändern erkennbare Möglichkeiten, Einfluss und Beziehungen in der Welt.
+- Startpaket und alle drei Entwurfstemplates übernehmen die passenden Einstellungen;
+  Charaktertemplate vergleicht Techniken mit den neuen Grundhandlungen und verlangt
+  ausdrückliche Nutzungs-/Erholungsregeln. Keine automatischen Fähigkeiten oder Resets.
+- Aktive Ausgabeprüfungen decken jede Auswahl, Optionspaare, alle gültigen Würfelsets
+  sowie die vollständige Ton/Darstellung/Umfang/Verlauf-Matrix gezielt ab.
+
 ## Generator 0.24.0 · Regelbasis unverändert 0.20.0
 
 - Fortsetzungsseite mit Template für die Rekonstruktion aus vollständigem Chatexport;

@@ -3,7 +3,37 @@
 [Offene Roadmap](docs/roadmap.md) · [Changelog](CHANGELOG.md) ·
 [Erprobung und Erhaltungsziele](docs/erprobung.md)
 
-## Aktuell: Kampagnen fortsetzen und Spieltab-Komfort · Generator 0.24.0
+## Aktuell: Taktische Kämpfe, dynamischer Umfang und Darstellung · Generator 0.25.0
+
+Die Regelbasis **0.21.0** übernimmt den erprobten K1-Kern. Normale, kontrollierte
+und riskante Angriffe unterscheiden Trefferchance und Wirkung, nicht den Schaden.
+Ein gemeinsames Reaktionsbudget, konkrete Zustände, Aufstehen als Aktion und
+richtungsabhängige Deckung schaffen nutzbare Entscheidungen. Vor eigenen Aktionen
+erscheint eine kurze Erinnerung an Möglichkeiten; Reaktionen werden am Auslöser
+angeboten. Ausgewählte W4/W6/W8 behalten ihre bisherige Schadensvariation.
+
+**Dynamisch** ist der neue Standard für den Abenteuerumfang: kurze und längere
+Konflikte nach Inhalt und Entscheidungen, jeweils mit konkretem Ziel und erreichbarem
+Abschluss. Erfolge bringen das Ende näher; eine neue Voraussetzung verlängert nicht
+routinemäßig denselben Konflikt. Kurz, Mittel und Ausführlich bleiben auswählbar.
+Kampagnenstruktur, Atmosphäre und Darstellungsgrad bleiben davon unabhängig.
+
+**Darstellung der Welt:** Zurückhaltend, Deutlich (Standard) oder Drastisch steuern
+körperliche Details in der gesamten Welt. Die Auswahl verändert weder Schaden noch
+Tod oder dauerhafte Verletzungen. Ton und ausdrücklich ausgeschlossene Inhalte
+bleiben verbindlich. Humor ist situationsbezogen; ein Scherz macht eine düstere
+Kampagne nicht zur Komödie. Welt-, Figuren- und Crewtemplates übernehmen die Auswahl.
+
+Sichtbare Weltfolgen tragen Ergebnisse in spätere Möglichkeiten weiter, ohne jeden
+Erfolg durch eine neue Krise zu entwerten. Bestätigte Fähigkeiten behalten ihre
+Wirkung und Regeneration; begrenzte Techniken werden nicht pauschal pro Kampf aufgefüllt.
+Bestehende Kampagnen wechseln ihre Regeln nur auf ausdrücklichen Wunsch.
+
+Code-/Paketprüfungen belegen konsistente Ausgaben, keine garantiert fehlerfreie
+Spielleitung über lange Chats. Noch nicht erprobte Manöver und Langzeitwirkung
+stehen weiterhin in der [Roadmap](docs/roadmap.md).
+
+## Vorheriger Stand: Kampagnen fortsetzen und Spieltab-Komfort · Generator 0.24.0
 
 Die Regelbasis bleibt unverändert bei **0.20.0**. Bestehende Kampagnen behalten ihre
 bestätigten Werte, Fähigkeiten und Vereinbarungen.
