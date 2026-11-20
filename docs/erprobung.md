@@ -1,6 +1,6 @@
 # Erprobung und Erhaltungsziele
 
-Stand: 17. November 2026. Ergänzt das [Changelog](../CHANGELOG.md);
+Stand: 20. November 2026. Ergänzt das [Changelog](../CHANGELOG.md);
 offene Aufgaben stehen ausschließlich in der [Roadmap](roadmap.md).
 Ausführliche frühere Einordnungen bleiben im [Archiv](roadmap-archiv-bis-0.24.md).
 Keine zweite Aufgabenliste oder verbindliche Spielregelquelle.
@@ -56,6 +56,30 @@ Teil-/Volldeckung und Geometrie wurden nicht vollständig streng geprüft; Halte
 Schieben, Entwaffnen, Bereitschaft und weitere Sonderfälle bleiben offen. Private
 Exporte bleiben außerhalb der Repo; die neutralen K1-Testdaten liegen unter docs/tests.
 
+## Kampagnen mit Regelbasis 0.21
+
+- **Arko (beendet):** Kontrollierter Angriff und Gegenstoß waren wirksam; der
+  W6-Schaden folgte korrekt der ausgewählten Variation. Die Startfinte bot gegenüber
+  Grundhandlungen wenig eigenen Nutzen. Abschlüsse und Weiterreisen gelangen;
+  ein falscher EXP-Reststand löste trotzdem eine zusätzliche Auswahl aus und
+  wurde nach Nachfrage korrigiert.
+- **Sarius (Zwischenstand):** Eigenständige Gefährten tragen Kämpfe, Gespräche und
+  nächste Vorhaben. Beute wurde positiv bewertet: direkter Schadenszuwachs,
+  Aufwertung vorhandener Ausrüstung und ein Fund für eine bislang fehlende
+  Einsatzmöglichkeit. Das Stöbern und Finden funktioniert hier als Alternative
+  zum Kaufen.
+- **Taktik und Ablauf:** Gezielte Trefferbeschreibungen änderten die Bewegung
+  nicht. Verteidigen und kurzer Rückstoß waren im Duell wenig attraktiv; im Team
+  und bei passender Umgebung können sie nützlich bleiben. Eine erst nach dem
+  Halbfinale angekündigte Rast erschwerte die Entscheidung, Techniken vorher
+  einzusetzen. Begleitergewinne aus Ausrüstung waren sichtbar; die Fortführung
+  früherer persönlicher Verbesserungen blieb weniger klar. Eine Meta-Frage löste
+  eine Figurenreaktion aus. Ob Auswahlbuttons zum Problem beitragen, bleibt offen.
+
+Damit ist die Crew-Dynamik erneut beobachtet. Für langfristige Vielfalt, die
+unveränderte Abwicklung von Schleichen und Schaden oder Mehrspieler ergibt sich
+daraus noch kein neuer Nachweis.
+
 ## Bei Änderungen bewahren
 
 - Spielerentscheidungen, freie Wege und eigene Ziele; sinnvolle friedliche Lösungen
@@ -67,8 +91,8 @@ Exporte bleiben außerhalb der Repo; die neutralen K1-Testdaten liegen unter doc
 - Begehbare Kaufziele, tatsächlich ausgelieferte besondere Ausrüstung und
   Auswirkungen von Können, Ruf und Besitz.
 - Entwicklung auch nach bedeutsamen Niederlagen und unmittelbar spielbare Gewinne.
-- Persönliche Revanche, vorhandene Wunden und begrenzte Anwendungen über mehrere
-  Turnierkämpfe; kein automatisches Auffüllen zwischen jedem Gefecht.
+- Persönliche Revanche, vorhandene Wunden und die vorher geklärte Verfügbarkeit
+  von Rast und rastgebundenen Ressourcen über mehrere Turnierkämpfe.
 - Teamtaktik mit Zielwahl, Deckung, Bewegung und konkreten Wechselwirkungen von
   Nah-/Fernkampf. Transparente, freiwillige und reversible Wettkampfprofile können
   funktionieren, ohne alle Fortschritte zu löschen.
